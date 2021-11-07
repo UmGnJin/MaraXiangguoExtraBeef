@@ -20,7 +20,6 @@ namespace ArcanaDungeon.rooms
                     p = new EmptyRoomPainter();
                     break;
             }
-            SizePicker sp = new SizePicker();
             width = w;
             height = h;
             DefaultSet();

@@ -5,8 +5,8 @@ using ArcanaDungeon.rooms;
 using ArcanaDungeon.painters;
 using ArcanaDungeon.Object;
 using UnityEngine;
-using Random = System.Random;
-using Rect = ArcanaDungeon.util.Rect;
+using Random = System.Random;//유니티 것이 아닌 c# 랜덤 클래스 이용
+using Rect = ArcanaDungeon.util.Rect;//유니티 것이 아닌 util.Rect 사용
 using System.Linq;
 
 namespace ArcanaDungeon
@@ -14,7 +14,7 @@ namespace ArcanaDungeon
     public class BossLevel : Level
     {
         
-        public override void InitRooms()
+        public override void InitRooms()//
         {
             levelsize = LevelSize.SMALL;
             rooms = new List<Room>();
@@ -46,7 +46,7 @@ namespace ArcanaDungeon
             rooms[1].SetPosition(0, 5 * radius);
             rooms[1].placed = true;
 
-            Rect r = rooms[0].Intersect(rooms[0], rooms[1]);
+            Rect r = rooms[0].Intersect(rooms[1]);
             BossRoom br = new BossRoom("SlimeColony", Mathf.Abs(r.Width() * 5), Mathf.Abs(r.Height()));// 임시로 하드코딩 넣은 부분, 보스 풀 늘어나면 그에 맞게 조정할 예정.
             br.SetPosition(-rooms[0].xMax, rooms[0].yMax);
             int xOrigin = br.x;

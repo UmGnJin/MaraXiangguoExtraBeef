@@ -1,7 +1,7 @@
 ﻿
 namespace ArcanaDungeon
 {
-	public class Terrain
+	public class Terrain // 텍스트 버전으로 지형 구현시 이용되는 데이터 목록.
 	{
 		public const int EMPTY = 0;
 		public const int GROUND = 1;
@@ -24,7 +24,7 @@ namespace ArcanaDungeon
 
 		public static int[] thing_tag = new int[256];
 		//아래의 블록은 클래스가 로딩될 때 1번만 실행된다, 생성자의 클래스 버전
-		static Terrain(){
+		static Terrain(){// 지형별 번호에 통과여부 특성을 저장. 꺼낼 때는 thing_tag[지형이름]으로 사용가능.
 			thing_tag[EMPTY] = passable;
 			thing_tag[GROUND] = passable;
 			thing_tag[WALL] = vision_blocking;
@@ -41,7 +41,7 @@ namespace ArcanaDungeon
 			
 		}
 
-		public int discover(int terr)
+		public int discover(int terr)//발견 함수. 현재는 숨겨진 문만 밝히는 기능뿐인듯.
 		{
 			switch (terr)
 			{

@@ -9,7 +9,7 @@ namespace ArcanaDungeon
         public GameObject Player;
         private void Start()
         {
-
+            
         }
         void Update()
         {

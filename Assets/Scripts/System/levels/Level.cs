@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace ArcanaDungeon
 {
-    public enum LevelSize
+    public enum LevelSize//레벨 크기 프리셋. 방의 개수 결정에 이용.
     {
         SMALL = 4,
         NORMAL = 10,
@@ -19,7 +19,7 @@ namespace ArcanaDungeon
         //SMALL(4~8), NORMAL(10~14), LARGE(16~20)
     }
 
-    public enum Biome
+    public enum Biome//레벨이 가질 지형 예시. 
     {
         NORMAL = 0,
         FIRE = 1,
@@ -32,9 +32,9 @@ namespace ArcanaDungeon
     {
         public GameObject[,] temp_gameobjects;//★시야를 표현하기 위한 임시 게임오브젝트 배열, 나중에 그래픽 표현이나 좌표 체계를 정리할 필요가 있다
         public int width, height, length;
-        public int[,] map;
+        public int[,] map;//텍스트로 구현된 맵을 저장할 장소.
 
-        public List<Room> rooms;
+        public List<Room> rooms;//레벨 내의 방 저장.
 
         public LevelSize levelsize;
         public Biome biome;
@@ -50,7 +50,10 @@ namespace ArcanaDungeon
         public List<Enemy> enemies;
         public int maxEnemies;
 
-        public void Create()
+        public void Create()//레벨 생성 시 최초로 실행되는 부분. 무작위로 바이옴을 결정하고, 방을 생성한다.(이는 레벨 타입마다 다르므로 하위 레벨 클래스에서 오버라이딩 하도록 되어 있음.)
+                            //방 배치가 완료되면, 배치된 방들 중 조건에 맞는 방들을 이웃으로 묶는다. 그 다음, 이웃 방들끼리 연결할 문을 만들어 준다.
+                            //문이 완성되면 텍스트 형태의 1차 맵이 완성된다. 이후 맵에 몹과 오브젝트를 소환하고 시야 관련 작업을 한 뒤 종료된다.
+                            //그래픽 형태의 2차 맵은 Dungeon 클래스에서 만든다.
         {
             Random random = new Random();
             biome = (Biome)random.Next(0, 2);
@@ -95,14 +98,15 @@ namespace ArcanaDungeon
         }
         public abstract void InitRooms();
         public abstract void SpawnMobs();
-        public void PlaceDoors(Room r)
+        public abstract void PlaceRooms();
+        public void PlaceDoors(Room r)//이웃 방끼리 문을 만들어 준다. 붙어 있는 부분을 찾아 그 사이의 무작위 위치로 문을 만든다.
         {
             foreach(Room room in r.connection.Keys.ToList())
             {
                 var door = r.connection[room];
                 if (door != null)
                     continue;
-                var i = r.Intersect(r, room);
+                var i = r.Intersect(room);
                 if (i.Width() == 0)
                     door = new Room.Door(i.x - 1, rand.Next(i.y + 1, i.yMax - 1));
                 else
@@ -115,7 +119,7 @@ namespace ArcanaDungeon
                 room.connection[r] = door;
             }
         }
-        protected internal virtual void PaintDoors(Room r)
+        protected internal virtual void PaintDoors(Room r)//PlaceDoors에서 만든 문을 실제 지형의 형태로 맵에 추가한다.
         {
             foreach (var n in r.connection.Keys)
             {
@@ -132,10 +136,8 @@ namespace ArcanaDungeon
                         break;
                 }
             }
-        }
-        public abstract void PlaceRooms();
-        
-        public bool MoveRoom(Room r, int xDir, int yDir, out int index)
+        } 
+        public bool MoveRoom(Room r, int xDir, int yDir, out int index)//방을 옮기면서 다른 방과 겹치는지를 확인한다. 겹치면 false가 나오고, index를 통해 겹친 방의 번호가 나온다.
         {
             r.MovePosition(xDir, yDir);
             int i = -1;
@@ -150,7 +152,7 @@ namespace ArcanaDungeon
         }
         public bool CheckOverlap(Room r1, Room r2) // 매개변수인 두 방의 겹침 여부 확인.
         {
-            Rect rect = r1.Intersect(r1, r2);
+            Rect rect = r1.Intersect(r2);
             if (rect.Width() > 0 && rect.Height() > 0)
                 return true;
             return false;
@@ -161,7 +163,7 @@ namespace ArcanaDungeon
             {
                 if ((r.GetHashCode() == r1.GetHashCode() || !r1.placed) && r1.GetType() != typeof(DownStairsRoom))
                     continue;
-                Rect rect = r.Intersect(r, r1);
+                Rect rect = r.Intersect(r1);
                 if (rect.Width() > 0 && rect.Height() > 0)
                 {
                     //Debug.Log("Intersects with Room number " + rooms.IndexOf(r1) + ", Intersect Range : " + rect.Width() + ", " + rect.Height());
@@ -176,7 +178,7 @@ namespace ArcanaDungeon
             {
                 if (r.GetHashCode() == r1.GetHashCode() || !r1.placed)
                     continue;
-                Rect rect = r.Intersect(r, r1);
+                Rect rect = r.Intersect(r1);
                 if (rect.Width() > 0 && rect.Height() > 0)
                 {
                     //Debug.Log("Intersects with Room number " + rooms.IndexOf(r1) + ", Intersect Range : " + rect.Width() + ", " + rect.Height());
@@ -187,7 +189,8 @@ namespace ArcanaDungeon
             index = -1;
             return false;
         }
-        public void PaintRooms()
+        public void PaintRooms()//일단 문은 위치만 잡아놓고 방에 타일 배치를 한다. 이후, 문 부분만 타일을 바꿔 준다.
+                                //Painter 클래스에서 문타일 감지하는거보다 이게 코드 사용량이 적음.
         {
             foreach(Room r in rooms)
             {
@@ -196,7 +199,8 @@ namespace ArcanaDungeon
                 PaintDoors(r);
             }
         }
-        public Rect LevelRect()
+        public Rect LevelRect()//최상/하/좌/우측을 기준으로 맵을 직사각형화해 저장한다.
+                               //빈 공간 채우기나 맵 전체이동 등에 사용.
         {
             Rect rect = new Rect();
             foreach(Room r in rooms)
@@ -217,7 +221,7 @@ namespace ArcanaDungeon
             length = width * height;
             return rect;
         }
-        public void MoveRooms()
+        public void MoveRooms()//고정 위치로 전체 레벨 타일을 이동.
         {
             int xDir = -levelr.x;
             int yDir = -levelr.y;
@@ -229,7 +233,7 @@ namespace ArcanaDungeon
             }
         }
 
-        public abstract Vector2 SpawnPoint();
+        public abstract Vector2 SpawnPoint();//특정 상황에서 지정 위치에 몹을 소환해야 할 경우 여기에 명시.ex)문을 막고 있는 보스
         
     }
    

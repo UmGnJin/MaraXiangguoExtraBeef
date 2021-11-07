@@ -10,9 +10,8 @@ namespace ArcanaDungeon.rooms
 
         public UpStairsRoom()
         {
-            SizePicker sp = new SizePicker();
-            width = 6; // sp.Pick(MINROOMSIZE + 1, MAXROOMSIZE - 2);
-            height = 6; // sp.Pick(MINROOMSIZE + 1, MAXROOMSIZE - 2);
+            width = 6; // rand.Next(MINROOMSIZE + 1, MAXROOMSIZE - 2);
+            height = 6; // rand.Next(MINROOMSIZE + 1, MAXROOMSIZE - 2);
             DefaultSet();
         }
         public override void Paint(Level l)

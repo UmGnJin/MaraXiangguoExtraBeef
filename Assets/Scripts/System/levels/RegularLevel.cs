@@ -35,7 +35,7 @@ namespace ArcanaDungeon
             }
         }
 
-        public override void PlaceRooms()
+        public override void PlaceRooms()//n개의 출구만들고 중앙엔 입구. 랜덤각 주고 개수만큼 각도 조절해 방배치.
         {
             rooms[0].SetPosition(0, 0);
             rooms[0].placed = true;
@@ -108,7 +108,7 @@ namespace ArcanaDungeon
                     int max = 0;
                     while (!r.IsNeighbour(ent))
                     {
-                        Rect rect = r.Intersect(r, ent);
+                        Rect rect = r.Intersect(ent);
                         int xDir = 0, yDir = 0;
 
                         if (rect.Width() < 0)

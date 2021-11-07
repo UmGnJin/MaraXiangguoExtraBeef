@@ -4,7 +4,9 @@ using ArcanaDungeon.rooms;
 
 namespace ArcanaDungeon.painters
 {
-    public class EmptyRoomPainter : Painter
+    public class EmptyRoomPainter : Painter //Painter 클래스들도 대체로 비슷하므로 여기서만 설명.
+                                            //방마다 채워넣는 방식만 다르고, 기본적으로 우측과 하단에만 벽을 생성한다.
+                                            //좌측 상단은 빈 공간 벽, 혹은 연결된 방의 우측 하단으로 채워넣을 수 있기 때문.
     {
         public override void Paint(Level l, Room r)
         {
