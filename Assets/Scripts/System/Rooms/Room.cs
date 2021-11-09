@@ -8,7 +8,7 @@ namespace ArcanaDungeon.rooms
     {
         protected static Random rand = new Random();//하위 클래스들이 방 크기 설정에 사용할 랜덤 클래스.
         public Dictionary<Room, Door> connection = new Dictionary<Room, Door>();
-        public const int MINROOMSIZE = 3;
+        public const int MINROOMSIZE = 4;
         public const int MAXROOMSIZE = 9;
         public int width, height;
         public bool placed = false;

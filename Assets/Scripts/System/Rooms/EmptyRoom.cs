@@ -12,8 +12,8 @@ namespace ArcanaDungeon.rooms
     {
         public EmptyRoom()
         {
-            width = rand.Next(MINROOMSIZE, MAXROOMSIZE);
-            height = rand.Next(MINROOMSIZE, MAXROOMSIZE);
+            width = rand.Next(MINROOMSIZE + 2, MAXROOMSIZE);
+            height = width;
             DefaultSet();
         }
         public override void Paint(Level l)

@@ -40,7 +40,7 @@ namespace ArcanaDungeon
             rooms[0].SetPosition(0, 0);
             rooms[0].placed = true;
             int radius = (int)levelsize;
-            double startangle = rand.Next(0, 360 / exitnum);
+            int startangle = rand.Next(0, 360 / exitnum);
             int i = 0;
             foreach (Room d in rooms)
             {
@@ -49,7 +49,7 @@ namespace ArcanaDungeon
 
                 int x = (int)(radius * 7 * Math.Sin((2 * Math.PI * i / exitnum) + startangle));
                 int y = (int)(radius * 7 * Math.Cos((2 * Math.PI * i / exitnum) + startangle));
-                d.angle = (2 * Math.PI * i / exitnum) + startangle;
+                d.angle = (int)(2 * Math.PI * i / exitnum) + startangle;
                 d.SetPosition(x, y);
                 d.placed = true;
                 i++;

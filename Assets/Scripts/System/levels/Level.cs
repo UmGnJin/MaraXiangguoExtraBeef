@@ -13,10 +13,10 @@ namespace ArcanaDungeon
 {
     public enum LevelSize//레벨 크기 프리셋. 방의 개수 결정에 이용.
     {
-        SMALL = 4,
-        NORMAL = 10,
-        LARGE = 16
-        //SMALL(4~8), NORMAL(10~14), LARGE(16~20)
+        SMALL = 5,
+        NORMAL = 7,
+        LARGE = 9
+        //메인 루트에 들어갈 계단방을 제외한 방 수. 따라서 실제 메인 루트는 해당값 +2가 된다.
     }
 
     public enum Biome//레벨이 가질 지형 예시. 
@@ -145,6 +145,7 @@ namespace ArcanaDungeon
             {
                 r.MovePosition(-xDir, -yDir);
                 index = i;
+                //Debug.Log(i);
                 return false;
             }
             index = -1;
@@ -161,12 +162,13 @@ namespace ArcanaDungeon
         {
             foreach (Room r1 in rooms)
             {
-                if ((r.GetHashCode() == r1.GetHashCode() || !r1.placed) && r1.GetType() != typeof(DownStairsRoom))
+                //if ((r.GetHashCode() == r1.GetHashCode() || !r1.placed) && r1.GetType() != typeof(DownStairsRoom))
+                if(r.GetHashCode() == r1.GetHashCode() || !r1.placed)
                     continue;
                 Rect rect = r.Intersect(r1);
                 if (rect.Width() > 0 && rect.Height() > 0)
                 {
-                    //Debug.Log("Intersects with Room number " + rooms.IndexOf(r1) + ", Intersect Range : " + rect.Width() + ", " + rect.Height());
+                    //Debug.Log("room " + rooms.IndexOf(r) + " Intersects with Room number " + rooms.IndexOf(r1) + ", Intersect Range : " + rect.Width() + ", " + rect.Height());
                     return true;
                 }
             }

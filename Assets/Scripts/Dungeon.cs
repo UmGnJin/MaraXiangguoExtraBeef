@@ -48,7 +48,8 @@ namespace ArcanaDungeon
             Players = Resources.LoadAll<GameObject>("prefabs/Player");
 
 
-            currentlevel = new RegularLevel();
+            //currentlevel = new RegularLevel();
+            currentlevel = new AnotherLevel();
             currentlevel.Create();
             levels.Add(currentlevel);
             currentlevel.floor = 1;
@@ -90,17 +91,23 @@ namespace ArcanaDungeon
             if (levels.IndexOf(currentlevel) == levels.Count - 1)//현재가 마지막층이면, 새 층을 만들어 깐다.
             {
                 Level l;
-                if (currentlevel.GetType() == typeof(RegularLevel))
+                /*if (currentlevel.GetType() == typeof(RegularLevel))
+                {
+                    l = new BossLevel();
+                }*/
+                if (currentlevel.GetType() == typeof(AnotherLevel))
                 {
                     l = new BossLevel();
                 }
                 else if (currentlevel.GetType() == typeof(BossLevel))
                 {
-                    l = new RegularLevel();
+                    //l = new RegularLevel();
+                    l = new AnotherLevel();
                 }
                 else
                 {
-                    l = new RegularLevel();
+                    //l = new RegularLevel();
+                    l = new AnotherLevel();
                 }
 
                 l.Create();
@@ -260,7 +267,7 @@ namespace ArcanaDungeon
 
         public void SpawnMobs()//레벨 지형이 깔린 뒤 실행. 일단은 무작위 좌표를 선정하기 때문에 몹 밀도가 불균일하게 나올 수 있다. 시간이 남는다면 방 선정 - 스폰할 몹 수 선정 - 위치 선정의 과정으로 바꿀 것.
         {
-            Debug.Log(currentlevel.floor);
+            //Debug.Log(currentlevel.floor);
             if (enemies.Count == 0 || enemies.Count == levels.Count -1)//현재 레벨이 처음이면, 몬스터를 조건에 맞게 스폰한다.
             {
                 List<GameObject> enemylist = new List<GameObject>();
