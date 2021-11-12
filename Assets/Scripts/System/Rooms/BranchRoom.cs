@@ -11,6 +11,8 @@ namespace ArcanaDungeon.rooms
     {
         public bool connected = false;
         public bool first = false;
+        public bool maze = false;
+
         public BranchRoom(bool f)
         {
             first = f;
@@ -21,9 +23,11 @@ namespace ArcanaDungeon.rooms
             }
             else
             {
-                width = rand.Next(MINROOMSIZE, MAXROOMSIZE - 1);
-                height = rand.Next(MINROOMSIZE, MAXROOMSIZE - 1);
+                width = rand.Next(MINROOMSIZE, MAXROOMSIZE);
+                height = rand.Next(MINROOMSIZE, MAXROOMSIZE);
             }
+            if(rand.Next(0, 1) == 0)
+                    maze = true;
             DefaultSet();
         }
 
@@ -38,7 +42,11 @@ namespace ArcanaDungeon.rooms
 
         public override void Paint(Level l)
         {
-            EmptyRoomPainter erg = new EmptyRoomPainter();
+            Painter erg;
+            if (!maze)
+                erg = new EmptyRoomPainter();
+            else
+                erg = new MazeRoomPainter();
             erg.Paint(l, this);
         }
     }

@@ -119,6 +119,25 @@ namespace ArcanaDungeon
                 room.connection[r] = door;
             }
         }
+        public void PlaceDoors(Room r1, Room r2)//이웃 방끼리 문을 만들어 준다. 붙어 있는 부분을 찾아 그 사이의 무작위 위치로 문을 만든다.
+        {
+            
+            var door = r1.connection[r2];
+            if (door != null)
+                return;
+            var i = r1.Intersect(r2);
+            if (i.Width() == 0)
+                door = new Room.Door(i.x - 1, rand.Next(i.y + 1, i.yMax - 1));
+            else
+                door = new Room.Door(rand.Next(i.x + 1, i.xMax - 1), i.y - 1);
+            if (r1.connection.ContainsKey(r2))
+                r1.connection[r2] = door;
+            else
+                r1.connection.Add(r2, door);
+            r2.connection[r1] = door;
+            
+        }
+        
         protected internal virtual void PaintDoors(Room r)//PlaceDoors에서 만든 문을 실제 지형의 형태로 맵에 추가한다.
         {
             foreach (var n in r.connection.Keys)
