@@ -10,13 +10,13 @@ namespace ArcanaDungeon.Object
     public abstract class Thing : MonoBehaviour
     {
         protected int hp;
-        public int maxhp = 300; // 최대 체력 임의로 설정했어요.jgh.
+        public int maxhp = 0; 
         protected int stamina;
         public int maxstamina = 100;
         public int power;
 
         public bool exhausted = false;
-        private int block;
+        private int block; 
         private int vision_distance;
         public int isTurn;  //1 이상일 경우 이 객체의 턴이다, 0일 경우 단순히 이 객체의 턴이 아닌 것이며, 음수일 경우 기절 등의 이유로 턴이 생략될 것이다
 
@@ -31,7 +31,7 @@ namespace ArcanaDungeon.Object
             condition = new Dictionary<int, int>();
             this.vision_distance = 6;
             this.hp = 0;
-            this.stamina = 0;
+            this.stamina = 0; 
         }
 
         public abstract void Spawn();
@@ -74,7 +74,7 @@ namespace ArcanaDungeon.Object
                     this.stamina += val;
                 }
             } else {
-                this.stamina -= val;
+                this.stamina += val;
                 if (this.stamina < 0) {
                     this.stamina = 0;
                 }

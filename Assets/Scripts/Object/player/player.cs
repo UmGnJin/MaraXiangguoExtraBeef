@@ -18,11 +18,12 @@ namespace ArcanaDungeon.Object
         Card[] discarded;
         Card[] hand;
          */
-        AttackCard atcd = new AttackCard();
-
+        CardSlots hand = new CardSlots();
+        Deck cardDeck = new Deck();// 나중에 덱 생성시 직업 코드를 인자로 받음
+        //----------------------카드
         public player me = null;
 
-        private int hand_limit; //패 장수 제한
+
 
         public float MovePower = 0.2f;
         public int MoveTimerLimit = 5;
@@ -58,6 +59,13 @@ namespace ArcanaDungeon.Object
             maxstamina = 100;
             HpChange(maxhp);
             StaminaChange(maxstamina);
+            //--------------------------- 카드 
+            hand.DrawCards(cardDeck, 4); // 카드 드로우
+            Debug.Log("사용 전 스테미나 :" + stamina);
+            StaminaChange(-hand.UsingCard(2)); // UI에서 받는 값을 0대신 넣는다, 생각중이지만 UI에서 사용 카드의 태그를 받는 것을 생각중
+            Debug.Log("사용 후 스테미나 :" + stamina);
+
+
         }
         void Start()
         {

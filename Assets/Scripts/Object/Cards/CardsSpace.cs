@@ -5,17 +5,28 @@ using ArcanaDungeon.Object;
 
 namespace ArcanaDungeon.cards
 {
+    // THing에 스테미나 상태이상 방어도 있음
     public class Cards
     {
-        public int CardTape = 0; // 카드 종류(ex 공격,회복,드로우)마다 다른 값.
-        /*
+        public int cardTape = 0; // 카드 종류(ex 공격,회복,드로우)마다 다른 값.
+        private int cardCost = 0; // 카드 스테미나 코스트
+        /* 카드종류 및 여러 효과 구현을 효율적으로 하기위해서는
+         * 구조체로 다르게 만들 필요가 있음 
+         * 예시) 상태이상 및 효과 클래스를 만들고
+         *       공격카드 생성자에 타입 값에 맞는 효과 클래스를 저장
+         *       카드 사용 메소드에서 클래스의 메소드 호출 - 당장 필요한게 아님
          * 0 디폴트 값 
          *  X( 1, 2, 3...)  공격카드 ,상태이상 공격 카드, 다중타격 카드등 enemy 값을 인자로 받아야하는 카드
          * 1X(11,12,13...)  회복, 방어도,등등의 앞으로 생길수 있는 플레이어 대상 카드
          */
-        public virtual void UseCard(Enemy enemy)
+        public virtual void UseCard(Enemy enemy){}
+        public void costChange(int  newcost)
         {
-            
+            cardCost = newcost;
+        }
+        public int getCost()
+        {
+            return cardCost;
         }
     }
 
@@ -25,7 +36,8 @@ namespace ArcanaDungeon.cards
 
         public AttackCard()
         {
-            this.CardTape = 1;
+            this.cardTape = 1;
+            this.costChange(10);
         }
         public void IncreaseDMG(int DmgUp) // 공격력 증가.
         {
@@ -43,6 +55,22 @@ namespace ArcanaDungeon.cards
             else
                 Debug.Log("적을 찾을 수 없습니다.");
 
+        }
+    }
+
+    public class  BlockCard : Cards
+    {
+        private int playerBlock = 0;
+        public BlockCard()
+        {
+            this.cardTape = 2;
+            playerBlock = 10;
+        }
+
+        public override void UseCard(Enemy enemy){}
+        public void UseCard(player pl)
+        {
+            pl.BlockChange(this.playerBlock);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace ArcanaDungeon.cards
 {
     public class CardSlots
     {
-        private List<Cards> CardSlot;
+        private List<Cards> CardSlot = new List<Cards>();
         private int LimitCardsNum = 10; // 가질 수 있는 최대 카드 수  
         private int StartTurnHands = 4;
         public Enemy DetectedEnemy = new Enemy();// 시야 코딩 완성되면 받기
@@ -20,10 +20,15 @@ namespace ArcanaDungeon.cards
                 else
                     break;
             }
+            Debug.Log("핸드에 있는 카드 수 : 0" + " 카드 타입 :" + CardSlot[0].cardTape);
+            Debug.Log("핸드에 있는 카드 수 : 1" + " 카드 타입 :" + CardSlot[1].cardTape);
+            Debug.Log("핸드에 있는 카드 수 : 2" + " 카드 타입 :" + CardSlot[2].cardTape);
+            Debug.Log("핸드에 있는 카드 수 : 3" + " 카드 타입 :" + CardSlot[3].cardTape);
         }
-        public void UsingCard(int SlotNum)
+        public int UsingCard(int SlotNum)
         {
             CardSlot[SlotNum].UseCard(DetectedEnemy);
+            return CardSlot[SlotNum].getCost();
         }
 
         public int StartTurnCardsNum()
