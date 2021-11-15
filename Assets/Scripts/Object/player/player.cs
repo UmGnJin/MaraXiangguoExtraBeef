@@ -13,11 +13,6 @@ namespace ArcanaDungeon.Object
 {
     public class player : Thing
     {
-        /*★Card 클래스 제작 후 주석 제거할 것
-        Card[] deck;
-        Card[] discarded;
-        Card[] hand;
-         */
         CardSlots hand = new CardSlots();
         Deck cardDeck = new Deck();// 나중에 덱 생성시 직업 코드를 인자로 받음
         //----------------------카드
@@ -93,6 +88,10 @@ namespace ArcanaDungeon.Object
                 StaminaChange(5);//★아무 행동도 하지 않으면 회복량이 3배가 되도록 해야 함
 
             }
+        }
+
+        public CardSlots GetCard() {
+            return hand;
         }
 
         private void FixedUpdate()

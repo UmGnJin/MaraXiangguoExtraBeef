@@ -9,7 +9,7 @@ namespace ArcanaDungeon.cards
     {
         private List<Cards> CardSlot = new List<Cards>();
         private int LimitCardsNum = 10; // 가질 수 있는 최대 카드 수  
-        private int StartTurnHands = 4;
+        private int StartTurnHands = 4; //이 함수는 필요없을 듯함, 드로우는 2턴에 1장 고정으로 쭉 진행할 예정이라 from Cjh
         public Enemy DetectedEnemy = new Enemy();// 시야 코딩 완성되면 받기
         public void DrawCards(Deck deck_to_draw, int CardsNum_to_draw) // 덱에 있는 맨 위부터 카드 정해진 수 만큼 가져오기
         {
@@ -40,6 +40,9 @@ namespace ArcanaDungeon.cards
             StartTurnHands += AddedDraw;
             if (StartTurnHands > LimitCardsNum)
                 StartTurnHands = LimitCardsNum;
+        }
+        public int GetLimit() {
+            return this.StartTurnHands;//LimitCardsNum;  ★LimitCardsNum이 6 이하로 바뀌면 주석으로 교체할 것
         }
     }
 }

@@ -309,7 +309,6 @@ namespace ArcanaDungeon
                 {
                     Debug.Log("2nd branch placed.");
                     room.Connect(r);
-                    PlaceDoors(room, r);
                     room.placed = true;
                     branches++;
                 }
@@ -346,7 +345,6 @@ namespace ArcanaDungeon
                     {
                         Debug.Log("2nd Branch added.");
                         room.Connect(r);
-                        PlaceDoors(room, r);
                         room.placed = true;
                         branches++;
                         break;

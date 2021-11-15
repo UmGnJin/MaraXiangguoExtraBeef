@@ -10,7 +10,7 @@ namespace ArcanaDungeon.Object
     public abstract class Thing : MonoBehaviour
     {
         protected int hp;
-        public int maxhp = 0; 
+        public int maxhp = 100; 
         protected int stamina;
         public int maxstamina = 100;
         public int power;

@@ -10,6 +10,7 @@ namespace ArcanaDungeon.cards
     {
         public int cardTape = 0; // 카드 종류(ex 공격,회복,드로우)마다 다른 값.
         private int cardCost = 0; // 카드 스테미나 코스트
+        public Sprite illust;
         /* 카드종류 및 여러 효과 구현을 효율적으로 하기위해서는
          * 구조체로 다르게 만들 필요가 있음 
          * 예시) 상태이상 및 효과 클래스를 만들고
@@ -30,48 +31,5 @@ namespace ArcanaDungeon.cards
         }
     }
 
-    public class AttackCard : Cards
-    {
-        private int CardDamege = 10; // 기본 데미지.
-
-        public AttackCard()
-        {
-            this.cardTape = 1;
-            this.costChange(10);
-        }
-        public void IncreaseDMG(int DmgUp) // 공격력 증가.
-        {
-            CardDamege += DmgUp; 
-        }
-
-        public override void UseCard(Enemy enemy)
-        {
-            if (enemy != null)
-            {
-                Debug.Log("공격 전 체력"+enemy.GetHp());
-                enemy.HpChange(-CardDamege);
-                Debug.Log("공격 후 체력"+enemy.GetHp());
-            }
-            else
-                Debug.Log("적을 찾을 수 없습니다.");
-
-        }
-    }
-
-    public class  BlockCard : Cards
-    {
-        private int playerBlock = 0;
-        public BlockCard()
-        {
-            this.cardTape = 2;
-            playerBlock = 10;
-        }
-
-        public override void UseCard(Enemy enemy){}
-        public void UseCard(player pl)
-        {
-            pl.BlockChange(this.playerBlock);
-        }
-    }
 }
 
