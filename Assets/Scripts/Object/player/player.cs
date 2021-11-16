@@ -18,7 +18,7 @@ namespace ArcanaDungeon.Object
         //----------------------카드
         public player me = null;
 
-
+        public AnotherDeck deck;
 
         public float MovePower = 0.2f;
         public int MoveTimerLimit = 5;
@@ -60,19 +60,9 @@ namespace ArcanaDungeon.Object
             StaminaChange(-hand.UsingCard(2)); // UI에서 받는 값을 0대신 넣는다, 생각중이지만 UI에서 사용 카드의 태그를 받는 것을 생각중
             Debug.Log("사용 후 스테미나 :" + stamina);
 
-
+            deck = new AnotherDeck();
         }
-        void Start()
-        {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            anim = GetComponent<Animator>();
-            rigid = GetComponent<Rigidbody2D>();
-            tr = GetComponent<Transform>();
-            cam = GameObject.Find("Main Camera").GetComponent<Camera>();
-
-            if (me == null)
-                me = this;
-        }
+        
 
         // Update is called once per frame
         void Update()

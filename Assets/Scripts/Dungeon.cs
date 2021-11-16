@@ -58,7 +58,8 @@ namespace ArcanaDungeon
 
             Player = Players[0];
             Player = Instantiate(Player, new Vector2(0, 0), Quaternion.identity) as GameObject;
-            GameObject.Find("Canvas").GetComponent<UI>().SetPlr(Player);
+            //GameObject.Find("Canvas").GetComponent<UI>().SetPlr(Player);
+            GameObject.Find("Canvas").GetComponent<AnotherUI>().SetPlr(Player);
             Plr = Player.GetComponent<player>();
             Plr.Spawn();
 

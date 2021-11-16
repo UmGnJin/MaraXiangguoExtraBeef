@@ -198,7 +198,7 @@ namespace ArcanaDungeon
                 int max = 0;
                 if (room.IsNeighbour(r))
                 {
-                    Debug.Log("1st branch placed.");
+                    //Debug.Log("1st branch placed.");
                     room.placed = true;
                     room.angle = bangle;
                 }
@@ -280,7 +280,7 @@ namespace ArcanaDungeon
                 //Debug.Log(r.angle);
                 BranchRoom room = new BranchRoom(false);
                 rooms.Add(room);
-                Debug.Log("Add start.");
+                //Debug.Log("Add start.");
                 room.SetPosition(r.x, r.y);
                 int xOrigin = room.x;
                 int yOrigin = room.y;
@@ -288,7 +288,6 @@ namespace ArcanaDungeon
 
                 while (CheckOverlap(room))
                 {
-                    Debug.Log(".");
                     if (r.angle == Math.PI / 2 || r.angle == Math.PI * 3 / 2)
                         room.SetPosition(xOrigin + (int)(count * Math.Sin(r.angle)), yOrigin);
                     else if (r.angle == Math.PI || r.angle == 0)
@@ -307,7 +306,7 @@ namespace ArcanaDungeon
                 int max = 0;
                 if (room.IsNeighbour(r))
                 {
-                    Debug.Log("2nd branch placed.");
+                    //Debug.Log("2nd branch placed.");
                     room.Connect(r);
                     room.placed = true;
                     branches++;
@@ -343,7 +342,7 @@ namespace ArcanaDungeon
                     int index = -1;
                     if (MoveRoom(room, xDir, yDir, out index) && room.IsNeighbour(r))
                     {
-                        Debug.Log("2nd Branch added.");
+                        //Debug.Log("2nd Branch added.");
                         room.Connect(r);
                         room.placed = true;
                         branches++;

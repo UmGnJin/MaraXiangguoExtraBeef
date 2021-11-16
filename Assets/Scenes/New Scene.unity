@@ -858,6 +858,7 @@ GameObject:
   - component: {fileID: 361079013}
   - component: {fileID: 361079012}
   - component: {fileID: 361079016}
+  - component: {fileID: 361079017}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -914,7 +915,7 @@ Canvas:
   m_GameObject: {fileID: 361079011}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1124860342}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -924,7 +925,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_TargetDisplay: 0
 --- !u!224 &361079015
 RectTransform:
@@ -972,9 +973,45 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361079011}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 796b0367a3f8ccb4b90ab6d19a3ff3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp_bar: {fileID: 1107455866}
+  st_bar: {fileID: 763361945}
+  card_ui:
+  - {fileID: 1894899570}
+  - {fileID: 1186934603}
+  - {fileID: 1216948699}
+  - {fileID: 901853821}
+  - {fileID: 394360458}
+  - {fileID: 623113510}
+  - {fileID: 1832286621}
+  - {fileID: 1797612836}
+  stat_ui:
+  - {fileID: 113784180}
+  - {fileID: 1833336919}
+  - {fileID: 2053785786}
+  - {fileID: 164564291}
+  - {fileID: 1761680291}
+  - {fileID: 1537078113}
+  button:
+  - {fileID: 159789331}
+  - {fileID: 1069165970}
+  - {fileID: 756582231}
+  - {fileID: 149542357}
+  message: {fileID: 0}
+--- !u!114 &361079017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361079011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb699af5b6f8047489362361ea6840f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hp_bar: {fileID: 1107455866}

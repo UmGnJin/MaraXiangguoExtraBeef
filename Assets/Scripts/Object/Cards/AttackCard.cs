@@ -7,7 +7,7 @@ namespace ArcanaDungeon.cards
 {
     public class AttackCard : Cards
     {
-        private int CardDamege = 10; // 기본 데미지.
+        private int CardDamage = 10; // 기본 데미지.
 
         public AttackCard()
         {
@@ -16,7 +16,7 @@ namespace ArcanaDungeon.cards
         }
         public void IncreaseDMG(int DmgUp) // 공격력 증가.
         {
-            CardDamege += DmgUp;
+            CardDamage += DmgUp;
         }
 
         public override void UseCard(Enemy enemy)
@@ -24,7 +24,7 @@ namespace ArcanaDungeon.cards
             if (enemy != null)
             {
                 Debug.Log("공격 전 체력" + enemy.GetHp());
-                enemy.HpChange(-CardDamege);
+                enemy.HpChange(-CardDamage);
                 Debug.Log("공격 후 체력" + enemy.GetHp());
             }
             else
