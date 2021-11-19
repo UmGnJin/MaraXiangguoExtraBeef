@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ArcanaDungeon;
 
-//http://www.roguebasin.com/index.php?title=FOV_using_recursive_shadowcasting <<< 존나 중요하다 필독 필독 필필독
+//http://www.roguebasin.com/index.php?title=FOV_using_recursive_shadowcasting <<< 매우 중요하다 필독
 namespace ArcanaDungeon.util
 {
     public class Visionchecker : MonoBehaviour
@@ -59,7 +59,7 @@ namespace ArcanaDungeon.util
             //스캔은 가까운 곳에서 먼 곳 순서대로 진행한다, 어느 row부터 시작할지는 매개변수로 전달될 것이다
             for (; row <= distance; row++)
             {
-
+                //start와 end는 이번 scanOctant에서 스캔을 시작할 열과 끝낼 열을 나타낸다.
                 if (lSlope == 0)
                 {
                     start = 0;
@@ -127,6 +127,7 @@ namespace ArcanaDungeon.util
                         }
                     }
 
+                    //다음 스캔할 행,열로 좌표를 바꾼다, 물론 어느 축에 대해 대칭된 상태라면 좌표 이동 또한 조금 달라진다
                     if (xy_mirror)
                     {
                         cur_y += y_mirror;

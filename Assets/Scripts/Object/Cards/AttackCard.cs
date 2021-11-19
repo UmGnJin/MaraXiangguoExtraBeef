@@ -13,6 +13,7 @@ namespace ArcanaDungeon.cards
         {
             this.cardTape = 1;
             this.costChange(10);
+            this.illust = "Assets/Resources/sprites/Card/임시 공격.png";
         }
         public void IncreaseDMG(int DmgUp) // 공격력 증가.
         {

@@ -10,7 +10,7 @@ namespace ArcanaDungeon.cards
     {
         public int cardTape = 0; // 카드 종류(ex 공격,회복,드로우)마다 다른 값.
         private int cardCost = 0; // 카드 스테미나 코스트
-        public Sprite illust;
+        public string illust;
         /* 카드종류 및 여러 효과 구현을 효율적으로 하기위해서는
          * 구조체로 다르게 만들 필요가 있음 
          * 예시) 상태이상 및 효과 클래스를 만들고

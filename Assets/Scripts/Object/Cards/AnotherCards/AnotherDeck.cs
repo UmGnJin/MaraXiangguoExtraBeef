@@ -11,7 +11,7 @@ namespace ArcanaDungeon.cards
         // 안쓴 카드와 쓴 카드를 놓을 공간
         private List<AnotherCards> DeckList = new List<AnotherCards>(); // 덱 전체 리스트
 
-        private List<AnotherCards> Drawalbes = new List<AnotherCards>(); // 현재 덱(=뽑을 카드 더미)
+        private List<AnotherCards> Drawables = new List<AnotherCards>(); // 현재 덱(=뽑을 카드 더미)
         public List<AnotherCards> Hand = new List<AnotherCards>(); // 패
         private List<AnotherCards> Discarded = new List<AnotherCards>(); // 버린 카드들 더미
 
@@ -31,7 +31,7 @@ namespace ArcanaDungeon.cards
                 AnotherCards card = new AnotherCards("TestName", "Testing", i + 1);
                 DeckList.Add(card);
             }
-            Drawalbes = DeckList;
+            Drawables = DeckList;
         }
 
         public void DrawCard()
@@ -51,10 +51,10 @@ namespace ArcanaDungeon.cards
         {
             foreach(AnotherCards card in Discarded)
             {
-                Drawalbes.Add(card);
+                Drawables.Add(card);
                 Discarded.Remove(card);
             }
-            Drawalbes.OrderBy(a => Guid.NewGuid());
+            Drawables.OrderBy(a => Guid.NewGuid());
         }
         public void ChangeDeck(List<AnotherCards> UsedDeck)
         {

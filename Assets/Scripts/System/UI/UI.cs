@@ -18,7 +18,7 @@ namespace ArcanaDungeon
         public GameObject[] button = new GameObject[4];  //휴식, 셔플, 조사, 메뉴
 
         private GameObject Plr; //★플레이어
-        private CardSlots cs;   //플레이어에게 들어간 CardSlots 스트립트, SetPlr에서 위의 Plr와 함께 설정
+        private AnotherDeck deck;   //플레이어에게 들어간 Deck 스트립트, SetPlr에서 위의 Plr와 함께 설정
 
         public Text message;
         public void Awake()
@@ -45,23 +45,34 @@ namespace ArcanaDungeon
 
         public void SetPlr(GameObject p) {   //이 스크립트의 Plr에 플레이어를 배정해줌, Dungeon에서 단 1번 실행됨
             this.Plr = p;
-            cs = Plr.GetComponent<player>().GetCard();
+            deck = Plr.GetComponent<player>().deck;
+            if (deck == null && Plr == null)
+            {
+                Debug.Log("asdf");
+            }
         }
 
         public void Update() {
+            //플레이어 HP와 스태미나 표시 부분
             float temp_hp = Plr.GetComponent<player>().GetHp();
             float temp_st = Plr.GetComponent<player>().GetStamina();
             hp_bar.transform.GetChild(2).GetComponent<Text>().text = temp_hp.ToString();
-            hp_bar.transform.GetChild(1).localScale = new Vector2 ( temp_hp / 100, 1);
+            hp_bar.transform.GetChild(1).localScale = new Vector2 ( temp_hp / Plr.GetComponent<player>().maxhp, 1);
             st_bar.transform.GetChild(2).GetComponent<Text>().text = temp_st.ToString();
-            st_bar.transform.GetChild(1).localScale = new Vector2( temp_st / 100, 1);
-            for (int i = 1; i <= cs.GetLimit(); i++) {
+            st_bar.transform.GetChild(1).localScale = new Vector2( temp_st / Plr.GetComponent<player>().maxstamina, 1);
+
+            //패 최대 장수 표시 부분, 최대 장수 이내의 칸은 밝은 색으로 / 최대 장수를 초과하는 칸은 어두운 색으로 표시
+            for (int i = 1; i <= deck.max_Hand; i++) {
                 card_ui[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
             }
-            for (int i = cs.GetLimit()+1; i < 7; i++)
+            for (int i = deck.max_Hand+1; i < 7; i++)
             {
                 card_ui[i].GetComponent<Image>().color = new Color(0.5f, 0.3f, 0.3f, 1f);
             }
+        }
+
+        public void card_draw() { 
+            
         }
     }
 }

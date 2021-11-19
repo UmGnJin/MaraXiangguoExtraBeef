@@ -12,6 +12,7 @@ namespace ArcanaDungeon.cards
         {
             this.cardTape = 2;
             playerBlock = 10;
+            this.illust = "Assets/Resources/sprites/Card/임시 방어.png";
         }
 
         public override void UseCard(Enemy enemy) { }
