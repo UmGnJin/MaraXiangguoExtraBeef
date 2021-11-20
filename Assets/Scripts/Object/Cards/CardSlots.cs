@@ -20,10 +20,10 @@ namespace ArcanaDungeon.cards
                 else
                     break;
             }
-            Debug.Log("핸드에 있는 카드 수 : 0" + " 카드 타입 :" + CardSlot[0].cardTape);
-            Debug.Log("핸드에 있는 카드 수 : 1" + " 카드 타입 :" + CardSlot[1].cardTape);
-            Debug.Log("핸드에 있는 카드 수 : 2" + " 카드 타입 :" + CardSlot[2].cardTape);
-            Debug.Log("핸드에 있는 카드 수 : 3" + " 카드 타입 :" + CardSlot[3].cardTape);
+            //Debug.Log("핸드에 있는 카드 수 : 0" + " 카드 타입 :" + CardSlot[0].cardTape);
+            //Debug.Log("핸드에 있는 카드 수 : 1" + " 카드 타입 :" + CardSlot[1].cardTape);
+            //Debug.Log("핸드에 있는 카드 수 : 2" + " 카드 타입 :" + CardSlot[2].cardTape);
+            //Debug.Log("핸드에 있는 카드 수 : 3" + " 카드 타입 :" + CardSlot[3].cardTape);
         }
         public int UsingCard(int SlotNum)
         {

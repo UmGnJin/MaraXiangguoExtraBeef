@@ -99,6 +99,7 @@ namespace ArcanaDungeon
                 if (currentlevel.GetType() == typeof(AnotherLevel))
                 {
                     l = new BossLevel();
+                    //l = new AnotherLevel();
                 }
                 else if (currentlevel.GetType() == typeof(BossLevel))
                 {
@@ -209,6 +210,9 @@ namespace ArcanaDungeon
                                     tileObject = Tiles[Array.FindIndex(Tiles, t => t.name == "DoorTile")];
                                     break;
                             }
+                            break;
+                        case Terrain.GENERATOR:
+                            tileObject = Tiles[Array.FindIndex(Tiles, t => t.name == "Generator")];
                             break;
                         default:
                             continue;

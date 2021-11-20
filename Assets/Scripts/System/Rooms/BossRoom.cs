@@ -11,8 +11,14 @@ namespace ArcanaDungeon.rooms
         Painter p;
         public BossRoom(string boss, int w, int h)
         {
-            switch(boss)
+            width = w;
+            height = h;
+            switch (boss)
             {
+                case "Mech":
+                    p = new MechBossRoomPainter();
+
+                    break;
                 case "SlimeColony":
                     p = new SlimeBossRoomPainter();
                     break;
@@ -20,10 +26,9 @@ namespace ArcanaDungeon.rooms
                     p = new EmptyRoomPainter();
                     break;
             }
-            width = w;
-            height = h;
             DefaultSet();
         }
+        
         public override void Paint(Level l)
         {
             p.Paint(l, this);

@@ -16,6 +16,7 @@ namespace ArcanaDungeon
 		public const int STAIRS_UP = 8;
 
 		public const int WATER = 9;
+		public const int GENERATOR = 10;
 
 
 		public const int passable = 0x01;	//지나갈 수 있는가

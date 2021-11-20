@@ -56,9 +56,9 @@ namespace ArcanaDungeon.Object
             StaminaChange(maxstamina);
             //--------------------------- 카드 
             hand.DrawCards(cardDeck, 4); // 카드 드로우
-            Debug.Log("사용 전 스테미나 :" + stamina);
+            //Debug.Log("사용 전 스테미나 :" + stamina);
             StaminaChange(-hand.UsingCard(2)); // UI에서 받는 값을 0대신 넣는다, 생각중이지만 UI에서 사용 카드의 태그를 받는 것을 생각중
-            Debug.Log("사용 후 스테미나 :" + stamina);
+            //Debug.Log("사용 후 스테미나 :" + stamina);
 
             deck = new AnotherDeck();
         }
@@ -254,18 +254,17 @@ namespace ArcanaDungeon.Object
         }
         private void Get_MouseInput()
         {
-            
 
+            
             if (Input.GetMouseButtonDown(0))
             {
-                
                 MousePos = Input.mousePosition;
                 MousePos = cam.ScreenToWorldPoint(MousePos);
                 isMouseMove = true;
 
 
 
-
+                Debug.Log("SDF");
                 Mou_x = Mathf.RoundToInt(MousePos.x);
                 Mou_y = Mathf.RoundToInt(MousePos.y);
                 route_BFS(Mou_x, Mou_y);
@@ -281,8 +280,8 @@ namespace ArcanaDungeon.Object
                 {
                     if (Dungeon.dungeon.currentlevel.map[i, j] == Terrain.STAIRS_UP)
                     {
-                        PlayerPos = new Vector2(i + 1, j);
-                        transform.position = new Vector2(i + 1, j);
+                        PlayerPos = new Vector2(i, j + 1);
+                        transform.position = new Vector2(i, j + 1);
                         vision_marker();
                         return;
                     }

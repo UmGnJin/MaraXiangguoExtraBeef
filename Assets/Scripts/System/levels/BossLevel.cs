@@ -18,11 +18,11 @@ namespace ArcanaDungeon
         {
             levelsize = LevelSize.SMALL;
             rooms = new List<Room>();
-            rooms.Add(new UpStairsRoom());
-            exitnum = 1;
-            rooms.Add(new DownStairsRoom());
+            //rooms.Add(new UpStairsRoom());
+            //exitnum = 1;
+            //rooms.Add(new DownStairsRoom());
             maxEnemies = 1;
-            biome = Biome.BOSS_SLIME;
+            biome = Biome.NORMAL;
 
             PlaceRooms();
             levelr = LevelRect();
@@ -39,31 +39,55 @@ namespace ArcanaDungeon
 
         public override void PlaceRooms()// 우선 입구 - 보스방 - 출구 형태로 제작할 예정.
         {
-            rooms[0].SetPosition(0, 0);
-            rooms[0].placed = true;
+            //rooms[0].SetPosition(0, 0);
+            //rooms[0].placed = true;
             int radius = (int)levelsize;
 
-            rooms[1].SetPosition(0, 5 * radius);
-            rooms[1].placed = true;
+            //rooms[1].SetPosition(0, 5 * radius);
+            //rooms[1].placed = true;
 
-            Rect r = rooms[0].Intersect(rooms[1]);
-            BossRoom br = new BossRoom("SlimeColony", Mathf.Abs(r.Width() * 5), Mathf.Abs(r.Height()));// 임시로 하드코딩 넣은 부분, 보스 풀 늘어나면 그에 맞게 조정할 예정.
-            br.SetPosition(-rooms[0].xMax, rooms[0].yMax);
-            int xOrigin = br.x;
-            int yOrigin = br.y;
+            //Rect r = rooms[0].Intersect(rooms[1]);
+            //BossRoom br = new BossRoom("SlimeColony", Mathf.Abs(r.Width() * 5), Mathf.Abs(r.Height()));// 임시로 하드코딩 넣은 부분, 보스 풀 늘어나면 그에 맞게 조정할 예정.
+            BossRoom br = new BossRoom("Mech", 17, 17);
+            br.SetPosition(0, 0);
             
             rooms.Add(br);
             br.placed = true;
-            if (br.IsNeighbour(rooms[0]) && br.IsNeighbour(rooms[1]))
-                Debug.Log("Bossroom Spawned.");
+            //if (br.IsNeighbour(rooms[0]) && br.IsNeighbour(rooms[1]))
+              //  Debug.Log("Bossroom Spawned.");
 
 
+        }
+
+        public new Rect LevelRect()//최상/하/좌/우측을 기준으로 맵을 직사각형화해 저장한다.
+                               //빈 공간 채우기나 맵 전체이동 등에 사용.
+        {
+            Rect rect = new Rect();
+            foreach (Room r in rooms)
+            {
+                if (r.x < rect.x)
+                    rect.x = r.x;
+                if (r.y < rect.y)
+                    rect.y = r.y;
+                if (r.xMax > rect.xMax)
+                    rect.xMax = r.xMax;
+                if (r.yMax > rect.yMax)
+                    rect.yMax = r.yMax;
+            }
+            rect.x -= 1;
+            rect.y -= 1;
+            rect.xMax += 1;
+            rect.yMax += 1;
+            width = rect.Width();
+            height = rect.Height();
+            length = width * height;
+            return rect;
         }
 
         public override Vector2 SpawnPoint()
         {
             Vector2 point = new Vector2();
-
+            /*
             foreach(Room r in rooms)
             {
                 if (r.GetType() == typeof(DownStairsRoom))
@@ -75,8 +99,8 @@ namespace ArcanaDungeon
                 else
                     continue;
             }
-
-            return point;
+            */
+            return new Vector2();
         }
 
         public override void SpawnMobs()

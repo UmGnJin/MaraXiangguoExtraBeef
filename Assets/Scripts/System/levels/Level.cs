@@ -57,7 +57,7 @@ namespace ArcanaDungeon
         {
             Random random = new Random();
             biome = (Biome)random.Next(0, 2);
-            Debug.Log(biome);
+            //Debug.Log(biome);
             InitRooms();
 
             foreach (Room r1 in rooms)
