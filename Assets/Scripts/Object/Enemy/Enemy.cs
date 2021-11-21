@@ -37,7 +37,7 @@ namespace ArcanaDungeon.Object
                 else if (this.GetStamina() >= 60 && this.exhausted == true)
                     this.exhausted = false;
 
-                Vision_research();
+                //Vision_research();
                 if (this.exhausted == true)// 스태미나 회복 방식. 일반적으로는 특정 조건 만족 시 탈진에 걸리고, 일정 수치 이상의 스태미나까지 휴식만 한다.
                                            // 그렇게 일정 수치까지 회복한 이후, 탈진 상태이상이 제거되고, 기존의 행동 우선도대로 행동을 재개한다.
                 {
@@ -53,6 +53,7 @@ namespace ArcanaDungeon.Object
                 {
                     transform.position = new Vector2(route_pos[0] % Dungeon.dungeon.currentlevel.width, route_pos[0] / Dungeon.dungeon.currentlevel.width);
                     route_pos.RemoveAt(0);
+
                 }
                 isTurn -= 1;
             }
@@ -167,11 +168,13 @@ namespace ArcanaDungeon.Object
                 }
                 if (result.Contains(new float[2] { Dungeon.dungeon.Plr.transform.position.x, Dungeon.dungeon.Plr.transform.position.y})){
                     Dungeon.dungeon.Plr.HpChange(-val);
+                   
                 }
                 //LineRenderer가 들어간 부분은 전부 그래픽 관련이라고 보아도 무방하다
+                
                 Dungeon.dungeon.GetComponent<LineRenderer>().SetPosition(0, new Vector3(transform.position.x, transform.position.y,-1));
                 Dungeon.dungeon.GetComponent<LineRenderer>().SetPosition(1, new Vector3(dest_x, dest_y,-1));
-                Dungeon.dungeon.GetComponent<LineRenderer>().SetColors(new Color(1f, 1f, 1f, 1f), new Color(1f, 1f, 1f, 1f));
+                Dungeon.dungeon.GetComponent<LineRenderer>().SetColors(new Color(1f,1f,1f,1f), new Color(1f, 1f, 1f, 1f));
             }
             else{
                 //Dungeon.dungeon.currentlevel.mobs와 Plr 과 그 좌표들을 비교하여 가장 가까운 대상을 찾아옴
@@ -182,6 +185,7 @@ namespace ArcanaDungeon.Object
                     if (result.Contains(new float[2] { t.transform.position.x, t.transform.position.y}) & Dungeon.distance_cal(transform, t.transform)<closest_distance){
                         closest = t.GetComponent<Enemy>();
                         closest_distance = Dungeon.distance_cal(transform, t.transform);
+                       
                     }
                 }
                 if (result.Contains(new float[2] { Dungeon.dungeon.Plr.transform.position.x, Dungeon.dungeon.Plr.transform.position.y}) & Dungeon.distance_cal(transform, Dungeon.dungeon.Plr.transform)<closest_distance){
@@ -189,6 +193,7 @@ namespace ArcanaDungeon.Object
                 }
                 if(closest == Dungeon.dungeon.Plr | friendly_fire){
                     closest.HpChange(-val);
+                    
                     Dungeon.dungeon.GetComponent<LineRenderer>().SetPosition(0, new Vector3(transform.position.x, transform.position.y, -1));
                     Dungeon.dungeon.GetComponent<LineRenderer>().SetPosition(1, new Vector3(dest_x, dest_y, -1));
                     Dungeon.dungeon.GetComponent<LineRenderer>().SetColors(new Color(1f, 1f, 1f, 1f), new Color(1f, 1f, 1f, 1f));

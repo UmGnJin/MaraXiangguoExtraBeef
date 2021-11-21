@@ -118,6 +118,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004289d27d7835143ad5fb821da8dbe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxhp: 100
+  maxstamina: 100
+  power: 0
+  exhausted: 0
   isTurn: 0
   route_pos: 
   name: 
+  maxcooltime: 0
+  taljin: {fileID: 5055103388082806182, guid: 7293fa48061cbb74facc742efb6436a0, type: 3}

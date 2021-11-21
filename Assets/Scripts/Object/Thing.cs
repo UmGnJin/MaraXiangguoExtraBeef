@@ -52,7 +52,7 @@ namespace ArcanaDungeon.Object
                     this.hp += val;
                 }
             } else {
-                this.hp -= val;
+                this.hp += val;
                 if (this.hp < 0)
                 {
                     this.die();

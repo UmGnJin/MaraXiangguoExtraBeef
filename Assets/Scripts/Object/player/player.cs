@@ -63,6 +63,8 @@ namespace ArcanaDungeon.Object
         // Update is called once per frame
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.CapsLock))
+                HpChange(-10);//자해 테스트
             if (isTurn > 0)
             {
                 if (MoveTimer <= 0)
@@ -79,7 +81,8 @@ namespace ArcanaDungeon.Object
         
         private void FixedUpdate()
         {//입력받는곳
-            
+
+           
 
             if (Input.GetKey(KeyCode.Q))
             {
@@ -257,12 +260,12 @@ namespace ArcanaDungeon.Object
 
 
 
-                Debug.Log("SDF");
+                //Debug.Log("SDF");
                 Mou_x = Mathf.RoundToInt(MousePos.x);
                 Mou_y = Mathf.RoundToInt(MousePos.y);
                 route_BFS(Mou_x, Mou_y);
                 
-                Debug.Log("x = " + Mou_x +"("+ MousePos.x + ") y = " + Mou_y +"(" + MousePos.y + ")");
+                //Debug.Log("x = " + Mou_x +"("+ MousePos.x + ") y = " + Mou_y +"(" + MousePos.y + ")");
             }
         }
         public override void Spawn()
