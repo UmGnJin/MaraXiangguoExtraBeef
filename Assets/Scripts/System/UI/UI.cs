@@ -18,7 +18,7 @@ namespace ArcanaDungeon
         public GameObject[] button = new GameObject[4];  //휴식, 셔플, 조사, 메뉴
 
         private GameObject Plr; //★플레이어
-        private AnotherDeck deck;   //플레이어에게 들어간 Deck 스트립트, SetPlr에서 위의 Plr와 함께 설정
+        private Deck deck;   //플레이어에게 들어간 Deck 스트립트, SetPlr에서 위의 Plr와 함께 설정
 
         public Text message;
         public void Awake()
@@ -45,7 +45,7 @@ namespace ArcanaDungeon
 
         public void SetPlr(GameObject p) {   //이 스크립트의 Plr에 플레이어를 배정해줌, Dungeon에서 단 1번 실행됨
             this.Plr = p;
-            deck = Plr.GetComponent<player>().deck;
+            deck = Plr.GetComponent<player>().allDeck; // 오류 때문에 이전에 있던 deck을 통합한 덱 클래스로 임시로 바꿈 jgh
             if (deck == null && Plr == null)
             {
                 Debug.Log("asdf");

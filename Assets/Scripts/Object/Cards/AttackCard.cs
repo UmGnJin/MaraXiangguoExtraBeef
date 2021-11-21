@@ -20,13 +20,13 @@ namespace ArcanaDungeon.cards
             CardDamage += DmgUp;
         }
 
-        public override void UseCard(Enemy enemy)
+        public override void UseCard(Thing thing)
         {
-            if (enemy != null)
+            if (thing != null)
             {
-                Debug.Log("공격 전 체력" + enemy.GetHp());
-                enemy.HpChange(-CardDamage);
-                Debug.Log("공격 후 체력" + enemy.GetHp());
+                Debug.Log("공격 전 체력" + thing.GetHp());
+                thing.HpChange(-CardDamage);
+                Debug.Log("공격 후 체력" + thing.GetHp());
             }
             else
                 Debug.Log("적을 찾을 수 없습니다.");

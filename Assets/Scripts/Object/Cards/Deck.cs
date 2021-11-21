@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System;
 using UnityEngine;
+using ArcanaDungeon.Object;
 
 namespace ArcanaDungeon.cards
 {
@@ -8,10 +11,16 @@ namespace ArcanaDungeon.cards
     {
         // 안쓴 카드와 쓴 카드를 놓을 공간
         private List<Cards> CardsDeck = new List<Cards>(); // 덱 리스트
+        private List<Cards> UsedDeck = new List<Cards>(); // 사용한 카드 덱 리스트
+
         private int CardCount; // 덱의 카드 수
+
+        public List<Cards> Hands = new List<Cards>();
+
+        public const int MAX_HAND = 6;
+        public int max_Hand = 3;
         public Deck()
         {
-
             SettingFstDeck();
             //Debug.Log("현재 덱에 있는 카드 수 :" + CardCount); // 로그
         }
@@ -43,14 +52,45 @@ namespace ArcanaDungeon.cards
             return Tempcard;
         }
 
-        public void ChangDeck(List<Cards> UsedDeck)
+        public void ChangDeck()
         {
-            CardsDeck = UsedDeck;
+            CardsDeck = new List<Cards>(UsedDeck);
+            UsedDeck = new List<Cards>();
+            CardsDeck.OrderBy(a => Guid.NewGuid());
         }
 
-        public List<Cards> ShowDeckList()
+        public List<Cards> showDeckList()
         {
             return CardsDeck;
+        }
+        public List<Cards> showCardSlot()
+        {
+            return Hands;
+        }
+
+        public void DrawCards() // 덱에 있는 맨 위부터 카드 정해진 수 만큼 가져오기
+        {
+            if (Hands.Count < max_Hand)
+            {
+                    CardCount--;
+                    Hands.Add(CardsDeck[CardCount]);
+                    CardsDeck.RemoveAt(CardCount);
+            }
+            //Debug.Log("핸드에 있는 카드 수 : 0" + " 카드 타입 :" + Hands[0].cardTape);
+            //Debug.Log("핸드에 있는 카드 수 : 1" + " 카드 타입 :" + CardSlot[1].cardTape);
+            //Debug.Log("핸드에 있는 카드 수 : 2" + " 카드 타입 :" + CardSlot[2].cardTape);
+            //Debug.Log("핸드에 있는 카드 수 : 3" + " 카드 타입 :" + CardSlot[3].cardTape);
+        }
+
+        public int UsingCard(int SlotNum,Thing smthing )
+        {
+            int cost = Hands[SlotNum].getCost();
+            //CardSlot[SlotNum].UseCard(smthing);
+            //Debug.Log("카드 사용됨" + cost);
+            UsedDeck.Add(Hands[SlotNum]);
+            //Debug.Log(UsedDeck[0].cardTape + "사용된 카드타입");
+            Hands.RemoveAt(SlotNum);
+            return cost;
         }
 
 

@@ -13,12 +13,10 @@ namespace ArcanaDungeon.Object
 {
     public class player : Thing
     {
-        CardSlots hand = new CardSlots();
-        Deck cardDeck = new Deck();// 나중에 덱 생성시 직업 코드를 인자로 받음
+        public Deck allDeck = new Deck();// 나중에 덱 생성시 직업 코드를 인자로 받음
         //----------------------카드
         public player me = null;
 
-        public AnotherDeck deck;
 
         public float MovePower = 0.2f;
         public int MoveTimerLimit = 5;
@@ -55,12 +53,10 @@ namespace ArcanaDungeon.Object
             HpChange(maxhp);
             StaminaChange(maxstamina);
             //--------------------------- 카드 
-            hand.DrawCards(cardDeck, 4); // 카드 드로우
+            allDeck.DrawCards(); // 카드 드로우
             //Debug.Log("사용 전 스테미나 :" + stamina);
-            StaminaChange(-hand.UsingCard(2)); // UI에서 받는 값을 0대신 넣는다, 생각중이지만 UI에서 사용 카드의 태그를 받는 것을 생각중
+            StaminaChange(-allDeck.UsingCard(0,this)); // UI에서 받는 값을 0대신 넣는다, 생각중이지만 UI에서 사용 카드의 태그를 받는 것을 생각중
             //Debug.Log("사용 후 스테미나 :" + stamina);
-
-            deck = new AnotherDeck();
         }
         
 
@@ -80,10 +76,7 @@ namespace ArcanaDungeon.Object
             }
         }
 
-        public CardSlots GetCard() {
-            return hand;
-        }
-
+        
         private void FixedUpdate()
         {//입력받는곳
             

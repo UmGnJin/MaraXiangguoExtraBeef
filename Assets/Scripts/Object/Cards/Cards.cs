@@ -20,7 +20,7 @@ namespace ArcanaDungeon.cards
          *  X( 1, 2, 3...)  공격카드 ,상태이상 공격 카드, 다중타격 카드등 enemy 값을 인자로 받아야하는 카드
          * 1X(11,12,13...)  회복, 방어도,등등의 앞으로 생길수 있는 플레이어 대상 카드
          */
-        public virtual void UseCard(Enemy enemy){}
+        public virtual void UseCard(Thing thing){}
         public void costChange(int  newcost)
         {
             cardCost = newcost;

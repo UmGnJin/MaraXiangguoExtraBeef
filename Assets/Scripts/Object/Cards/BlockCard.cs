@@ -11,11 +11,12 @@ namespace ArcanaDungeon.cards
         public BlockCard()
         {
             this.cardTape = 2;
+            this.costChange(10);
             playerBlock = 10;
             this.illust = "Assets/Resources/sprites/Card/임시 방어.png";
         }
 
-        public override void UseCard(Enemy enemy) { }
+        public override void UseCard(Thing thing) { }
         public void UseCard(player pl)
         {
             pl.BlockChange(this.playerBlock);
