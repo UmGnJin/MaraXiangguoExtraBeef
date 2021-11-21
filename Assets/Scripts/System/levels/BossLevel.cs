@@ -18,11 +18,14 @@ namespace ArcanaDungeon
         {
             levelsize = LevelSize.SMALL;
             rooms = new List<Room>();
-            //rooms.Add(new UpStairsRoom());
-            //exitnum = 1;
-            //rooms.Add(new DownStairsRoom());
+            biome = (Biome)rand.Next(10, 15);
+            if (biome != Biome.BOSS_MECH)
+            {
+                rooms.Add(new UpStairsRoom());
+                exitnum = 1;
+                rooms.Add(new DownStairsRoom());
+            }
             maxEnemies = 1;
-            biome = Biome.NORMAL;
 
             PlaceRooms();
             levelr = LevelRect();
@@ -39,24 +42,32 @@ namespace ArcanaDungeon
 
         public override void PlaceRooms()// 우선 입구 - 보스방 - 출구 형태로 제작할 예정.
         {
-            //rooms[0].SetPosition(0, 0);
-            //rooms[0].placed = true;
             int radius = (int)levelsize;
+            BossRoom br;
+            Rect r = new Rect();
+            if (biome != Biome.BOSS_MECH)
+            {
+                rooms[0].SetPosition(0, 0);
+                rooms[0].placed = true;
 
-            //rooms[1].SetPosition(0, 5 * radius);
-            //rooms[1].placed = true;
+                rooms[1].SetPosition(0, 5 * radius);
+                rooms[1].placed = true;
 
-            //Rect r = rooms[0].Intersect(rooms[1]);
-            //BossRoom br = new BossRoom("SlimeColony", Mathf.Abs(r.Width() * 5), Mathf.Abs(r.Height()));// 임시로 하드코딩 넣은 부분, 보스 풀 늘어나면 그에 맞게 조정할 예정.
-            BossRoom br = new BossRoom("Mech", 17, 17);
-            br.SetPosition(0, 0);
+                r = rooms[0].Intersect(rooms[1]);
+            }
+            switch (biome)
+            {
+                case Biome.BOSS_MECH:
+                    br = new BossRoom("Mech", 17, 17);
+                    break;
+                default:
+                    br = new BossRoom("asdf", Mathf.Abs(r.Width() * 10), Mathf.Abs(r.Height()));
+                    br.SetPosition(-(br.width / 2), Mathf.Abs(rooms[0].Height()));
+                    break;
+            }
             
             rooms.Add(br);
             br.placed = true;
-            //if (br.IsNeighbour(rooms[0]) && br.IsNeighbour(rooms[1]))
-              //  Debug.Log("Bossroom Spawned.");
-
-
         }
 
         public new Rect LevelRect()//최상/하/좌/우측을 기준으로 맵을 직사각형화해 저장한다.

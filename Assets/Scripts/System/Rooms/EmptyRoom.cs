@@ -16,6 +16,12 @@ namespace ArcanaDungeon.rooms
             height = width;
             DefaultSet();
         }
+        public EmptyRoom(int w, int h)
+        {
+            width = w;
+            height = h;
+            DefaultSet();
+        }
         public override void Paint(Level l)
         {
             EmptyRoomPainter erg = new EmptyRoomPainter();

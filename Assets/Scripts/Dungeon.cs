@@ -49,7 +49,10 @@ namespace ArcanaDungeon
 
 
             //currentlevel = new RegularLevel();
-            currentlevel = new AnotherLevel();
+            //currentlevel = new AnotherLevel();
+            currentlevel = new TestLevel();
+            //주석처리 바꿔서 시작레벨 다른거로 테스트 가능.
+
             currentlevel.Create();
             levels.Add(currentlevel);
             currentlevel.floor = 1;
@@ -99,6 +102,11 @@ namespace ArcanaDungeon
                 if (currentlevel.GetType() == typeof(AnotherLevel))
                 {
                     l = new BossLevel();
+                    //l = new AnotherLevel();
+                }
+                else if (currentlevel.GetType() == typeof(TestLevel))
+                {
+                    l = new TestLevel();
                     //l = new AnotherLevel();
                 }
                 else if (currentlevel.GetType() == typeof(BossLevel))
@@ -285,22 +293,19 @@ namespace ArcanaDungeon
                         case Biome.FIRE:
                             mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat_Fire")];
                             break;
-                        case Biome.BOSS_SLIME:
-                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "SlimeColony")];
-                            break;
                         default:
                             mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Gnoll")];
                             break;
                     }
 
-                    if (currentlevel.biome == Biome.BOSS_SLIME)
+                    /*(if (currentlevel.biome == Biome.BOSS_SLIME)
                     {
                         Vector2 point = currentlevel.SpawnPoint();
                         pos = new Vector2(point.x - 1, point.y - 3);
 
                     }
                     else
-                    {
+                    {*/
                         while (true)
                         {
                             int x = random.Next(0, currentlevel.levelr.xMax);
@@ -311,7 +316,7 @@ namespace ArcanaDungeon
                                 break;
                             }
                         }
-                    }
+                    //}
                     enemylist.Add(Instantiate(mob, pos, Quaternion.identity));
                 }
                 enemies.Add(enemylist);

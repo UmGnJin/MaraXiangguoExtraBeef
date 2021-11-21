@@ -24,7 +24,11 @@ namespace ArcanaDungeon
         NORMAL = 0,
         FIRE = 1,
 
-        BOSS_SLIME = 10
+        BOSS_MECH = 10,
+        BOSS_ELEMENTAL = 11,
+        BOSS_CRAB = 12,
+        BOSS_MIMIC = 13,
+        BOSS_GNOLL = 14
     }
 
 
