@@ -69,13 +69,12 @@ namespace ArcanaDungeon.Object
             {
                 if (MoveTimer <= 0)
                     Get_MouseInput(); //마우스 입력
-
+                    
                 if (Input.GetButton("Horizontal"))
                     spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
-
-                StaminaChange(5);//★아무 행동도 하지 않으면 회복량이 3배가 되도록 해야 함
-
             }
+            vision_marker();//★이 2줄은 나중에 턴이 종료될 때 함수가 완성되면 그 쪽으로 옮겨야 함
+            StaminaChange(5);//★아무 행동도 하지 않으면 회복량이 3배가 되도록 해야 함
         }
 
         
@@ -317,6 +316,7 @@ namespace ArcanaDungeon.Object
                     }
                     else
                     {
+                        //Debug.Log(i + " " + j + " 불을 꺼");
                         Dungeon.dungeon.currentlevel.temp_gameobjects[i, j].GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1);
                     }
                 }

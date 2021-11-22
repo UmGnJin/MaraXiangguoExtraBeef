@@ -51,6 +51,7 @@ namespace ArcanaDungeon
             //currentlevel = new RegularLevel();
             //currentlevel = new AnotherLevel();
             currentlevel = new TestLevel();
+            //currentlevel = new BossLevel();
             //주석처리 바꿔서 시작레벨 다른거로 테스트 가능.
 
             currentlevel.Create();
@@ -64,6 +65,7 @@ namespace ArcanaDungeon
             GameObject.Find("Canvas").GetComponent<UI>().SetPlr(Player);
             Plr = Player.GetComponent<player>();
             Plr.Spawn();
+            Debug.Log("cur level : " + currentlevel.GetType());
 
             /*
             //턴 테스트용 쥐 한마리
@@ -262,7 +264,7 @@ namespace ArcanaDungeon
             }
             //if (Ene.isEnemyturn == false)
 
-            //원거리 공격 표시용으로 사용되는 LineRenderer가 투명하지 않으면 점차 투명하게 맹근다
+            //★원거리 공격 표시용으로 사용되는 LineRenderer가 투명하지 않으면 점차 투명하게 맹근다
             if (this.GetComponent<LineRenderer>().startColor[3] > 0f) {
                 this.GetComponent<LineRenderer>().SetColors(new Color(1f, 1f, 1f, this.GetComponent<LineRenderer>().startColor[3]-0.002f), new Color(1f, 1f, 1f, this.GetComponent<LineRenderer>().endColor[3]-0.002f));
             }

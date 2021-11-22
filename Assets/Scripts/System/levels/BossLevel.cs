@@ -58,7 +58,7 @@ namespace ArcanaDungeon
             switch (biome)
             {
                 case Biome.BOSS_MECH:
-                    br = new BossRoom("Mech", 17, 17);
+                    br = new BossRoom("Mech", 17, 17);  //이 부분을 잠시 default로 옮기면 보스방 테스트 가능, 옮기지 않아도 20% 확률로 테스트 가능
                     break;
                 default:
                     br = new BossRoom("asdf", Mathf.Abs(r.Width() * 10), Mathf.Abs(r.Height()));

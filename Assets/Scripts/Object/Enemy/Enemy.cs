@@ -37,9 +37,9 @@ namespace ArcanaDungeon.Object
                 else if (this.GetStamina() >= 60 && this.exhausted == true)
                     this.exhausted = false;
 
-                //Vision_research();
-                if (this.exhausted == true)// 스태미나 회복 방식. 일반적으로는 특정 조건 만족 시 탈진에 걸리고, 일정 수치 이상의 스태미나까지 휴식만 한다.
-                                           // 그렇게 일정 수치까지 회복한 이후, 탈진 상태이상이 제거되고, 기존의 행동 우선도대로 행동을 재개한다.
+                Vision_research();
+                if (this.exhausted == true)// 스태미나 회복 방식. 특정 행동을 하려 할 때 그 행동에 요구되는 스태미나가 없다면 행동을 할 수 없는 채로 몇 턴 간 스태미나를 회복한다, 탈진 턴 수는 스태미나 최대치에 비례하며 회복 이후 탈진이 해제되고 원래대로 행동한다
+                                           // 최대 스태미나 0~40 > 탈진 1턴, 최대 스태미나 41~80 > 탈진 2턴, 최대 스태미나 81~120 > 탈진 3턴....
                 {
                     this.StaminaChange(20);
                 }
@@ -108,6 +108,9 @@ namespace ArcanaDungeon.Object
                     {
                         Dungeon.dungeon.currentlevel.temp_gameobjects[i, j].GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 1, 1);
                     }
+                    else {
+                        Dungeon.dungeon.currentlevel.temp_gameobjects[i, j].GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1);
+                    }
                 }
             }
             Dungeon.dungeon.currentlevel.temp_gameobjects[(int)transform.position.x, (int)transform.position.y].GetComponent<SpriteRenderer>().color = new Color(0.5f, 1, 0.5f, 1);
@@ -119,47 +122,53 @@ namespace ArcanaDungeon.Object
         }
 
         protected void range_attack(int dest_x, int dest_y, int val, bool pierce, bool friendly_fire) { //원거리 공격, pierce는 공격 범위 안의 모든 적을 공격하는 관통 공격일 경우 true, friendly_fire는 이 공격으로 아군도 공격 가능할 경우 true(보통 1턴 충전 뒤 지정한 위치로 발사하는 스킬에 사용될 예정)
+            Debug.Log("몬스터 원거리 공격 실행 중");
             //이 몬스터의 현재 좌표부터 (dest_x,dest_y)까지 맞닿는 사각형 좌표들을 구해옴
-                List<float[]> result = new List<float[]>();
-                if (dest_y-transform.position.y == 0){
-                    for (float i=transform.position.x; i<=dest_x; i++){
-                    result.Add(new float[2] { i, transform.position.y });
-                    }
-                }else if (dest_x-transform.position.x == 0){             
-                    for (float i=transform.position.y; i<=dest_y; i++){
-                    result.Add(new float[2] { transform.position.x, i });
-                    }
-                }else{         
-                    bool mirrored = false;
-                    float more_slope, less_slope, slope;
-                    if (Math.Abs(dest_x-transform.position.x) > Math.Abs(dest_y-transform.position.y)){
-                        more_slope = transform.position.x;
-                        less_slope = transform.position.y;
-                        slope = Math.Abs(dest_x-transform.position.x) / Math.Abs(dest_y-transform.position.y);
-                        mirrored = true;
-                    }else{
-                        more_slope = transform.position.y;
-                        less_slope = transform.position.x;
-                        slope = Math.Abs(dest_y-transform.position.y)/ Math.Abs(dest_x-transform.position.x);
-                    }
-                    less_slope += 0.5f;
-                    if (mirrored) {
-                        for (float i=more_slope; more_slope < i + (slope / 2); more_slope++) { result.Add(new float[2] { more_slope, less_slope - 0.5f }); }
-                        while (less_slope + 1 <= dest_y | more_slope + slope <= dest_x )
-                        {
-                            for (float i=more_slope; more_slope < i + slope; more_slope++) { result.Add(new float[2] { more_slope, less_slope - 0.5f } ); }
-                            less_slope += 1f;
-                        }
-                    } else {
-                        for (float i=more_slope; more_slope < i + (slope / 2); more_slope++) { result.Add(new float[2] { less_slope - 0.5f, more_slope }); }
-                        while (less_slope + 1 <= dest_x | more_slope + slope <= dest_y)
-                        {
-                            for (float i=more_slope; more_slope < i + slope; more_slope++) { result.Add(new float[2] { less_slope - 0.5f, more_slope }); }
-                            less_slope += 1f;
-                        }
-                    }
+            List<float[]> result = new List<float[]>();
+            //목표 지점과 몬스터 사이가 수평 일직선이라면 x좌표만 바꿔가며 result에 저장
+            if (dest_y-transform.position.y == 0){
+                for (float i=transform.position.x; i<=dest_x; i++){
+                result.Add(new float[2] { i, transform.position.y });
                 }
+            //목표 지점과 몬스터 사이가 수직 일직선이라면 y좌표만 바꿔가며 result에 저장
+            }else if (dest_x-transform.position.x == 0){             
+                for (float i=transform.position.y; i<=dest_y; i++){
+                result.Add(new float[2] { transform.position.x, i });
+                }
+            //일직선이 아니라면 
+            }else{         
+                bool mirrored = false;
+                float more_slope, less_slope, slope;
+                //발사 지점에서 목표 지점까지 이동할 때 x와 y 좌표 중 더 많이 변하는 좌표축의 현재 좌표를 more_slope, 더 적게 변하는 좌표축의 현재 좌표를 less_slope에 저장하고 더 많이 변하는 좌표의 변화량/더 적게 변하는 좌표의 변화량을 slope에 저장
+                if (Math.Abs(dest_x-transform.position.x) > Math.Abs(dest_y-transform.position.y)){
+                    more_slope = transform.position.x;
+                    less_slope = transform.position.y;
+                    slope = Math.Abs(dest_x-transform.position.x) / Math.Abs(dest_y-transform.position.y);
+                    mirrored = true;
+                }else{
+                    more_slope = transform.position.y;
+                    less_slope = transform.position.x;
+                    slope = Math.Abs(dest_y-transform.position.y)/ Math.Abs(dest_x-transform.position.x);
+                }
+            //유니티 좌표 체계는 프리팹의 중앙을 기준으로 하기 때문에, less_slope가 0.5 변화하는 동안의 좌표들을 저장
+            for (float i = more_slope; more_slope < i + (slope / 2); more_slope++) { result.Add(new float[2] { more_slope, less_slope }); }
+            //★less_slope가 1 증가할 때마다 그 사이에 변화하는 모든 more_slope 좌표값들을 result에 저장, 현재 증가만 반영됨 감소 또한 반영해야 함
+            if (mirrored) {
+                    while (++less_slope <= dest_y | more_slope + slope <= dest_x )
+                    {
+                        for (float i=more_slope; more_slope < i + slope; more_slope++) { result.Add(new float[2] { more_slope, less_slope} ); } // - 0.5f 
+                        //less_slope += 1f;
+                    }
+            } else {
+                    while (++less_slope <= dest_x | more_slope + slope <= dest_y)
+                    {
+                        for (float i=more_slope; more_slope < i + slope; more_slope++) { result.Add(new float[2] { less_slope, more_slope }); } // - 0.5f
+                    }
+            }
+            for (float i = more_slope; more_slope < i + (slope / 2); more_slope++) { result.Add(new float[2] { more_slope, less_slope }); }
+            }
                 
+            //관통 공격일 경우 그 사이에 있는 모든 대상을 공격해야 함, 근데 우리 게임에 관통 공격 없을 듯
             if (pierce){
                 foreach (GameObject t in Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor-1]){
                     if (result.Contains(new float[2] { t.transform.position.x, t.transform.position.y})){
@@ -176,10 +185,11 @@ namespace ArcanaDungeon.Object
                 Dungeon.dungeon.GetComponent<LineRenderer>().SetPosition(1, new Vector3(dest_x, dest_y,-1));
                 Dungeon.dungeon.GetComponent<LineRenderer>().SetColors(new Color(1f,1f,1f,1f), new Color(1f, 1f, 1f, 1f));
             }
+            //관통하지 않는 공격, result에 있는 좌표에 아무 대상이나 가져와 공격
             else{
-                //Dungeon.dungeon.currentlevel.mobs와 Plr 과 그 좌표들을 비교하여 가장 가까운 대상을 찾아옴
                 Thing closest = null;
                 int closest_distance = 999;
+                //먼저 Dungeon에 있는 enemy들 중 가장 가까운 거리에 있는 enemy를 closest에 저장하고 그 enemy까지의 거리를 closest_distance에 저장
                 foreach (GameObject t in Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1])
                 {
                     if (result.Contains(new float[2] { t.transform.position.x, t.transform.position.y}) & Dungeon.distance_cal(transform, t.transform)<closest_distance){
@@ -188,9 +198,11 @@ namespace ArcanaDungeon.Object
                        
                     }
                 }
+                //그 다음 플레이어의 좌표가 result 안에 있는지와 플레이어와의 거리가 현재 closest_distance보다 가까운지 확인
                 if (result.Contains(new float[2] { Dungeon.dungeon.Plr.transform.position.x, Dungeon.dungeon.Plr.transform.position.y}) & Dungeon.distance_cal(transform, Dungeon.dungeon.Plr.transform)<closest_distance){
                     closest = Dungeon.dungeon.Plr;  //closest_distance는 closest를 갱신할 때에만 필요하므로 마지막에 검사하는 플레이어 때에는 그 변수를 변경하지 않는다
                 }
+                //closest가 플레이어라면 무조건 발사, 아니라면 아군 오사가 가능한 스킬일 경우에만 발사
                 if(closest == Dungeon.dungeon.Plr | friendly_fire){
                     closest.HpChange(-val);
                     
