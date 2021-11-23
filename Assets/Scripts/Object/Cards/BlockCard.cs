@@ -13,7 +13,7 @@ namespace ArcanaDungeon.cards
             this.cardTape = 2;
             this.costChange(10);
             playerBlock = 10;
-            this.illust = "Assets/Resources/sprites/Card/임시 방어.png";
+            this.illust = "sprites/Card/임시 방어";
         }
 
         public override void UseCard(Thing thing) { }

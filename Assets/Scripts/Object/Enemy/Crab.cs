@@ -18,7 +18,7 @@ namespace ArcanaDungeon.Object
         }
 
 
-        public void HpChange(int val) //게는 20 이상의 피해를 1.5배로 받는 대신, 그 미만의 피해를 절반만 받음
+        public void HpChange(int val) //★게는 20 이상의 피해를 1.5배로 받는 대신, 그 미만의 피해를 절반만 받음..였었지만 이제 보스몹으로 승진함, 이 특성은 다른 애 주셈
         {
             if (val > 0)
             {

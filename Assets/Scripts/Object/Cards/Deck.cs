@@ -23,6 +23,7 @@ namespace ArcanaDungeon.cards
         {
             SettingFstDeck();
             //Debug.Log("현재 덱에 있는 카드 수 :" + CardCount); // 로그
+            DrawCards(); DrawCards(); DrawCards();  //★테스트를 위해 임시로 패를 만듬, 카드 드로우 기능 구현이 완료되면 삭제해도 됨
         }
 
         public void SettingFstDeck()// 만약 플레이어 직업 생기면 직업별 초기 카드 세팅 

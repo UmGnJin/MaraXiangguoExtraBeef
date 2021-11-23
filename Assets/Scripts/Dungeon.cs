@@ -16,7 +16,6 @@ namespace ArcanaDungeon
         public GameObject[] Mobs;
         public GameObject[] Players;
 
-
         public GameObject Player;
         public player Plr;
         
@@ -27,6 +26,7 @@ namespace ArcanaDungeon
         public GameObject[] currentMobPool;
         public int changed = 0;
         public int whosTurn = 0;//1 = 플레이어 2 = 몬스터
+
         public static Dungeon dungeon;
 
         private void Awake()
@@ -65,6 +65,7 @@ namespace ArcanaDungeon
             GameObject.Find("Canvas").GetComponent<UI>().SetPlr(Player);
             Plr = Player.GetComponent<player>();
             Plr.Spawn();
+            UI.uicanvas.SetPlr(Player);
             Debug.Log("cur level : " + currentlevel.GetType());
 
             /*
@@ -296,7 +297,7 @@ namespace ArcanaDungeon
                             mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat_Fire")];
                             break;
                         default:
-                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Slime")];
+                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Gnoll")];
                             break;
                     }
 

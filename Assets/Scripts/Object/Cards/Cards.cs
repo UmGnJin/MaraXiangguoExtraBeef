@@ -29,6 +29,9 @@ namespace ArcanaDungeon.cards
         {
             return cardCost;
         }
+        public string getIllust() { //함수 이름은 대문자 I, 소문자 l 2개를 사용한다
+            return illust;        
+        }
     }
 
 }

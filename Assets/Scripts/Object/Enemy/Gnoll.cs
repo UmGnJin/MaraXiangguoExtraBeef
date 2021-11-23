@@ -32,6 +32,7 @@ namespace ArcanaDungeon.Object
                     this.exhausted = false;
                 }
                 Vision_research();
+                this.exhausted = false;
                 if (this.exhausted == true)//탈진 상태에서 스태미나 회복, 일반적으로는 특정 조건 만족 시 탈진에 걸리고, 일정 수치 이상의 스태미나까지 휴식만 한다.
                                            //그렇게 일정 수치까지 회복한 이후, 탈진 상태이상이 제거되고, 기존의 행동 우선도대로 행동을 재개한다.
                 {
@@ -41,10 +42,10 @@ namespace ArcanaDungeon.Object
                 }
                 else
                 {
-                    Debug.Log(Plr_pos);
+                    Debug.Log("Plr_pos : "+Plr_pos[0,0]+ " / "+Plr_pos[0,1]);
                     if (Plr_pos[0, 0] != -1)
                     {
-                        this.range_attack(Plr_pos[0, 0], Plr_pos[0, 1], power, true, false);  //★공격력 10은 임시값이다, Floor에 따라 5/10/15로 증가하는 공격력을 변수에 집어넣어서 그 변수를 공격력 삼아야 한다
+                        this.range_attack(Plr_pos[0, 0], Plr_pos[0, 1], power, false);  //★공격력 10은 임시값이다, Floor에 따라 5/10/15로 증가하는 공격력을 변수에 집어넣어서 그 변수를 공격력 삼아야 한다
                         this.StaminaChange(-30);
                        
                         

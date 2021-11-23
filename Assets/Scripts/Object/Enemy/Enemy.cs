@@ -76,6 +76,7 @@ namespace ArcanaDungeon.Object
 
         protected void Vision_research()
         {
+            Debug.Log("실행 중");
             FOV = new bool[Dungeon.dungeon.currentlevel.width, Dungeon.dungeon.currentlevel.height];
             Visionchecker.vision_check((int)Mathf.Round(transform.position.x), (int)Mathf.Round(transform.position.y), 6, FOV);
 
@@ -85,7 +86,7 @@ namespace ArcanaDungeon.Object
                 for (int j = 0; j < Dungeon.dungeon.currentlevel.height; j++)
                 {
                     //시야에 보이는 위치인데, 플레이어랑 좌표까지 같으면 거기에 있는 게 플레이어니까 Plr_pos에 저장한다
-                    if (FOV[i, j] & i == Dungeon.dungeon.Plr.transform.position.x & j == Dungeon.dungeon.Plr.transform.position.y)
+                    if (FOV[i, j] & (i == Dungeon.dungeon.Plr.transform.position.x) & (j == Dungeon.dungeon.Plr.transform.position.y))
                     {
                         Plr_pos[0, 0] = Plr_pos[1, 0] = (int)Dungeon.dungeon.Plr.transform.position.x;
                         Plr_pos[0, 1] = Plr_pos[1, 1] = (int)Dungeon.dungeon.Plr.transform.position.y;
@@ -121,100 +122,114 @@ namespace ArcanaDungeon.Object
             }
         }
 
-        protected void range_attack(int dest_x, int dest_y, int val, bool pierce, bool friendly_fire) { //원거리 공격, pierce는 공격 범위 안의 모든 적을 공격하는 관통 공격일 경우 true, friendly_fire는 이 공격으로 아군도 공격 가능할 경우 true(보통 1턴 충전 뒤 지정한 위치로 발사하는 스킬에 사용될 예정)
+        protected void range_attack(int dest_x, int dest_y, int val, bool friendly_fire)
+        { //원거리 공격, pierce는 공격 범위 안의 모든 적을 공격하는 관통 공격일 경우 true, friendly_fire는 이 공격으로 아군도 공격 가능할 경우 true(보통 1턴 충전 뒤 지정한 위치로 발사하는 스킬에 사용될 예정)
             Debug.Log("몬스터 원거리 공격 실행 중");
             //이 몬스터의 현재 좌표부터 (dest_x,dest_y)까지 맞닿는 사각형 좌표들을 구해옴
             List<float[]> result = new List<float[]>();
             //목표 지점과 몬스터 사이가 수평 일직선이라면 x좌표만 바꿔가며 result에 저장
-            if (dest_y-transform.position.y == 0){
-                for (float i=transform.position.x; i<=dest_x; i++){
-                result.Add(new float[2] { i, transform.position.y });
+            if (dest_y - transform.position.y == 0)
+            {
+                int temp_var = dest_x - transform.position.x > 0 ? 1 : -1;
+                for (float i = transform.position.x; i*temp_var <= dest_x*temp_var; i+=temp_var)
+                {
+                    result.Add(new float[2] { i, dest_y });
                 }
-            //목표 지점과 몬스터 사이가 수직 일직선이라면 y좌표만 바꿔가며 result에 저장
-            }else if (dest_x-transform.position.x == 0){             
-                for (float i=transform.position.y; i<=dest_y; i++){
-                result.Add(new float[2] { transform.position.x, i });
+                //목표 지점과 몬스터 사이가 수직 일직선이라면 y좌표만 바꿔가며 result에 저장
+            }
+            else if (dest_x - transform.position.x == 0)
+            {
+                int temp_var = dest_y - transform.position.y > 0 ? 1 : -1;
+                for (float i = transform.position.y; i*temp_var <= dest_y*temp_var; i+=temp_var)
+                {
+                    result.Add(new float[2] { dest_x, i });
                 }
-            //일직선이 아니라면 
-            }else{         
+                //일직선이 아니라면 
+            }
+            else
+            {
                 bool mirrored = false;
                 float more_slope, less_slope, slope;
+                int less_chn = dest_x - transform.position.x > 0 ? 1 : -1;
+                int more_chn = dest_y - transform.position.y > 0 ? 1 : -1;
                 //발사 지점에서 목표 지점까지 이동할 때 x와 y 좌표 중 더 많이 변하는 좌표축의 현재 좌표를 more_slope, 더 적게 변하는 좌표축의 현재 좌표를 less_slope에 저장하고 더 많이 변하는 좌표의 변화량/더 적게 변하는 좌표의 변화량을 slope에 저장
-                if (Math.Abs(dest_x-transform.position.x) > Math.Abs(dest_y-transform.position.y)){
+                if (Math.Abs(dest_x - transform.position.x) > Math.Abs(dest_y - transform.position.y))
+                {
                     more_slope = transform.position.x;
                     less_slope = transform.position.y;
-                    slope = Math.Abs(dest_x-transform.position.x) / Math.Abs(dest_y-transform.position.y);
+                    slope = Math.Abs(dest_x - transform.position.x) / Math.Abs(dest_y - transform.position.y);
+                    less_chn += more_chn; more_chn = less_chn - more_chn; less_chn -= more_chn; //두 변수의 값을 맞바꾼다, 세상은 넓고 나보다 똑똑한 사람은 많다
                     mirrored = true;
-                }else{
+                }
+                else
+                {
                     more_slope = transform.position.y;
                     less_slope = transform.position.x;
-                    slope = Math.Abs(dest_y-transform.position.y)/ Math.Abs(dest_x-transform.position.x);
+                    slope = Math.Abs(dest_y - transform.position.y) / Math.Abs(dest_x - transform.position.x);
                 }
-            //유니티 좌표 체계는 프리팹의 중앙을 기준으로 하기 때문에, less_slope가 0.5 변화하는 동안의 좌표들을 저장
-            for (float i = more_slope; more_slope < i + (slope / 2); more_slope++) { result.Add(new float[2] { more_slope, less_slope }); }
-            //★less_slope가 1 증가할 때마다 그 사이에 변화하는 모든 more_slope 좌표값들을 result에 저장, 현재 증가만 반영됨 감소 또한 반영해야 함
-            if (mirrored) {
-                    while (++less_slope <= dest_y | more_slope + slope <= dest_x )
+
+                Debug.Log(slope % 1);
+                //유니티 좌표 체계는 프리팹의 중앙을 기준으로 하기 때문에, less_slope가 0.5 변화하는 동안의 좌표들을 가장 먼저 저장
+                result.Add(new float[2] { more_slope, less_slope }); //for (float i = more_slope; more_slope * more_chn < (i + (slope / 2) * more_chn + more_chn) * more_chn; more_slope += more_chn) { result.Add(new float[2] { more_slope, less_slope }); }
+                less_slope += less_chn;
+                if (slope % 2 == 0) { more_slope += more_chn; } //★less_slope가 변경될 때 more_slope가 정수가 아니면 -more_chn을 해줘야 한다.. 아니면 more_slope가 정수일 때 +more_chn하던가
+                if (mirrored)
+                {
+                    while (less_slope * less_chn < dest_y * less_chn)  // | more_slope + slope <= dest_x 
                     {
-                        for (float i=more_slope; more_slope < i + slope; more_slope++) { result.Add(new float[2] { more_slope, less_slope} ); } // - 0.5f 
-                        //less_slope += 1f;
+                        for (float i = more_slope; more_slope * more_chn < (i + slope * more_chn) * more_chn; more_slope += more_chn) { result.Add(new float[2] { more_slope, less_slope }); } // - 0.5f 
+                        less_slope += less_chn;
                     }
-            } else {
-                    while (++less_slope <= dest_x | more_slope + slope <= dest_y)
+                }
+                else
+                {
+                    while (less_slope * less_chn <= dest_x * less_chn)  // | more_slope + slope <= dest_y
                     {
-                        for (float i=more_slope; more_slope < i + slope; more_slope++) { result.Add(new float[2] { less_slope, more_slope }); } // - 0.5f
-                    }
-            }
-            for (float i = more_slope; more_slope < i + (slope / 2); more_slope++) { result.Add(new float[2] { more_slope, less_slope }); }
-            }
-                
-            //관통 공격일 경우 그 사이에 있는 모든 대상을 공격해야 함, 근데 우리 게임에 관통 공격 없을 듯
-            if (pierce){
-                foreach (GameObject t in Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor-1]){
-                    if (result.Contains(new float[2] { t.transform.position.x, t.transform.position.y})){
-                        t.GetComponent<Enemy>().HpChange(-val);
+                        for (float i = more_slope; more_slope * more_chn < (i + slope * more_chn) * more_chn; more_slope += more_chn) { result.Add(new float[2] { less_slope, more_slope }); } // - 0.5f
+                        less_slope += less_chn;
                     }
                 }
-                if (result.Contains(new float[2] { Dungeon.dungeon.Plr.transform.position.x, Dungeon.dungeon.Plr.transform.position.y})){
-                    Dungeon.dungeon.Plr.HpChange(-val);
-                   
-                }
-                //LineRenderer가 들어간 부분은 전부 그래픽 관련이라고 보아도 무방하다
-                
-                Dungeon.dungeon.GetComponent<LineRenderer>().SetPosition(0, new Vector3(transform.position.x, transform.position.y,-1));
-                Dungeon.dungeon.GetComponent<LineRenderer>().SetPosition(1, new Vector3(dest_x, dest_y,-1));
-                Dungeon.dungeon.GetComponent<LineRenderer>().SetColors(new Color(1f,1f,1f,1f), new Color(1f, 1f, 1f, 1f));
-            }
-            //관통하지 않는 공격, result에 있는 좌표에 아무 대상이나 가져와 공격
-            else{
+                //유니티 좌표 체계는 프리팹의 중앙을 기준으로 하기 때문에, less_slope가 0.5 변화하는 동안의 좌표들을 마지막으로 저장
+                if (slope % 1 == 0) { more_slope += more_chn; }
+                result.Add(new float[2] { more_slope, less_slope });    //for (float i = more_slope; more_slope * more_slope < (i + (slope / 2) * more_chn + more_chn) * more_chn; more_slope += more_chn) { result.Add(new float[2] { more_slope, less_slope }); }
+
+                //가장 가까운 대상 찾아서 피해를 준다, 다만 friendly_fire가 false라면 자기편(몬스터)은 안 때린다
                 Thing closest = null;
                 int closest_distance = 999;
-                //먼저 Dungeon에 있는 enemy들 중 가장 가까운 거리에 있는 enemy를 closest에 저장하고 그 enemy까지의 거리를 closest_distance에 저장
-                foreach (GameObject t in Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1])
+                foreach (float[] r in result)
                 {
-                    if (result.Contains(new float[2] { t.transform.position.x, t.transform.position.y}) & Dungeon.distance_cal(transform, t.transform)<closest_distance){
-                        closest = t.GetComponent<Enemy>();
-                        closest_distance = Dungeon.distance_cal(transform, t.transform);
-                       
+                    Debug.Log("result : " + r[0] + " , " + r[1]);
+                    foreach (GameObject t in Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1])
+                    {
+                        Debug.Log("mob : " + t.transform.position.x + " , " + t.transform.position.y + " // " + (t != this.gameObject));
+                        if (t != this.gameObject & r[0] == t.transform.position.x & r[1] == t.transform.position.y & Dungeon.distance_cal(transform, t.transform) < closest_distance)
+                        {
+                            closest = t.GetComponent<Enemy>();
+                            closest_distance = Dungeon.distance_cal(transform, t.transform);
+                        }
+                    }
+                    Debug.Log(Dungeon.dungeon.Plr.transform.position);
+                    if (r[0] == Dungeon.dungeon.Plr.transform.position.x & r[1] == Dungeon.dungeon.Plr.transform.position.y & Dungeon.distance_cal(transform, Dungeon.dungeon.Plr.transform) < closest_distance)
+                    {
+                        closest = Dungeon.dungeon.Plr;
+                        closest_distance = Dungeon.distance_cal(transform, Dungeon.dungeon.Plr.transform);
                     }
                 }
-                //그 다음 플레이어의 좌표가 result 안에 있는지와 플레이어와의 거리가 현재 closest_distance보다 가까운지 확인
-                if (result.Contains(new float[2] { Dungeon.dungeon.Plr.transform.position.x, Dungeon.dungeon.Plr.transform.position.y}) & Dungeon.distance_cal(transform, Dungeon.dungeon.Plr.transform)<closest_distance){
-                    closest = Dungeon.dungeon.Plr;  //closest_distance는 closest를 갱신할 때에만 필요하므로 마지막에 검사하는 플레이어 때에는 그 변수를 변경하지 않는다
-                }
-                //closest가 플레이어라면 무조건 발사, 아니라면 아군 오사가 가능한 스킬일 경우에만 발사
-                if(closest == Dungeon.dungeon.Plr | friendly_fire){
+                if (closest == Dungeon.dungeon.Plr | friendly_fire)
+                {
                     closest.HpChange(-val);
-                    
+                    dest_x = (int)closest.transform.position.x;
+                    dest_y = (int)closest.transform.position.y;
+
                     Dungeon.dungeon.GetComponent<LineRenderer>().SetPosition(0, new Vector3(transform.position.x, transform.position.y, -1));
                     Dungeon.dungeon.GetComponent<LineRenderer>().SetPosition(1, new Vector3(dest_x, dest_y, -1));
                     Dungeon.dungeon.GetComponent<LineRenderer>().SetColors(new Color(1f, 1f, 1f, 1f), new Color(1f, 1f, 1f, 1f));
                 }
-                else{
-                    //★route_pos[0] 좌표로 이동, move()로 이동 관련 부분을 똑 떼어놓고 사용하는 게 나을 것 같다
+                else
+                {
+                    //이동
                 }
             }
-                
         }
 
         public override void die()
