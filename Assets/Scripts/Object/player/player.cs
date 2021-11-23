@@ -68,8 +68,10 @@ namespace ArcanaDungeon.Object
             if (isTurn > 0)
             {
                 if (MoveTimer <= 0)
+                {
                     Get_MouseInput(); //마우스 입력
                     
+                }
                 if (Input.GetButton("Horizontal"))
                     spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
             }
@@ -235,14 +237,17 @@ namespace ArcanaDungeon.Object
           
             else if(MoveTimer <= 0 && isMouseMove == true)
             {
+                
                 try //다음 층으로 이동하면 배열 인덱스 범위를 벗어났다는 오류가 뜬다, 아무래도 층을 이동하면서 route_pos에 문제가 생기는 것으로 보인다
                 {
                     transform.position = new Vector2(route_pos[0] % Dungeon.dungeon.currentlevel.width, route_pos[0] / Dungeon.dungeon.currentlevel.width);
                     route_pos.RemoveAt(0);
                     MoveTimer = MoveTimerLimit;
-                    isTurn -= 1;
+                    Debug.Log("턴엔드 준비");
+                    condition_process();
+                    isTurn--;
                 }
-                catch (Exception e) { }
+                catch (Exception e) { Debug.Log(e); }
             }
            
 
@@ -297,7 +302,12 @@ namespace ArcanaDungeon.Object
         {
             
         }
-
+        private void Turnend()
+        {
+            Debug.Log("턴엔드");
+            condition_process();    
+            isTurn -= 1;
+        }
         private void vision_marker()
         {
             FOV = new bool[Dungeon.dungeon.currentlevel.width, Dungeon.dungeon.currentlevel.height];
@@ -326,7 +336,7 @@ namespace ArcanaDungeon.Object
 
         public override void die()
         {
-
+            Debug.Log("사망!");
         }
     }
 }

@@ -104,3 +104,5 @@ MonoBehaviour:
   route_pos: 
   name: 
   maxcooltime: 0
+  poisontile: {fileID: 7699061077899021885, guid: 896d4c7cd3f69f44d9bcde71fa3d7b07,
+    type: 3}

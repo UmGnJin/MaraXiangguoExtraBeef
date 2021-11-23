@@ -255,7 +255,7 @@ namespace ArcanaDungeon
             //턴
             if (Plr.isTurn <= 0)
             {
-                //Debug.Log("몬스터 턴!");
+                
                 foreach(GameObject mob in enemies[currentlevel.floor - 1])
                 {
                     mob.GetComponent<Enemy>().isTurn += 1;
@@ -285,7 +285,7 @@ namespace ArcanaDungeon
             //Debug.Log(currentlevel.floor);
             if (enemies.Count == 0 || enemies.Count == levels.Count -1)//현재 레벨이 처음이면, 몬스터를 조건에 맞게 스폰한다.
             {
-                List<GameObject> enemylist = new List<GameObject>();
+                 List<GameObject>enemylist = new  List<GameObject>();
                 for (int i = 0; i < currentlevel.maxEnemies; i++)
                 {
                     GameObject mob;
@@ -296,7 +296,7 @@ namespace ArcanaDungeon
                             mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat_Fire")];
                             break;
                         default:
-                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat")];
+                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Slime")];
                             break;
                     }
 
@@ -336,8 +336,12 @@ namespace ArcanaDungeon
             Debug.Log("Despawned.");
             foreach (GameObject mob in enemies[currentlevel.floor - 1])
             {
-                mob.SetActive(false);
+               
+                mob.SetActive(false); 
+
             }
         }
+
+        
     }
 }

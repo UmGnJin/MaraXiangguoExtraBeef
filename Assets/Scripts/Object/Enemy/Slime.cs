@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ArcanaDungeon.Object;
+using ArcanaDungeon;
 
 
 namespace ArcanaDungeon.Object
 {
     public class Slime : Enemy
     {
+        public GameObject poisontile;
+
         public void Awake()
         {
             this.maxhp = 115;
@@ -18,10 +21,19 @@ namespace ArcanaDungeon.Object
 
             this.name = "슬라임";
         }
-
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+                HpChange(-70);//자해 테스트
+        }
         public void FixedUpdate()
         {
-            if (isTurn > 0)
+            if (this.hp <= 0)
+            {
+                this.die();
+            }
+
+            else if (isTurn > 0)
             {
                 if (this.GetStamina() < 20 && this.exhausted == false)
                     this.exhausted = true;
@@ -47,7 +59,18 @@ namespace ArcanaDungeon.Object
                     transform.position = new Vector2(route_pos[0] % Dungeon.dungeon.currentlevel.width, route_pos[0] / Dungeon.dungeon.currentlevel.width);
                     route_pos.RemoveAt(0);
                 }
+                else
+                {
+                    this.StaminaChange(5);
+                }
+                
+                
+                
+                
+                
                 isTurn -= 1;
+
+
             }
         }
 
@@ -55,6 +78,11 @@ namespace ArcanaDungeon.Object
                                    // 1. 폭발 - 터지면서 주변에 약한 피해와 독 부여. 근접 계열 카운터형.
                                    // 2. 바닥 - 죽은 위치에 일정 턴동안 유지되는 / 한 번 밟을 때까지 유지되는 독 장판 생성. 위에 올라가면 독 1 부여. 이미 독이 있다면 중첩이 감소되지 않고 갱신됨.
         {
+            Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor-1].Remove(this.gameObject);
+            GameObject PoisonTile = Instantiate(poisontile);
+            PoisonTile.transform.position = new Vector3(this.transform.position.x, this.transform.position.y,-1);
+            
+            Destroy(this.gameObject);
 
         }
     }
