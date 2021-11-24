@@ -11,6 +11,8 @@ namespace ArcanaDungeon.cards
         public int cardTape = 0; // 카드 종류(ex 공격,회복,드로우)마다 다른 값.
         private int cardCost = 0; // 카드 스테미나 코스트
         public string illust;
+        public string cardName = "기본카드";
+        public string cardInfo = "이건 기본카드에오. 그래오 쓸모 없어오.";
         /* 카드종류 및 여러 효과 구현을 효율적으로 하기위해서는
          * 구조체로 다르게 만들 필요가 있음 
          * 예시) 상태이상 및 효과 클래스를 만들고
@@ -20,7 +22,7 @@ namespace ArcanaDungeon.cards
          *  X( 1, 2, 3...)  공격카드 ,상태이상 공격 카드, 다중타격 카드등 enemy 값을 인자로 받아야하는 카드
          * 1X(11,12,13...)  회복, 방어도,등등의 앞으로 생길수 있는 플레이어 대상 카드
          */
-        public virtual void UseCard(Thing thing){}
+        public virtual void UseCard(player Plr, Enemy enemy){}
         public void costChange(int  newcost)
         {
             cardCost = newcost;

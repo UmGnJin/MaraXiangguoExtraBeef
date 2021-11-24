@@ -77,21 +77,42 @@ namespace ArcanaDungeon.cards
                     Hands.Add(CardsDeck[CardCount]);
                     CardsDeck.RemoveAt(CardCount);
             }
-            //Debug.Log("핸드에 있는 카드 수 : 0" + " 카드 타입 :" + Hands[0].cardTape);
+            //Debug.Log("핸드에 있는 카드 수 " + Hands.Count);
             //Debug.Log("핸드에 있는 카드 수 : 1" + " 카드 타입 :" + CardSlot[1].cardTape);
             //Debug.Log("핸드에 있는 카드 수 : 2" + " 카드 타입 :" + CardSlot[2].cardTape);
             //Debug.Log("핸드에 있는 카드 수 : 3" + " 카드 타입 :" + CardSlot[3].cardTape);
         }
 
-        public int UsingCard(int SlotNum,Thing smthing )
+        public int UsingCard(int SlotNum, player PLR, Enemy EMY )
         {
-            int cost = Hands[SlotNum].getCost();
+            int effectType;
+            switch (Hands[SlotNum].cardTape)
+            {
+                case 1:
+                    {
+                        Hands[SlotNum].UseCard(PLR, EMY);
+                        effectType = 1;
+                        break;
+                    }
+                case 2:
+                    {
+                        Hands[SlotNum].UseCard(PLR, EMY);
+                        effectType = 2;
+                        break;
+                    }
+                default:
+                    {
+                        Hands[SlotNum].UseCard(PLR, EMY);
+                        effectType = 0;
+                        break;
+                    }
+            }
             //CardSlot[SlotNum].UseCard(smthing);
             //Debug.Log("카드 사용됨" + cost);
             UsedDeck.Add(Hands[SlotNum]);
             //Debug.Log(UsedDeck[0].cardTape + "사용된 카드타입");
             Hands.RemoveAt(SlotNum);
-            return cost;
+            return effectType;
         }
 
 

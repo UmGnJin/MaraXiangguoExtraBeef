@@ -52,11 +52,6 @@ namespace ArcanaDungeon.Object
             maxstamina = 100;
             HpChange(maxhp);
             StaminaChange(maxstamina);
-            //--------------------------- 카드 
-            allDeck.DrawCards(); // 카드 드로우
-            //Debug.Log("사용 전 스테미나 :" + stamina);
-            StaminaChange(-allDeck.UsingCard(0,this)); // UI에서 받는 값을 0대신 넣는다, 생각중이지만 UI에서 사용 카드의 태그를 받는 것을 생각중
-            //Debug.Log("사용 후 스테미나 :" + stamina);
         }
         
 

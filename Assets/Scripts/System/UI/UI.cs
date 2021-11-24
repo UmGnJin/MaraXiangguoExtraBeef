@@ -20,6 +20,7 @@ namespace ArcanaDungeon
         public GameObject cam;  //카메라, 줌인 & 줌아웃과 마우스 커서 좌표를 스크린좌표에서 월드좌표로 바꿀 때 사용
 
         private GameObject Plr; //★플레이어
+        public Enemy targeted; //임시로 만든 적 나중에 던전에서 적 배열을 받아와야 할 수도 있음 jgh
         private Deck deck;   //플레이어에게 들어간 Deck 스트립트, SetPlr에서 위의 Plr와 함께 설정
         private Cards selected;  //손패에서 카드를 클릭하면 이 변수에 저장한다
 
@@ -58,6 +59,7 @@ namespace ArcanaDungeon
 
         public void SetPlr(GameObject p) {   //이 스크립트의 Plr에 플레이어를 배정해줌, Dungeon에서 단 1번 실행됨
             this.Plr = p;
+            targeted = Dungeon.dungeon.enemies[0][0].GetComponent<Enemy>();
             deck = Plr.GetComponent<player>().allDeck; // 오류 때문에 이전에 있던 deck을 통합한 덱 클래스로 임시로 바꿈 jgh
             if (deck == null && Plr == null)
             {
@@ -102,13 +104,13 @@ namespace ArcanaDungeon
                     switch (i) {
                         case 1:
                             //ob.GetComponent<Text>.text = deck.Hands[temp_hand_num-1]. (Card에 들어있는 카드 이름);break;
-                            temp_ob.GetComponent<Text>().text = "샘플 카드";break;
+                            temp_ob.GetComponent<Text>().text = deck.Hands[temp_hand_num - 1].cardName; break; // 이름 설명 추가 jgh
                         case 2:
                             temp_ob.SetActive(true);
                             temp_ob.GetComponent<Image>().sprite = Resources.Load<Sprite>(deck.Hands[temp_hand_num - 1].illust);break;
                         case 3:
                             //ob.GetComponent<Text>.text = deck.Hands[temp_hand_num-1]. (Card에 들어있는 카드 효과);break;
-                            temp_ob.GetComponent<Text>().text = "이것은 샘플이요\n맞소 샘플이요";break;
+                            temp_ob.GetComponent<Text>().text = deck.Hands[temp_hand_num - 1].cardInfo; break; // 이름 설명 추가 jgh
                     }
                 }
                 //손패 좌표 범위 안에서 클릭하면 그 카드를 selected에 저장한다
@@ -144,21 +146,25 @@ namespace ArcanaDungeon
                         switch (i)
                         {
                             case 1:
-                                //ob.GetComponent<Text>.text = selected. (Card에 들어있는 카드 이름);break;
+                                //ob.GetComponent<Text>.text = selected.cardName (Card에 들어있는 카드 이름);break;
                                 temp_ob.GetComponent<Text>().text = "샘플 카드"; break;
                             case 2:
                                 temp_ob.SetActive(true);
                                 temp_ob.GetComponent<Image>().sprite = Resources.Load<Sprite>(selected.illust); break;
                             case 3:
-                                //ob.GetComponent<Text>.text = selected. (Card에 들어있는 카드 효과);break;
+                                //ob.GetComponent<Text>.text = selected.cardInfo (Card에 들어있는 카드 효과);break;
                                 temp_ob.GetComponent<Text>().text = "이것은 샘플이요\n맞소 샘플이요"; break;
                         }
                     }
                 }else if (selected != null) //마우스 왼쪽 버튼이 방금 클릭을 마친 상태라면 그곳을 목표지점으로 카드를 사용하기로 결정한 것이다, GetMouseButtonUp은 if문 때문에 가끔 작동을 안 해서 이렇게 구현
                 {
                     Debug.Log(cam.GetComponent<Camera>().ScreenToWorldPoint(mpos) + " / " + Plr.GetComponent<player>().PlayerPos);
+                    temp_hand_num = 3; // 선택된 카드 인덱스값이 마우스 클릭을 마친 상태의 위치에 기반됨 jgh 
+                    //Debug.Log("선택된 카드 인덱스 값 : " + temp_hand_num);//jgh 
+                    Debug.Log("카드 떨굼 아무튼 사용전 | 적 hp : " + targeted.GetHp() + "플레이어 hp :" + Plr.GetComponent<player>().GetStamina());//jgh 
+                    int i = deck.UsingCard(temp_hand_num-1, Plr.GetComponent<player>(), targeted );//jgh 
+                    Debug.Log("카드 떨굼 아무튼 사용됨 "+i+" 적 hp : " + targeted.GetHp() + "플레이어 hp :" + Plr.GetComponent<player>().GetStamina());//jgh 
 
-                    //selected.UseCard( Plr,  );
                     selected = null;
                 }
             }

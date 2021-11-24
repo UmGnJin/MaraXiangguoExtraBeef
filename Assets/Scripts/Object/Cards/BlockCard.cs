@@ -14,12 +14,19 @@ namespace ArcanaDungeon.cards
             this.costChange(10);
             playerBlock = 10;
             this.illust = "sprites/Card/임시 방어";
+            this.cardName = "방어카드";
+            this.cardInfo = playerBlock + "만큼 방어도를 얻습니다.";
         }
 
-        public override void UseCard(Thing thing) { }
-        public void UseCard(player pl)
+        public override void UseCard(player Plr, Enemy enemy)
         {
-            pl.BlockChange(this.playerBlock);
+            if (Plr != null)
+            {
+                Plr.BlockChange(this.playerBlock);
+                Plr.StaminaChange(-this.getCost());
+            }
+            else
+                Debug.Log("player not found");
         }
     }
 }
