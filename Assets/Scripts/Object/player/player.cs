@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using ArcanaDungeon;
 using ArcanaDungeon.cards;
 using ArcanaDungeon.rooms;
@@ -252,7 +253,7 @@ namespace ArcanaDungeon.Object
         {
 
             
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) & !EventSystem.current.IsPointerOverGameObject())
             {
                 MousePos = Input.mousePosition;
                 MousePos = cam.ScreenToWorldPoint(MousePos);

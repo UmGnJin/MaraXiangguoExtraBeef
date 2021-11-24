@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using UnityEngine;
+using ArcanaDungeon;
 using ArcanaDungeon.Object;
 
 namespace ArcanaDungeon.cards
@@ -22,8 +23,9 @@ namespace ArcanaDungeon.cards
         public Deck()
         {
             SettingFstDeck();
-            //Debug.Log("현재 덱에 있는 카드 수 :" + CardCount); // 로그
-            DrawCards(); DrawCards(); DrawCards();  //★테스트를 위해 임시로 패를 만듬, 카드 드로우 기능 구현이 완료되면 삭제해도 됨
+            
+            //DrawCards(); //UI.uicanvas.card_draw(Hands[Hands.Count - 1]);
+            //DrawCards(); //UI.uicanvas.card_draw(Hands[Hands.Count - 1]); //★테스트를 위해 임시로 패를 만듬, 카드 드로우 기능 구현이 완료되면 삭제해도 됨, 가능하면 UI의 card_draw를 이렇게 따로 부르지 않아도 DrawCards에서 자동으로 처리하면 좋을 듯
         }
 
         public void SettingFstDeck()// 만약 플레이어 직업 생기면 직업별 초기 카드 세팅 
@@ -53,7 +55,7 @@ namespace ArcanaDungeon.cards
             return Tempcard;
         }
 
-        public void ChangDeck()
+        public void ChangDeck() //★근진이가 만든 임시 덱 셔플
         {
             CardsDeck = new List<Cards>(UsedDeck);
             UsedDeck = new List<Cards>();

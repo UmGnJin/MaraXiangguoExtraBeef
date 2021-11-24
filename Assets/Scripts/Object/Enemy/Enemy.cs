@@ -124,14 +124,14 @@ namespace ArcanaDungeon.Object
 
         protected void range_attack(int dest_x, int dest_y, int val, bool friendly_fire)
         { //원거리 공격, pierce는 공격 범위 안의 모든 적을 공격하는 관통 공격일 경우 true, friendly_fire는 이 공격으로 아군도 공격 가능할 경우 true(보통 1턴 충전 뒤 지정한 위치로 발사하는 스킬에 사용될 예정)
-            Debug.Log("몬스터 원거리 공격 실행 중");
+            Debug.Log("몬스터 원거리 공격 실행, dest : "+dest_x+" / "+dest_y);
             //이 몬스터의 현재 좌표부터 (dest_x,dest_y)까지 맞닿는 사각형 좌표들을 구해옴
             List<float[]> result = new List<float[]>();
             //목표 지점과 몬스터 사이가 수평 일직선이라면 x좌표만 바꿔가며 result에 저장
             if (dest_y - transform.position.y == 0)
             {
                 int temp_var = dest_x - transform.position.x > 0 ? 1 : -1;
-                for (float i = transform.position.x; i*temp_var <= dest_x*temp_var; i+=temp_var)
+                for (float i = transform.position.x; i * temp_var <= dest_x * temp_var; i += temp_var)
                 {
                     result.Add(new float[2] { i, dest_y });
                 }
@@ -140,7 +140,7 @@ namespace ArcanaDungeon.Object
             else if (dest_x - transform.position.x == 0)
             {
                 int temp_var = dest_y - transform.position.y > 0 ? 1 : -1;
-                for (float i = transform.position.y; i*temp_var <= dest_y*temp_var; i+=temp_var)
+                for (float i = transform.position.y; i * temp_var <= dest_y * temp_var; i += temp_var)
                 {
                     result.Add(new float[2] { dest_x, i });
                 }
@@ -148,88 +148,69 @@ namespace ArcanaDungeon.Object
             }
             else
             {
-                bool mirrored = false;
-                float more_slope, less_slope, slope;
-                int less_chn = dest_x - transform.position.x > 0 ? 1 : -1;
-                int more_chn = dest_y - transform.position.y > 0 ? 1 : -1;
-                //발사 지점에서 목표 지점까지 이동할 때 x와 y 좌표 중 더 많이 변하는 좌표축의 현재 좌표를 more_slope, 더 적게 변하는 좌표축의 현재 좌표를 less_slope에 저장하고 더 많이 변하는 좌표의 변화량/더 적게 변하는 좌표의 변화량을 slope에 저장
-                if (Math.Abs(dest_x - transform.position.x) > Math.Abs(dest_y - transform.position.y))
-                {
-                    more_slope = transform.position.x;
-                    less_slope = transform.position.y;
-                    slope = Math.Abs(dest_x - transform.position.x) / Math.Abs(dest_y - transform.position.y);
-                    less_chn += more_chn; more_chn = less_chn - more_chn; less_chn -= more_chn; //두 변수의 값을 맞바꾼다, 세상은 넓고 나보다 똑똑한 사람은 많다
-                    mirrored = true;
+                float x_cur = transform.position.x; float y_cur = transform.position.y; //현재 확인 중인 좌표, 타입 오류 나면 float으로 변경할 것
+                float slope = (dest_x - x_cur) / (dest_y - y_cur);
+                int x_gap = dest_x - x_cur > 0 ? 1 : -1;
+                int y_gap = dest_y - y_cur > 0 ? 1 : -1;
+                float y_changing_at_x = x_cur + y_gap * slope / 2 + x_gap * 0.5f; //y좌표가 변할 때의 x좌표값, 소수점 아래가 0.0 ~ 0.5 라면 아래 for문들 조건문에서 해당 칸의 정사각형을 지나지만 해당 칸의 좌표값보다는 작다, 따라서 기준인 y_changin_x에 0.5f를 더해 기준을 좀 높여 놓는다
+                //첫 y좌표 0.5 변화하는 동안
+                for (; x_cur * x_gap < y_changing_at_x * x_gap; x_cur += x_gap) {   
+                    result.Add(new float[2] { x_cur, y_cur });
                 }
-                else
-                {
-                    more_slope = transform.position.y;
-                    less_slope = transform.position.x;
-                    slope = Math.Abs(dest_y - transform.position.y) / Math.Abs(dest_x - transform.position.x);
-                }
-
-                Debug.Log(slope % 1);
-                //유니티 좌표 체계는 프리팹의 중앙을 기준으로 하기 때문에, less_slope가 0.5 변화하는 동안의 좌표들을 가장 먼저 저장
-                result.Add(new float[2] { more_slope, less_slope }); //for (float i = more_slope; more_slope * more_chn < (i + (slope / 2) * more_chn + more_chn) * more_chn; more_slope += more_chn) { result.Add(new float[2] { more_slope, less_slope }); }
-                less_slope += less_chn;
-                if (slope % 2 == 0) { more_slope += more_chn; } //★less_slope가 변경될 때 more_slope가 정수가 아니면 -more_chn을 해줘야 한다.. 아니면 more_slope가 정수일 때 +more_chn하던가
-                if (mirrored)
-                {
-                    while (less_slope * less_chn < dest_y * less_chn)  // | more_slope + slope <= dest_x 
-                    {
-                        for (float i = more_slope; more_slope * more_chn < (i + slope * more_chn) * more_chn; more_slope += more_chn) { result.Add(new float[2] { more_slope, less_slope }); } // - 0.5f 
-                        less_slope += less_chn;
+                y_cur += y_gap;
+                //중간
+                for (; y_cur * y_gap < dest_y * y_gap; y_cur += y_gap) {
+                    if (y_changing_at_x % 1 != 0) {
+                        result.Add(new float[2] { x_cur - x_gap, y_cur });
+                    }
+                    y_changing_at_x += y_gap * slope;
+                    for (; x_cur * x_gap < y_changing_at_x * x_gap; x_cur += x_gap) {
+                        result.Add(new float[2] { x_cur, y_cur });
                     }
                 }
-                else
-                {
-                    while (less_slope * less_chn <= dest_x * less_chn)  // | more_slope + slope <= dest_y
-                    {
-                        for (float i = more_slope; more_slope * more_chn < (i + slope * more_chn) * more_chn; more_slope += more_chn) { result.Add(new float[2] { less_slope, more_slope }); } // - 0.5f
-                        less_slope += less_chn;
-                    }
+                //마지막 y좌표가 0.5 변화하는 동안
+                if (y_changing_at_x % 1 != 0) {
+                    result.Add(new float[2] { x_cur - x_gap, y_cur });
                 }
-                //유니티 좌표 체계는 프리팹의 중앙을 기준으로 하기 때문에, less_slope가 0.5 변화하는 동안의 좌표들을 마지막으로 저장
-                if (slope % 1 == 0) { more_slope += more_chn; }
-                result.Add(new float[2] { more_slope, less_slope });    //for (float i = more_slope; more_slope * more_slope < (i + (slope / 2) * more_chn + more_chn) * more_chn; more_slope += more_chn) { result.Add(new float[2] { more_slope, less_slope }); }
-
-                //가장 가까운 대상 찾아서 피해를 준다, 다만 friendly_fire가 false라면 자기편(몬스터)은 안 때린다
-                Thing closest = null;
-                int closest_distance = 999;
-                foreach (float[] r in result)
-                {
-                    Debug.Log("result : " + r[0] + " , " + r[1]);
-                    foreach (GameObject t in Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1])
-                    {
-                        Debug.Log("mob : " + t.transform.position.x + " , " + t.transform.position.y + " // " + (t != this.gameObject));
-                        if (t != this.gameObject & r[0] == t.transform.position.x & r[1] == t.transform.position.y & Dungeon.distance_cal(transform, t.transform) < closest_distance)
-                        {
-                            closest = t.GetComponent<Enemy>();
-                            closest_distance = Dungeon.distance_cal(transform, t.transform);
-                        }
-                    }
-                    Debug.Log(Dungeon.dungeon.Plr.transform.position);
-                    if (r[0] == Dungeon.dungeon.Plr.transform.position.x & r[1] == Dungeon.dungeon.Plr.transform.position.y & Dungeon.distance_cal(transform, Dungeon.dungeon.Plr.transform) < closest_distance)
-                    {
-                        closest = Dungeon.dungeon.Plr;
-                        closest_distance = Dungeon.distance_cal(transform, Dungeon.dungeon.Plr.transform);
-                    }
-                }
-                if (closest == Dungeon.dungeon.Plr | friendly_fire)
-                {
-                    closest.HpChange(-val);
-                    dest_x = (int)closest.transform.position.x;
-                    dest_y = (int)closest.transform.position.y;
-
-                    Dungeon.dungeon.GetComponent<LineRenderer>().SetPosition(0, new Vector3(transform.position.x, transform.position.y, -1));
-                    Dungeon.dungeon.GetComponent<LineRenderer>().SetPosition(1, new Vector3(dest_x, dest_y, -1));
-                    Dungeon.dungeon.GetComponent<LineRenderer>().SetColors(new Color(1f, 1f, 1f, 1f), new Color(1f, 1f, 1f, 1f));
-                }
-                else
-                {
-                    //이동
+                for (; x_cur * x_gap <= dest_x * x_gap; x_cur += x_gap) {
+                    result.Add( new float[2]{x_cur, y_cur} );
                 }
             }
+
+
+            //가장 가까운 대상 찾아서 피해를 준다, 다만 friendly_fire가 false라면 자기편(몬스터)은 안 때린다
+            Thing closest = null;
+            int closest_distance = 999;
+            foreach (float[] r in result)
+            {
+                foreach (GameObject t in Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1])
+                {
+                    if (t != this.gameObject & r[0] == t.transform.position.x & r[1] == t.transform.position.y & Dungeon.distance_cal(transform, t.transform) < closest_distance)
+                    {
+                        closest = t.GetComponent<Enemy>();
+                        closest_distance = Dungeon.distance_cal(transform, t.transform);
+                    }
+                }
+                if (r[0] == Dungeon.dungeon.Plr.transform.position.x & r[1] == Dungeon.dungeon.Plr.transform.position.y & Dungeon.distance_cal(transform, Dungeon.dungeon.Plr.transform) < closest_distance)
+                {
+                    closest = Dungeon.dungeon.Plr;
+                    closest_distance = Dungeon.distance_cal(transform, Dungeon.dungeon.Plr.transform);
+                }
+            }
+            if (closest == Dungeon.dungeon.Plr | friendly_fire)
+            {
+                closest.HpChange(-val);
+                dest_x = (int)closest.transform.position.x;
+                dest_y = (int)closest.transform.position.y;
+                                 Dungeon.dungeon.GetComponent<LineRenderer>().SetPosition(0, new Vector3(transform.position.x, transform.position.y, -1));
+                Dungeon.dungeon.GetComponent<LineRenderer>().SetPosition(1, new Vector3(dest_x, dest_y, -1));
+                Dungeon.dungeon.GetComponent<LineRenderer>().SetColors(new Color(1f, 1f, 1f, 1f), new Color(1f, 1f, 1f, 1f));
+            }
+            else
+            {
+                //이동
+            }
+            
         }
 
         public override void die()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ArcanaDungeon;
 using ArcanaDungeon.Object;
 using ArcanaDungeon.cards;
 
@@ -19,10 +20,13 @@ namespace ArcanaDungeon
         public GameObject card_on_cursor;   //마우스 커서를 올린 카드를 나타내주는 이미지 UI
         public GameObject cam;  //카메라, 줌인 & 줌아웃과 마우스 커서 좌표를 스크린좌표에서 월드좌표로 바꿀 때 사용
 
+        public string str = "testing";
+
         private GameObject Plr; //★플레이어
-        public Enemy targeted; //임시로 만든 적 나중에 던전에서 적 배열을 받아와야 할 수도 있음 jgh
+        public Enemy target; //임시로 만든 적 나중에 던전에서 적 배열을 받아와야 할 수도 있음 jgh
         private Deck deck;   //플레이어에게 들어간 Deck 스트립트, SetPlr에서 위의 Plr와 함께 설정
-        private Cards selected;  //손패에서 카드를 클릭하면 이 변수에 저장한다
+        
+        private int selected = -1;  //손패에서 카드를 클릭하면 이 변수에 그 카드의 Hands에서의 인덱스 번호를 저장
 
         public Text message;
 
@@ -59,7 +63,6 @@ namespace ArcanaDungeon
 
         public void SetPlr(GameObject p) {   //이 스크립트의 Plr에 플레이어를 배정해줌, Dungeon에서 단 1번 실행됨
             this.Plr = p;
-            targeted = Dungeon.dungeon.enemies[0][0].GetComponent<Enemy>();
             deck = Plr.GetComponent<player>().allDeck; // 오류 때문에 이전에 있던 deck을 통합한 덱 클래스로 임시로 바꿈 jgh
             if (deck == null && Plr == null)
             {
@@ -71,6 +74,8 @@ namespace ArcanaDungeon
             //플레이어 HP와 스태미나 표시 부분, 사실 체력과 스태미나가 변할 때만 수정하는 게 더 좋지만 코딩의 편의를 위해 다소 타협했다
             float temp_hp = Plr.GetComponent<player>().GetHp();
             float temp_st = Plr.GetComponent<player>().GetStamina();
+            if (temp_hp < 0) { temp_hp = 0f; }
+            if (temp_st < 0) { temp_st = 0f; }
             hp_bar.transform.GetChild(2).GetComponent<Text>().text = temp_hp.ToString();
             hp_bar.transform.GetChild(1).localScale = new Vector2 ( temp_hp / Plr.GetComponent<player>().maxhp, 1);
             st_bar.transform.GetChild(2).GetComponent<Text>().text = temp_st.ToString();
@@ -114,16 +119,16 @@ namespace ArcanaDungeon
                     }
                 }
                 //손패 좌표 범위 안에서 클릭하면 그 카드를 selected에 저장한다
-                //selected==null 이 없으면 드래그 도중 다른 카드가 selected에 저장된다, GetMouseButtonDown은 if문에 들어가있어서인지 가끔 작동을 안 한다
-                if (Input.GetMouseButton(0) & selected==null) {
-                    selected = deck.Hands[temp_hand_num - 1];
+                //selected==-1 이 없으면 드래그 도중 다른 카드가 selected에 저장된다, GetMouseButtonDown은 if문에 들어가있어서인지 가끔 작동을 안 한다
+                if (Input.GetMouseButton(0) & selected==-1) {
+                    selected = temp_hand_num - 1;
                 }
             }
 
             //손패 좌표 범위 밖에 마우스 커서 좌표가 있으면 셋 중 하나다 : 확대됐던 카드 이미지 축소하기, 카드 드래그해서 목표 지정하려고 함, 카드 목표 지정 완료하고 사용
             if (mpos.x < 120 | mpos.x > 840 | mpos.y < 0 | mpos.y > 160) {
-                //확대된 카드 이미지가 띄워진 상태라면 그 확대된 이미지를 없앰
-                if (card_on_cursor.transform.GetChild(0).gameObject.activeSelf)
+                //확대된 카드 이미지가 띄워졌고 선택한 카드도 없는 상태라면 그 확대된 이미지를 없앰
+                if (card_on_cursor.transform.GetChild(0).gameObject.activeSelf & (selected == -1))
                 {
                     card_on_cursor.transform.GetChild(0).gameObject.SetActive(false);
                     //Text를 가진 자식은 text를 null로 하고, Image를 가진 자식은 비활성화
@@ -131,8 +136,8 @@ namespace ArcanaDungeon
                     card_on_cursor.transform.GetChild(2).gameObject.SetActive(false);
                     card_on_cursor.transform.GetChild(3).gameObject.GetComponent<Text>().text = null;
                 }
-                //마우스 왼쪽 버튼이 클릭된 상태라면 현재 선택한 카드 이미지가 마우스 커서를 따라다님
-                if (Input.GetMouseButton(0))
+                //마우스 왼쪽 버튼이 클릭된 중이며 선택된 카드가 있다면 현재 선택한 카드 이미지가 마우스 커서를 따라다님
+                if (Input.GetMouseButton(0) & (selected != -1))
                 {
                     card_on_cursor.GetComponent<RectTransform>().localPosition = mpos + new Vector2(-860, -440);
                     card_on_cursor.transform.GetChild(0).gameObject.SetActive(true);
@@ -146,32 +151,57 @@ namespace ArcanaDungeon
                         switch (i)
                         {
                             case 1:
-                                //ob.GetComponent<Text>.text = selected.cardName (Card에 들어있는 카드 이름);break;
-                                temp_ob.GetComponent<Text>().text = "샘플 카드"; break;
+                                temp_ob.GetComponent<Text>().text = deck.Hands[selected].cardName;break;
                             case 2:
                                 temp_ob.SetActive(true);
-                                temp_ob.GetComponent<Image>().sprite = Resources.Load<Sprite>(selected.illust); break;
+                                temp_ob.GetComponent<Image>().sprite = Resources.Load<Sprite>(deck.Hands[selected].illust); break;
                             case 3:
-                                //ob.GetComponent<Text>.text = selected.cardInfo (Card에 들어있는 카드 효과);break;
-                                temp_ob.GetComponent<Text>().text = "이것은 샘플이요\n맞소 샘플이요"; break;
+                                temp_ob.GetComponent<Text>().text = deck.Hands[selected].cardInfo;break;
                         }
                     }
-                }else if (selected != null) //마우스 왼쪽 버튼이 방금 클릭을 마친 상태라면 그곳을 목표지점으로 카드를 사용하기로 결정한 것이다, GetMouseButtonUp은 if문 때문에 가끔 작동을 안 해서 이렇게 구현
-                {
-                    Debug.Log(cam.GetComponent<Camera>().ScreenToWorldPoint(mpos) + " / " + Plr.GetComponent<player>().PlayerPos);
-                    temp_hand_num = 3; // 선택된 카드 인덱스값이 마우스 클릭을 마친 상태의 위치에 기반됨 jgh 
-                    //Debug.Log("선택된 카드 인덱스 값 : " + temp_hand_num);//jgh 
-                    Debug.Log("카드 떨굼 아무튼 사용전 | 적 hp : " + targeted.GetHp() + "플레이어 hp :" + Plr.GetComponent<player>().GetStamina());//jgh 
-                    int i = deck.UsingCard(temp_hand_num-1, Plr.GetComponent<player>(), targeted );//jgh 
-                    Debug.Log("카드 떨굼 아무튼 사용됨 "+i+" 적 hp : " + targeted.GetHp() + "플레이어 hp :" + Plr.GetComponent<player>().GetStamina());//jgh 
-
-                    selected = null;
                 }
+                //마우스 왼쪽 버튼이 클릭되지 않은 상태이며 선택된 카드가 있다면 클릭을 멈춘 좌표에 카드를 사용하기로 결정한 것이다, 사실상 마우스 버튼이 떼질 때 작동한다
+                if (!Input.GetMouseButton(0) & (selected != -1))
+                {
+                    //마우스 커서 좌표를 유니티 내부 world 좌표로 변경해 그 좌표 위의 enemy 찾기
+                    Vector3 mpos_world = cam.GetComponent<Camera>().ScreenToWorldPoint(mpos);
+                    mpos_world = new Vector3(Mathf.Round(mpos_world.x), Mathf.Round(mpos_world.y), 0);
+                    target = null;
+                    foreach (GameObject enem in Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor-1]) {
+                        if (enem.transform.position == mpos_world) {
+                            target = enem.GetComponent<Enemy>();
+                        }
+                    }
+                    //카드 사용 함수 실행
+                    //Debug.Log("카드 사용, UsingCard 직전 / 적 체력 : " + target.GetHp() + " / 플레이어 스태미나 :" + Plr.GetComponent<player>().GetStamina());   //enemy를 대상으로 카드를 사용하지 않으면 계속 게임이 멈춰서 잠시 주석처리함
+                    int used = deck.UsingCard(selected, Plr.GetComponent<player>(), (Enemy)target );   //패의 몇 번째 인덱스가 사용되었는지, 플레이어 스크립트, enemy 스크립트를 파라미터로 전달하되 만약 적이 없는 곳에 드래그했다면 enemy 스크립트 자리에 null이 전달됨 
+                    //Debug.Log("카드 사용 완료됨 / 반환값 : "+used+" / 적 체력 : " + target.GetHp() + "플레이어 스태미나 :" + Plr.GetComponent<player>().GetStamina());  //enemy를 대상으로 카드를 사용하지 않으면 계속 게임이 멈춰서 잠시 주석처리함
+                    //사용된 손패 오른쪽의 카드들을 1칸씩 왼쪽으로 이동시키기
+                    for (int i = selected + 1; i < deck.max_Hand; i++) {
+                        card_ui[i].transform.GetChild(1).GetComponent<Text>().text = card_ui[i + 1].transform.GetChild(1).GetComponent<Text>().text;
+                        card_ui[i].transform.GetChild(2).GetComponent<Image>().sprite = card_ui[i + 1].transform.GetChild(2).GetComponent<Image>().sprite;
+                        card_ui[i].transform.GetChild(3).GetComponent<Text>().text = card_ui[i + 1].transform.GetChild(3).GetComponent<Text>().text;
+                    }
+                    card_ui[deck.Hands.Count + 1].transform.GetChild(1).GetComponent<Text>().text = null;
+                    card_ui[deck.Hands.Count + 1].transform.GetChild(2).gameObject.SetActive(false);
+                    card_ui[deck.Hands.Count + 1].transform.GetChild(3).GetComponent<Text>().text = null;
+                    selected = -1;
+
+                }
+            }
+            if (Input.GetKey(KeyCode.Space))
+            {
+                Debug.Log("draw testing2");
+                deck.DrawCards(); card_draw(deck.Hands[deck.Hands.Count - 1]);
             }
         }
 
-        public void card_draw() { 
-            
+        public void card_draw(Cards c) {
+            int temp = deck.Hands.Count;
+            card_ui[temp].transform.GetChild(1).GetComponent<Text>().text = c.cardName;
+            card_ui[temp].transform.GetChild(2).gameObject.SetActive(true);
+            card_ui[temp].transform.GetChild(2).GetComponent<Image>().sprite = Resources.Load<Sprite>(c.illust);
+            card_ui[temp].transform.GetChild(3).GetComponent<Text>().text = c.cardInfo;
         }
     }
 }
