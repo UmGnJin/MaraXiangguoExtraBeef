@@ -215,7 +215,8 @@ namespace ArcanaDungeon.Object
 
         public override void die()
         {
-
+            Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1].Remove(this.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

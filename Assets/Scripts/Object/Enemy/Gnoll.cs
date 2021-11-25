@@ -6,7 +6,7 @@ namespace ArcanaDungeon.Object
 {
     public class Gnoll : Enemy
     {
-
+        public GameObject taljin;
         public void Awake() {
             this.maxhp = 90;
             this.maxstamina = 100;
@@ -16,9 +16,16 @@ namespace ArcanaDungeon.Object
 
             this.name = "Gnoll";
         }
-
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+                HpChange(-70);//자해 테스트
+        }
         public void FixedUpdate()
         {
+            if (this.hp <= 0)
+                this.die();
+
             if (isTurn > 0)
             {
                 if (this.GetStamina() < 20 && this.exhausted == false)
@@ -32,11 +39,13 @@ namespace ArcanaDungeon.Object
                     this.exhausted = false;
                 }
                 Vision_research();
-                this.exhausted = false;
+                
                 if (this.exhausted == true)//탈진 상태에서 스태미나 회복, 일반적으로는 특정 조건 만족 시 탈진에 걸리고, 일정 수치 이상의 스태미나까지 휴식만 한다.
                                            //그렇게 일정 수치까지 회복한 이후, 탈진 상태이상이 제거되고, 기존의 행동 우선도대로 행동을 재개한다.
                 {
-                    
+                    GameObject exhau_image = Instantiate(taljin);//탈진 시 탄진 이펙트 발생
+                    exhau_image.transform.position = new Vector3( this.transform.position.x,this.transform.position.y,-1);
+                    exhau_image.GetComponent<exhaustController>().live = 120;
                     this.StaminaChange(20);
 
                 }

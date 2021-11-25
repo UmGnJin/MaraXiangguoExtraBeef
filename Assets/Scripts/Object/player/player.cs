@@ -241,8 +241,7 @@ namespace ArcanaDungeon.Object
                     route_pos.RemoveAt(0);
                     MoveTimer = MoveTimerLimit;
                     Debug.Log("턴엔드 준비");
-                    condition_process();
-                    isTurn--;
+                    Turnend();
                 }
                 catch (Exception e) { Debug.Log(e); }
             }

@@ -106,3 +106,4 @@ MonoBehaviour:
   maxcooltime: 0
   poisontile: {fileID: 7699061077899021885, guid: 896d4c7cd3f69f44d9bcde71fa3d7b07,
     type: 3}
+  taljin: {fileID: 5055103388082806182, guid: 7293fa48061cbb74facc742efb6436a0, type: 3}

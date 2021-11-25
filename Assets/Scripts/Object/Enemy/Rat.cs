@@ -21,8 +21,15 @@ namespace ArcanaDungeon.Object
 
             this.name = "Rat";
         }
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+                HpChange(-70);//자해 테스트
+        }
         public void FixedUpdate()
         {
+            if (this.hp <= 0)
+                this.die();
             if (isTurn > 0)
             {
                 
@@ -43,7 +50,7 @@ namespace ArcanaDungeon.Object
                 {
                     GameObject exhau_image = Instantiate(taljin);//탈진 시 탄진 이펙트 발생
                     exhau_image.transform.position = this.transform.position;
-                    exhau_image.GetComponent<exhaustController>().live = 90;
+                    exhau_image.GetComponent<exhaustController>().live = 120;
                     this.StaminaChange(20);
                 }
                 else
