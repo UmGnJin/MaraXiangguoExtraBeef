@@ -173,9 +173,10 @@ namespace ArcanaDungeon
                         }
                     }
                     //카드 사용 함수 실행
-                    //Debug.Log("카드 사용, UsingCard 직전 / 적 체력 : " + target.GetHp() + " / 플레이어 스태미나 :" + Plr.GetComponent<player>().GetStamina());   //enemy를 대상으로 카드를 사용하지 않으면 계속 게임이 멈춰서 잠시 주석처리함
+                    Debug.Log("카드 사용, UsingCard 직전 / 적 체력 : " + target.GetHp() + " / 플레이어 스태미나 :" + Plr.GetComponent<player>().GetStamina());   //enemy를 대상으로 카드를 사용하지 않으면 계속 게임이 멈춰서 잠시 주석처리함
                     int used = deck.UsingCard(selected, Plr.GetComponent<player>(), (Enemy)target );   //패의 몇 번째 인덱스가 사용되었는지, 플레이어 스크립트, enemy 스크립트를 파라미터로 전달하되 만약 적이 없는 곳에 드래그했다면 enemy 스크립트 자리에 null이 전달됨 
-                    //Debug.Log("카드 사용 완료됨 / 반환값 : "+used+" / 적 체력 : " + target.GetHp() + "플레이어 스태미나 :" + Plr.GetComponent<player>().GetStamina());  //enemy를 대상으로 카드를 사용하지 않으면 계속 게임이 멈춰서 잠시 주석처리함
+                    Plr.GetComponent<player>().condition_process();
+                    Debug.Log("카드 사용 완료됨 / 반환값 : "+used+" / 적 체력 : " + target.GetHp() + "플레이어 스태미나 :" + Plr.GetComponent<player>().GetStamina());  //enemy를 대상으로 카드를 사용하지 않으면 계속 게임이 멈춰서 잠시 주석처리함
                     //사용된 손패 오른쪽의 카드들을 1칸씩 왼쪽으로 이동시키기
                     for (int i = selected + 1; i < deck.max_Hand; i++) {
                         card_ui[i].transform.GetChild(1).GetComponent<Text>().text = card_ui[i + 1].transform.GetChild(1).GetComponent<Text>().text;

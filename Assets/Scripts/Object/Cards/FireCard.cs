@@ -5,33 +5,25 @@ using ArcanaDungeon.Object;
 
 namespace ArcanaDungeon.cards
 {
-    public class AttackCard : Cards
+    public class FireCard : Cards
     {
-        private int cardDamage = 20; // 기본 데미지.
-
-        public AttackCard()
+        private int fireTurn = 0;
+        public FireCard()
         {
-            this.cardTape = 1;
+            fireTurn = 3;
             this.costChange(20);
             this.illust = "sprites/Card/임시 공격";
-            this.cardName = "공격카드";
-            this.cardInfo = cardDamage + "만큼 피해를 줍니다.";
+            this.cardName = "발화카드";
+            this.cardInfo = this.fireTurn + "턴 동안 피해를 줍니다.";
         }
-        public void IncreaseDMG(int DmgUp) // 공격력 증가.
-        {
-            this.cardDamage += DmgUp;
-            this.cardName += "+";
-            this.cardInfo = cardDamage + "만큼 피해를 줍니다.";
-        }
-
         public override void UseCard(player Plr, Enemy enemy)
         {
             if (Plr != null)
             {
                 if (enemy != null)
                 {
-                    enemy.HpChange(-cardDamage);
                     //상태이상 추가 할 부분
+                    Plr.condition_add(0, this.fireTurn);
                     Plr.StaminaChange(-this.getCost());
                 }
                 else
@@ -39,7 +31,9 @@ namespace ArcanaDungeon.cards
             }
             else
                 Debug.Log("플레이어를 찾을 수없습니다.");
-            
+
         }
     }
 }
+
+

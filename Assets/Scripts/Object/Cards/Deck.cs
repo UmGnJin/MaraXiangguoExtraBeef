@@ -30,18 +30,21 @@ namespace ArcanaDungeon.cards
 
         public void SettingFstDeck()// 만약 플레이어 직업 생기면 직업별 초기 카드 세팅 
         {
-            for (int i = 0; i < 2; i++)
-            {
-                AttackCard AtCd = new AttackCard();
-                CardsDeck.Add(AtCd);
-                //Debug.Log("공격카드 덱 구성중");// 로그
-            }
+            
             for (int i = 2; i < 4; i++)
             {
                 BlockCard BlCd = new BlockCard();
                 CardsDeck.Add(BlCd);
                 //Debug.Log("방어카드 덱 구성중");// 로그
             }
+            AttackCard AtCd = new AttackCard();
+            AtCd.IncreaseDMG(20);
+            AtCd.costChange(30);
+            CardsDeck.Add(AtCd);
+            AttackCard AtC = new AttackCard();
+            CardsDeck.Add(AtC);
+            FireCard FrCd = new FireCard();
+            CardsDeck.Add(FrCd);
             CardCount = CardsDeck.Count;
         }
 
