@@ -23,7 +23,7 @@ namespace ArcanaDungeon.cards
         public Deck()
         {
             SettingFstDeck();
-            
+            ChangDeck();
             //DrawCards(); //UI.uicanvas.card_draw(Hands[Hands.Count - 1]);
             //DrawCards(); //UI.uicanvas.card_draw(Hands[Hands.Count - 1]); //★테스트를 위해 임시로 패를 만듬, 카드 드로우 기능 구현이 완료되면 삭제해도 됨, 가능하면 UI의 card_draw를 이렇게 따로 부르지 않아도 DrawCards에서 자동으로 처리하면 좋을 듯
         }
@@ -31,20 +31,24 @@ namespace ArcanaDungeon.cards
         public void SettingFstDeck()// 만약 플레이어 직업 생기면 직업별 초기 카드 세팅 
         {
             
-            for (int i = 2; i < 4; i++)
+            for (int i = 0; i < 17; i++)
             {
-                BlockCard BlCd = new BlockCard();
-                CardsDeck.Add(BlCd);
-                //Debug.Log("방어카드 덱 구성중");// 로그
+                AttackCard AtCd = new AttackCard();
+                AtCd.IncreaseDMG(20);
+                AtCd.costChange(30);
+                CardsDeck.Add(AtCd);
             }
-            AttackCard AtCd = new AttackCard();
-            AtCd.IncreaseDMG(20);
-            AtCd.costChange(30);
-            CardsDeck.Add(AtCd);
-            AttackCard AtC = new AttackCard();
-            CardsDeck.Add(AtC);
-            FireCard FrCd = new FireCard();
-            CardsDeck.Add(FrCd);
+            for (int i = 17; i < 34; i++)
+            {
+                AttackCard AtC = new AttackCard();
+                CardsDeck.Add(AtC);
+            }
+            for (int i = 34; i < 50; i++)
+            {
+                FireCard FrCd = new FireCard();
+                CardsDeck.Add(FrCd);
+            }
+            
             CardCount = CardsDeck.Count;
         }
 
@@ -60,9 +64,15 @@ namespace ArcanaDungeon.cards
 
         public void ChangDeck() //★근진이가 만든 임시 덱 셔플
         {
-            CardsDeck = new List<Cards>(UsedDeck);
-            UsedDeck = new List<Cards>();
-            CardsDeck.OrderBy(a => Guid.NewGuid());
+            for(int i =0; i < CardsDeck.Count(); i++)
+            {
+                int ra1 = Dungeon.random.Next(0, CardsDeck.Count());
+                int ra2 = Dungeon.random.Next(0, CardsDeck.Count());
+                Cards temp = CardsDeck[ra1];
+                CardsDeck[ra1] = CardsDeck[ra2];
+                CardsDeck[ra2] = temp;
+            }
+            Debug.Log("섞은 뒤 덱 수"+CardsDeck.Count());
         }
 
         public List<Cards> showDeckList()
