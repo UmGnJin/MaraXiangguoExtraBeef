@@ -30,6 +30,7 @@ namespace ArcanaDungeon.Object
 
         public void FixedUpdate()
         {
+
             if (isTurn > 0)
             {
                 if (this.GetStamina() < 20 && this.exhausted == false)
@@ -57,6 +58,8 @@ namespace ArcanaDungeon.Object
                 }
                 isTurn -= 1;
             }
+
+            
         }
 
         public override void Spawn()
@@ -76,7 +79,6 @@ namespace ArcanaDungeon.Object
 
         protected void Vision_research()
         {
-            Debug.Log("½ÇÇà Áß");
             FOV = new bool[Dungeon.dungeon.currentlevel.width, Dungeon.dungeon.currentlevel.height];
             Visionchecker.vision_check((int)Mathf.Round(transform.position.x), (int)Mathf.Round(transform.position.y), 6, FOV);
 

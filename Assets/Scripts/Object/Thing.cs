@@ -52,6 +52,7 @@ namespace ArcanaDungeon.Object
                     this.hp += val;
                 }
             } else {
+                UI.uicanvas.blood(transform.position);
                 this.hp += val;
                 if (this.hp < 0)
                 {

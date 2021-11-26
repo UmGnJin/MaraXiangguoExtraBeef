@@ -19,6 +19,7 @@ namespace ArcanaDungeon
         public GameObject[] button = new GameObject[4];  //휴식, 셔플, 조사, 메뉴
         public GameObject card_on_cursor;   //마우스 커서를 올린 카드를 나타내주는 이미지 UI
         public GameObject cam;  //카메라, 줌인 & 줌아웃과 마우스 커서 좌표를 스크린좌표에서 월드좌표로 바꿀 때 사용
+        public GameObject par;  //임시 파티클 담당, 나중에 몇 개 더 추가되지 않을까 싶다
 
         public string str = "testing";
 
@@ -173,10 +174,11 @@ namespace ArcanaDungeon
                         }
                     }
                     //카드 사용 함수 실행
-                    Debug.Log("카드 사용, UsingCard 직전 / 적 체력 : " + target.GetHp() + " / 플레이어 스태미나 :" + Plr.GetComponent<player>().GetStamina());   //enemy를 대상으로 카드를 사용하지 않으면 계속 게임이 멈춰서 잠시 주석처리함
+                    //Debug.Log("카드 사용, UsingCard 직전 / 적 체력 : " + target.GetHp() + " / 플레이어 스태미나 :" + Plr.GetComponent<player>().GetStamina());   //enemy를 대상으로 카드를 사용하지 않으면 계속 게임이 멈춰서 잠시 주석처리함
                     int used = deck.UsingCard(selected, Plr.GetComponent<player>(), (Enemy)target );   //패의 몇 번째 인덱스가 사용되었는지, 플레이어 스크립트, enemy 스크립트를 파라미터로 전달하되 만약 적이 없는 곳에 드래그했다면 enemy 스크립트 자리에 null이 전달됨 
+                    Debug.Log("카드 사용 : " + selected + " / " + Plr.GetComponent<player>() + " / " + (Enemy)target);
                     Plr.GetComponent<player>().condition_process();
-                    Debug.Log("카드 사용 완료됨 / 반환값 : "+used+" / 적 체력 : " + target.GetHp() + "플레이어 스태미나 :" + Plr.GetComponent<player>().GetStamina());  //enemy를 대상으로 카드를 사용하지 않으면 계속 게임이 멈춰서 잠시 주석처리함
+                    //Debug.Log("카드 사용 완료됨 / 반환값 : "+used+" / 적 체력 : " + target.GetHp() + "플레이어 스태미나 :" + Plr.GetComponent<player>().GetStamina());  //enemy를 대상으로 카드를 사용하지 않으면 계속 게임이 멈춰서 잠시 주석처리함
                     //사용된 손패 오른쪽의 카드들을 1칸씩 왼쪽으로 이동시키기
                     for (int i = selected + 1; i < deck.max_Hand; i++) {
                         card_ui[i].transform.GetChild(1).GetComponent<Text>().text = card_ui[i + 1].transform.GetChild(1).GetComponent<Text>().text;
@@ -203,6 +205,11 @@ namespace ArcanaDungeon
             card_ui[temp].transform.GetChild(2).gameObject.SetActive(true);
             card_ui[temp].transform.GetChild(2).GetComponent<Image>().sprite = Resources.Load<Sprite>(c.illust);
             card_ui[temp].transform.GetChild(3).GetComponent<Text>().text = c.cardInfo;
+        }
+
+        public void blood(Vector3 pos) {
+            par.transform.position = pos;
+            par.GetComponent<ParticleSystem>().Play();
         }
     }
 }
