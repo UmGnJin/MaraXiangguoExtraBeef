@@ -75,9 +75,9 @@ namespace ArcanaDungeon.Object
                         this.StaminaChange(5);
                     }
                 }
-                
-                this.isTurn -= 1;
-                
+
+                this.Turnend();
+
             }
         }
     }

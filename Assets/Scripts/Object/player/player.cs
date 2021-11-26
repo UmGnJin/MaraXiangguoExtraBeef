@@ -59,8 +59,11 @@ namespace ArcanaDungeon.Object
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.CapsLock))
-                HpChange(-10);//자해 테스트
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                StaminaChange(10);
+                Turnend();//턴넘기기
+            }
             if (isTurn > 0)
             {
                 if (MoveTimer <= 0)
@@ -73,7 +76,7 @@ namespace ArcanaDungeon.Object
             }
             PlayerPos = new Vector2(Mathf.Round(transform.position.x - 1), Mathf.Round(transform.position.y));
             vision_marker();//★이 2줄은 나중에 턴이 종료될 때 함수가 완성되면 그 쪽으로 옮겨야 함
-            //StaminaChange(5);//★아무 행동도 하지 않으면 회복량이 3배가 되도록 해야 함
+            
         }
 
         
@@ -241,7 +244,7 @@ namespace ArcanaDungeon.Object
                     route_pos.RemoveAt(0);
                     MoveTimer = MoveTimerLimit;
                     Debug.Log("턴엔드 준비");
-                    Turnend();
+                    this.Turnend();
                 }
                 catch (Exception e) { Debug.Log(e); }
             }
@@ -298,12 +301,7 @@ namespace ArcanaDungeon.Object
         {
             
         }
-        private void Turnend()
-        {
-            Debug.Log("턴엔드");
-            condition_process();    
-            isTurn -= 1;
-        }
+        
         private void vision_marker()
         {
             FOV = new bool[Dungeon.dungeon.currentlevel.width, Dungeon.dungeon.currentlevel.height];

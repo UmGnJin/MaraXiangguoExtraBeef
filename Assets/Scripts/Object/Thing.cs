@@ -44,21 +44,72 @@ namespace ArcanaDungeon.Object
 
         public void HpChange(int val)
         {
-            if (val > 0) {
-                if (this.hp + val > this.maxhp) {
+            if (val > 0)
+            {
+                if (this.hp + val > this.maxhp)
+                {
                     this.hp = this.maxhp;
                 }
-                else {
+                else
+                {
                     this.hp += val;
                 }
-            } else {
+            }
+            else
+            {
                 UI.uicanvas.blood(transform.position);
                 this.hp += val;
                 if (this.hp < 0)
                 {
                     this.die();
                 }
-            }            
+            }
+        }
+        public void Fire_HpChange(int val)
+        {
+            if (val > 0)
+            {
+                if (this.hp + val > this.maxhp)
+                {
+                    this.hp = this.maxhp;
+                }
+                else
+                {
+                    this.hp += val;
+                }
+            }
+            else
+            {
+                UI.uicanvas.fire(transform.position);
+                this.hp += val;
+                if (this.hp < 0)
+                {
+                    this.die();
+                }
+            }
+        }
+        public void poison_HpChange(int val)
+        {
+            if (val > 0)
+            {
+                if (this.hp + val > this.maxhp)
+                {
+                    this.hp = this.maxhp;
+                }
+                else
+                {
+                    this.hp += val;
+                }
+            }
+            else
+            {
+                UI.uicanvas.poison(transform.position);
+                this.hp += val;
+                if (this.hp < 0)
+                {
+                    this.die();
+                }
+            }
         }
 
         //stamina 관련 함수
@@ -155,7 +206,7 @@ namespace ArcanaDungeon.Object
         {
             if (this.condition.ContainsKey(0))
                 if (this.condition[0] > 0) { //연소 - 고정된 양의 피해를 일정 턴동안 받는다. 중독에 비해 초기 수치가 높아야 한다. 물에 접촉 시 즉시 해제되어야 한다.
-                HpChange(-10);
+                Fire_HpChange(-10);
                 this.condition[0] -= 1;
             }
             if (this.condition.ContainsKey(1))
@@ -170,7 +221,7 @@ namespace ArcanaDungeon.Object
             }
             if (this.condition.ContainsKey(3))
                 if (this.condition[3] > 0) {    //중독 - 중첩형 상태이상. 중첩 횟수와 같은 양의 피해를 받고, 중첩이 1 감소한다. 이렇게 중첩이 0이 될 경우, 중독이 해제된다.
-                HpChange(-condition[3]);    
+                poison_HpChange(-condition[3]);    
                 this.condition[3] -= 1;
             }
         }
@@ -188,6 +239,13 @@ namespace ArcanaDungeon.Object
         public abstract void die();//★나중에 자기자신을 map[]에서 삭제하는 정도는 넣어두자
         public abstract void turn();
 
+        public void Turnend()
+        {
+            
+            this.condition_process();
+            this.StaminaChange(5);
+            this.isTurn -= 1;
+        }
 
         //자신이 아닌 상대의 상태를 변화시키는 기능들은 이 아래로 추가 바람.
         //

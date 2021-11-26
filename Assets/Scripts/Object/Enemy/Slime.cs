@@ -28,6 +28,7 @@ namespace ArcanaDungeon.Object
         }
         public void FixedUpdate()
         {
+            
             if (this.hp <= 0)
             {
                 
@@ -68,12 +69,12 @@ namespace ArcanaDungeon.Object
                 {
                     this.StaminaChange(5);
                 }
-                
-                
-                
-                
-                
-                isTurn -= 1;
+
+
+
+
+
+                this.Turnend();
 
 
             }

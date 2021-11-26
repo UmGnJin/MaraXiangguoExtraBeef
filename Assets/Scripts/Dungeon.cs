@@ -297,7 +297,7 @@ namespace ArcanaDungeon
                             mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat_Fire")];
                             break;
                         default:
-                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Gnoll")];
+                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Slime")];
                             break;
                     }
 

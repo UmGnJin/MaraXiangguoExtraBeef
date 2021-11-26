@@ -23,7 +23,7 @@ namespace ArcanaDungeon.cards
                 if (enemy != null)
                 {
                     //상태이상 추가 할 부분
-                    Plr.condition_add(0, this.fireTurn);
+                    enemy.condition_add(0, this.fireTurn);
                     Plr.StaminaChange(-this.getCost());
                 }
                 else

@@ -76,7 +76,7 @@ namespace ArcanaDungeon.Object
                     }
                 }
 
-                this.isTurn -= 1;
+                this.Turnend();
 
             }
         }

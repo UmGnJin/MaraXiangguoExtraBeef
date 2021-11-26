@@ -19,7 +19,9 @@ namespace ArcanaDungeon
         public GameObject[] button = new GameObject[4];  //휴식, 셔플, 조사, 메뉴
         public GameObject card_on_cursor;   //마우스 커서를 올린 카드를 나타내주는 이미지 UI
         public GameObject cam;  //카메라, 줌인 & 줌아웃과 마우스 커서 좌표를 스크린좌표에서 월드좌표로 바꿀 때 사용
-        public GameObject par;  //임시 파티클 담당, 나중에 몇 개 더 추가되지 않을까 싶다
+        public GameObject blood_par;  //임시 파티클 담당, 나중에 몇 개 더 추가되지 않을까 싶다
+        public GameObject fire_par;  //임시 파티클 담당, 나중에 몇 개 더 추가되지 않을까 싶다
+        public GameObject poison_par;  //임시 파티클 담당, 나중에 몇 개 더 추가되지 않을까 싶다
 
         public string str = "testing";
 
@@ -208,8 +210,18 @@ namespace ArcanaDungeon
         }
 
         public void blood(Vector3 pos) {
-            par.transform.position = pos;
-            par.GetComponent<ParticleSystem>().Play();
+            blood_par.transform.position = pos;
+            blood_par.GetComponent<ParticleSystem>().Play();
+        }
+        public void fire(Vector3 pos)
+        {
+            fire_par.transform.position = pos;
+            fire_par.GetComponent<ParticleSystem>().Play();
+        }
+        public void poison(Vector3 pos)
+        {
+            poison_par.transform.position = pos;
+            poison_par.GetComponent<ParticleSystem>().Play();
         }
     }
 }
