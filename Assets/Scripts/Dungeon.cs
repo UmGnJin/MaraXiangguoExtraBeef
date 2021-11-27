@@ -297,7 +297,7 @@ namespace ArcanaDungeon
                             mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat_Fire")];
                             break;
                         default:
-                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Slime")];
+                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat")];
                             break;
                     }
 
@@ -341,6 +341,15 @@ namespace ArcanaDungeon
                 mob.SetActive(false); 
 
             }
+        }
+
+        public Enemy find_enemy(float x, float y) {
+            foreach (GameObject e in enemies[currentlevel.floor - 1]) {
+                if (e.transform.position.x == x & e.transform.position.y == y) {
+                    return e.GetComponent<Enemy>();
+                }
+            }
+            return null;
         }
 
         

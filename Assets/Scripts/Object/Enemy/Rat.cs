@@ -30,7 +30,7 @@ namespace ArcanaDungeon.Object
         {
             //체력바 갱신, 공격받거나 회복할 때마다 체력바를 갱신할 수만 있다면 어디로 위치를 옮겨도 됨
             this.gameObject.transform.GetChild(1).transform.localScale = new Vector2((this.hp > 0 ? this.hp : 0) / (float)this.maxhp, 0.1f);
-            this.gameObject.transform.GetChild(1).localPosition = new Vector3((this.hp > 0 ? this.hp : 0) / this.maxhp, 0.8f, -0.2f);
+            this.gameObject.transform.GetChild(1).localPosition = new Vector3((this.hp > 0 ? this.hp * 0.5f : 0) / this.maxhp -0.5f, 0.8f, -0.2f);
 
             if (this.hp <= 0)
                 this.die();

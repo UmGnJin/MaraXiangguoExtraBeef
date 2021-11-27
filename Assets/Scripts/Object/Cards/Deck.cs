@@ -100,7 +100,7 @@ namespace ArcanaDungeon.cards
 
         public int UsingCard(int SlotNum, player PLR, Enemy EMY )
         {
-            int effectType;
+            int effectType = -1;
             switch (Hands[SlotNum].cardTape)
             {
                 case 1:

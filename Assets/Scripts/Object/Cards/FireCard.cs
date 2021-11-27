@@ -12,7 +12,7 @@ namespace ArcanaDungeon.cards
         {
             fireTurn = 3;
             this.costChange(20);
-            this.illust = "sprites/Card/임시 공격";
+            this.illust = "sprites/Card/임시 발화";
             this.cardName = "발화카드";
             this.cardInfo = this.fireTurn + "턴 동안 피해를 줍니다.";
         }

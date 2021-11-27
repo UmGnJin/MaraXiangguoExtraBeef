@@ -20,6 +20,7 @@ namespace ArcanaDungeon.cards
         public void IncreaseDMG(int DmgUp) // 공격력 증가.
         {
             this.cardDamage += DmgUp;
+            this.illust = "sprites/Card/임시 강타";
             this.cardName += "+";
             this.cardInfo = cardDamage + "만큼 피해를 줍니다.";
         }

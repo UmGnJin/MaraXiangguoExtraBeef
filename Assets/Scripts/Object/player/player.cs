@@ -308,7 +308,6 @@ namespace ArcanaDungeon.Object
             util.Visionchecker.vision_check((int)Mathf.Round(transform.position.x), (int)Mathf.Round(transform.position.y), 6, FOV);
 
 
-            //★나중에 단순히 그림자를 씌우고 벗기는 것 이외에 몬스터의 모습을 지우고 다시 나타나게 하는 것까지 넣어줘야 한다, 아니면 그건 몬스터의 vision_searcher에 넣던가
             //프리팹의 RGB값은 0~1 범위로 나타내는 게 기본값같다
             for (int i = 0; i < Dungeon.dungeon.currentlevel.width; i++)
             {
@@ -317,11 +316,24 @@ namespace ArcanaDungeon.Object
                     if (FOV[i, j])
                     {
                         Dungeon.dungeon.currentlevel.temp_gameobjects[i, j].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+                        Enemy temp_enem = Dungeon.dungeon.find_enemy(i, j);
+                        if ( temp_enem != null) {
+                            temp_enem.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+                            temp_enem.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(0.25f, 0f, 0f, 1);
+                            temp_enem.transform.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, 1);
+                        }
                     }
                     else
                     {
                         //Debug.Log(i + " " + j + " 불을 꺼");
                         Dungeon.dungeon.currentlevel.temp_gameobjects[i, j].GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1);
+                        Enemy temp_enem = Dungeon.dungeon.find_enemy(i, j);
+                        if (temp_enem != null)
+                        {
+                            temp_enem.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                            temp_enem.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(0.25f, 0f, 0f, 0);
+                            temp_enem.transform.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, 0);
+                        }
                     }
                 }
             }

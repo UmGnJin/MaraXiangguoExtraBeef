@@ -26,7 +26,6 @@ namespace ArcanaDungeon
         public string str = "testing";
 
         private GameObject Plr; //★플레이어
-        public Enemy target; //임시로 만든 적 나중에 던전에서 적 배열을 받아와야 할 수도 있음 jgh
         private Deck deck;   //플레이어에게 들어간 Deck 스트립트, SetPlr에서 위의 Plr와 함께 설정
         
         private int selected = -1;  //손패에서 카드를 클릭하면 이 변수에 그 카드의 Hands에서의 인덱스 번호를 저장
@@ -164,21 +163,15 @@ namespace ArcanaDungeon
                     }
                 }
                 //마우스 왼쪽 버튼이 클릭되지 않은 상태이며 선택된 카드가 있다면 클릭을 멈춘 좌표에 카드를 사용하기로 결정한 것이다, 사실상 마우스 버튼이 떼질 때 작동한다
-                if (!Input.GetMouseButton(0) & (selected != -1))
+                if (!Input.GetMouseButton(0) & (selected > -1) & (selected<deck.max_Hand))
                 {
                     //마우스 커서 좌표를 유니티 내부 world 좌표로 변경해 그 좌표 위의 enemy 찾기
                     Vector3 mpos_world = cam.GetComponent<Camera>().ScreenToWorldPoint(mpos);
                     mpos_world = new Vector3(Mathf.Round(mpos_world.x), Mathf.Round(mpos_world.y), 0);
-                    target = null;
-                    foreach (GameObject enem in Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor-1]) {
-                        if (enem.transform.position == mpos_world) {
-                            target = enem.GetComponent<Enemy>();
-                        }
-                    }
                     //카드 사용 함수 실행
                     //Debug.Log("카드 사용, UsingCard 직전 / 적 체력 : " + target.GetHp() + " / 플레이어 스태미나 :" + Plr.GetComponent<player>().GetStamina());   //enemy를 대상으로 카드를 사용하지 않으면 계속 게임이 멈춰서 잠시 주석처리함
-                    int used = deck.UsingCard(selected, Plr.GetComponent<player>(), (Enemy)target );   //패의 몇 번째 인덱스가 사용되었는지, 플레이어 스크립트, enemy 스크립트를 파라미터로 전달하되 만약 적이 없는 곳에 드래그했다면 enemy 스크립트 자리에 null이 전달됨 
-                    Debug.Log("카드 사용 : " + selected + " / " + Plr.GetComponent<player>() + " / " + (Enemy)target);
+                    int used = deck.UsingCard(selected, Plr.GetComponent<player>(), Dungeon.dungeon.find_enemy(mpos_world.x, mpos_world.y));   //패의 몇 번째 인덱스가 사용되었는지, 플레이어 스크립트, enemy 스크립트를 파라미터로 전달하되 만약 적이 없는 곳에 드래그했다면 enemy 스크립트 자리에 null이 전달됨 
+                    //Debug.Log("카드 사용 : " + selected + " / " + Plr.GetComponent<player>());
                     Plr.GetComponent<player>().condition_process();
                     //Debug.Log("카드 사용 완료됨 / 반환값 : "+used+" / 적 체력 : " + target.GetHp() + "플레이어 스태미나 :" + Plr.GetComponent<player>().GetStamina());  //enemy를 대상으로 카드를 사용하지 않으면 계속 게임이 멈춰서 잠시 주석처리함
                     //사용된 손패 오른쪽의 카드들을 1칸씩 왼쪽으로 이동시키기
@@ -196,7 +189,6 @@ namespace ArcanaDungeon
             }
             if (Input.GetKey(KeyCode.Space))
             {
-                Debug.Log("draw testing2");
                 deck.DrawCards(); card_draw(deck.Hands[deck.Hands.Count - 1]);
             }
         }
@@ -210,12 +202,14 @@ namespace ArcanaDungeon
         }
 
         public void blood(Vector3 pos) {
-            blood_par.transform.position = pos;
+            Vector2 temp_pos = cam.GetComponent<Camera>().WorldToScreenPoint(pos);
+            blood_par.transform.localPosition = new Vector2(temp_pos.x - 960, temp_pos.y - 540);
             blood_par.GetComponent<ParticleSystem>().Play();
         }
         public void fire(Vector3 pos)
         {
-            fire_par.transform.position = pos;
+            Vector2 temp_pos = cam.GetComponent<Camera>().WorldToScreenPoint(pos);
+            fire_par.transform.localPosition = new Vector2(temp_pos.x - 960, temp_pos.y - 540);
             fire_par.GetComponent<ParticleSystem>().Play();
         }
         public void poison(Vector3 pos)

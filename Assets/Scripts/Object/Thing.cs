@@ -165,7 +165,7 @@ namespace ArcanaDungeon.Object
             int destination = dest_x + dest_y * Dungeon.dungeon.currentlevel.width;
             Queue<int> checking = new Queue<int>();
             int[] prev = new int[Dungeon.dungeon.currentlevel.length];
-            int[] dir = new int[] { -1, -1 + Dungeon.dungeon.currentlevel.width, Dungeon.dungeon.currentlevel.width, 1 + Dungeon.dungeon.currentlevel.width, 1, 1 - Dungeon.dungeon.currentlevel.width, -Dungeon.dungeon.currentlevel.width, -1 - Dungeon.dungeon.currentlevel.width };
+            int[] dir = new int[] { -1, Dungeon.dungeon.currentlevel.width, 1, -Dungeon.dungeon.currentlevel.width, -1 + Dungeon.dungeon.currentlevel.width, 1 + Dungeon.dungeon.currentlevel.width, 1 - Dungeon.dungeon.currentlevel.width, -1 - Dungeon.dungeon.currentlevel.width };
 
             checking.Enqueue((int)(transform.position.x + transform.position.y * Dungeon.dungeon.currentlevel.width));
             int temp, temp2;
