@@ -19,16 +19,17 @@ namespace ArcanaDungeon
         public GameObject[] button = new GameObject[4];  //휴식, 셔플, 조사, 메뉴
         public GameObject card_on_cursor;   //마우스 커서를 올린 카드를 나타내주는 이미지 UI
         public GameObject cam;  //카메라, 줌인 & 줌아웃과 마우스 커서 좌표를 스크린좌표에서 월드좌표로 바꿀 때 사용
+        public GameObject small_tool_tip; //툴팁
         public GameObject blood_par;  //임시 파티클 담당, 나중에 몇 개 더 추가되지 않을까 싶다
         public GameObject fire_par;  //임시 파티클 담당, 나중에 몇 개 더 추가되지 않을까 싶다
         public GameObject poison_par;  //임시 파티클 담당, 나중에 몇 개 더 추가되지 않을까 싶다
 
-        public string str = "testing";
-
         private GameObject Plr; //★플레이어
         private Deck deck;   //플레이어에게 들어간 Deck 스트립트, SetPlr에서 위의 Plr와 함께 설정
-        
+        public Text log;  //로그
+
         private int selected = -1;  //손패에서 카드를 클릭하면 이 변수에 그 카드의 Hands에서의 인덱스 번호를 저장
+        private float tt;   //툴팁 조작할 때 사용하는 Time.deltaTime 저장용 변수
 
         public Text message;
 
@@ -55,6 +56,7 @@ namespace ArcanaDungeon
             }
 
             card_on_cursor.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(card_background);    //마우스 커서를 따라다닐 UI 배경 저장
+            tt = 0f;
         }
 
         public void ShowMessage(string msg)//매개변수를 인게임 화면에 메시지로 출력.
@@ -184,13 +186,40 @@ namespace ArcanaDungeon
                     card_ui[deck.Hands.Count + 1].transform.GetChild(2).gameObject.SetActive(false);
                     card_ui[deck.Hands.Count + 1].transform.GetChild(3).GetComponent<Text>().text = null;
                     selected = -1;
-
                 }
             }
-            if (Input.GetKey(KeyCode.Space))
+
+            //상태이상 툴팁 표시
+            int temp_stat = -1;
+            if (mpos.x > 1440 & mpos.x < 1680 & mpos.y > 0 & mpos.y < 160)
+            {
+                temp_stat = (int)(Mathf.Floor((mpos.x - 1440) / 80) + 3 * Mathf.Floor((160 - mpos.y) / 80));
+                if (Plr.GetComponent<player>().GetCondition().Count >= temp_stat + 1)
+                {
+                    small_tool_tip.transform.localPosition = new Vector3(520 + temp_stat % 3 * 80, -240, 0);
+                    small_tool_tip.SetActive(true);
+                    small_tool_tip.transform.GetChild(0).gameObject.GetComponent<Text>().text = Resources.Load<TextAsset>("condition_tooltip").text + Plr.GetComponent<player>().GetCondition()[temp_stat];    //★
+                }
+                else
+                {
+                    small_tool_tip.SetActive(false);
+                    small_tool_tip.transform.GetChild(0).gameObject.GetComponent<Text>().text = null;
+                }
+            }
+            else {
+                small_tool_tip.SetActive(false);
+                small_tool_tip.transform.GetChild(0).gameObject.GetComponent<Text>().text = null;
+            }
+
+            if (Input.GetKey(KeyCode.Space))//★
             {
                 deck.DrawCards(); card_draw(deck.Hands[deck.Hands.Count - 1]);
             }
+            
+        }
+
+        public void log_add(string str) {
+            log.text = log.text.Remove(0, log.text.IndexOf('\n')+1) + "\n"+ str;
         }
 
         public void card_draw(Cards c) {

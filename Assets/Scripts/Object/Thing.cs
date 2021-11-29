@@ -204,25 +204,38 @@ namespace ArcanaDungeon.Object
         //상태이상 처리 관련 함수
         public void condition_process() // 번호에 각 상태이상 이름 및 효과 기재바람.
         {
-            if (this.condition.ContainsKey(0))
-                if (this.condition[0] > 0) { //연소 - 고정된 양의 피해를 일정 턴동안 받는다. 중독에 비해 초기 수치가 높아야 한다. 물에 접촉 시 즉시 해제되어야 한다.
-                Fire_HpChange(-10);
-                this.condition[0] -= 1;
+            if (this.condition.ContainsKey(0)) {    //연소 - 고정된 양의 피해를 일정 턴동안 받는다. 중독에 비해 초기 수치가 높아야 한다. 물에 접촉 시 즉시 해제되어야 한다.
+                if (this.condition[0] > 0) {
+                    Fire_HpChange(-10);
+                    this.condition[0] -= 1;
+                }
+
             }
-            if (this.condition.ContainsKey(1))
-                if (this.condition[1] > 0) {    //기절 - 1턴동안 행동할 수 없다.(무한스턴 방지용 대책이 필요할수 있음)
-                this.isTurn -= 1;
-                this.condition[1] -= 1;
+            if (this.condition.ContainsKey(1)) {    //기절 - 1턴동안 행동할 수 없다.(무한스턴 방지용 대책이 필요할수 있음)
+                if (this.condition[1] > 0)
+                {
+                    this.isTurn -= 1;
+                    this.condition[1] -= 1;
+                }
             }
-            if (this.condition.ContainsKey(2))
-                if (this.condition[2] > 0) {    //급류
-                StaminaChange(15);
-                this.condition[2] -= 1;
+            if (this.condition.ContainsKey(2)) {    //급류
+                if (this.condition[2] > 0)
+                {
+                    StaminaChange(15);
+                    this.condition[2] -= 1;
+                }
             }
-            if (this.condition.ContainsKey(3))
-                if (this.condition[3] > 0) {    //중독 - 중첩형 상태이상. 중첩 횟수와 같은 양의 피해를 받고, 중첩이 1 감소한다. 이렇게 중첩이 0이 될 경우, 중독이 해제된다.
-                poison_HpChange(-condition[3]);    
-                this.condition[3] -= 1;
+            if (this.condition.ContainsKey(3)) {    //중독 - 중첩형 상태이상. 중첩 횟수와 같은 양의 피해를 받고, 중첩이 1 감소한다. 이렇게 중첩이 0이 될 경우, 중독이 해제된다.
+                if (this.condition[3] > 0) {    
+                    poison_HpChange(-condition[3]);    
+                    this.condition[3] -= 1;
+                }
+            }
+            List<int >temp = new List<int>(this.condition.Keys);
+            foreach (int i in temp) {
+                if (this.condition[i] <= 0) {
+                    this.condition.Remove(i);
+                }
             }
         }
 
@@ -232,6 +245,10 @@ namespace ArcanaDungeon.Object
             } else {
                 condition.Add(key, val);
             }
+        }
+
+        public Dictionary<int, int> GetCondition() {
+            return this.condition;
         }
 
          
