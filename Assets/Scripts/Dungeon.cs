@@ -267,7 +267,7 @@ namespace ArcanaDungeon
 
             //★원거리 공격 표시용으로 사용되는 LineRenderer가 투명하지 않으면 점차 투명하게 맹근다
             if (this.GetComponent<LineRenderer>().startColor[3] > 0f) {
-                this.GetComponent<LineRenderer>().SetColors(new Color(1f, 1f, 1f, this.GetComponent<LineRenderer>().startColor[3]-0.002f), new Color(1f, 1f, 1f, this.GetComponent<LineRenderer>().endColor[3]-0.002f));
+                this.GetComponent<LineRenderer>().SetColors(new Color(1f, 1f, 1f, this.GetComponent<LineRenderer>().startColor[3]-0.001f), new Color(1f, 1f, 1f, this.GetComponent<LineRenderer>().endColor[3]-0.001f));
             }
         }
 

@@ -10,6 +10,7 @@ namespace ArcanaDungeon.cards
     {
         public int cardTape = 0; // 카드 종류(ex 공격,회복,드로우)마다 다른 값.
         private int cardCost = 0; // 카드 스테미나 코스트
+        private int range;
         public string illust;
         public string cardName = "기본카드";
         public string cardInfo = "이건 기본카드에오. 그래오 쓸모 없어오.";
@@ -30,6 +31,12 @@ namespace ArcanaDungeon.cards
         public int getCost()
         {
             return cardCost;
+        }
+        public int getRange() {
+            return this.range;
+        }
+        public void setRange(int v) {
+            this.range = v;
         }
         public string getIllust() { //함수 이름은 대문자 I, 소문자 l 2개를 사용한다
             return illust;        

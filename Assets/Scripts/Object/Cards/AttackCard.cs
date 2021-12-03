@@ -13,6 +13,7 @@ namespace ArcanaDungeon.cards
         {
             this.cardTape = 1;
             this.costChange(20);
+            setRange(1);
             this.illust = "sprites/Card/임시 공격";
             this.cardName = "공격카드";
             this.cardInfo = cardDamage + "만큼 피해를 줍니다.";
@@ -20,6 +21,7 @@ namespace ArcanaDungeon.cards
         public void IncreaseDMG(int DmgUp) // 공격력 증가.
         {
             this.cardDamage += DmgUp;
+            setRange(1);
             this.illust = "sprites/Card/임시 강타";
             this.cardName += "+";
             this.cardInfo = cardDamage + "만큼 피해를 줍니다.";

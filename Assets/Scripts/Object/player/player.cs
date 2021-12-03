@@ -87,7 +87,6 @@ namespace ArcanaDungeon.Object
 
             if (Input.GetKey(KeyCode.Q))
             {
-                UI.uicanvas.ShowMessage("나는 공격을 했다!!!");
 
                 //atcd.UseCard(Dungeon.dungeon.Ene);
                 //Debug.Log("플레이어측 체력" + Dungeon.dungeon.Ene.GetHp());
