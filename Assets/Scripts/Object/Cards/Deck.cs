@@ -138,6 +138,7 @@ namespace ArcanaDungeon.cards
             UsedDeck.Add(Hands[SlotNum]);
             //Debug.Log(UsedDeck[0].cardTape + "사용된 카드타입");
             Hands.RemoveAt(SlotNum);
+            Dungeon.dungeon.Plr.Turnend();
         }
 
 

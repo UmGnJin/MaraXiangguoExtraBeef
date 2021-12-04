@@ -16,7 +16,7 @@ namespace ArcanaDungeon.Object
         public int power;
 
         public bool exhausted = false;
-        private int block; 
+        protected int block; 
         private int vision_distance;
         public int isTurn;  //1 이상일 경우 이 객체의 턴이다, 0일 경우 단순히 이 객체의 턴이 아닌 것이며, 음수일 경우 기절 등의 이유로 턴이 생략될 것이다
 
@@ -56,7 +56,10 @@ namespace ArcanaDungeon.Object
             }
             else
             {
+                Debug.Log(this.hp);
                 this.hp += val;
+                UI.uicanvas.blood(transform.position);
+                Debug.Log(this.hp);
                 if (this.hp <= 0)
                 {
                     this.die();
@@ -66,7 +69,7 @@ namespace ArcanaDungeon.Object
         }
         public void be_hit(int val)
         {
-            UI.uicanvas.blood(transform.position);
+            
             HpChange(-val);
         }
         public void be_fired(int val) {
@@ -120,7 +123,6 @@ namespace ArcanaDungeon.Object
                     this.block += val;
                 }
             }
-            UI.uicanvas.GaugeChange();
         }
 
         //★이동 관련 함수, 현재 필요 없어보이니 태종이가 검토 후 삭제할 것

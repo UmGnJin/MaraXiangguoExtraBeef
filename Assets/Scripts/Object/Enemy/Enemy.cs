@@ -123,7 +123,14 @@ namespace ArcanaDungeon.Object
                 Dungeon.dungeon.currentlevel.temp_gameobjects[ii % Dungeon.dungeon.currentlevel.width, ii / Dungeon.dungeon.currentlevel.width].GetComponent<SpriteRenderer>().color = new Color(1, 0.2f, 0.2f);
             }
         }
-
+        public void posattack(float x, float y, int dmg)
+        {
+            if (Plr_pos[0, 0] == x && Plr_pos[0, 1] == y)
+            {
+                Dungeon.dungeon.Plr.be_hit(dmg);
+            }
+        }
+        
         public override void die()
         {
             Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1].Remove(this.gameObject);

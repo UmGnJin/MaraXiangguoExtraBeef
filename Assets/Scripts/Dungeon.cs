@@ -292,7 +292,7 @@ namespace ArcanaDungeon
                             mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat_Fire")];
                             break;
                         default:
-                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Gnoll")];
+                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Crabig")];
                             break;
                     }
 
@@ -310,12 +310,13 @@ namespace ArcanaDungeon
                             int y = random.Next(0, currentlevel.levelr.yMax);
                             if (currentlevel.map[x, y] == Terrain.GROUND)
                             {
-                                pos = new Vector2(x, y);
+                                pos = new Vector2(Mathf.Round(x-1), Mathf.Round(y));
                                 break;
                             }
                         }
                     //}
                     enemylist.Add(Instantiate(mob, pos, Quaternion.identity));
+
                 }
                 enemies.Add(enemylist);
             }

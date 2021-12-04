@@ -338,7 +338,25 @@ namespace ArcanaDungeon.Object
             }
         }
 
-
+        public new void BlockChange(int val)
+        {
+            if (val > 0)
+            {
+                this.block += val;
+            }
+            else
+            {
+                if (this.block + val < 0)
+                {
+                    this.block = 0;
+                }
+                else
+                {
+                    this.block += val;
+                }
+            }
+            UI.uicanvas.GaugeChange();
+        }
         public override void die()
         {
             Debug.Log("»ç¸Á!");
