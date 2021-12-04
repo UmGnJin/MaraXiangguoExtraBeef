@@ -44,72 +44,39 @@ namespace ArcanaDungeon.Object
 
         public void HpChange(int val)
         {
+            if (val < 0)
+            {
+                BlockChange(val);
+                if (block + val < 0) { val += block; } else { val = 0; }
+            }
+
             if (val > 0)
             {
-                if (this.hp + val > this.maxhp)
-                {
-                    this.hp = this.maxhp;
-                }
-                else
-                {
-                    this.hp += val;
-                }
+                this.hp = Mathf.Clamp(this.hp + val, 0, this.maxhp);
             }
             else
             {
-                UI.uicanvas.blood(transform.position);
                 this.hp += val;
-                if (this.hp < 0)
+                if (this.hp <= 0)
                 {
                     this.die();
                 }
             }
+            UI.uicanvas.GaugeChange();  //플레이어 체력/스태미나/방어도 갱신, player에 들어가야 하는데 반복되는 부분이 좀 많아 그냥 여기에 끼워넣음
         }
-        public void Fire_HpChange(int val)
+        public void be_hit(int val)
         {
-            if (val > 0)
-            {
-                if (this.hp + val > this.maxhp)
-                {
-                    this.hp = this.maxhp;
-                }
-                else
-                {
-                    this.hp += val;
-                }
-            }
-            else
-            {
-                UI.uicanvas.fire(transform.position);
-                this.hp += val;
-                if (this.hp < 0)
-                {
-                    this.die();
-                }
-            }
+            UI.uicanvas.blood(transform.position);
+            HpChange(-val);
         }
-        public void poison_HpChange(int val)
+        public void be_fired(int val) {
+            UI.uicanvas.fire(transform.position);
+            HpChange(-val);
+        }
+        public void be_poisoned(int val)
         {
-            if (val > 0)
-            {
-                if (this.hp + val > this.maxhp)
-                {
-                    this.hp = this.maxhp;
-                }
-                else
-                {
-                    this.hp += val;
-                }
-            }
-            else
-            {
-                UI.uicanvas.poison(transform.position);
-                this.hp += val;
-                if (this.hp < 0)
-                {
-                    this.die();
-                }
-            }
+            UI.uicanvas.poison(transform.position);
+            HpChange(-val);
         }
 
         //stamina 관련 함수
@@ -145,18 +112,18 @@ namespace ArcanaDungeon.Object
                 this.block += val;
             }
             else {
-                if (this.block - val < 0)
+                if (this.block + val < 0)
                 {
                     this.block = 0;
                 }
                 else { 
-                    this.block -= val;
+                    this.block += val;
                 }
             }
-            
+            UI.uicanvas.GaugeChange();
         }
 
-        //이동 관련 함수
+        //★이동 관련 함수, 현재 필요 없어보이니 태종이가 검토 후 삭제할 것
         public void move() { }
 
         public void route_BFS(int dest_x, int dest_y)    //넓이 우선 탐색으로 목적지까지의 경로를 route_pos에 저장해주는 함수
@@ -206,10 +173,9 @@ namespace ArcanaDungeon.Object
         {
             if (this.condition.ContainsKey(0)) {    //연소 - 고정된 양의 피해를 일정 턴동안 받는다. 중독에 비해 초기 수치가 높아야 한다. 물에 접촉 시 즉시 해제되어야 한다.
                 if (this.condition[0] > 0) {
-                    Fire_HpChange(-10);
+                    be_fired(10);
                     this.condition[0] -= 1;
                 }
-
             }
             if (this.condition.ContainsKey(1)) {    //기절 - 1턴동안 행동할 수 없다.(무한스턴 방지용 대책이 필요할수 있음)
                 if (this.condition[1] > 0)
@@ -227,7 +193,7 @@ namespace ArcanaDungeon.Object
             }
             if (this.condition.ContainsKey(3)) {    //중독 - 중첩형 상태이상. 중첩 횟수와 같은 양의 피해를 받고, 중첩이 1 감소한다. 이렇게 중첩이 0이 될 경우, 중독이 해제된다.
                 if (this.condition[3] > 0) {    
-                    poison_HpChange(-condition[3]);    
+                    be_poisoned(condition[3]);    
                     this.condition[3] -= 1;
                 }
             }
@@ -262,6 +228,91 @@ namespace ArcanaDungeon.Object
             this.condition_process();
             this.StaminaChange(5);
             this.isTurn -= 1;
+        }
+
+        public Thing range_attack(int dest_x, int dest_y, bool by_player)   //★벽을 사이에 두고 공격 시 공격이 불가능하도록 수정 필요
+        { //원거리 공격, pierce는 공격 범위 안의 모든 적을 공격하는 관통 공격일 경우 true, friendly_fire는 이 공격으로 아군도 공격 가능할 경우 true(보통 1턴 충전 뒤 지정한 위치로 발사하는 스킬에 사용될 예정)
+            //이 몬스터의 현재 좌표부터 (dest_x,dest_y)까지 맞닿는 사각형 좌표들을 구해옴
+            List<float[]> result = new List<float[]>();
+            //목표 지점과 몬스터 사이가 수평 일직선이라면 x좌표만 바꿔가며 result에 저장
+            if (dest_y - transform.position.y == 0)
+            {
+                int temp_var = dest_x - transform.position.x > 0 ? 1 : -1;
+                for (float i = transform.position.x; i * temp_var <= dest_x * temp_var; i += temp_var)
+                {
+                    result.Add(new float[2] { i, dest_y });
+                }
+                //목표 지점과 몬스터 사이가 수직 일직선이라면 y좌표만 바꿔가며 result에 저장
+            }
+            else if (dest_x - transform.position.x == 0)
+            {
+                int temp_var = dest_y - transform.position.y > 0 ? 1 : -1;
+                for (float i = transform.position.y; i * temp_var <= dest_y * temp_var; i += temp_var)
+                {
+                    result.Add(new float[2] { dest_x, i });
+                }
+                //일직선이 아니라면 
+            }
+            else
+            {
+                float x_cur = transform.position.x; float y_cur = transform.position.y; //현재 확인 중인 좌표, 타입 오류 나면 float으로 변경할 것
+                float slope = (dest_x - x_cur) / (dest_y - y_cur);
+                int x_gap = dest_x - x_cur > 0 ? 1 : -1;
+                int y_gap = dest_y - y_cur > 0 ? 1 : -1;
+                float y_changing_at_x = x_cur + y_gap * slope / 2 + x_gap * 0.5f; //y좌표가 변할 때의 x좌표값, 소수점 아래가 0.0 ~ 0.5 라면 아래 for문들 조건문에서 해당 칸의 정사각형을 지나지만 해당 칸의 좌표값보다는 작다, 따라서 기준인 y_changin_x에 0.5f를 더해 기준을 좀 높여 놓는다
+                //첫 y좌표 0.5 변화하는 동안
+                for (; x_cur * x_gap < y_changing_at_x * x_gap; x_cur += x_gap)
+                {
+                    result.Add(new float[2] { x_cur, y_cur });
+                }
+                y_cur += y_gap;
+                //중간
+                for (; y_cur * y_gap < dest_y * y_gap; y_cur += y_gap)
+                {
+                    if (y_changing_at_x % 1 != 0)
+                    {
+                        result.Add(new float[2] { x_cur - x_gap, y_cur });
+                    }
+                    y_changing_at_x += y_gap * slope;
+                    for (; x_cur * x_gap < y_changing_at_x * x_gap; x_cur += x_gap)
+                    {
+                        result.Add(new float[2] { x_cur, y_cur });
+                    }
+                }
+                //마지막 y좌표가 0.5 변화하는 동안
+                if (y_changing_at_x % 1 != 0)
+                {
+                    result.Add(new float[2] { x_cur - x_gap, y_cur });
+                }
+                for (; x_cur * x_gap <= dest_x * x_gap; x_cur += x_gap)
+                {
+                    result.Add(new float[2] { x_cur, y_cur });
+                }
+            }
+
+
+            //가장 가까운 Thing을 찾아 반환한다
+            Thing closest = null;
+            int closest_distance = 999;
+            foreach (float[] r in result)
+            {
+                foreach (GameObject t in Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1])
+                {
+                    if (t != this.gameObject & r[0] == t.transform.position.x & r[1] == t.transform.position.y & Dungeon.distance_cal(transform, t.transform) < closest_distance)
+                    {
+                        closest = t.GetComponent<Enemy>();
+                        closest_distance = Dungeon.distance_cal(transform, t.transform);
+                    }
+                }
+                if (!by_player & r[0] == Dungeon.dungeon.Plr.transform.position.x & r[1] == Dungeon.dungeon.Plr.transform.position.y & Dungeon.distance_cal(transform, Dungeon.dungeon.Plr.transform) < closest_distance)
+                {
+                    closest = Dungeon.dungeon.Plr;
+                    closest_distance = Dungeon.distance_cal(transform, Dungeon.dungeon.Plr.transform);
+                }
+            }
+
+            if (closest != null) { UI.uicanvas.range_shot(this.gameObject, closest.gameObject); }
+            return closest;
         }
 
         //자신이 아닌 상대의 상태를 변화시키는 기능들은 이 아래로 추가 바람.

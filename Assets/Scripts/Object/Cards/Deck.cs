@@ -30,25 +30,40 @@ namespace ArcanaDungeon.cards
 
         public void SettingFstDeck()// 만약 플레이어 직업 생기면 직업별 초기 카드 세팅 
         {
-            
-            for (int i = 0; i < 17; i++)
+            AttackCard temp_a = null;
+            BlockCard temp_b = null;
+            FireCard temp_f = null;
+
+            for (int i = 0; i < 7; i++)
             {
-                AttackCard AtCd = new AttackCard();
-                AtCd.IncreaseDMG(20);
-                AtCd.costChange(30);
-                CardsDeck.Add(AtCd);
+                temp_a = new AttackCard();
+                CardsDeck.Add(temp_a);
             }
-            for (int i = 17; i < 34; i++)
+            for (int i = 7; i < 14; i++)
             {
-                AttackCard AtC = new AttackCard();
-                CardsDeck.Add(AtC);
+                temp_a = new AttackCard();  //★현재 IncreaseDMG를 실행할 경우 무조건 카드 이름이 '임시 강타'로 고정됨, 다양한 카드 구현을 위해 함수 개편이 필요해보임
+                temp_a.IncreaseDMG(20);
+                temp_a.costChange(30);
+                CardsDeck.Add(temp_a);
             }
-            for (int i = 34; i < 50; i++)
+            for (int i = 14; i < 21; i++)
             {
-                FireCard FrCd = new FireCard();
-                CardsDeck.Add(FrCd);
+                temp_a = new AttackCard();
+                temp_a.BasicRange();
+                CardsDeck.Add(temp_a);
+                
             }
-            
+            for (int i = 21; i < 28; i++)
+            {
+                temp_f = new FireCard();
+                CardsDeck.Add(temp_f);
+            }
+            for (int i = 28; i < 35; i++)
+            {
+                temp_b = new BlockCard();
+                CardsDeck.Add(temp_b);
+            }
+
             CardCount = CardsDeck.Count;
         }
 
@@ -98,27 +113,23 @@ namespace ArcanaDungeon.cards
             //Debug.Log("핸드에 있는 카드 수 : 3" + " 카드 타입 :" + CardSlot[3].cardTape);
         }
 
-        public int UsingCard(int SlotNum, player PLR, Enemy EMY )
+        public void UsingCard(int SlotNum, player PLR, Enemy EMY )
         {
-            int effectType = -1;
             switch (Hands[SlotNum].cardTape)
             {
                 case 1:
                     {
                         Hands[SlotNum].UseCard(PLR, EMY);
-                        effectType = 1;
                         break;
                     }
                 case 2:
                     {
                         Hands[SlotNum].UseCard(PLR, EMY);
-                        effectType = 2;
                         break;
                     }
                 default:
                     {
                         Hands[SlotNum].UseCard(PLR, EMY);
-                        effectType = 0;
                         break;
                     }
             }
@@ -127,7 +138,6 @@ namespace ArcanaDungeon.cards
             UsedDeck.Add(Hands[SlotNum]);
             //Debug.Log(UsedDeck[0].cardTape + "사용된 카드타입");
             Hands.RemoveAt(SlotNum);
-            return effectType;
         }
 
 

@@ -20,6 +20,7 @@ namespace ArcanaDungeon.cards
 
         public override void UseCard(player Plr, Enemy enemy)
         {
+            Debug.Log("방어 카드 사용됨 : " + playerBlock + " / "+(Plr != null));
             if (Plr != null)
             {
                 Plr.BlockChange(this.playerBlock);

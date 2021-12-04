@@ -26,12 +26,13 @@ namespace ArcanaDungeon
         public GameObject range;    //사거리 표시 담당
 
         private GameObject Plr; //★플레이어
+        private LineRenderer line;
         private Deck deck;   //플레이어에게 들어간 Deck 스트립트, SetPlr에서 위의 Plr와 함께 설정
         public Text log;  //로그
 
         private int selected = -1;  //손패에서 카드를 클릭하면 이 변수에 그 카드의 Hands에서의 인덱스 번호를 저장
         private int wii; //ui에서 어느 부분이 변경되어야 하는지 나타낸다
-        //-1=기본값, 변경될 것 없음 / 0 : 모든 ui 요소 초기화 / 1 : hp와 스태미나 갱신 / 2 : 패의 카드 확대 / 3 : 선택한 카드 사거리 표시 (카드가 커서 따라다니는 건 update에 구현) / 4 : 상태이상 툴팁 표시
+        //-1=기본값, 변경될 것 없음 / 0 : 모든 ui 요소 초기화 / 1 : 패의 카드 확대 / 2 : 선택한 카드 사거리 표시 (카드가 커서 따라다니는 건 update에 구현) / 3 : 상태이상 툴팁 표시
 
         private Vector2 mpos;   //마우스 좌표
 
@@ -51,6 +52,7 @@ namespace ArcanaDungeon
 
             card_on_cursor.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(card_background);    //마우스 커서를 따라다닐 UI 배경 저장
             wii = 0;
+            line = this.gameObject.GetComponent<LineRenderer>();
         }
 
         public void SetPlr(GameObject p) {   //이 스크립트의 Plr에 플레이어를 배정해줌, Dungeon에서 단 1번 실행됨
@@ -69,10 +71,9 @@ namespace ArcanaDungeon
             GameObject temp_ob;   //아래에서 나올 각종 작업에서 임시로 오브젝트 저장해둘 때 계속 쓸 임시 오브젝트
 
             //wii 조정하는 부분
-            //손패의 카드 확대 필요
             if (mpos.x > 120 & mpos.x < 840 & mpos.y > 0 & mpos.y < 160 & temp_hand_num <= deck.Hands.Count)
             {
-                wii = 2;
+                wii = 1;    //손패의 카드를 확대하라는 wii값
                 //손패 좌표 안에서 클릭하면 그 카드 번호를 selected에 저장한다, selected==-1 이 없으면 드래그 도중 다른 카드가 selected에 저장된다, GetMouseButtonDown은 if문에 들어가있어서인지 가끔 작동을 안 한다
                 if (Input.GetMouseButton(0) & selected == -1) { selected = temp_hand_num - 1; }
                 if (!Input.GetMouseButton(0)) { selected = -1; }
@@ -89,7 +90,7 @@ namespace ArcanaDungeon
                         card_on_cursor.GetComponent<RectTransform>().localPosition = mpos + new Vector2(-860, -440);
                         card_on_cursor.transform.GetChild(0).gameObject.SetActive(true);
                         card_on_cursor.transform.GetChild(0).GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-                        wii = 3;    //카드 사거리를 표시하라는 wii값
+                        wii = 2;    //카드 사거리를 표시하라는 wii값
                         for (int i = 1; i < 4; i++)
                         {
                             temp_ob = card_on_cursor.transform.GetChild(i).gameObject;
@@ -119,7 +120,7 @@ namespace ArcanaDungeon
                             mpos_world.x >= 0 & mpos_world.x <= Dungeon.dungeon.currentlevel.width & mpos_world.y >= 0 & mpos_world.x <= Dungeon.dungeon.currentlevel.height)
                         {
                             //패의 몇 번째 인덱스가 사용되었는지, 플레이어 스크립트, enemy 스크립트를 파라미터로 전달하되 만약 적이 없는 곳에 드래그했다면 enemy 스크립트 자리에 null이 전달됨
-                            int used = deck.UsingCard(selected, Plr.GetComponent<player>(), Dungeon.dungeon.find_enemy(mpos_world.x, mpos_world.y));
+                            deck.UsingCard(selected, Plr.GetComponent<player>(), Dungeon.dungeon.find_enemy(mpos_world.x, mpos_world.y));
                             Plr.GetComponent<player>().condition_process(); //★플레이어 스크립트에서 처리하게 옮길 것
                             //사용된 손패 오른쪽의 카드들을 1칸씩 왼쪽으로 이동시키기
                             for (int i = selected + 1; i < deck.max_Hand; i++)
@@ -140,16 +141,21 @@ namespace ArcanaDungeon
                 else if (card_on_cursor.transform.GetChild(0).gameObject.activeSelf){ wii = 0; }
             }
             //상태이상 확인 구역으로 커서 올림
-            if (mpos.x > 1440 & mpos.x < 1680 & mpos.y > 0 & mpos.y < 160) { wii = 4; }
+            if (mpos.x > 1440 & mpos.x < 1680 & mpos.y > 0 & mpos.y < 160) { wii = 3; }
 
             //wii에 따른 ui 처리 부분
             if (wii == 0) { AllReset(); wii = -1; }   //ui 요소 싸그리 비활성화시키는 부분
-            if (wii == 1) { GaugeChange(); wii = -1; } //플레이어 HP와 스태미나 갱신
-            if (wii == 2) { CardZoom(temp_hand_num);  wii = -1; }  //패에 커서를 올린 카드 확대
-            if (wii == 3) { RangeDisplay(deck.Hands[selected].getRange()); wii = -1; }   //현재 선택한 카드의 사거리 표시
-            if (wii == 4) { ConditionTooltip((int)(Mathf.Floor((mpos.x - 1440) / 80) + 3 * Mathf.Floor((160 - mpos.y) / 80))); wii = -1; }   //상태이상 툴팁 표시
+            if (wii == 1) { CardZoom(temp_hand_num); wii = -1; } //패에 커서를 올린 카드 확대
+            if (wii == 2) { RangeDisplay(deck.Hands[selected].getRange()); wii = -1; }  //현재 선택한 카드의 사거리 표시
+            if (wii == 3) { ConditionTooltip((int)(Mathf.Floor((mpos.x - 1440) / 80) + 3 * Mathf.Floor((160 - mpos.y) / 80))); wii = -1; }   //상태이상 툴팁 표시
 
-            if (Input.GetKey(KeyCode.Space))//★
+            //원거리 공격을 표시할 때 사용되는 linerenderer 투명하게 만들기
+            if (line.startColor[3] > 0f)
+            {
+                line.SetColors(new Color(1f, 1f, 1f, line.startColor[3] - 0.03f), new Color(1f, 1f, 1f, line.endColor[3] - 0.03f));
+            }
+
+            if (Input.GetKey(KeyCode.Space) & deck.Hands.Count < deck.max_Hand)//★
             {
                 deck.DrawCards(); card_draw(deck.Hands[deck.Hands.Count - 1]);
             }
@@ -174,16 +180,6 @@ namespace ArcanaDungeon
             small_tool_tip.transform.GetChild(0).gameObject.GetComponent<Text>().text = null;
             //range 초기화, 사거리 표시에 사용ehla
             range.SetActive(false);
-        }
-        private void GaugeChange() {    //플레이어의 HP 및 스태미나 게이지 갱신
-            float temp_hp = Plr.GetComponent<player>().GetHp();
-            float temp_st = Plr.GetComponent<player>().GetStamina();
-            if (temp_hp < 0) { temp_hp = 0f; }
-            if (temp_st < 0) { temp_st = 0f; }
-            hp_bar.transform.GetChild(2).GetComponent<Text>().text = temp_hp.ToString();
-            hp_bar.transform.GetChild(1).localScale = new Vector2(temp_hp / Plr.GetComponent<player>().maxhp, 1);
-            st_bar.transform.GetChild(2).GetComponent<Text>().text = temp_st.ToString();
-            st_bar.transform.GetChild(1).localScale = new Vector2(temp_st / Plr.GetComponent<player>().maxstamina, 1);
         }
         private void CardZoom(int th) { //커서를 올린 패의 카드 이미지 확대
             GameObject temp_ob = null;
@@ -223,6 +219,27 @@ namespace ArcanaDungeon
             }
         }
 
+        public void GaugeChange()
+        {    //플레이어의 HP/스태미나/방어도 갱신
+            if (this.Plr == null) { return; }   //가장 처음에 player를 생성하고 maxhp를 설정할 때 호출되면서 Plr가 null인 채로 오류가 날 때가 있다
+            float temp_hp = Plr.GetComponent<player>().GetHp();
+            float temp_st = Plr.GetComponent<player>().GetStamina();
+            if (temp_hp < 0) { temp_hp = 0f; }
+            if (temp_st < 0) { temp_st = 0f; }
+            hp_bar.transform.GetChild(2).GetComponent<Text>().text = temp_hp.ToString();
+            hp_bar.transform.GetChild(1).localScale = new Vector2(temp_hp / Plr.GetComponent<player>().maxhp, 1);
+            st_bar.transform.GetChild(2).GetComponent<Text>().text = temp_st.ToString();
+            st_bar.transform.GetChild(1).localScale = new Vector2(temp_st / Plr.GetComponent<player>().maxstamina, 1);
+            if (Plr.GetComponent<player>().GetBlock() > 0)
+            {
+                hp_bar.transform.GetChild(3).GetComponent<Text>().text = Plr.GetComponent<player>().GetBlock().ToString();
+            }
+            else
+            {
+                hp_bar.transform.GetChild(3).GetComponent<Text>().text = null;
+            }
+        }
+
         public void log_add(string str) {
             log.text = log.text.Remove(0, log.text.IndexOf('\n')+1) + "\n"+ str;
         }
@@ -250,6 +267,11 @@ namespace ArcanaDungeon
         {
             poison_par.transform.position = pos;
             poison_par.GetComponent<ParticleSystem>().Play();
+        }
+        public void range_shot(GameObject a, GameObject b) {
+            line.SetPosition(0, new Vector3(a.transform.position.x, a.transform.position.y, -1));
+            line.SetPosition(1, new Vector3(b.transform.position.x, b.transform.position.y, -1));
+            line.SetColors(new Color(1f, 1f, 1f, 1f), new Color(1f, 1f, 1f, 1f));
         }
     }
 }

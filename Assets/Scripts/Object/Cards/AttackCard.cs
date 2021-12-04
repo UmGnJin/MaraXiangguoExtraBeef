@@ -16,7 +16,7 @@ namespace ArcanaDungeon.cards
             setRange(1);
             this.illust = "sprites/Card/임시 공격";
             this.cardName = "공격카드";
-            this.cardInfo = cardDamage + "만큼 피해를 줍니다.";
+            this.cardInfo = "사거리 1칸, "+cardDamage + "만큼 피해를 줍니다.";
         }
         public void IncreaseDMG(int DmgUp) // 공격력 증가.
         {
@@ -24,7 +24,14 @@ namespace ArcanaDungeon.cards
             setRange(1);
             this.illust = "sprites/Card/임시 강타";
             this.cardName += "+";
-            this.cardInfo = cardDamage + "만큼 피해를 줍니다.";
+            this.cardInfo = "사거리 1칸, " + cardDamage + "만큼 피해를 줍니다.";
+        }
+        public void BasicRange() {  //원거리 공격 기본형
+            this.cardTape = 1;
+            setRange(5);
+            this.illust = "sprites/Card/화살 쏘기";
+            this.cardName = "화살 쏘기";
+            this.cardInfo = "사거리 5칸, " + cardDamage + "만큼 피해를 줍니다.";
         }
 
         public override void UseCard(player Plr, Enemy enemy)
@@ -33,7 +40,7 @@ namespace ArcanaDungeon.cards
             {
                 if (enemy != null)
                 {
-                    enemy.HpChange(-cardDamage);
+                    enemy.be_hit(cardDamage);
                     //상태이상 추가 할 부분
                     Plr.StaminaChange(-this.getCost());
                 }

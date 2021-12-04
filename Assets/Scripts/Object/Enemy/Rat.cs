@@ -61,7 +61,7 @@ namespace ArcanaDungeon.Object
                 {
                      if (Dungeon.distance_cal(Dungeon.dungeon.Plr.transform, this.transform) <= 1 & Plr_pos[0, 0] != -1)// 공격 거리 내에 플레이어가 존재 시, 기본 공격을 우선시한다.
                     {
-                        Dungeon.dungeon.Plr.HpChange(-power);
+                        Dungeon.dungeon.Plr.be_hit(power);
                         this.StaminaChange(-10);
                     }
                     else if (route_pos.Count > 0)

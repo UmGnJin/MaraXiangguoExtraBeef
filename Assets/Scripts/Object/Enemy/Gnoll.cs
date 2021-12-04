@@ -24,7 +24,6 @@ namespace ArcanaDungeon.Object
         public void FixedUpdate()
         {
             //체력바 갱신, 공격받거나 회복할 때마다 체력바를 갱신할 수만 있다면 어디로 위치를 옮겨도 됨
-            Debug.Log(this.gameObject + " 업데이트 중 : 체력 " + this.hp);
             this.gameObject.transform.GetChild(1).transform.localScale = new Vector2((this.hp > 0 ? this.hp : 0) / (float)this.maxhp, 0.1f);
             this.gameObject.transform.GetChild(1).localPosition = new Vector3(0.36f * (this.hp > 0 ? this.hp : 0) / this.maxhp, 0.8f, -0.2f);
 
@@ -59,7 +58,9 @@ namespace ArcanaDungeon.Object
                     Debug.Log("Plr_pos : "+Plr_pos[0,0]+ " / "+Plr_pos[0,1]);
                     if (Plr_pos[0, 0] != -1)
                     {
-                        this.range_attack(Plr_pos[0, 0], Plr_pos[0, 1], power, false);  //★공격력 10은 임시값이다, Floor에 따라 5/10/15로 증가하는 공격력을 변수에 집어넣어서 그 변수를 공격력 삼아야 한다
+                        Thing temp_target = range_attack(Plr_pos[0, 0], Plr_pos[0, 1], false);  //★공격력 10은 임시값이다, Floor에 따라 5/10/15로 증가하는 공격력을 변수에 집어넣어서 그 변수를 공격력 삼아야 한다
+                        temp_target.be_hit(power);
+                        UI.uicanvas.range_shot(this.gameObject, temp_target.gameObject);
                         this.StaminaChange(-30);
                        
                         
