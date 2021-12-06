@@ -50,8 +50,8 @@ namespace ArcanaDungeon
 
             //currentlevel = new RegularLevel();
             //currentlevel = new AnotherLevel();
-            currentlevel = new TestLevel();
-            //currentlevel = new BossLevel();
+            //currentlevel = new TestLevel();
+            currentlevel = new BossLevel();
             //주석처리 바꿔서 시작레벨 다른거로 테스트 가능.
 
             currentlevel.Create();
@@ -282,17 +282,37 @@ namespace ArcanaDungeon
             if (enemies.Count == 0 || enemies.Count == levels.Count -1)//현재 레벨이 처음이면, 몬스터를 조건에 맞게 스폰한다.
             {
                  List<GameObject>enemylist = new  List<GameObject>();
-                for (int i = 0; i < currentlevel.maxEnemies; i++)
+                int count = 0;
+                while (count<currentlevel.maxEnemies)
                 {
                     GameObject mob;
+                    GameObject[] mobs = new GameObject[3];
+
+
                     Vector2 pos = new Vector2();
                     switch (currentlevel.biome)
                     {
-                        case Biome.FIRE:
-                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat_Fire")];
+                        case Biome.BOSS_MECH:
+                            mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat")];
+                            break;
+                        case Biome.BOSS_ELEMENTAL:
+                            mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat")];
+                            break;
+                        case Biome.BOSS_CRAB:
+                            mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Crabig")];
+                            break;
+                        case Biome.BOSS_MIMIC:
+                            mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Mimic")];
+                            currentlevel.maxEnemies = 3;
+                            break;
+                        case Biome.BOSS_GNOLL:
+                            mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat")];
+                            
+                            currentlevel.maxEnemies = 2;
+                            
                             break;
                         default:
-                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Crabig")];
+                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat")];
                             break;
                     }
 
@@ -315,9 +335,20 @@ namespace ArcanaDungeon
                             }
                         }
                     //}
-                    enemylist.Add(Instantiate(mob, pos, Quaternion.identity));
+                    for (int u = 0; u < mobs.Length; u++)
+                    {
+                        if (count < currentlevel.maxEnemies && mobs[u]!=null)
+                        {
+                            enemylist.Add(Instantiate(mobs[u], pos, Quaternion.identity));
+                            count++;
 
+                        }
+                        else break;
+
+                    }
+                    
                 }
+
                 enemies.Add(enemylist);
             }
             else
