@@ -13,9 +13,7 @@ namespace ArcanaDungeon.cards
             this.cardTape = 2;
             this.costChange(10);
             playerBlock = 10;
-            this.illust = "sprites/Card/임시 방어";
-            this.cardName = "방어카드";
-            this.cardInfo = playerBlock + "만큼 방어도를 얻습니다.";
+            this.setCardSprite("임시 방어", "방어카드", playerBlock + "만큼 방어도를 얻습니다.");
         }
 
         public override void UseCard(player Plr, Enemy enemy)
