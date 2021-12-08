@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using ArcanaDungeon;
@@ -24,6 +25,10 @@ namespace ArcanaDungeon
         public GameObject fire_par;  //임시 파티클 담당, 나중에 몇 개 더 추가되지 않을까 싶다
         public GameObject poison_par;  //임시 파티클 담당, 나중에 몇 개 더 추가되지 않을까 싶다
         public GameObject range;    //사거리 표시 담당
+        public GameObject Cardlist_scroll;  //Cardlist_Panel에서 카드를 선택/나열할 때 사용되는 스크롤뷰
+        public GameObject Cardlist_panel;   //Cardlist_Panel에서 카드를 선택/나열할 때 사용되는 패널
+        public GameObject Cardlist_card;    //Cardlist_Panel에서 카드를 선택/나열할 때 사용되는 카드 이미지, 평소엔 없지만 카드를 획득할 때마다 Instantiate된 후 카드 목록을 열람할 때 이미지를 할당해 사용됨
+        public GameObject Cardlist_cancel;  //Cardlist_Panel에서 카드를 선택/나열할 때 사용되는 취소 버튼, 패널이 스크롤 될 때 움직이면 안 돼서 따로 저장되어 있음
 
         private GameObject Plr; //★플레이어
         private LineRenderer line;
@@ -31,13 +36,14 @@ namespace ArcanaDungeon
         public Text log;  //로그
 
         private int selected = -1;  //손패에서 카드를 클릭하면 이 변수에 그 카드의 Hands에서의 인덱스 번호를 저장
+        public Cards selected2; //Cardlist_Panel에서 카드를 선택할 때 선택된 카드를 나타냄
+        private bool selecting; //Cardlist_Panel에서 카드를 선택할 때 카드를 선택 중인 상태를 나타냄
         private int wii; //ui에서 어느 부분이 변경되어야 하는지 나타낸다
         //-1=기본값, 변경될 것 없음 / 0 : 모든 ui 요소 초기화 / 1 : 패의 카드 확대 / 2 : 선택한 카드 사거리 표시 (카드가 커서 따라다니는 건 update에 구현) / 3 : 상태이상 툴팁 표시
 
         private Vector2 mpos;   //마우스 좌표
 
         private const string card_background = "sprites/Card/카드 배경";
-        public Sprite temp; //테스트용 임시 이미지
 
         public void Awake()
         {
@@ -52,7 +58,17 @@ namespace ArcanaDungeon
 
             card_on_cursor.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(card_background);    //마우스 커서를 따라다닐 UI 배경 저장
             wii = 0;
+            selected = -1;
+            selected2 = null;
+            selecting = false;
             line = this.gameObject.GetComponent<LineRenderer>();
+        }
+        public void Start() {
+            //Cardlist_card 버튼을 게임 시작 시 뽑을 카드 더미만큼 생성, 생성자에서는 스크립팅 API에 접근할 수 없다며 실행되지 않는댄다 나참
+            for (int i = 0; i < deck.showDeckList().Count; i++)
+            {
+                Create_Cardlist_card();
+            }
         }
 
         public void SetPlr(GameObject p) {   //이 스크립트의 Plr에 플레이어를 배정해줌, Dungeon에서 단 1번 실행됨
@@ -64,7 +80,7 @@ namespace ArcanaDungeon
             }
         }
 
-        public void FixedUpdate() {
+        public void Update() {
 
             mpos = Input.mousePosition; //마우스 커서 위치를 mpos에 저장, 좌표는 World 좌표가 아닌 Screen 좌표로 UI 사용하는 그 좌표일 것임
             int temp_hand_num = (int)mpos.x / 120;  //현재 선택된 카드가 몇 번째 카드인지 저장해두는 변수, 1번~6번이 패
@@ -155,11 +171,10 @@ namespace ArcanaDungeon
                 line.SetColors(new Color(1f, 1f, 1f, line.startColor[3] - 0.03f), new Color(1f, 1f, 1f, line.endColor[3] - 0.03f));
             }
 
-            if (Input.GetKey(KeyCode.Space) & deck.Hands.Count < deck.max_Hand)//★
+            if (Input.GetKey(KeyCode.Space) & deck.Hands.Count < deck.max_Hand)//★추후 삭제할 것
             {
                 deck.DrawCards(); card_draw(deck.Hands[deck.Hands.Count - 1]);
             }
-            
         }
 
         public void SetWii(int a) {
@@ -250,6 +265,89 @@ namespace ArcanaDungeon
             card_ui[temp].transform.GetChild(2).gameObject.SetActive(true);
             card_ui[temp].transform.GetChild(2).GetComponent<Image>().sprite = Resources.Load<Sprite>(c.illust);
             card_ui[temp].transform.GetChild(3).GetComponent<Text>().text = c.cardInfo;
+        }
+
+        public void Card_Select(int which) {
+            //which는 어떤 카드 더미 목록을 보여줄지 나타냄, 0=플레이어의 모든 카드 / 1=뽑을 카드 더미 / 2=버린 카드 더미
+
+            int temp1 = 0;
+            List<GameObject> temp2 = new List<GameObject>();
+            Transform temp3 = null;
+            //뽑을 카드 더미를 temp2에 저장
+            if (which == 0 | which == 1) {
+                foreach (Cards c in deck.showDeckList())
+                {
+                    temp3 = Cardlist_panel.transform.GetChild(temp1);
+                    temp3.GetChild(0).gameObject.GetComponent<Text>().text = c.cardName;
+                    temp3.GetChild(1).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(c.illust);
+                    temp3.GetChild(2).gameObject.GetComponent<Text>().text = c.cardInfo;
+                    temp3.gameObject.GetComponent<Cardlist_select>().SetCOT(c);
+                    temp2.Add(temp3.gameObject);
+                    temp1++;
+                }
+            }
+            if (which == 0 | which == 2)
+            {
+                foreach (Cards c in deck.showUsedList())
+                {
+                    temp3 = Cardlist_panel.transform.GetChild(temp1);
+                    temp3.GetChild(0).gameObject.GetComponent<Text>().text = c.cardName;
+                    temp3.GetChild(1).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(c.illust);
+                    temp3.GetChild(2).gameObject.GetComponent<Text>().text = c.cardInfo;
+                    temp3.gameObject.GetComponent<Cardlist_select>().SetCOT(c);
+                    temp2.Add(temp3.gameObject);
+                    temp1++;
+                }
+            }
+
+            //temp2를 카드 이름에 따라 정렬, 이거 안 하면 뽑을 카드 더미에서 다음에 뽑을 카드가 뭔지 다 보인다
+            temp2 = temp2.OrderBy(x => x.GetComponent<Cardlist_select>().GetCOT().cardName).ToList();
+
+            Debug.Log("temp1 : " + temp1);
+            //Cardlist_panel의 height를 temp2의 인덱스 개수에 따라 조절하고 활성화, temp2의 인덱스를 배치하고 활성화해 목록처럼 보이게 만들기
+            temp1 = Mathf.Max(420 * (temp1 / 5 + 1) + 20, 1080);    //임시로 아까 쓰던 temp 돌려 씀
+            Cardlist_panel.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, temp1); //Scroll View에서 Content의 크기가 Viewport보다 크지 않으면 스크롤이 이뤄지지 않음
+            Cardlist_panel.GetComponent<RectTransform>().localPosition = new Vector2(0, -temp1 * 0.5f + 540);
+            Cardlist_scroll.SetActive(true);
+            Cardlist_cancel.SetActive(true);   //닫기 버튼
+            temp1 = 0;
+            foreach (GameObject g in temp2)
+            {
+                g.GetComponent<RectTransform>().localPosition = new Vector2(- 760 + 320 * (temp1 % 5), Cardlist_panel.GetComponent<RectTransform>().rect.height*0.5f - 220 - 420 * (temp1 / 5));
+                g.SetActive(true);
+                for (int i = 0; i < 3; i++)
+                {
+                    g.transform.GetChild(i).gameObject.SetActive(true);
+                }
+                temp1++;
+            }
+            //플레이어가 입력할 때까지 실행 보류
+            selecting = true;
+
+            //놀랍게도 Time.timeScale=0f가 되면 실행 중이던 함수라도 update와 연관되어 있지 않으면 모조리 멈춘다, 덕분에 아래 부분이 보류될 수 있다
+            Debug.Log("카드셀렉트 종료!");
+        }
+        public void SetSelected2(Cards c) {
+            selected2 = c;
+            //Card_select에서 사용된 모든 오브젝트 비활성화하고 숨기기
+            Cardlist_scroll.SetActive(false);
+            Cardlist_cancel.SetActive(false);
+            foreach (Transform child in Cardlist_panel.transform) {
+                child.gameObject.SetActive(false);
+            }
+            selecting = false;
+        }
+        public Cards GetSelected2()
+        {
+            return selected2;
+        }
+        public bool GetSelecting() {
+            return selecting;
+        }
+        public void Create_Cardlist_card() {
+            GameObject temp = Instantiate(this.Cardlist_card) as GameObject;
+            temp.SetActive(false);
+            temp.transform.SetParent(Cardlist_panel.transform, false);
         }
 
         public void blood(Vector3 pos) {

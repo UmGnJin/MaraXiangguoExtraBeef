@@ -83,8 +83,6 @@ namespace ArcanaDungeon.Object
         private void FixedUpdate()
         {//입력받는곳
 
-           
-
             if (Input.GetKey(KeyCode.Q))
             {
 

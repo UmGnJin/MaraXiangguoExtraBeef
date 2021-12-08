@@ -25,6 +25,7 @@ namespace ArcanaDungeon.cards
          * 000(0) 기본 카드, 100 공격 카드, 200 방어카드 300 상태이상 카드 백의 자리 수로 나타냄
          * *10
          */
+
         public virtual void UseCard(player Plr, Enemy enemy){}
 
         public virtual void settingCard(){}

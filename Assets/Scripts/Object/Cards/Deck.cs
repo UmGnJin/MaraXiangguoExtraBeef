@@ -94,6 +94,9 @@ namespace ArcanaDungeon.cards
         {
             return CardsDeck;
         }
+        public List<Cards> showUsedList() {
+            return UsedDeck;
+        }
         public List<Cards> showCardSlot()
         {
             return Hands;

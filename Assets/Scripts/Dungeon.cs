@@ -62,7 +62,6 @@ namespace ArcanaDungeon
 
             Player = Players[0];
             Player = Instantiate(Player, new Vector2(0, 0), Quaternion.identity) as GameObject;
-            GameObject.Find("Canvas").GetComponent<UI>().SetPlr(Player);
             Plr = Player.GetComponent<player>();
             Plr.Spawn();
             UI.uicanvas.SetPlr(Player);
@@ -75,7 +74,6 @@ namespace ArcanaDungeon
             Ene.Spawn(); 
             Ene.HpChange(200); // 체력 설정 임의로함 나중에 몹 스포너에서 서정하게 해야할 듯 jgh.
             */
-
 
             whosTurn = 1;//플레이어 턴
 
