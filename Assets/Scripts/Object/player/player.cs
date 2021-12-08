@@ -240,7 +240,7 @@ namespace ArcanaDungeon.Object
                     transform.position = new Vector2(route_pos[0] % Dungeon.dungeon.currentlevel.width, route_pos[0] / Dungeon.dungeon.currentlevel.width);
                     route_pos.RemoveAt(0);
                     MoveTimer = MoveTimerLimit;
-                    Debug.Log("턴엔드 준비");
+                    
                     this.Turnend();
                 }
                 catch (Exception e) { Debug.Log(e); }

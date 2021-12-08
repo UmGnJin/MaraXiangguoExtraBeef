@@ -366,10 +366,18 @@ namespace ArcanaDungeon
             poison_par.transform.position = pos;
             poison_par.GetComponent<ParticleSystem>().Play();
         }
-        public void range_shot(GameObject a, GameObject b) {
+        public void range_shot(GameObject a, GameObject b)
+        {
             line.SetPosition(0, new Vector3(a.transform.position.x, a.transform.position.y, -1));
             line.SetPosition(1, new Vector3(b.transform.position.x, b.transform.position.y, -1));
             line.SetColors(new Color(1f, 1f, 1f, 1f), new Color(1f, 1f, 1f, 1f));
         }
+        public void range_shot_a(float ax,float ay, float bx, float by)
+        {
+            line.SetPosition(0, new Vector3(ax, ay, -1));
+            line.SetPosition(1, new Vector3(bx, by, -1));
+            line.SetColors(new Color(1f, 1f, 1f, 1f), new Color(1f, 1f, 1f, 1f));
+        }
+
     }
 }

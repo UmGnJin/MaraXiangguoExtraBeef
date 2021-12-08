@@ -290,6 +290,9 @@ namespace ArcanaDungeon
                     Vector2 pos = new Vector2();
                     switch (currentlevel.biome)
                     {
+                        case Biome.TEST:
+                            mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Eye")];
+                            break;
                         case Biome.BOSS_MECH:
                             mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat")];
                             break;

@@ -19,7 +19,7 @@ namespace ArcanaDungeon
             levelsize = LevelSize.SMALL;
             rooms = new List<Room>();
             //biome = (Biome)rand.Next(10, 15);
-            biome = Biome.BOSS_MIMIC;
+            biome = Biome.TEST;
             if (biome != Biome.BOSS_MECH)
             {
                 rooms.Add(new UpStairsRoom());
