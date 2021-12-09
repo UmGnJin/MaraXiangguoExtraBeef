@@ -39,7 +39,8 @@ namespace ArcanaDungeon.cards
         }
         public void conditionApp(Enemy enemy, int conKey, int conTurn)
         {
-            if (enemy != null){
+            if (enemy != null)
+            {
                 enemy.condition_add(conKey, conTurn);
             }
         }

@@ -10,9 +10,9 @@ namespace ArcanaDungeon.cards
     {
         public int cardTape = 0; // 카드 종류(ex 공격,회복,드로우)마다 다른 값.
         private int cardCost = 0; // 카드 스테미나 코스트
-        private int range;
+        private int range = 0;
         public string illust;
-        public string cardName = "sprites/Card/";
+        public string cardName = "기본카드";
         public string cardInfo = "이건 기본카드에오. 그래오 쓸모 없어오.";
         /* 카드종류 및 여러 효과 구현을 효율적으로 하기위해서는
          * 구조체로 다르게 만들 필요가 있음 
@@ -21,15 +21,13 @@ namespace ArcanaDungeon.cards
          *       카드 사용 메소드에서 클래스의 메소드 호출 - 당장 필요한게 아님
          * 
          * 카드 타입 코드 예시
-         *  카드 타입 ,1 |카드 코스트 ,2 | 카드 사거리 ,1 | 카드 수치(ex공격력 ,2 | 
-         * 000(0) 기본 카드, 100 공격 카드, 200 방어카드 300 상태이상 카드 백의 자리 수로 나타냄
-         * *10
+         *  카드 타입 ,2 |카드 코스트 ,2 | 카드 사거리 ,1 | 카드 수치(ex공격력 ,2 |
+         *  1,30,5,10,1,4 13051014
          */
+        public virtual void UseCard(player Plr, Enemy enemy) { }
 
-        public virtual void UseCard(player Plr, Enemy enemy){}
-
-        public virtual void settingCard(){}
-        public void costChange(int  newcost)
+        public virtual void settingCard() { }
+        public void costChange(int newcost)
         {
             this.cardCost = newcost;
         }
@@ -37,14 +35,17 @@ namespace ArcanaDungeon.cards
         {
             return cardCost;
         }
-        public int getRange() {
+        public int getRange()
+        {
             return this.range;
         }
-        public void setRange(int v) {
+        public void setRange(int v)
+        {
             this.range = v;
         }
-        public string getIllust() { //함수 이름은 대문자 I, 소문자 l 2개를 사용한다
-            return illust;        
+        public string getIllust()
+        { //함수 이름은 대문자 I, 소문자 l 2개를 사용한다
+            return illust;
         }
 
         public void setCardSprite(string illu, string cname, string cinfo)

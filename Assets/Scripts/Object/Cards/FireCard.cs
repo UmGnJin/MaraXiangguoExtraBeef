@@ -8,12 +8,27 @@ namespace ArcanaDungeon.cards
     public class FireCard : Cards
     {
         private int fireTurn = 0;
-        public FireCard()
+        private int fir = 0;
+        public FireCard(int typ)
         {
-            fireTurn = 3;
-            this.costChange(20);
-            setRange(5);
-            this.setCardSprite("임시 발화", "발화카드", this.fireTurn + "턴 동안 피해를 줍니다.");
+            this.cardTape = typ;
+            this.creatAtCard(typ);
+            /*this.costChange(20);
+            setRange(5);*/
+        }
+        private void creatAtCard(int typ)
+        {
+            int co = typ % 1000000;
+            int patto = co / 100000;
+            co %= 100000;
+            this.costChange(co / 1000); co %= 1000;
+            this.setRange(co / 100); co %= 100;
+            this.fir = co / 10;
+            this.fireTurn = co % 10;
+            if (patto == 0)
+            {
+                this.setCardSprite("임시 발화", "발화카드", this.fireTurn + "턴 동안 피해를 줍니다.");
+            }
         }
         public override void UseCard(player Plr, Enemy enemy)
         {

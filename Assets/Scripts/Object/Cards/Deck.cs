@@ -13,6 +13,14 @@ namespace ArcanaDungeon.cards
         // 안쓴 카드와 쓴 카드를 놓을 공간
         private List<Cards> CardsDeck = new List<Cards>(); // 덱 리스트
         private List<Cards> UsedDeck = new List<Cards>(); // 사용한 카드 덱 리스트
+        /*  카드 타입,2 |카드 코스트,2 | 카드 사거리,1 | 카드 수치(ex공격력 ,2 |
+         *  1,30,5,10,1,4 13051014*/
+        private int[] deckSet1 = new int[] { 1020120, 1020120, 1020120, 1020120, 1020120, 1020120, 1020120,
+                                             1130140, 1130140, 1130140, 1130140, 1130140, 1130140, 1130140,
+                                             1220520, 1220520, 1220520, 1220520, 1220520, 1220520, 1220520,
+                                             2010010, 2010010, 2010010, 2010010, 2010010, 2010010, 2010010,
+                                             3020503, 3020503, 3020503, 3020503, 3020503, 3020503, 3020503
+        };
 
         private int CardCount; // 덱의 카드 수
 
@@ -30,11 +38,29 @@ namespace ArcanaDungeon.cards
 
         public void SettingFstDeck()// 만약 플레이어 직업 생기면 직업별 초기 카드 세팅 
         {
-            AttackCard temp_a = null;
+            /*AttackCard temp_a = null;
             BlockCard temp_b = null;
-            FireCard temp_f = null;
+            FireCard temp_f = null;*/
 
-            for (int i = 0; i < 7; i++)
+
+            for (int i = 0; i < deckSet1.Length; i++)
+            {
+                Cards tempC = null;
+                if (deckSet1[i] / 1000000 == 1)
+                {
+                    tempC = new AttackCard(deckSet1[i]);
+                }
+                else if (deckSet1[i] / 1000000 == 2)
+                {
+                    tempC = new BlockCard(deckSet1[i]);
+                }
+                else if (deckSet1[i] / 1000000 == 3)
+                {
+                    tempC = new FireCard(deckSet1[i]);
+                }
+                CardsDeck.Add(tempC);
+            }
+            /*for (int i = 0; i < 7; i++)
             {
                 temp_a = new AttackCard();
                 CardsDeck.Add(temp_a);
@@ -62,7 +88,8 @@ namespace ArcanaDungeon.cards
             {
                 temp_b = new BlockCard();
                 CardsDeck.Add(temp_b);
-            }
+            }*/
+
 
             CardCount = CardsDeck.Count;
         }
