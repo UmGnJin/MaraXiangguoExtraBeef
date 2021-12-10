@@ -273,6 +273,15 @@ namespace ArcanaDungeon
             //둘을 비교해 더 큰 값을 반환한다, 대각선으로 이동하는 게임 특성 상 그냥 더 큰 쪽이 거리가 된다
             return (x_gap > y_gap ? x_gap : y_gap);
         }
+        public static int distance_cal_a(float x1, float y1, float x2, float y2)
+        {
+            //물체의 x좌표값 차이와 y좌표값 차이를 구해서 절댓값을 씌운다.
+            int x_gap = Math.Abs((int)(x1 - x2));
+            int y_gap = Math.Abs((int)(y1 - y2));
+
+            //둘을 비교해 더 큰 값을 반환한다, 대각선으로 이동하는 게임 특성 상 그냥 더 큰 쪽이 거리가 된다
+            return (x_gap > y_gap ? x_gap : y_gap);
+        }
 
         public void SpawnMobs()//레벨 지형이 깔린 뒤 실행. 일단은 무작위 좌표를 선정하기 때문에 몹 밀도가 불균일하게 나올 수 있다. 시간이 남는다면 방 선정 - 스폰할 몹 수 선정 - 위치 선정의 과정으로 바꿀 것.
         {
@@ -291,7 +300,7 @@ namespace ArcanaDungeon
                     switch (currentlevel.biome)
                     {
                         case Biome.TEST:
-                            mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Eye")];
+                            mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Ali")];
                             break;
                         case Biome.BOSS_MECH:
                             mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat")];
@@ -307,8 +316,9 @@ namespace ArcanaDungeon
                             currentlevel.maxEnemies = 3;
                             break;
                         case Biome.BOSS_GNOLL:
-                            mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat")];
-                            
+                            mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Ali")];
+                            mobs[1] = Mobs[Array.FindIndex(Mobs, m => m.name == "Zera")];
+
                             currentlevel.maxEnemies = 2;
                             
                             break;
