@@ -13,8 +13,6 @@ namespace ArcanaDungeon.cards
         {
             this.cardTape = typ;
             this.creatAtCard(typ);
-            /*this.costChange(20);
-            setRange(5);*/
         }
         private void creatAtCard(int typ)
         {

@@ -12,12 +12,12 @@ namespace ArcanaDungeon.cards
         public AttackCard(int cType)
         {
             this.cardTape = cType;
-            creatAtCard(cType);
+            settingCard(cType);
             /*this.costChange(20);
             setRange(1);
             this.setCardSprite("임시 공격", "공격카드", "사거리 1칸, " + cardDamage + "만큼 피해를 줍니다.");*/
         }
-        private void creatAtCard(int typ)
+        private void settingCard(int typ)
         {
             int co = typ % 1000000;
             int patto = co / 100000;

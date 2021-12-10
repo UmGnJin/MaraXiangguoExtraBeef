@@ -363,8 +363,8 @@ namespace ArcanaDungeon
         }
         public void poison(Vector3 pos)
         {
-            poison_par.transform.position = pos;
-            poison_par.GetComponent<ParticleSystem>().Play();
+            //poison_par.transform.position = pos; // 이거 두중 주석 없애면 턴이 안 넘어옴 머지
+            //poison_par.GetComponent<ParticleSystem>().Play();
         }
         public void range_shot(GameObject a, GameObject b)
         {

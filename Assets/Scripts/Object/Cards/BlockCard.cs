@@ -11,13 +11,13 @@ namespace ArcanaDungeon.cards
         public BlockCard(int typ)
         {
             this.cardTape = typ;
-            this.creatAtCard(typ);
+            this.settingCard(typ);
             /*this.costChange(10);
             playerBlock = 10;
             this.setCardSprite("임시 방어", "방어카드", playerBlock + "만큼 방어도를 얻습니다.");*/
 
         }
-        private void creatAtCard(int typ)
+        private void settingCard(int typ)
         {
             int co = typ % 1000000;
             int patto = co / 100000;

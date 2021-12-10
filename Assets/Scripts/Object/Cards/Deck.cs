@@ -38,12 +38,12 @@ namespace ArcanaDungeon.cards
 
         public void SettingFstDeck()// 만약 플레이어 직업 생기면 직업별 초기 카드 세팅 
         {
-            /*AttackCard temp_a = null;
-            BlockCard temp_b = null;
-            FireCard temp_f = null;*/
-
-
-            for (int i = 0; i < deckSet1.Length; i++)
+            CardsDeck.Add(new BasicConsCard(3020503));
+            CardsDeck.Add(new BasicConsCard(3020511));
+            CardsDeck.Add(new BasicConsCard(3020023));
+            CardsDeck.Add(new BasicConsCard(3020533));
+            Debug.Log("상태이상 카드 생성 끝");
+            /*for (int i = 0; i < deckSet1.Length; i++)
             {
                 Cards tempC = null;
                 if (deckSet1[i] / 1000000 == 1)
@@ -59,37 +59,8 @@ namespace ArcanaDungeon.cards
                     tempC = new FireCard(deckSet1[i]);
                 }
                 CardsDeck.Add(tempC);
-            }
-            /*for (int i = 0; i < 7; i++)
-            {
-                temp_a = new AttackCard();
-                CardsDeck.Add(temp_a);
-            }
-            for (int i = 7; i < 14; i++)
-            {
-                temp_a = new AttackCard();  //★현재 IncreaseDMG를 실행할 경우 무조건 카드 이름이 '임시 강타'로 고정됨, 다양한 카드 구현을 위해 함수 개편이 필요해보임
-                temp_a.IncreaseDMG(20);
-                temp_a.costChange(30);
-                CardsDeck.Add(temp_a);
-            }
-            for (int i = 14; i < 21; i++)
-            {
-                temp_a = new AttackCard();
-                temp_a.BasicRange();
-                CardsDeck.Add(temp_a);
-                
-            }
-            for (int i = 21; i < 28; i++)
-            {
-                temp_f = new FireCard();
-                CardsDeck.Add(temp_f);
-            }
-            for (int i = 28; i < 35; i++)
-            {
-                temp_b = new BlockCard();
-                CardsDeck.Add(temp_b);
             }*/
-
+            
 
             CardCount = CardsDeck.Count;
         }
@@ -145,24 +116,7 @@ namespace ArcanaDungeon.cards
 
         public void UsingCard(int SlotNum, player PLR, Enemy EMY )
         {
-            switch (Hands[SlotNum].cardTape)
-            {
-                case 1:
-                    {
-                        Hands[SlotNum].UseCard(PLR, EMY);
-                        break;
-                    }
-                case 2:
-                    {
-                        Hands[SlotNum].UseCard(PLR, EMY);
-                        break;
-                    }
-                default:
-                    {
-                        Hands[SlotNum].UseCard(PLR, EMY);
-                        break;
-                    }
-            }
+            Hands[SlotNum].UseCard(PLR, EMY);
             //CardSlot[SlotNum].UseCard(smthing);
             //Debug.Log("카드 사용됨" + cost);
             UsedDeck.Add(Hands[SlotNum]);
