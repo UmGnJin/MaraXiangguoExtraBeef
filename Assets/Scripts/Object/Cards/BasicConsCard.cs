@@ -21,7 +21,7 @@ namespace ArcanaDungeon.cards
                                                  { "임시 중독", "중독카드", "적에게 중독을 ", "중첩 시킵니다." } };
         public BasicConsCard(int typ)
         {
-            cardTape = typ;
+            cardTape = 8;
             settingCard(typ);
         }
         private void settingCard(int typ)
@@ -43,7 +43,6 @@ namespace ArcanaDungeon.cards
                 {
                     //상태이상 추가 할 부분
                     enemy.condition_add(this.consType, this.consTurn);
-                    Debug.Log("상태이상 종류 " + this.consType + "턴" + this.consTurn);
                     Plr.StaminaChange(-this.getCost());
                 }
                 else
@@ -52,7 +51,6 @@ namespace ArcanaDungeon.cards
                 {
                     //상태이상 추가 할 부분
                     Plr.condition_add(this.consType, this.consTurn);
-                    Debug.Log("상태이상 종류 " + this.consType + "턴" + this.consTurn);
                     Plr.StaminaChange(-this.getCost());
                 }
             }

@@ -174,11 +174,11 @@ namespace ArcanaDungeon
                 line.startColor = new Color(1f, 1f, 1f, line.startColor[3] - 0.005f);
                 line.endColor = new Color(1f, 1f, 1f, line.endColor[3] - 0.005f);
             }
-            
             if (Input.GetKey(KeyCode.Space) & deck.Hands.Count < deck.max_Hand)//★추후 삭제할 것
             {
                 deck.DrawCards(); card_draw(deck.Hands[deck.Hands.Count - 1]);
             }
+
         }
 
         public void SetWii(int a) {

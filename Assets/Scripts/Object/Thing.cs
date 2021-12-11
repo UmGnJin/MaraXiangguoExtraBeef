@@ -43,10 +43,6 @@ namespace ArcanaDungeon.Object
             //new void HpChange(val){
             //  //체력을 1 잃을 때마다 힘 1 증가
             //  super.HpChange(val);
-            if (this.condition[5] > 0)
-            {
-                this.HpChange(this.condition[5] / 10); // this.condition[5]를 십으로 나눈 몫이 약화 딜값
-            }
             if (val < 0)
             {
                 BlockChange(val);
@@ -72,6 +68,16 @@ namespace ArcanaDungeon.Object
         {
             UI.uicanvas.blood(transform.position);
             HpChange(-val);
+            Debug.Log("딜 경로 채크 1");
+            if (this.condition.ContainsKey(5))
+            {
+                Debug.Log("딜 경로 채크 2");
+                if (this.condition[5] > 0)
+                {
+                    this.HpChange(this.condition[5] / 10); // this.condition[5]를 십으로 나눈 몫이 약화 딜값
+                    Debug.Log("약화 딜 들어가는 값 : " + this.condition[5] / 10);
+                }
+            }
         }
         public void be_fired(int val)
         {
@@ -157,7 +163,7 @@ namespace ArcanaDungeon.Object
                 for (int ii = 0; ii < 8; ii++)
                 {
                     temp = checking.Peek() + dir[ii];
-                    Debug.Log((temp % Dungeon.dungeon.currentlevel.width) + " / " + (temp / Dungeon.dungeon.currentlevel.width));
+                    //Debug.Log((temp % Dungeon.dungeon.currentlevel.width) + " / " + (temp / Dungeon.dungeon.currentlevel.width));
                     if ((transform.position.x + transform.position.y * Dungeon.dungeon.currentlevel.width != temp) &
                             ((Terrain.thing_tag[Dungeon.dungeon.currentlevel.map[temp % Dungeon.dungeon.currentlevel.width, temp / Dungeon.dungeon.currentlevel.width]] & Terrain.passable) != 0) &
                             (temp > 0 & temp < Dungeon.dungeon.currentlevel.length) &
@@ -228,9 +234,13 @@ namespace ArcanaDungeon.Object
             {    // 약화는 일의 자리는 남은 턴수 10으로 나눈 몫은 데미지값
                 if (this.condition[5] > 0)
                 {
+                    if(this.condition[5] % 10 == 9)
+                    {
+                        this.condition[5] = 0;
+                    }
                     if (this.condition[5] % 10 > 3) // 14 
                     {
-                        this.condition[5] = (this.condition[5] / 10) * 10 + 2; // 12
+                        this.condition[5] = (this.condition[5] / 10) * 10 + 3; // 12
                     }
                     else if (this.condition[5] % 10 > 0)
                     {
@@ -238,7 +248,7 @@ namespace ArcanaDungeon.Object
                     }
                     else
                         this.condition[5] = 0; // 0
-                    Debug.Log("적 턴 종료 후 약화 값 " + this.condition[5]);
+                    Debug.Log("적 약화 값 " + this.condition[5]);
                 }
             }
             List<int> temp = new List<int>(this.condition.Keys);

@@ -13,7 +13,8 @@ namespace ArcanaDungeon.cards
         /*  카드 타입,2 |카드 코스트,2 | 카드 사거리,1 | 카드 수치(ex공격력 ,2 |
          *  1,30,5,10,1,4 13051014*/
         private int nextCdweak = 0;
-
+        private bool ispass = false;
+        public bool isnext = false;
         private int CardCount; // 덱의 카드 수
 
         public List<Cards> Hands = new List<Cards>();
@@ -34,20 +35,21 @@ namespace ArcanaDungeon.cards
             /*  14         2             0
              *  6          0             1드로우
              *  9          0             2공격 두번 발동
-             *  1          1             3턴소모 x
+             *  1          1             3턴 턴소모 x
              *  2          0             4다음 카드 약화 +3 1드로우
              *  - 20 / 1칸 / 공격 (대상이 가진 약점) / 대상에게 부여된 약점을 모두 없앱니다 / 카드를 사용한 방향의 반대 방향으로 도약 4칸 5
                 - 30 / 3칸 / 도약 / 즉시 덱을 셔플 도약 6
                 - 20 / 다음 번 체력을 잃는 것을 막습니다.7
-                - 30 / 급류 5턴8
-                - 40 / 패를 모두 버림 / 패가 가득 찰 때까지 드로우 / 이 카드는 턴을 소모하지 않음9
+                - 40 / 패를 모두 버림 / 패가 가득 찰 때까지 드로우 / 이 카드는 턴을 소모하지 않음 9
                 - 20 / 체력 +(연속으로 공격 카드를 사용한 턴 수 *3)10
              */
-            //CardsDeck.Add(new ThiefAttackCard(1220));
+            CardsDeck.Add(new ThiefAttackCard(1420));
             //CardsDeck.Add(new ThiefAttackCard(601));
             //CardsDeck.Add(new ThiefAttackCard(902));
-            //CardsDeck.Add(new ThiefAttackCard(113));
-            //CardsDeck.Add(new ThiefAttackCard(204));
+            CardsDeck.Add(new ThiefAttackCard(113));
+            CardsDeck.Add(new ThiefAttackCard(204));
+            CardsDeck.Add(new ThiefAttackCard(005));
+            //CardsDeck.Add(new BasicConsCard(3030025)); // - 30 / 급류 5턴 8
 
 
             CardCount = CardsDeck.Count;
@@ -91,21 +93,19 @@ namespace ArcanaDungeon.cards
 
         public void DrawCards() // 덱에 있는 맨 위부터 카드 정해진 수 만큼 가져오기
         {
-            if (Hands.Count < max_Hand)
+            if (Hands.Count < max_Hand & CardCount > 0)
             {
                 CardCount--;
                 Hands.Add(CardsDeck[CardCount]);
                 CardsDeck.RemoveAt(CardCount);
+                UI.uicanvas.card_draw(Hands[Hands.Count - 1]);
             }
             //Debug.Log("핸드에 있는 카드 수 " + Hands.Count);
-            //Debug.Log("핸드에 있는 카드 수 : 1" + " 카드 타입 :" + CardSlot[1].cardTape);
-            //Debug.Log("핸드에 있는 카드 수 : 2" + " 카드 타입 :" + CardSlot[2].cardTape);
-            //Debug.Log("핸드에 있는 카드 수 : 3" + " 카드 타입 :" + CardSlot[3].cardTape);
         }
 
         public void UsingCard(int SlotNum, player PLR, Enemy EMY)
         {
-            if (Hands[SlotNum].cardTape == 5)
+            if (Hands[SlotNum].cardTape == 5 & isnext)
             {
                 if (EMY != null)
                 {
@@ -114,7 +114,7 @@ namespace ArcanaDungeon.cards
                 }
             }
             Hands[SlotNum].UseCard(PLR, EMY);
-            if (Hands[SlotNum].cardTape < 5)
+            if (Hands[SlotNum].cardTape < 5 & isnext)
             {
                 if (EMY != null)
                 {
@@ -128,11 +128,21 @@ namespace ArcanaDungeon.cards
             UsedDeck.Add(Hands[SlotNum]);
             //Debug.Log(UsedDeck[0].cardTape + "사용된 카드타입");
             Hands.RemoveAt(SlotNum);
-            Dungeon.dungeon.Plr.Turnend();
+            if (!ispass)
+            {
+                Dungeon.dungeon.Plr.Turnend();
+                ispass = false;
+                isnext = true;
+            }
+        }
+        public void passTurn()
+        {
+            this.ispass = true;
         }
         public void addweak(int we)
         {
-            this.nextCdweak = we;
+            isnext = false;
+            this.nextCdweak = we * 10  + 2;
         }
 
 

@@ -38,6 +38,7 @@ namespace ArcanaDungeon.Object
         bool isMouseMove = false;
 
         public bool[,] FOV;
+
         // Start is called before the first frame update
         private void Awake()
         {
