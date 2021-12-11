@@ -26,7 +26,7 @@ namespace ArcanaDungeon.Object
             if (Input.GetKeyDown(KeyCode.W))
                 HpChange(-70);//자해 테스트
         }
-        public void FixedUpdate()
+        public new void FixedUpdate()
         {
             
             if (this.hp <= 0)
@@ -55,8 +55,8 @@ namespace ArcanaDungeon.Object
                                                                                                                    // 슬라임의 기본 공격은 독을 부여한다.
                 {
                     //Debug.Log(this.name+"이(가) 당신을 공격합니다.");
-                    HpChange(Dungeon.dungeon.Plr, -this.power);  //★Floor에 따라 변경되는 공격력을 변수에 집어넣어서 그 변수만큼만 깎아야 한다
-                    condition_add(Dungeon.dungeon.Plr, 3, 2);    //중독 2 부여
+                    Dungeon.dungeon.Plr.be_hit(this.power);
+                    Dungeon.dungeon.Plr.condition_add(3, 2);    //중독 2 부여
                     this.StaminaChange(-20);
                 }
                 else if (route_pos.Count > 0)

@@ -25,7 +25,7 @@ namespace ArcanaDungeon.Object
             slime = Dungeon.dungeon.Mobs[Array.FindIndex(Dungeon.dungeon.Mobs, m => m.name == "Slime")];
         }
 
-        public void FixedUpdate()
+        public new void FixedUpdate()
         {
             if (isTurn > 0)
             {

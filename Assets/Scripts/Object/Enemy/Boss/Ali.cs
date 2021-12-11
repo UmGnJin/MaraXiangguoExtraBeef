@@ -30,12 +30,8 @@ namespace ArcanaDungeon.Object
             if (Input.GetKeyDown(KeyCode.W))
                 HpChange(-70);//자해 테스트
         }
-        public void FixedUpdate()
+        public new void FixedUpdate()
         {
-            //체력바 갱신, 공격받거나 회복할 때마다 체력바를 갱신할 수만 있다면 어디로 위치를 옮겨도 됨
-            this.gameObject.transform.GetChild(1).transform.localScale = new Vector2((this.hp > 0 ? this.hp : 0) / (float)this.maxhp, 0.1f);
-            this.gameObject.transform.GetChild(1).localPosition = new Vector3(0.36f * (this.hp > 0 ? this.hp : 0) / this.maxhp, 0.8f, -0.2f);
-
             if (this.hp <= 0)
                 this.die();
 
@@ -73,10 +69,10 @@ namespace ArcanaDungeon.Object
                      if (Dungeon.distance_cal(Dungeon.dungeon.Plr.transform, this.transform) <= 1 & Plr_pos[0, 0] != -1)
                     {
                         Dungeon.dungeon.Plr.be_hit(power);
-                        condition_add(Dungeon.dungeon.Plr, 3, 1);
+                        Dungeon.dungeon.Plr.condition_add(3, 1);
                         if (Dungeon.dungeon.Plr.GetStamina() <= 10 && cooldown == 0)
                         {
-                            condition_add(Dungeon.dungeon.Plr, 1, 2);
+                            Dungeon.dungeon.Plr.condition_add(1, 2);
                             cooldown = 20;
                         }
 

@@ -66,6 +66,7 @@ namespace ArcanaDungeon.Object
             }
             if (isTurn > 0)
             {
+                vision_marker();
                 if (MoveTimer <= 0)
                 {
                     Get_MouseInput(); //마우스 입력
@@ -82,6 +83,7 @@ namespace ArcanaDungeon.Object
         
         private void FixedUpdate()
         {//입력받는곳
+            UI.uicanvas.log_add("플레이어 isturn : " + this.isTurn);
 
             if (Input.GetKey(KeyCode.Q))
             {
@@ -278,7 +280,6 @@ namespace ArcanaDungeon.Object
                     {
                         PlayerPos = new Vector2(i, j + 1);
                         transform.position = new Vector2(i, j + 1);
-                        vision_marker();
                         return;
                     }
                     else
@@ -293,16 +294,11 @@ namespace ArcanaDungeon.Object
             transform.position = pos;
             vision_marker();
         }// 특정 좌표로 소환
-         //★visionchecker을 먼저 실행해 시야에 보이는 부분을 표시하고, Level에 있는 몬스터 배열을 가져와서 좌표를 비교해 몬스터의 위치도 표시하는 함수
-        public override void turn()
-        {
-            
-        }
         
         private void vision_marker()
         {
             FOV = new bool[Dungeon.dungeon.currentlevel.width, Dungeon.dungeon.currentlevel.height];
-            util.Visionchecker.vision_check((int)Mathf.Round(transform.position.x), (int)Mathf.Round(transform.position.y), 6, FOV);
+            util.Visionchecker.vision_check((int)Mathf.Round(transform.position.x), (int)Mathf.Round(transform.position.y), this.vision_distance, FOV);
 
 
             //프리팹의 RGB값은 0~1 범위로 나타내는 게 기본값같다
@@ -316,20 +312,17 @@ namespace ArcanaDungeon.Object
                         Enemy temp_enem = Dungeon.dungeon.find_enemy(i, j);
                         if ( temp_enem != null) {
                             temp_enem.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-                            temp_enem.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(0.25f, 0f, 0f, 1);
-                            temp_enem.transform.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, 1);
+                            temp_enem.status_update();
                         }
                     }
                     else
                     {
-                        //Debug.Log(i + " " + j + " 불을 꺼");
                         Dungeon.dungeon.currentlevel.temp_gameobjects[i, j].GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1);
                         Enemy temp_enem = Dungeon.dungeon.find_enemy(i, j);
                         if (temp_enem != null)
                         {
                             temp_enem.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-                            temp_enem.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(0.25f, 0f, 0f, 0);
-                            temp_enem.transform.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, 0);
+                            temp_enem.status_hide();
                         }
                     }
                 }

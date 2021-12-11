@@ -17,14 +17,14 @@ namespace ArcanaDungeon.Object
 
         public bool exhausted = false;
         protected int block; 
-        private int vision_distance;
+        protected int vision_distance;
         public int isTurn;  //1 이상일 경우 이 객체의 턴이다, 0일 경우 단순히 이 객체의 턴이 아닌 것이며, 음수일 경우 기절 등의 이유로 턴이 생략될 것이다
 
         public List<int> route_pos = new List<int>();  //목적지까지의 이동 경로, 이동은 항상 route_pos[0]으로 이동해서 진행된다
 
         private Dictionary<int,int> condition;  //상태이상 및 버프 표시, key는 상태이상 종류이며 value는 지속시간, key에 따른 효과 : 0=연소 / 1=기절 / 2=급류 / 3=중독 / 4 = 풀묶기(구현필요)
         
-        public string name;
+        new public string name;
 
         public Thing()
         {
@@ -44,6 +44,9 @@ namespace ArcanaDungeon.Object
 
         public void HpChange(int val)
         {
+            //new void HpChange(val){
+            //  //체력을 1 잃을 때마다 힘 1 증가
+            //  super.HpChange(val);
             if (val < 0)
             {
                 BlockChange(val);
@@ -58,8 +61,6 @@ namespace ArcanaDungeon.Object
             {
                 
                 this.hp += val;
-                UI.uicanvas.blood(transform.position);
-                
                 if (this.hp <= 0)
                 {
                     this.die();
@@ -69,7 +70,7 @@ namespace ArcanaDungeon.Object
         }
         public void be_hit(int val)
         {
-            
+            UI.uicanvas.blood(transform.position);
             HpChange(-val);
         }
         public void be_fired(int val) {
@@ -225,7 +226,6 @@ namespace ArcanaDungeon.Object
          
 
         public abstract void die();//★나중에 자기자신을 map[]에서 삭제하는 정도는 넣어두자
-        public abstract void turn();
 
         public void Turnend()
         {
@@ -234,6 +234,7 @@ namespace ArcanaDungeon.Object
             this.StaminaChange(5);
             this.isTurn -= 1;
         }
+
         public List<float[]> range_check(float dest_x, float dest_y) 
         { 
             //이 몬스터의 현재 좌표부터 (dest_x,dest_y)까지 맞닿는 사각형 좌표들을 구해옴
@@ -295,8 +296,8 @@ namespace ArcanaDungeon.Object
             }
             return result;
         }
-            public Thing range_attack(int dest_x, int dest_y, bool by_player)   //★벽을 사이에 두고 공격 시 공격이 불가능하도록 수정 필요
-        { //원거리 공격, pierce는 공격 범위 안의 모든 적을 공격하는 관통 공격일 경우 true, friendly_fire는 이 공격으로 아군도 공격 가능할 경우 true(보통 1턴 충전 뒤 지정한 위치로 발사하는 스킬에 사용될 예정)
+            public Thing range_attack(int dest_x, int dest_y, bool by_player)   //원거리 공격, ★벽을 사이에 두고 공격 시 공격이 불가능하도록 수정 필요
+        {
             //이 몬스터의 현재 좌표부터 (dest_x,dest_y)까지 맞닿는 사각형 좌표들을 구해옴
             List<float[]> result = new List<float[]>();
             //목표 지점과 몬스터 사이가 수평 일직선이라면 x좌표만 바꿔가며 result에 저장
@@ -307,8 +308,8 @@ namespace ArcanaDungeon.Object
                 {
                     result.Add(new float[2] { i, dest_y });
                 }
-                //목표 지점과 몬스터 사이가 수직 일직선이라면 y좌표만 바꿔가며 result에 저장
             }
+            //목표 지점과 몬스터 사이가 수직 일직선이라면 y좌표만 바꿔가며 result에 저장
             else if (dest_x - transform.position.x == 0)
             {
                 int temp_var = dest_y - transform.position.y > 0 ? 1 : -1;
@@ -316,8 +317,8 @@ namespace ArcanaDungeon.Object
                 {
                     result.Add(new float[2] { dest_x, i });
                 }
-                //일직선이 아니라면 
             }
+            //일직선이 아니라면 
             else
             {
                 float x_cur = transform.position.x; float y_cur = transform.position.y; //현재 확인 중인 좌표, 타입 오류 나면 float으로 변경할 것
@@ -355,7 +356,6 @@ namespace ArcanaDungeon.Object
                 }
             }
 
-
             //가장 가까운 Thing을 찾아 반환한다
             Thing closest = null;
             int closest_distance = 999;
@@ -378,26 +378,6 @@ namespace ArcanaDungeon.Object
 
             if (closest != null) { UI.uicanvas.range_shot(this.gameObject, closest.gameObject); }
             return closest;
-        }
-
-        //자신이 아닌 상대의 상태를 변화시키는 기능들은 이 아래로 추가 바람.
-        //
-
-        public void HpChange(Thing target, int val)
-        {
-            target.HpChange(val);
-        }
-
-        public void condition_add(Thing target, int key, int val)
-        {
-            if (target.condition.ContainsKey(key))
-            {
-                target.condition[key] += val;
-            }
-            else
-            {
-                target.condition.Add(key, val);
-            }
         }
     }
 }

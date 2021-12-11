@@ -44,7 +44,7 @@ namespace ArcanaDungeon.Object
             if (Input.GetKeyDown(KeyCode.W))
                 HpChange(-70);//자해 테스트
         }
-        public void FixedUpdate()
+        public new void FixedUpdate()
         {
             if (this.hp < this.maxhp)
             {
@@ -76,9 +76,9 @@ namespace ArcanaDungeon.Object
                             this.StaminaChange(20);
                         }
                         else if (Dungeon.distance_cal(Dungeon.dungeon.Plr.transform, this.transform) <= 1 & Plr_pos[0, 0] != -1)                  {
-                            //Debug.Log(this.name+"이(가) 당신을 공격합니다.");
-                            
-                            condition_add(Dungeon.dungeon.Plr, 0, 2);    //발화 2 부여
+                        //Debug.Log(this.name+"이(가) 당신을 공격합니다.");
+
+                        Dungeon.dungeon.Plr.condition_add(0, 2);    //발화 2 부여
                             this.StaminaChange(-20);
                         }
                         else if (route_pos.Count > 0)

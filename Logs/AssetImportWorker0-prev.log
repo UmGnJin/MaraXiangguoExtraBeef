@@ -1,0 +1,458 @@
+Using pre-set license
+Built from '2020.3/release' branch; Version is '2020.3.12f1 (b3b2c6512326) revision 11776710'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 19042.1348; Version 2009; 64bit' Language: 'ko' Physical Memory: 16310 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/c4607/OneDrive/문서/GitHub/MaraXiangguoExtraBeef
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+61181
+Successfully changed project path to: C:/Users/c4607/OneDrive/문서/GitHub/MaraXiangguoExtraBeef
+C:/Users/c4607/OneDrive/문서/GitHub/MaraXiangguoExtraBeef
+Using Asset Import Pipeline V2.
+Default GameObject BitMask: UI already registered
+
+Refreshing native plugins compatible for Editor in 38.15 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.12f1 (b3b2c6512326)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/c4607/OneDrive/문서/GitHub/MaraXiangguoExtraBeef/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 970 (ID=0x13c2)
+    Vendor:   
+    VRAM:     4043 MB
+    Driver:   27.21.14.5671
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56464
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002783 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 26.26 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.835 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.005870 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 26.91 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.735 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Default GameObject BitMask: UI already registered
+
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2017 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.9 MB.
+System memory in use after: 97.0 MB.
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 2465.
+Total: 1.667800 ms (FindLiveObjects: 0.146200 ms CreateObjectMapping: 0.039100 ms MarkObjects: 1.432600 ms  DeleteObjects: 0.048900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Scripts/Object/player/player.cs
+  artifactKey: Guid(9be2a3f4aa6a8244388d1d3372c8a02f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/player/player.cs using Guid(9be2a3f4aa6a8244388d1d3372c8a02f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b6067ec3d65a10ca4c7dd59b7645271') in 0.038798 seconds 
+  Import took 0.041274 seconds .
+
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005540 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.670 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2007 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.4 MB.
+System memory in use after: 96.5 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2467.
+Total: 1.660900 ms (FindLiveObjects: 0.151900 ms CreateObjectMapping: 0.039600 ms MarkObjects: 1.455500 ms  DeleteObjects: 0.013100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 63.875230 seconds.
+  path: Assets/Scripts/Object/Enemy/Enemy.cs
+  artifactKey: Guid(231bd9a0350f0a74c9de80603893f210) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Enemy/Enemy.cs using Guid(231bd9a0350f0a74c9de80603893f210) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '785032fdd76a15381d5c3230b5f86344') in 0.008144 seconds 
+  Import took 0.010383 seconds .
+
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.006212 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.692 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.38 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2007 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.4 MB.
+System memory in use after: 96.5 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2469.
+Total: 1.914600 ms (FindLiveObjects: 0.161700 ms CreateObjectMapping: 0.055800 ms MarkObjects: 1.682800 ms  DeleteObjects: 0.013500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.006385 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.665 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.38 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2007 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.4 MB.
+System memory in use after: 96.6 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2471.
+Total: 1.768300 ms (FindLiveObjects: 0.152000 ms CreateObjectMapping: 0.046100 ms MarkObjects: 1.557100 ms  DeleteObjects: 0.012300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005657 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.44 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.730 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.44 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2007 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.5 MB.
+System memory in use after: 96.6 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2473.
+Total: 2.441500 ms (FindLiveObjects: 0.179400 ms CreateObjectMapping: 0.063000 ms MarkObjects: 2.182200 ms  DeleteObjects: 0.015800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 476.237146 seconds.
+  path: Assets/Scripts/Object/Cards
+  artifactKey: Guid(dc1bceda753303a42913520038f4b5b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Cards using Guid(dc1bceda753303a42913520038f4b5b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e03fda8ba49613ebe886b5b7495eb3cf') in 0.009275 seconds 
+  Import took 0.012075 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.306574 seconds.
+  path: Assets/Scripts/Object/Cards/Cards.cs
+  artifactKey: Guid(e4361e5ebaf8e444fa53301e3abee583) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Cards/Cards.cs using Guid(e4361e5ebaf8e444fa53301e3abee583) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47b579b050e2f45f037ca6f018bae46f') in 0.002703 seconds 
+  Import took 0.005237 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.017990 seconds.
+  path: Assets/Scripts/Object/Cards/Cards.cs
+  artifactKey: Guid(e4361e5ebaf8e444fa53301e3abee583) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Cards/Cards.cs using Guid(e4361e5ebaf8e444fa53301e3abee583) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47b579b050e2f45f037ca6f018bae46f') in 0.002569 seconds 
+  Import took 0.004897 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 60.496093 seconds.
+  path: Assets/Scripts/Object/Cards/AttackCard.cs
+  artifactKey: Guid(0a2906e7e52c2894297b4343d9982546) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Cards/AttackCard.cs using Guid(0a2906e7e52c2894297b4343d9982546) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '917a83822871ce01dee4ddecccf07abf') in 0.007012 seconds 
+  Import took 0.009810 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.370486 seconds.
+  path: Assets/Scripts/Object/Cards/FireCard.cs
+  artifactKey: Guid(976a34575a8f15c4da63503eec80714f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Cards/FireCard.cs using Guid(976a34575a8f15c4da63503eec80714f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5f605b31a5c0b6f0c9e27e34ba5e6a9') in 0.006781 seconds 
+  Import took 0.009476 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 173.279876 seconds.
+  path: Assets/Scripts/Object/Enemy/Boss
+  artifactKey: Guid(a05920be312bbbd40868c4a40853dbf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Enemy/Boss using Guid(a05920be312bbbd40868c4a40853dbf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5b1db30e51a38d2b72120b933a615af') in 0.006440 seconds 
+  Import took 0.009151 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.900278 seconds.
+  path: Assets/Scripts/Object/Enemy/Boss/Mimic.cs
+  artifactKey: Guid(6f461d224ba49664e91ba29661a84ae8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Enemy/Boss/Mimic.cs using Guid(6f461d224ba49664e91ba29661a84ae8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae03d2fa31ced5028cd38c4ef5a20d83') in 0.006233 seconds 
+  Import took 0.008893 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000789 seconds.
+  path: Assets/Scripts/Object/Enemy/Boss/Mimic.cs
+  artifactKey: Guid(6f461d224ba49664e91ba29661a84ae8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Enemy/Boss/Mimic.cs using Guid(6f461d224ba49664e91ba29661a84ae8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae03d2fa31ced5028cd38c4ef5a20d83') in 0.002928 seconds 
+  Import took 0.005244 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 215.753640 seconds.
+  path: Assets/Scripts/Object/Enemy/Boss/Zera.cs
+  artifactKey: Guid(7d83ee98ba068bc40b2a99ce0ea78169) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Enemy/Boss/Zera.cs using Guid(7d83ee98ba068bc40b2a99ce0ea78169) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '766c5b16a259349023bac5c07983f145') in 0.006949 seconds 
+  Import took 0.009836 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.072625 seconds.
+  path: Assets/Scripts/Object/Enemy/Boss/Ali.cs
+  artifactKey: Guid(b254e08037f98e945afdd48bb2a9d28e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Enemy/Boss/Ali.cs using Guid(b254e08037f98e945afdd48bb2a9d28e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63c905a2f5a289347fc2625ba0c7980e') in 0.006985 seconds 
+  Import took 0.009883 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 246.213543 seconds.
+  path: Assets/Scripts/Object/Enemy/Boss/Crabig.cs
+  artifactKey: Guid(3e03f3ca845fa3c40831e7f1eb3397be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Enemy/Boss/Crabig.cs using Guid(3e03f3ca845fa3c40831e7f1eb3397be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1842f20b71d34974cbdab55eae55997c') in 0.008207 seconds 
+  Import took 0.011920 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.005359 seconds.
+  path: Assets/Scripts/Object/Enemy/Boss/Crabig.cs
+  artifactKey: Guid(3e03f3ca845fa3c40831e7f1eb3397be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Enemy/Boss/Crabig.cs using Guid(3e03f3ca845fa3c40831e7f1eb3397be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1842f20b71d34974cbdab55eae55997c') in 0.004292 seconds 
+  Import took 0.007144 seconds .
+
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005768 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.45 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.675 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.50 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2007 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.5 MB.
+System memory in use after: 96.6 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2475.
+Total: 1.717600 ms (FindLiveObjects: 0.143300 ms CreateObjectMapping: 0.045800 ms MarkObjects: 1.511500 ms  DeleteObjects: 0.016100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 215.301314 seconds.
+  path: Assets/Scripts/Object/Enemy/Slime.cs
+  artifactKey: Guid(e86ab205ae99c9845a56a01f7ecea7ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Enemy/Slime.cs using Guid(e86ab205ae99c9845a56a01f7ecea7ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b61deebc17a8cc90233fad7e5b40fcf') in 0.009214 seconds 
+  Import took 0.012112 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.017020 seconds.
+  path: Assets/Scripts/Object/Enemy/Slime.cs
+  artifactKey: Guid(e86ab205ae99c9845a56a01f7ecea7ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Enemy/Slime.cs using Guid(e86ab205ae99c9845a56a01f7ecea7ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b61deebc17a8cc90233fad7e5b40fcf') in 0.002814 seconds 
+  Import took 0.005245 seconds .
+
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005613 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.44 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.683 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2007 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.5 MB.
+System memory in use after: 96.6 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2477.
+Total: 1.727900 ms (FindLiveObjects: 0.147800 ms CreateObjectMapping: 0.045600 ms MarkObjects: 1.521500 ms  DeleteObjects: 0.012400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.008831 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.47 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.685 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2007 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.5 MB.
+System memory in use after: 96.6 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2479.
+Total: 1.841500 ms (FindLiveObjects: 0.168800 ms CreateObjectMapping: 0.049300 ms MarkObjects: 1.608800 ms  DeleteObjects: 0.013700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 493.474262 seconds.
+  path: Assets/Scripts/Object/Cards/BasicConsCard.cs
+  artifactKey: Guid(89c892da81304964d94859ff121c9192) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Cards/BasicConsCard.cs using Guid(89c892da81304964d94859ff121c9192) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4b464991bd34e4b09e8f92cb2a6a875') in 0.008927 seconds 
+  Import took 0.011824 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011302 seconds.
+  path: Assets/Scripts/Object/Cards/BasicConsCard.cs
+  artifactKey: Guid(89c892da81304964d94859ff121c9192) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Cards/BasicConsCard.cs using Guid(89c892da81304964d94859ff121c9192) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4b464991bd34e4b09e8f92cb2a6a875') in 0.002662 seconds 
+  Import took 0.005204 seconds .
+

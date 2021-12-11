@@ -17,7 +17,7 @@ public class PoisonTile : MonoBehaviour
     {
         if (Dungeon.dungeon.Plr.transform.position.x == this.transform.position.x && Dungeon.dungeon.Plr.transform.position.y == this.transform.position.y)
         {
-            Dungeon.dungeon.Plr.condition_add(Dungeon.dungeon.Plr, 3, 1);
+            Dungeon.dungeon.Plr.condition_add(3, 1);
             Destroy(gameObject);
            
         }

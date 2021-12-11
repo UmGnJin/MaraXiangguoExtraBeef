@@ -168,7 +168,8 @@ namespace ArcanaDungeon
             //원거리 공격을 표시할 때 사용되는 linerenderer 투명하게 만들기
             if (line.startColor[3] > 0f)
             {
-                line.SetColors(new Color(1f, 1f, 1f, line.startColor[3] - 0.03f), new Color(1f, 1f, 1f, line.endColor[3] - 0.03f));
+                line.startColor = new Color(1f, 1f, 1f, line.startColor[3] - 0.03f);
+                line.endColor = new Color(1f, 1f, 1f, line.endColor[3] - 0.03f);
             }
 
             if (Input.GetKey(KeyCode.Space) & deck.Hands.Count < deck.max_Hand)//★추후 삭제할 것
@@ -363,20 +364,23 @@ namespace ArcanaDungeon
         }
         public void poison(Vector3 pos)
         {
-            //poison_par.transform.position = pos; // 이거 두중 주석 없애면 턴이 안 넘어옴 머지
-            //poison_par.GetComponent<ParticleSystem>().Play();
+            Vector2 temp_pos = cam.GetComponent<Camera>().WorldToScreenPoint(pos);
+            poison_par.transform.localPosition = new Vector2(temp_pos.x - 960, temp_pos.y - 540); // ★이거 두중 주석 없애면 턴이 안 넘어옴 머지
+            poison_par.GetComponent<ParticleSystem>().Play();
         }
         public void range_shot(GameObject a, GameObject b)
         {
             line.SetPosition(0, new Vector3(a.transform.position.x, a.transform.position.y, -1));
             line.SetPosition(1, new Vector3(b.transform.position.x, b.transform.position.y, -1));
-            line.SetColors(new Color(1f, 1f, 1f, 1f), new Color(1f, 1f, 1f, 1f));
+            line.startColor = new Color(1f, 1f, 1f, 1f);
+            line.endColor = new Color(1f, 1f, 1f, 1f);
         }
         public void range_shot_a(float ax,float ay, float bx, float by)
         {
             line.SetPosition(0, new Vector3(ax, ay, -1));
             line.SetPosition(1, new Vector3(bx, by, -1));
-            line.SetColors(new Color(1f, 1f, 1f, 1f), new Color(1f, 1f, 1f, 1f));
+            line.startColor = new Color(1f, 1f, 1f, 1f);
+            line.endColor = new Color(1f, 1f, 1f, 1f);
         }
 
     }

@@ -26,6 +26,7 @@ namespace ArcanaDungeon
         public GameObject[] currentMobPool;
         public int changed = 0;
         public int whosTurn = 0;//1 = 플레이어 2 = 몬스터
+        public GameObject square;
 
         public static Dungeon dungeon;
 
@@ -351,8 +352,8 @@ namespace ArcanaDungeon
                         if (count < currentlevel.maxEnemies && mobs[u]!=null)
                         {
                             enemylist.Add(Instantiate(mobs[u], pos, Quaternion.identity));
+                            enemylist[enemylist.Count -1].GetComponent<Enemy>().Initiate();
                             count++;
-
                         }
                         else break;
 
