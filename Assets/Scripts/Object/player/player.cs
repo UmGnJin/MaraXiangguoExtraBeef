@@ -66,6 +66,7 @@ namespace ArcanaDungeon.Object
             }
             if (isTurn > 0)
             {
+                UI.uicanvas.Condition_Update();
                 vision_marker();
                 if (MoveTimer <= 0)
                 {
@@ -242,7 +243,8 @@ namespace ArcanaDungeon.Object
                     transform.position = new Vector2(route_pos[0] % Dungeon.dungeon.currentlevel.width, route_pos[0] / Dungeon.dungeon.currentlevel.width);
                     route_pos.RemoveAt(0);
                     MoveTimer = MoveTimerLimit;
-                    
+
+                    UI.uicanvas.Plr_Cam();
                     this.Turnend();
                 }
                 catch (Exception e) { Debug.Log(e); }

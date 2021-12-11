@@ -34,6 +34,7 @@ namespace ArcanaDungeon
         private LineRenderer line;
         private Deck deck;   //플레이어에게 들어간 Deck 스트립트, SetPlr에서 위의 Plr와 함께 설정
         public Text log;  //로그
+        private string[] condition_tooltip;
 
         private int selected = -1;  //손패에서 카드를 클릭하면 이 변수에 그 카드의 Hands에서의 인덱스 번호를 저장
         public Cards selected2; //Cardlist_Panel에서 카드를 선택할 때 선택된 카드를 나타냄
@@ -62,6 +63,8 @@ namespace ArcanaDungeon
             selected2 = null;
             selecting = false;
             line = this.gameObject.GetComponent<LineRenderer>();
+            //Debug.Log(Resources.Load<Text>("condition_tooltip").text);
+            this.condition_tooltip = Resources.Load<TextAsset>("condition_tooltip").text.Split('Q');
         }
         public void Start() {
             //Cardlist_card 버튼을 게임 시작 시 뽑을 카드 더미만큼 생성, 생성자에서는 스크립팅 API에 접근할 수 없다며 실행되지 않는댄다 나참
@@ -153,8 +156,8 @@ namespace ArcanaDungeon
                         wii = 0;    //ui 초기화하는 wii값
                     }
                 }
-                //손패 좌표 밖에 있으면서 카드가 선택되지 않았고 card_on_cursor가 활성화된 상태라면 ui를 초기화한다
-                else if (card_on_cursor.transform.GetChild(0).gameObject.activeSelf){ wii = 0; }
+                //손패 좌표 밖에 있으면서 카드가 선택되지 않았고 card_on_cursor 혹은 small_tool_tip가 활성화된 상태라면 ui를 초기화한다
+                else if (card_on_cursor.transform.GetChild(0).gameObject.activeSelf | small_tool_tip.activeSelf) { wii = 0; }
             }
             //상태이상 확인 구역으로 커서 올림
             if (mpos.x > 1440 & mpos.x < 1680 & mpos.y > 0 & mpos.y < 160) { wii = 3; }
@@ -168,10 +171,10 @@ namespace ArcanaDungeon
             //원거리 공격을 표시할 때 사용되는 linerenderer 투명하게 만들기
             if (line.startColor[3] > 0f)
             {
-                line.startColor = new Color(1f, 1f, 1f, line.startColor[3] - 0.03f);
-                line.endColor = new Color(1f, 1f, 1f, line.endColor[3] - 0.03f);
+                line.startColor = new Color(1f, 1f, 1f, line.startColor[3] - 0.005f);
+                line.endColor = new Color(1f, 1f, 1f, line.endColor[3] - 0.005f);
             }
-
+            
             if (Input.GetKey(KeyCode.Space) & deck.Hands.Count < deck.max_Hand)//★추후 삭제할 것
             {
                 deck.DrawCards(); card_draw(deck.Hands[deck.Hands.Count - 1]);
@@ -226,12 +229,22 @@ namespace ArcanaDungeon
             range.GetComponent<RectTransform>().sizeDelta = new Vector2((2 * r + 1) * 55, (2 * r + 1) * 55);
             range.SetActive(true);
         }
-        private void ConditionTooltip(int sn) { //플레이어의 상태이상 툴팁 표시
-            if (Plr.GetComponent<player>().GetCondition().Count >= sn + 1)
+        private void ConditionTooltip(int con_num) { //플레이어의 상태이상 툴팁 표시
+            if (Plr.GetComponent<player>().GetCondition().Count >= con_num + 1)
             {
-                small_tool_tip.transform.localPosition = new Vector3(520 + sn % 3 * 80, -240, 0);
-                small_tool_tip.SetActive(true);
-                small_tool_tip.transform.GetChild(0).gameObject.GetComponent<Text>().text = Resources.Load<TextAsset>("condition_tooltip").text + Plr.GetComponent<player>().GetCondition()[sn];    //★
+                int temp = 0;
+                foreach (int kye in Plr.GetComponent<player>().GetCondition().Keys)
+                {
+                    if (temp != con_num) { temp++; }
+                    else
+                    {
+                        small_tool_tip.transform.localPosition = new Vector3(520 + con_num % 3 * 80, -240, 0);
+                        small_tool_tip.SetActive(true);
+                        small_tool_tip.transform.GetChild(0).gameObject.GetComponent<Text>().text = 
+                            condition_tooltip[kye] + 
+                            Plr.GetComponent<player>().GetCondition()[kye];    //★
+                    }
+                }
             }
         }
 
@@ -258,6 +271,32 @@ namespace ArcanaDungeon
 
         public void log_add(string str) {
             log.text = log.text.Remove(0, log.text.IndexOf('\n')+1) + "\n"+ str;
+        }
+
+        public void Plr_Cam() {
+            this.cam.transform.position = Plr.transform.position + new Vector3(0, 0, -10);
+        }
+
+        public void Condition_Update() {
+            string temp_path = null;
+            int temp_count = 0;
+            foreach (int kye in Plr.GetComponent<player>().GetCondition().Keys) {
+                switch (kye) {
+                    case 0:
+                        temp_path = "sprites/UI/발화 상태"; break;
+                    case 1:
+                        temp_path = "sprites/UI/기절 상태"; break;
+                    case 2:
+                        temp_path = "sprites/UI/급류 상태"; break;
+                    case 3:
+                        temp_path = "sprites/UI/중독 상태"; break;
+                }
+                stat_ui[temp_count].GetComponent<Image>().sprite = Resources.Load<Sprite>(temp_path);
+                temp_count++;
+            }
+            for (; temp_count < 6; temp_count++) {
+                stat_ui[temp_count].GetComponent<Image>().sprite = null;
+            }
         }
 
         public void card_draw(Cards c) {
@@ -364,8 +403,9 @@ namespace ArcanaDungeon
         }
         public void poison(Vector3 pos)
         {
+            Debug.Log("독 이펙트 생성 위치 : " + pos);
             Vector2 temp_pos = cam.GetComponent<Camera>().WorldToScreenPoint(pos);
-            poison_par.transform.localPosition = new Vector2(temp_pos.x - 960, temp_pos.y - 540); // ★이거 두중 주석 없애면 턴이 안 넘어옴 머지
+            poison_par.transform.localPosition = new Vector2(temp_pos.x - 960, temp_pos.y - 540);
             poison_par.GetComponent<ParticleSystem>().Play();
         }
         public void range_shot(GameObject a, GameObject b)

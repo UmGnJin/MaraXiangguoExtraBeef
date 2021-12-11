@@ -141,12 +141,16 @@ namespace ArcanaDungeon.Object
             int temp, temp2;
             while (checking.Count > 0)
             {
-                //주변 좌표 포함 시 확인해야 하는 것 : 몬스터의 cur_pos가 아닌가, passable인가?, level의 length 범위 이내의 숫자인가, prev[i]==null인가
+                //주변 좌표 포함 시 확인해야 하는 것 : 자기 자신의 cur_pos가 아닌가, passable인가?, level의 length 범위 이내의 숫자인가, prev[i]==null (이미 체크한 칸)인가, 다른 몬스터와 겹치지 않는가
                 for (int ii = 0; ii < 8; ii++)
                 {
                     temp = checking.Peek() + dir[ii];
-                    if ((transform.position.x + transform.position.y * Dungeon.dungeon.currentlevel.width != temp) & ((Terrain.thing_tag[Dungeon.dungeon.currentlevel.map[temp % Dungeon.dungeon.currentlevel.width, temp / Dungeon.dungeon.currentlevel.width]] & Terrain.passable) != 0)
-                        & (temp > 0 & temp < Dungeon.dungeon.currentlevel.length) & (prev[temp] == 0))
+                    Debug.Log( (temp % Dungeon.dungeon.currentlevel.width) + " / " + (temp / Dungeon.dungeon.currentlevel.width) );
+                if ((transform.position.x + transform.position.y * Dungeon.dungeon.currentlevel.width != temp) &
+                        ((Terrain.thing_tag[Dungeon.dungeon.currentlevel.map[temp % Dungeon.dungeon.currentlevel.width, temp / Dungeon.dungeon.currentlevel.width]] & Terrain.passable) != 0) &
+                        (temp > 0 & temp < Dungeon.dungeon.currentlevel.length) &
+                        (prev[temp] == 0) &
+                        (Dungeon.dungeon.find_enemy(temp % Dungeon.dungeon.currentlevel.width, temp / Dungeon.dungeon.currentlevel.width) == null))
                     {
                         checking.Enqueue(temp);
                         prev[temp] = checking.Peek();
@@ -361,6 +365,7 @@ namespace ArcanaDungeon.Object
             int closest_distance = 999;
             foreach (float[] r in result)
             {
+                //몬스터 체크
                 foreach (GameObject t in Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1])
                 {
                     if (t != this.gameObject & r[0] == t.transform.position.x & r[1] == t.transform.position.y & Dungeon.distance_cal(transform, t.transform) < closest_distance)
@@ -369,10 +374,15 @@ namespace ArcanaDungeon.Object
                         closest_distance = Dungeon.distance_cal(transform, t.transform);
                     }
                 }
+                //플레이어 체크
                 if (!by_player & r[0] == Dungeon.dungeon.Plr.transform.position.x & r[1] == Dungeon.dungeon.Plr.transform.position.y & Dungeon.distance_cal(transform, Dungeon.dungeon.Plr.transform) < closest_distance)
                 {
                     closest = Dungeon.dungeon.Plr;
                     closest_distance = Dungeon.distance_cal(transform, Dungeon.dungeon.Plr.transform);
+                }
+                //passable 체크
+                if ((Dungeon.dungeon.currentlevel.map[(int)r[0], (int)r[1]] & Terrain.passable) == 0) {
+                    closest = null;
                 }
             }
 
