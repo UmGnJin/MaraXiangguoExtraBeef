@@ -9,6 +9,7 @@ namespace ArcanaDungeon.cards
     public class Cards//명시된 스크립트 이름과 달라 Card로 통일.
     {
         public int cardTape = 0; // 카드 종류(ex 공격,회복,드로우)마다 다른 값.
+        public int weakness = 0;
         private int cardCost = 0; // 카드 스테미나 코스트
         private int range = 0;
         public string illust;
@@ -43,6 +44,14 @@ namespace ArcanaDungeon.cards
         {
             this.range = v;
         }
+        public int getWeaknessSt()
+        {
+            return this.weakness;
+        }
+        public void setWeakness(int weak)
+        {
+            this.weakness = weak;
+        }
         public string getIllust()
         { //함수 이름은 대문자 I, 소문자 l 2개를 사용한다
             return illust;
@@ -53,6 +62,19 @@ namespace ArcanaDungeon.cards
             this.illust = "sprites/Card/" + illu; // 카드 경로 + 목적 이미지
             this.cardName = cname; // 카드 이름
             this.cardInfo = cinfo; // 카드 설명
+        }
+
+        public void conditionApp(player Plr, Enemy enemy, int conKey, int conTurn)
+        {
+
+            if (enemy != null)
+            {
+                enemy.condition_add(conKey, conTurn);
+            }
+            else
+            {
+                Plr.condition_add(conKey, conTurn);
+            }
         }
     }
 

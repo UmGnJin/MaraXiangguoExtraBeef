@@ -1,29 +1,25 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ArcanaDungeon;
-using Terrain = ArcanaDungeon.Terrain;
 
 namespace ArcanaDungeon.Object
 {
     public abstract class Thing : MonoBehaviour
     {
         protected int hp;
-        public int maxhp = 100; 
+        public int maxhp = 100;
         protected int stamina;
         public int maxstamina = 100;
         public int power;
 
         public bool exhausted = false;
-        protected int block; 
+        protected int block;
         protected int vision_distance;
         public int isTurn;  //1 이상일 경우 이 객체의 턴이다, 0일 경우 단순히 이 객체의 턴이 아닌 것이며, 음수일 경우 기절 등의 이유로 턴이 생략될 것이다
 
         public List<int> route_pos = new List<int>();  //목적지까지의 이동 경로, 이동은 항상 route_pos[0]으로 이동해서 진행된다
 
-        private Dictionary<int,int> condition;  //상태이상 및 버프 표시, key는 상태이상 종류이며 value는 지속시간, key에 따른 효과 : 0=연소 / 1=기절 / 2=급류 / 3=중독 / 4 = 풀묶기(구현필요)
-        
+        private Dictionary<int, int> condition;  //상태이상 및 버프 표시, key는 상태이상 종류이며 value는 지속시간, key에 따른 효과 : 0=연소 / 1=기절 / 2=급류 / 3=중독 / 4 = 풀묶기(구현필요)
+
         new public string name;
 
         public Thing()
@@ -31,7 +27,7 @@ namespace ArcanaDungeon.Object
             condition = new Dictionary<int, int>();
             this.vision_distance = 6;
             this.hp = 0;
-            this.stamina = 0; 
+            this.stamina = 0;
         }
 
         public abstract void Spawn();
@@ -47,6 +43,10 @@ namespace ArcanaDungeon.Object
             //new void HpChange(val){
             //  //체력을 1 잃을 때마다 힘 1 증가
             //  super.HpChange(val);
+            if (this.condition[5] > 0)
+            {
+                this.HpChange(this.condition[5] / 10); // this.condition[5]를 십으로 나눈 몫이 약화 딜값
+            }
             if (val < 0)
             {
                 BlockChange(val);
@@ -59,7 +59,7 @@ namespace ArcanaDungeon.Object
             }
             else
             {
-                
+
                 this.hp += val;
                 if (this.hp <= 0)
                 {
@@ -73,7 +73,8 @@ namespace ArcanaDungeon.Object
             UI.uicanvas.blood(transform.position);
             HpChange(-val);
         }
-        public void be_fired(int val) {
+        public void be_fired(int val)
+        {
             UI.uicanvas.fire(transform.position);
             HpChange(-val);
         }
@@ -84,28 +85,37 @@ namespace ArcanaDungeon.Object
         }
 
         //stamina 관련 함수
-        public int GetStamina() {
+        public int GetStamina()
+        {
             return stamina;
         }
 
-        public void StaminaChange(int val) {
-            if (val > 0) {
-                if (this.stamina + val > this.maxstamina) {
+        public void StaminaChange(int val)
+        {
+            if (val > 0)
+            {
+                if (this.stamina + val > this.maxstamina)
+                {
                     this.stamina = this.maxstamina;
                 }
-                else {
+                else
+                {
                     this.stamina += val;
                 }
-            } else {
+            }
+            else
+            {
                 this.stamina += val;
-                if (this.stamina < 0) {
+                if (this.stamina < 0)
+                {
                     this.stamina = 0;
                 }
             }
         }
 
         //block 관련 함수
-        public int GetBlock() {
+        public int GetBlock()
+        {
             return this.block;
         }
 
@@ -115,12 +125,14 @@ namespace ArcanaDungeon.Object
             {
                 this.block += val;
             }
-            else {
+            else
+            {
                 if (this.block + val < 0)
                 {
                     this.block = 0;
                 }
-                else { 
+                else
+                {
                     this.block += val;
                 }
             }
@@ -145,12 +157,12 @@ namespace ArcanaDungeon.Object
                 for (int ii = 0; ii < 8; ii++)
                 {
                     temp = checking.Peek() + dir[ii];
-                    Debug.Log( (temp % Dungeon.dungeon.currentlevel.width) + " / " + (temp / Dungeon.dungeon.currentlevel.width) );
-                if ((transform.position.x + transform.position.y * Dungeon.dungeon.currentlevel.width != temp) &
-                        ((Terrain.thing_tag[Dungeon.dungeon.currentlevel.map[temp % Dungeon.dungeon.currentlevel.width, temp / Dungeon.dungeon.currentlevel.width]] & Terrain.passable) != 0) &
-                        (temp > 0 & temp < Dungeon.dungeon.currentlevel.length) &
-                        (prev[temp] == 0) &
-                        (Dungeon.dungeon.find_enemy(temp % Dungeon.dungeon.currentlevel.width, temp / Dungeon.dungeon.currentlevel.width) == null))
+                    Debug.Log((temp % Dungeon.dungeon.currentlevel.width) + " / " + (temp / Dungeon.dungeon.currentlevel.width));
+                    if ((transform.position.x + transform.position.y * Dungeon.dungeon.currentlevel.width != temp) &
+                            ((Terrain.thing_tag[Dungeon.dungeon.currentlevel.map[temp % Dungeon.dungeon.currentlevel.width, temp / Dungeon.dungeon.currentlevel.width]] & Terrain.passable) != 0) &
+                            (temp > 0 & temp < Dungeon.dungeon.currentlevel.length) &
+                            (prev[temp] == 0) &
+                            (Dungeon.dungeon.find_enemy(temp % Dungeon.dungeon.currentlevel.width, temp / Dungeon.dungeon.currentlevel.width) == null))
                     {
                         checking.Enqueue(temp);
                         prev[temp] = checking.Peek();
@@ -178,20 +190,24 @@ namespace ArcanaDungeon.Object
         //상태이상 처리 관련 함수
         public void condition_process() // 번호에 각 상태이상 이름 및 효과 기재바람.
         {
-            if (this.condition.ContainsKey(0)) {    //연소 - 고정된 양의 피해를 일정 턴동안 받는다. 중독에 비해 초기 수치가 높아야 한다. 물에 접촉 시 즉시 해제되어야 한다.
-                if (this.condition[0] > 0) {
+            if (this.condition.ContainsKey(0))
+            {    //연소 - 고정된 양의 피해를 일정 턴동안 받는다. 중독에 비해 초기 수치가 높아야 한다. 물에 접촉 시 즉시 해제되어야 한다.
+                if (this.condition[0] > 0)
+                {
                     be_fired(10);
                     this.condition[0] -= 1;
                 }
             }
-            if (this.condition.ContainsKey(1)) {    //기절 - 1턴동안 행동할 수 없다.(무한스턴 방지용 대책이 필요할수 있음)
+            if (this.condition.ContainsKey(1))
+            {    //기절 - 1턴동안 행동할 수 없다.(무한스턴 방지용 대책이 필요할수 있음)
                 if (this.condition[1] > 0)
                 {
                     this.isTurn -= 1;
                     this.condition[1] -= 1;
                 }
             }
-            if (this.condition.ContainsKey(2)) {    //급류
+            if (this.condition.ContainsKey(2))
+            {    //급류
                 if (this.condition[2] > 0)
                 {
                     StaminaChange(15);
@@ -199,7 +215,8 @@ namespace ArcanaDungeon.Object
                     this.condition[2] -= 1;
                 }
             }
-            if (this.condition.ContainsKey(3)) {    //중독 - 중첩형 상태이상. 중첩 횟수와 같은 양의 피해를 받고, 중첩이 1 감소한다. 이렇게 중첩이 0이 될 경우, 중독이 해제된다.
+            if (this.condition.ContainsKey(3))
+            {    //중독 - 중첩형 상태이상. 중첩 횟수와 같은 양의 피해를 받고, 중첩이 1 감소한다. 이렇게 중첩이 0이 될 경우, 중독이 해제된다.
                 if (this.condition[3] > 0)
                 {
                     Debug.Log("독 뎀 " + this.condition[3]);
@@ -207,40 +224,64 @@ namespace ArcanaDungeon.Object
                     this.condition[3] -= 1;
                 }
             }
-            List<int >temp = new List<int>(this.condition.Keys);
-            foreach (int i in temp) {
-                if (this.condition[i] <= 0) {
+            if (this.condition.ContainsKey(5))
+            {    // 약화는 일의 자리는 남은 턴수 10으로 나눈 몫은 데미지값
+                if (this.condition[5] > 0)
+                {
+                    if (this.condition[5] % 10 > 3) // 14 
+                    {
+                        this.condition[5] = (this.condition[5] / 10) * 10 + 2; // 12
+                    }
+                    else if (this.condition[5] % 10 > 0)
+                    {
+                        this.condition[5] -= 1; // 11 10
+                    }
+                    else
+                        this.condition[5] = 0; // 0
+                    Debug.Log("적 턴 종료 후 약화 값 " + this.condition[5]);
+                }
+            }
+            List<int> temp = new List<int>(this.condition.Keys);
+            foreach (int i in temp)
+            {
+                if (this.condition[i] <= 0)
+                {
                     this.condition.Remove(i);
                 }
             }
         }
 
-        public void condition_add(int key, int val) { // key는 상태이상 번호, val은 상태이상 수치. 중독 2일 경우, key는 3, val은 2
-            if (condition.ContainsKey(key)) {
+        public void condition_add(int key, int val)
+        { // key는 상태이상 번호, val은 상태이상 수치. 중독 2일 경우, key는 3, val은 2
+            if (condition.ContainsKey(key))
+            {
                 condition[key] += val;
-            } else {
+            }
+            else
+            {
                 condition.Add(key, val);
             }
         }
 
-        public Dictionary<int, int> GetCondition() {
+        public Dictionary<int, int> GetCondition()
+        {
             return this.condition;
         }
 
-         
+
 
         public abstract void die();//★나중에 자기자신을 map[]에서 삭제하는 정도는 넣어두자
 
         public void Turnend()
         {
-            
+
             this.condition_process();
             this.StaminaChange(5);
             this.isTurn -= 1;
         }
 
-        public List<float[]> range_check(float dest_x, float dest_y) 
-        { 
+        public List<float[]> range_check(float dest_x, float dest_y)
+        {
             //이 몬스터의 현재 좌표부터 (dest_x,dest_y)까지 맞닿는 사각형 좌표들을 구해옴
             List<float[]> result = new List<float[]>();
             //목표 지점과 몬스터 사이가 수평 일직선이라면 x좌표만 바꿔가며 result에 저장
@@ -300,7 +341,7 @@ namespace ArcanaDungeon.Object
             }
             return result;
         }
-            public Thing range_attack(int dest_x, int dest_y, bool by_player)   //원거리 공격, ★벽을 사이에 두고 공격 시 공격이 불가능하도록 수정 필요
+        public Thing range_attack(int dest_x, int dest_y, bool by_player)   //원거리 공격, ★벽을 사이에 두고 공격 시 공격이 불가능하도록 수정 필요
         {
             //이 몬스터의 현재 좌표부터 (dest_x,dest_y)까지 맞닿는 사각형 좌표들을 구해옴
             List<float[]> result = new List<float[]>();
@@ -381,7 +422,8 @@ namespace ArcanaDungeon.Object
                     closest_distance = Dungeon.distance_cal(transform, Dungeon.dungeon.Plr.transform);
                 }
                 //passable 체크
-                if ((Dungeon.dungeon.currentlevel.map[(int)r[0], (int)r[1]] & Terrain.passable) == 0) {
+                if ((Dungeon.dungeon.currentlevel.map[(int)r[0], (int)r[1]] & Terrain.passable) == 0)
+                {
                     closest = null;
                 }
             }
