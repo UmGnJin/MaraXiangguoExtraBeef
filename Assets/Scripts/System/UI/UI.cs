@@ -30,6 +30,8 @@ namespace ArcanaDungeon
         public GameObject Cardlist_card;    //Cardlist_Panel에서 카드를 선택/나열할 때 사용되는 카드 이미지, 평소엔 없지만 카드를 획득할 때마다 Instantiate된 후 카드 목록을 열람할 때 이미지를 할당해 사용됨
         public GameObject Cardlist_cancel;  //Cardlist_Panel에서 카드를 선택/나열할 때 사용되는 취소 버튼, 패널이 스크롤 될 때 움직이면 안 돼서 따로 저장되어 있음
         public GameObject Research_panel;   //조사 기능으로 몬스터 정보를 볼 때 나오는 패널
+        public GameObject gameover_logo;
+        public GameObject gameover_button;
 
         private GameObject Plr; //★플레이어
         private LineRenderer line;
@@ -325,9 +327,46 @@ namespace ArcanaDungeon
                 if (s[0] == selected3.name)
                 {
                     Research_panel.transform.GetChild(1).gameObject.GetComponent<Text>().text = s[1];
-                    Research_panel.transform.GetChild(2).gameObject.GetComponent<Text>().text = s[2];
+                    Research_panel.transform.GetChild(2).gameObject.GetComponent<Text>().text = s[2]+"\n";
                 }
             }
+
+            int temp = 4;
+            foreach (KeyValuePair<int, int> i in selected3.GetCondition())
+            {
+                switch (i.Key) {
+                    case 0:
+                        Research_panel.transform.GetChild(2).gameObject.GetComponent<Text>().text +="\n현재 불에 타면서 매 턴 10의 피해를 입고 있습니다. 남은 지속 턴 수 : "+i.Value;
+                        Research_panel.transform.GetChild(temp).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("sprites/UI/발화 상태");
+                        Research_panel.transform.GetChild(temp).gameObject.SetActive(true);
+                        break;
+                    case 1:
+                        Research_panel.transform.GetChild(2).gameObject.GetComponent<Text>().text += "\n현재 기절하여 행동할 수 없습니다. 남은 지속 턴 수 : " + i.Value;
+                        Research_panel.transform.GetChild(temp).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("sprites/UI/기절 상태");
+                        Research_panel.transform.GetChild(temp).gameObject.SetActive(true);
+                        break;
+                    case 2:
+                        Research_panel.transform.GetChild(2).gameObject.GetComponent<Text>().text += "\n매 턴 15만큼 스태미나를 추가로 회복하고 있습니다. 남은 지속 턴 수 : " + i.Value;
+                        Research_panel.transform.GetChild(temp).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("sprites/UI/급류 상태");
+                        Research_panel.transform.GetChild(temp).gameObject.SetActive(true);
+                        break;
+                    case 3:
+                        Research_panel.transform.GetChild(2).gameObject.GetComponent<Text>().text += "\n현재 중독되어 남은 지속 턴 수만큼 피해를 입고 있습니다. 남은 지속 턴 수 : " + i.Value;
+                        Research_panel.transform.GetChild(temp).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("sprites/UI/중독 상태");
+                        Research_panel.transform.GetChild(temp).gameObject.SetActive(true);
+                        break;
+                    case 5:
+                        Research_panel.transform.GetChild(2).gameObject.GetComponent<Text>().text += "\n공격받을 때마다 현재 약화만큼 추가 피해를 받습니다. 현재 약화 : " + (i.Value / 10);
+                        Research_panel.transform.GetChild(temp).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("sprites/UI/약화 상태");
+                        Research_panel.transform.GetChild(temp).gameObject.SetActive(true);
+                        break;
+                }
+                temp++;
+            }
+            for (; temp < 8; temp++) {
+                Research_panel.transform.GetChild(temp).gameObject.SetActive(false);
+            }
+
         }
 
         public void log_add(string str) {
@@ -484,5 +523,11 @@ namespace ArcanaDungeon
             line.endColor = new Color(1f, 1f, 1f, 1f);
         }
 
+
+        public void Gameover() {
+            Time.timeScale = 0;
+            gameover_logo.SetActive(true);
+            gameover_button.SetActive(true);
+        }
     }
 }

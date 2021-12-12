@@ -18,7 +18,7 @@ namespace ArcanaDungeon.Object
 
         public List<int> route_pos = new List<int>();  //목적지까지의 이동 경로, 이동은 항상 route_pos[0]으로 이동해서 진행된다
 
-        private Dictionary<int, int> condition;  //상태이상 및 버프 표시, key는 상태이상 종류이며 value는 지속시간, key에 따른 효과 : 0=연소 / 1=기절 / 2=급류 / 3=중독 / 4 = 풀묶기(구현필요)
+        private Dictionary<int, int> condition;  //상태이상 및 버프 표시, key는 상태이상 종류이며 value는 지속시간, key에 따른 효과 : 0=연소 / 1=기절 / 2=급류 / 3=중독 / 4 = 풀묶기(구현필요) / 5 = 약화
 
         new public string name;
 

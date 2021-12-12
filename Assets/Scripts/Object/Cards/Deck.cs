@@ -94,6 +94,7 @@ namespace ArcanaDungeon.cards
 
         public void DrawCards() // 덱에 있는 맨 위부터 카드 정해진 수 만큼 가져오기
         {
+            UI.uicanvas.log_add("덱을 셔플했습니다.");
             if (Hands.Count < max_Hand & CardCount > 0)
             {
                 CardCount--;

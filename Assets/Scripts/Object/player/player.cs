@@ -351,7 +351,7 @@ namespace ArcanaDungeon.Object
         }
         public override void die()
         {
-            Debug.Log("»ç¸Á!");
+            UI.uicanvas.Gameover();
         }
     }
 }
