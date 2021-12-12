@@ -159,7 +159,7 @@ namespace ArcanaDungeon
                     //선택한 카드를 대상에게 사용
                     if ((selected > -1) & (selected < deck.max_Hand)) {
                         //마우스 커서 좌표를 유니티 내부 world 좌표로 변경
-                        Debug.Log("카드 사용 테스트");
+                        //Debug.Log("카드 사용 테스트");
                         Vector3 mpos_world = cam.GetComponent<Camera>().ScreenToWorldPoint(mpos);
                         mpos_world = new Vector3(Mathf.Round(mpos_world.x), Mathf.Round(mpos_world.y), 0);
                         //해당 좌표가 사용할 카드의 사거리 이내이며, 전체 맵 내부의 좌표이면 사용
@@ -400,7 +400,9 @@ namespace ArcanaDungeon
         }
 
         public void card_draw(Cards c) {
+
             int temp = deck.Hands.Count;
+            Debug.Log("여긴가? : " + temp + c.cardName + c.illust);
             card_ui[temp].transform.GetChild(1).GetComponent<Text>().text = c.cardName;
             card_ui[temp].transform.GetChild(2).gameObject.SetActive(true);
             card_ui[temp].transform.GetChild(2).GetComponent<Image>().sprite = Resources.Load<Sprite>(c.illust);

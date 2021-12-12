@@ -333,7 +333,6 @@ namespace ArcanaDungeon.Object
                 allDeck.DrawCards();
                 canDraw = !canDraw;
                 drawCount = 0;
-                Debug.Log("카드 드로우 도돔");
             }
             else
             {
@@ -341,7 +340,6 @@ namespace ArcanaDungeon.Object
                 if (drawCount >= 1)
                 {
                     canDraw = !canDraw;
-                    Debug.Log("이것이 미래? " + drawCount);
                 }
             }
         }

@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using ArcanaDungeon.Object;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ArcanaDungeon.cards
@@ -51,7 +51,15 @@ namespace ArcanaDungeon.cards
                     }
                 case 5:
                     {
+                        this.setRange(1);
                         this.setCardSprite("화살 쏘기", "상처 찌르기", "사거리 2칸, " + " 적의 약화 중첩만큼 피해를 줍니다. 대상에게 부여된 약점을 모두 없앱니다.  4도약");
+                        break;
+                    }
+                case 9:
+                    {
+                        this.costChange(40);
+                        this.setRange(0);
+                        this.setCardSprite("임시 강타", "숨고르기", "사거리 2칸, " + "패를 모두 버림니다. 패가 가득 찰 때까지 드로우합니다. 이 카드는 턴을 소모하지 않습니다. 9");
                         break;
                     }
 
@@ -113,18 +121,41 @@ namespace ArcanaDungeon.cards
                                 {
                                     enemy.be_hit(temp[5] / 10);
                                     Debug.Log("5번타입 카드 딜 : " + temp[5] / 10 + " 초기화 값" + temp[5] / 10 + 9);
-                                    enemy.condition_add(5,(temp[5] / 10 * 10) + 9 - temp[5] % 10);
+                                    enemy.condition_add(5, (temp[5] / 10 * 10) + 9 - temp[5] % 10);
                                 }
                                 Debug.Log("도약 미구현");
                                 //this.setCardSprite("화살 쏘기", "상처 찌르기", "사거리 2칸, " + " 적의 약화 중첩만큼 피해를 줍니다. 대상에게 부여된 약점을 모두 없앱니다.  4도약");
                                 break;
                             }
+
                     }
                     //상태이상 추가 할 부분
                     Plr.StaminaChange(-this.getCost());
                 }
                 else
+                {
+                    if (cardTape == 9)
+                    {
+
+                        for (int i = Plr.allDeck.Hands.Count - 1; i >= 0; i--)
+                        {
+                            if (Plr.allDeck.Hands[i] != null)
+                            {
+                                Plr.allDeck.wasteHandCard(i);
+                            }
+                        }
+                        Debug.Log(Plr.allDeck.Hands.Count);
+                        for (int i = 0; i < Plr.allDeck.max_Hand; i++)
+                        {
+                            Plr.allDeck.DrawCards();
+                        }
+                        Plr.allDeck.passTurn();
+                        Debug.Log("숨고르기");
+                        //this.setCardSprite("임시 강타", "숨고르기", "사거리 0칸, " + "패를 모두 버림니다. 패가 가득 찰 때까지 드로우합니다. 이 카드는 턴을 소모하지 않습니다. 9");
+
+                    }
                     Debug.Log("적을 찾을 수 없습니다.");
+                }
             }
             else
                 Debug.Log("플레이어를 찾을 수없습니다.");
