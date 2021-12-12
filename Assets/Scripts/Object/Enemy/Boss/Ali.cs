@@ -19,7 +19,7 @@ namespace ArcanaDungeon.Object
         {
             this.maxhp = 200;
             this.maxstamina = 100;
-            this.power = 10;
+            this.power = 5;
             HpChange(this.maxhp);
             StaminaChange(this.maxstamina);
 
@@ -69,7 +69,7 @@ namespace ArcanaDungeon.Object
                      if (Dungeon.distance_cal(Dungeon.dungeon.Plr.transform, this.transform) <= 1 & Plr_pos[0, 0] != -1)
                     {
                         Dungeon.dungeon.Plr.be_hit(power);
-                        Dungeon.dungeon.Plr.condition_add(3, 1);
+                        Dungeon.dungeon.Plr.StaminaChange(-5);
                         if (Dungeon.dungeon.Plr.GetStamina() <= 10 && cooldown == 0)
                         {
                             Dungeon.dungeon.Plr.condition_add(1, 2);

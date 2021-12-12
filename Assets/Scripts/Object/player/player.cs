@@ -85,8 +85,6 @@ namespace ArcanaDungeon.Object
         
         private void FixedUpdate()
         {//입력받는곳
-            UI.uicanvas.log_add("플레이어 isturn : " + this.isTurn);
-
             if (Input.GetKey(KeyCode.Q))
             {
 

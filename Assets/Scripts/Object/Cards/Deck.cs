@@ -60,13 +60,14 @@ namespace ArcanaDungeon.cards
             int TopOfDeck = CardsDeck.Count - 1; // 덱 리스트의 맨 위 카드
             Cards Tempcard = CardsDeck[TopOfDeck];
             CardsDeck.RemoveAt(TopOfDeck); // 덱 리스트의 맨 위 카드 제거
-            //Debug.Log("덱에서 카드 뽑는 중 : " + Tempcard.cardTape);// 로그
 
             return Tempcard;
         }
 
-        public void ChangDeck() //★근진이가 만든 임시 덱 셔플
+        public void ChangDeck() //덱 셔플, CardsDeck에 UsedDeck을 이어붙인 뒤 카드 개수만큼 무작위로 위치를 바꿔서 셔플한다
         {
+            CardsDeck.AddRange(UsedDeck);
+            UsedDeck.Clear();
             for (int i = 0; i < CardsDeck.Count(); i++)
             {
                 int ra1 = Dungeon.random.Next(0, CardsDeck.Count());
@@ -75,7 +76,7 @@ namespace ArcanaDungeon.cards
                 CardsDeck[ra1] = CardsDeck[ra2];
                 CardsDeck[ra2] = temp;
             }
-            Debug.Log("섞은 뒤 덱 수" + CardsDeck.Count());
+            CardCount = CardsDeck.Count;
         }
 
         public List<Cards> showDeckList()

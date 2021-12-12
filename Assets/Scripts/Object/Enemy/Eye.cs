@@ -122,8 +122,6 @@ namespace ArcanaDungeon.Object
                 
             
             charged = false;
-            Debug.Log("´«±òºö!!!");
-
         }
 
 

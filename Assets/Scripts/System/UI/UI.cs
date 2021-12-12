@@ -29,22 +29,27 @@ namespace ArcanaDungeon
         public GameObject Cardlist_panel;   //Cardlist_Panel에서 카드를 선택/나열할 때 사용되는 패널
         public GameObject Cardlist_card;    //Cardlist_Panel에서 카드를 선택/나열할 때 사용되는 카드 이미지, 평소엔 없지만 카드를 획득할 때마다 Instantiate된 후 카드 목록을 열람할 때 이미지를 할당해 사용됨
         public GameObject Cardlist_cancel;  //Cardlist_Panel에서 카드를 선택/나열할 때 사용되는 취소 버튼, 패널이 스크롤 될 때 움직이면 안 돼서 따로 저장되어 있음
+        public GameObject Research_panel;   //조사 기능으로 몬스터 정보를 볼 때 나오는 패널
 
         private GameObject Plr; //★플레이어
         private LineRenderer line;
         private Deck deck;   //플레이어에게 들어간 Deck 스트립트, SetPlr에서 위의 Plr와 함께 설정
         public Text log;  //로그
         private string[] condition_tooltip;
+        private List<string[]> research_enemy;
 
+        public bool researching;    //조사 버튼이 클릭되었는지 확인
         private int selected = -1;  //손패에서 카드를 클릭하면 이 변수에 그 카드의 Hands에서의 인덱스 번호를 저장
         public Cards selected2; //Cardlist_Panel에서 카드를 선택할 때 선택된 카드를 나타냄
         private bool selecting; //Cardlist_Panel에서 카드를 선택할 때 카드를 선택 중인 상태를 나타냄
+        private Enemy selected3;    //조사 기능으로 정보를 표시할 몬스터를 나타냄;
         private int wii; //ui에서 어느 부분이 변경되어야 하는지 나타낸다
-        //-1=기본값, 변경될 것 없음 / 0 : 모든 ui 요소 초기화 / 1 : 패의 카드 확대 / 2 : 선택한 카드 사거리 표시 (카드가 커서 따라다니는 건 update에 구현) / 3 : 상태이상 툴팁 표시
+        //-1=기본값, 변경될 것 없음 / 0 : 모든 ui 요소 초기화 / 1 : 패의 카드 확대 / 2 : 선택한 카드 사거리 표시 (카드가 커서 따라다니는 건 update에 구현) / 3 : 상태이상 툴팁 표시 / 4 : 몬스터 정보 표시
 
         private Vector2 mpos;   //마우스 좌표
 
         private const string card_background = "sprites/Card/카드 배경";
+        private const string research_cursor = "sprites/UI/조사 커서";
 
         public void Awake()
         {
@@ -57,15 +62,22 @@ namespace ArcanaDungeon
                 Destroy(this.gameObject);
             //위 코드는 UI 관리자를 싱글턴화하는 코드. 싱글턴 = 이 클래스 객체 단 하나로 유지.
 
-            card_on_cursor.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(card_background);    //마우스 커서를 따라다닐 UI 배경 저장
             wii = 0;
             selected = -1;
             selected2 = null;
+            selected3 = null;
             selecting = false;
+            researching = false;
             line = this.gameObject.GetComponent<LineRenderer>();
-            //Debug.Log(Resources.Load<Text>("condition_tooltip").text);
-            this.condition_tooltip = Resources.Load<TextAsset>("condition_tooltip").text.Split('Q');
+            this.condition_tooltip = Resources.Load<TextAsset>("condition_tooltip").text.Split('Q');    //상태이상 정보 가져오기
+
+            string[] temp_string = Resources.Load<TextAsset>("research_enemy").text.Split('Q'); //몬스터 정보 가져오기
+            research_enemy = new List<string[]>();
+            foreach (string s in temp_string) {
+                research_enemy.Add(s.Split('X'));
+            }
         }
+
         public void Start() {
             //Cardlist_card 버튼을 게임 시작 시 뽑을 카드 더미만큼 생성, 생성자에서는 스크립팅 API에 접근할 수 없다며 실행되지 않는댄다 나참
             for (int i = 0; i < deck.showDeckList().Count; i++)
@@ -77,10 +89,6 @@ namespace ArcanaDungeon
         public void SetPlr(GameObject p) {   //이 스크립트의 Plr에 플레이어를 배정해줌, Dungeon에서 단 1번 실행됨
             this.Plr = p;
             deck = Plr.GetComponent<player>().allDeck; // 오류 때문에 이전에 있던 deck을 통합한 덱 클래스로 임시로 바꿈 jgh
-            if (deck == null && Plr == null)
-            {
-                Debug.Log("asdf");
-            }
         }
 
         public void Update() {
@@ -97,16 +105,24 @@ namespace ArcanaDungeon
                 if (Input.GetMouseButton(0) & selected == -1) { selected = temp_hand_num - 1; }
                 if (!Input.GetMouseButton(0)) { selected = -1; }
             }
-            //손패 좌표 밖에 마우스 커서가 있을 때를 나타낸다, 이 때 처리될 수 있는 것은 확대된 카드 이미지 없앰, 선택한 카드 이미지가 커서를 따라다님, 선택한 카드 사용 이렇게 3가지다. 
+
+            //조사 기능 사용 부분
+            if (mpos.x > 1760 & mpos.x < 1840 & mpos.y > 80 & mpos.y < 160 & !researching & Input.GetMouseButton(0)) {
+                researching = true;
+            }
+
+
+            //UI 밖에 마우스 커서가 있을 때
             if (mpos.x < 120 | mpos.x > 840 | mpos.y < 0 | mpos.y > 160)
             {
-                //selected가 다음 조건을 만족하지 않으면 카드를 선택하지 않은 채 손패 좌표를 벗어난 것이다
-                if ((selected > -1) & (selected < deck.max_Hand))
+                //마우스 왼쪽 버튼이 클릭된 중이면 둘 중 하나다 : 선택한 카드를 사용할 대상 선택 중, 조사 기능으로 몬스터 선택 중
+                if (Input.GetMouseButton(0))
                 {
-                    //마우스 왼쪽 버튼이 클릭된 중이며 선택한 카드 이미지가 마우스 커서를 따라다님, 카드 사거리 표시는 wii 처리에 맡긴다
-                    if (Input.GetMouseButton(0))
+                    //선택 한 카드를 사용할 대상 선택 중
+                    if ((selected > -1) & (selected < deck.max_Hand))
                     {
                         card_on_cursor.GetComponent<RectTransform>().localPosition = mpos + new Vector2(-860, -440);
+                        card_on_cursor.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(card_background);
                         card_on_cursor.transform.GetChild(0).gameObject.SetActive(true);
                         card_on_cursor.transform.GetChild(0).GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
                         wii = 2;    //카드 사거리를 표시하라는 wii값
@@ -128,10 +144,20 @@ namespace ArcanaDungeon
                             }
                         }
                     }
-                    //마우스 왼쪽 버튼이 클릭되지 않으면  클릭을 멈춘 좌표에 카드를 사용하기로 결정한 것이다, 선택 카드의 사거리를 충족하는지 확인 후 사용처리한다
-                    else
-                    {
-                        //마우스 커서 좌표를 유니티 내부 world 좌표로 변경해 그 좌표 위의 enemy 찾기
+                    //조사 기능으로 몬스터 선택 중
+                    if (researching) {
+                        card_on_cursor.GetComponent<RectTransform>().localPosition = mpos + new Vector2(-860, -440);
+                        card_on_cursor.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(research_cursor);
+                        card_on_cursor.transform.GetChild(0).gameObject.SetActive(true);
+                        card_on_cursor.transform.GetChild(0).GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                    }
+                }
+                //마우스 왼쪽 버튼이 클릭이 안 된 상태라면 셋 중 하나다 : 선택한 카드를 대상에게 사용, 조사 기능으로 그 몬스터의 정보 표시, 아무 것도 안 하는 중
+                else {
+                    //선택한 카드를 대상에게 사용
+                    if ((selected > -1) & (selected < deck.max_Hand)) {
+                        //마우스 커서 좌표를 유니티 내부 world 좌표로 변경
+                        Debug.Log("카드 사용 테스트");
                         Vector3 mpos_world = cam.GetComponent<Camera>().ScreenToWorldPoint(mpos);
                         mpos_world = new Vector3(Mathf.Round(mpos_world.x), Mathf.Round(mpos_world.y), 0);
                         //해당 좌표가 사용할 카드의 사거리 이내이며, 전체 맵 내부의 좌표이면 사용
@@ -155,9 +181,22 @@ namespace ArcanaDungeon
                         selected = -1;
                         wii = 0;    //ui 초기화하는 wii값
                     }
+                    //조사 기능으로 그 몬스터의 정보 표시
+                    if (researching)
+                    {
+                        card_on_cursor.transform.GetChild(0).gameObject.SetActive(false);
+                        //마우스 커서 좌표를 유니티 내부 world 좌표로 변경
+                        Vector3 mpos_world = cam.GetComponent<Camera>().ScreenToWorldPoint(mpos);
+                        mpos_world = new Vector3(Mathf.Round(mpos_world.x), Mathf.Round(mpos_world.y), 0);
+                        //그 좌표의 몬스터 찾아오기, 없다면 null이 반환됨
+                        selected3 = Dungeon.dungeon.find_enemy(mpos_world.x, mpos_world.y);
+                        //반환된 값이 null이 아니라면 그 몬스터에 대한 정보 표시
+                        if (selected3 != null) { wii = 4; }    //몬스터 정보 표시를 나타내는 wii값
+                        researching = false;
+                    }
+                    else if (!Research_panel.activeSelf) { wii = 0; }   //researching==false이고 research_panel도 없다면 selected에 관계없이 초기화가 필요하다
                 }
-                //손패 좌표 밖에 있으면서 카드가 선택되지 않았고 card_on_cursor 혹은 small_tool_tip가 활성화된 상태라면 ui를 초기화한다
-                else if (card_on_cursor.transform.GetChild(0).gameObject.activeSelf | small_tool_tip.activeSelf) { wii = 0; }
+                
             }
             //상태이상 확인 구역으로 커서 올림
             if (mpos.x > 1440 & mpos.x < 1680 & mpos.y > 0 & mpos.y < 160) { wii = 3; }
@@ -167,13 +206,15 @@ namespace ArcanaDungeon
             if (wii == 1) { CardZoom(temp_hand_num); wii = -1; } //패에 커서를 올린 카드 확대
             if (wii == 2) { RangeDisplay(deck.Hands[selected].getRange()); wii = -1; }  //현재 선택한 카드의 사거리 표시
             if (wii == 3) { ConditionTooltip((int)(Mathf.Floor((mpos.x - 1440) / 80) + 3 * Mathf.Floor((160 - mpos.y) / 80))); wii = -1; }   //상태이상 툴팁 표시
+            if (wii == 4) { Research(); wii = -1; }   //조사 버튼으로 몬스터 정보 표시
 
             //원거리 공격을 표시할 때 사용되는 linerenderer 투명하게 만들기
             if (line.startColor[3] > 0f)
             {
-                line.startColor = new Color(1f, 1f, 1f, line.startColor[3] - 0.005f);
-                line.endColor = new Color(1f, 1f, 1f, line.endColor[3] - 0.005f);
+                line.startColor = new Color(1f, 1f, 1f, line.startColor[3] - 0.01f);
+                line.endColor = new Color(1f, 1f, 1f, line.endColor[3] - 0.01f);
             }
+
             if (Input.GetKey(KeyCode.Space) & deck.Hands.Count < deck.max_Hand)//★추후 삭제할 것
             {
                 deck.DrawCards(); card_draw(deck.Hands[deck.Hands.Count - 1]);
@@ -197,12 +238,18 @@ namespace ArcanaDungeon
             //small_tool_tip 초기화, 상태이상 툴팁에 사용됨
             small_tool_tip.SetActive(false);
             small_tool_tip.transform.GetChild(0).gameObject.GetComponent<Text>().text = null;
-            //range 초기화, 사거리 표시에 사용ehla
+            //range 초기화, 사거리 표시에 사용됨
             range.SetActive(false);
+            //research_panel 초기화, 조사 기능에 사용됨
+            Research_panel.SetActive(false);
+            Research_panel.transform.GetChild(0).gameObject.SetActive(false);
+            Research_panel.transform.GetChild(1).gameObject.GetComponent<Text>().text = null;
+            Research_panel.transform.GetChild(2).gameObject.GetComponent<Text>().text = null;
         }
         private void CardZoom(int th) { //커서를 올린 패의 카드 이미지 확대
             GameObject temp_ob = null;
             card_on_cursor.GetComponent<RectTransform>().localPosition = new Vector3(-900 + th * 120, -180, 0);
+            card_on_cursor.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(card_background);
             card_on_cursor.transform.GetChild(0).gameObject.SetActive(true);
             card_on_cursor.transform.GetChild(0).GetComponent<RectTransform>().localScale = new Vector3(2, 2, 2);
             for (int i = 1; i < 4; i++)
@@ -266,6 +313,20 @@ namespace ArcanaDungeon
             else
             {
                 hp_bar.transform.GetChild(3).GetComponent<Text>().text = null;
+            }
+        }
+
+        public void Research() {
+            Research_panel.SetActive(true);
+            Research_panel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = selected3.gameObject.GetComponent<SpriteRenderer>().sprite;
+            Research_panel.transform.GetChild(0).gameObject.SetActive(true);
+            foreach (string[] s in research_enemy)
+            {    //이름, 정보는 텍스트 파일로 저장해뒀다가 research_enemy로 옮겨진다, 그거 찾아온다
+                if (s[0] == selected3.name)
+                {
+                    Research_panel.transform.GetChild(1).gameObject.GetComponent<Text>().text = s[1];
+                    Research_panel.transform.GetChild(2).gameObject.GetComponent<Text>().text = s[2];
+                }
             }
         }
 
