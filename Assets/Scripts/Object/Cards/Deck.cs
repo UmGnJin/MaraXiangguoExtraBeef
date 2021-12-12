@@ -132,6 +132,7 @@ namespace ArcanaDungeon.cards
             Hands.RemoveAt(SlotNum);
             if (!ispass)
             {
+                PLR.drawCountting();
                 Dungeon.dungeon.Plr.Turnend();
                 ispass = false;
                 isnext = true;

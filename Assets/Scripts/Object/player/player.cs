@@ -36,6 +36,8 @@ namespace ArcanaDungeon.Object
         int Mou_x = 0;
         int Mou_y = 0;
         bool isMouseMove = false;
+        bool canDraw = true;
+        int drawCount = 0;
 
         public bool[,] FOV;
 
@@ -63,6 +65,7 @@ namespace ArcanaDungeon.Object
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 StaminaChange(10);
+                drawCountting();
                 Turnend();//턴넘기기
             }
             if (isTurn > 0)
@@ -85,12 +88,6 @@ namespace ArcanaDungeon.Object
         
         private void FixedUpdate()
         {//입력받는곳
-            if (Input.GetKey(KeyCode.Q))
-            {
-
-                //atcd.UseCard(Dungeon.dungeon.Ene);
-                //Debug.Log("플레이어측 체력" + Dungeon.dungeon.Ene.GetHp());
-            }// 임시 키 입력 
             /*if (isTurn == true && isMouseMove == false)
             {
 
@@ -242,7 +239,7 @@ namespace ArcanaDungeon.Object
                     transform.position = new Vector2(route_pos[0] % Dungeon.dungeon.currentlevel.width, route_pos[0] / Dungeon.dungeon.currentlevel.width);
                     route_pos.RemoveAt(0);
                     MoveTimer = MoveTimerLimit;
-
+                    drawCountting();
                     UI.uicanvas.Plr_Cam();
                     this.Turnend();
                 }
@@ -326,6 +323,25 @@ namespace ArcanaDungeon.Object
                             temp_enem.status_hide();
                         }
                     }
+                }
+            }
+        }
+        public void drawCountting()
+        {
+            if (canDraw)
+            {
+                allDeck.DrawCards();
+                canDraw = !canDraw;
+                drawCount = 0;
+                Debug.Log("카드 드로우 도돔");
+            }
+            else
+            {
+                drawCount++;
+                if (drawCount >= 1)
+                {
+                    canDraw = !canDraw;
+                    Debug.Log("이것이 미래? " + drawCount);
                 }
             }
         }

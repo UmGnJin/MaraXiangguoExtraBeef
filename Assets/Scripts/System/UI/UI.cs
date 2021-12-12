@@ -216,11 +216,11 @@ namespace ArcanaDungeon
                 line.startColor = new Color(1f, 1f, 1f, line.startColor[3] - 0.01f);
                 line.endColor = new Color(1f, 1f, 1f, line.endColor[3] - 0.01f);
             }
-
-            if (Input.GetKey(KeyCode.Space) & deck.Hands.Count < deck.max_Hand)//★추후 삭제할 것
+            /*if (Input.GetKey(KeyCode.Space) & deck.Hands.Count < deck.max_Hand)//★추후 삭제할 것
             {
                 deck.DrawCards(); card_draw(deck.Hands[deck.Hands.Count - 1]);
-            }
+            }*/
+            
 
         }
 
