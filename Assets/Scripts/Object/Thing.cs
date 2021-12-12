@@ -284,7 +284,8 @@ namespace ArcanaDungeon.Object
 
         public void Turnend()
         {
-
+            if(this.gameObject.tag == "Player")
+                UI.uicanvas.log_add("ео а╬╥А.");
             this.condition_process();
             this.StaminaChange(5);
             this.isTurn -= 1;

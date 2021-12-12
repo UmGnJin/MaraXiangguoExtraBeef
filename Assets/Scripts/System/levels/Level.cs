@@ -22,14 +22,10 @@ namespace ArcanaDungeon
     public enum Biome//레벨이 가질 지형 예시. 
     {
         NORMAL = 0,
-        FIRE = 1,
 
-        TEST = -1,
-        BOSS_MECH = 10,
-        BOSS_ELEMENTAL = 11,
-        BOSS_CRAB = 12,
-        BOSS_MIMIC = 13,
-        BOSS_GNOLL = 14
+        BOSS_CRAB = 1,
+        BOSS_MIMIC = 2,
+        BOSS_GNOLL = 3
     }
 
 
@@ -38,6 +34,8 @@ namespace ArcanaDungeon
         public GameObject[,] temp_gameobjects;//★시야를 표현하기 위한 임시 게임오브젝트 배열, 나중에 그래픽 표현이나 좌표 체계를 정리할 필요가 있다
         public int width, height, length;
         public int[,] map;//텍스트로 구현된 맵을 저장할 장소.
+
+        public bool locked = false;
 
         public List<Room> rooms;//레벨 내의 방 저장.
 
@@ -61,7 +59,7 @@ namespace ArcanaDungeon
                             //그래픽 형태의 2차 맵은 Dungeon 클래스에서 만든다.
         {
             Random random = new Random();
-            biome = (Biome)random.Next(0, 2);
+            //biome = (Biome)random.Next(0, 2);
             //Debug.Log(biome);
             InitRooms();
 

@@ -13,20 +13,28 @@ namespace ArcanaDungeon
 {
     public class BossLevel : Level
     {
-        
+        public static bool[] availableBossList = new bool[]{true, true, true};
         public override void InitRooms()//
         {
+            locked = true;
             levelsize = LevelSize.SMALL;
             rooms = new List<Room>();
-            //biome = (Biome)rand.Next(10, 15);
-            biome = Biome.BOSS_GNOLL;
-            if (biome != Biome.BOSS_MECH)
+            //biome = Biome.NORMAL;
+            for(int i = 0; i < availableBossList.Length; i++)
             {
-                rooms.Add(new UpStairsRoom());
-                exitnum = 1;
-                rooms.Add(new DownStairsRoom());
+                if (availableBossList[i] == true)
+                {
+                    biome = (Biome)(i + 1);
+                    break;
+                }
             }
+            //biome = Biome.BOSS_GNOLL;
+            availableBossList[(int)biome - 1] = false;
             maxEnemies = 1;
+
+            rooms.Add(new UpStairsRoom());
+            exitnum = 1;
+            rooms.Add(new DownStairsRoom());
 
             PlaceRooms();
             levelr = LevelRect();
@@ -46,26 +54,18 @@ namespace ArcanaDungeon
             int radius = (int)levelsize;
             BossRoom br;
             Rect r = new Rect();
-            if (biome != Biome.BOSS_MECH)
-            {
-                rooms[0].SetPosition(0, 0);
-                rooms[0].placed = true;
 
-                rooms[1].SetPosition(0, 5 * radius);
-                rooms[1].placed = true;
+            rooms[0].SetPosition(0, 0);
+            rooms[0].placed = true;
 
-                r = rooms[0].Intersect(rooms[1]);
-            }
-            switch (biome)
-            {
-                case Biome.BOSS_MECH:
-                    br = new BossRoom("Mech", 17, 17);  //이 부분을 잠시 default로 옮기면 보스방 테스트 가능, 옮기지 않아도 20% 확률로 테스트 가능
-                    break;
-                default:
-                    br = new BossRoom("asdf", Mathf.Abs(r.Width() * 10), Mathf.Abs(r.Height()));
-                    br.SetPosition(-(br.width / 2), Mathf.Abs(rooms[0].Height()));
-                    break;
-            }
+            rooms[1].SetPosition(0, 5 * radius);
+            rooms[1].placed = true;
+
+            r = rooms[0].Intersect(rooms[1]);
+
+            br = new BossRoom("asdf", Mathf.Abs(r.Width() * 10), Mathf.Abs(r.Height()));
+            br.SetPosition(-(br.width / 2), Mathf.Abs(rooms[0].Height()));
+                    
             
             rooms.Add(br);
             br.placed = true;

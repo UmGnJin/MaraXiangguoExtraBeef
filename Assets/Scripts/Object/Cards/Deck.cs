@@ -53,11 +53,11 @@ namespace ArcanaDungeon.cards
             CardsDeck.Add(new ThiefAttackCard(009));
             //CardsDeck.Add(new BasicConsCard(3030025)); // - 30 / 급류 5턴 8
 
-            UsedDeck.Add(new ThiefAttackCard(009));
-            UsedDeck.Add(new ThiefAttackCard(009));
-            UsedDeck.Add(new ThiefAttackCard(009));
-            UsedDeck.Add(new ThiefAttackCard(009));
-            UsedDeck.Add(new ThiefAttackCard(009));
+            //UsedDeck.Add(new ThiefAttackCard(009));
+            //UsedDeck.Add(new ThiefAttackCard(009));
+            //UsedDeck.Add(new ThiefAttackCard(009));
+            //UsedDeck.Add(new ThiefAttackCard(009));
+            //UsedDeck.Add(new ThiefAttackCard(009));
 
         }
 
@@ -103,9 +103,12 @@ namespace ArcanaDungeon.cards
         }
         public void DrawCards() // 덱에 있는 맨 위부터 카드 정해진 수 만큼 가져오기
         {
-            UI.uicanvas.log_add("덱을 셔플했습니다.");
+            //UI.uicanvas.log_add("덱을 셔플했습니다.");
+            if (CardsDeck.Count == 0)//우선 테스트를 위해 뽑을 카드가 없는 상황에 자동 셔플 기능을 넣었음.
+                ChangDeck();
             if (Hands.Count < max_Hand & CardsDeck.Count > 0)
             {
+                
                 Hands.Add(CardsDeck[CardsDeck.Count - 1]);
                 CardsDeck.RemoveAt(CardsDeck.Count - 1);
                 if(Hands[Hands.Count - 1] != null)
@@ -148,9 +151,11 @@ namespace ArcanaDungeon.cards
             //CardSlot[SlotNum].UseCard(smthing);
             //Debug.Log("카드 사용됨" + cost);
             //Debug.Log(UsedDeck[0].cardTape + "사용된 카드타입");
-            if (!ispass)
+            if (ispass == false)
             {
-                PLR.drawCountting();
+                UI.uicanvas.log_add("카드 사용.");
+                Dungeon.dungeon.Plr.drawCountting();
+                //Dungeon.dungeon.Plr.Turnend();
                 Dungeon.dungeon.Plr.Turnend();
                 ispass = false;
                 isnext = true;

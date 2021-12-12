@@ -48,11 +48,8 @@ namespace ArcanaDungeon
             Mobs = Resources.LoadAll<GameObject>("prefabs/Enemies");
             Players = Resources.LoadAll<GameObject>("prefabs/Player");
 
-
-            //currentlevel = new RegularLevel();
-            //currentlevel = new AnotherLevel();
-            //currentlevel = new TestLevel();
-            currentlevel = new BossLevel();
+            currentlevel = new AnotherLevel();
+            //currentlevel = new BossLevel();
             //주석처리 바꿔서 시작레벨 다른거로 테스트 가능.
 
             currentlevel.Create();
@@ -68,13 +65,7 @@ namespace ArcanaDungeon
             UI.uicanvas.SetPlr(Player);
             Debug.Log("cur level : " + currentlevel.GetType());
 
-            /*
-            //턴 테스트용 쥐 한마리
-            GameObject Enemy1= Instantiate(Enemy1, new Vector2(Plr.PlayerPos.x, Plr.PlayerPos.y+1), Quaternion.identity) as GameObject;
-            Ene = Enemy1.GetComponent<Enemy>();
-            Ene.Spawn(); 
-            Ene.HpChange(200); // 체력 설정 임의로함 나중에 몹 스포너에서 서정하게 해야할 듯 jgh.
-            */
+           
 
             whosTurn = 1;//플레이어 턴
 
@@ -124,7 +115,8 @@ namespace ArcanaDungeon
 
                 l.Create();
                 levels.Add(l);
-                l.floor = currentlevel.floor + 1;
+                if(l.GetType() == typeof(AnotherLevel))
+                    l.floor = currentlevel.floor + 1;
                 currentlevel = l;
             }
             else//마지막층이 아니면, 이미 있는 다음층을 깐다.
@@ -169,9 +161,7 @@ namespace ArcanaDungeon
                         case Terrain.GROUND:
                             switch (currentlevel.biome)
                             {
-                                case Biome.FIRE:
-                                    tileObject = Tiles[Array.FindIndex(Tiles, t => t.name == "FloorTile_Fire")];
-                                    break;
+                                
                                 default:
                                     tileObject = Tiles[Array.FindIndex(Tiles, t => t.name == "FloorTile")];
                                     break;
@@ -180,9 +170,7 @@ namespace ArcanaDungeon
                         case Terrain.WALL:
                             switch (currentlevel.biome)
                             {
-                                case Biome.FIRE:
-                                    tileObject = Tiles[Array.FindIndex(Tiles, t => t.name == "WallTile_Fire")];
-                                    break;
+                                
                                 default:
                                     tileObject = Tiles[Array.FindIndex(Tiles, t => t.name == "WallTile")];
                                     break;
@@ -191,9 +179,7 @@ namespace ArcanaDungeon
                         case Terrain.STAIRS_UP:
                             switch (currentlevel.biome)
                             {
-                                case Biome.FIRE:
-                                    tileObject = Tiles[Array.FindIndex(Tiles, t => t.name == "Upstairs_Fire")];
-                                    break;
+                                
                                 default:
                                     tileObject = Tiles[Array.FindIndex(Tiles, t => t.name == "Upstairs")];
                                     break;
@@ -202,9 +188,7 @@ namespace ArcanaDungeon
                         case Terrain.STAIRS_DOWN:
                             switch (currentlevel.biome)
                             {
-                                case Biome.FIRE:
-                                    tileObject = Tiles[Array.FindIndex(Tiles, t => t.name == "Downstairs_Fire")];
-                                    break;
+                                
                                 default:
                                     tileObject = Tiles[Array.FindIndex(Tiles, t => t.name == "Downstairs")];
                                     break;
@@ -213,9 +197,7 @@ namespace ArcanaDungeon
                         case Terrain.DOOR:
                             switch (currentlevel.biome)
                             {
-                                case Biome.FIRE:
-                                    tileObject = Tiles[Array.FindIndex(Tiles, t => t.name == "DoorTile_Fire")];
-                                    break;
+                                
                                 default:
                                     tileObject = Tiles[Array.FindIndex(Tiles, t => t.name == "DoorTile")];
                                     break;
@@ -244,13 +226,17 @@ namespace ArcanaDungeon
         private void Update()
         {
 
-            if (currentlevel.map[(int)Plr.transform.position.x, (int)Plr.transform.position.y] == Terrain.STAIRS_DOWN && currentlevel.floor <= 3 && Plr.MoveTimer <= 0)
+            if (currentlevel.map[(int)Plr.transform.position.x, (int)Plr.transform.position.y] == Terrain.STAIRS_DOWN && currentlevel.floor < 3 && Plr.MoveTimer <= 0 && currentlevel.locked == false)
             {
                 NextLevel();
             }
-            if (currentlevel.map[(int)Plr.transform.position.x, (int)Plr.transform.position.y] == Terrain.STAIRS_UP && currentlevel.floor > 1 && Plr.MoveTimer <= 0)
+            if (currentlevel.map[(int)Plr.transform.position.x, (int)Plr.transform.position.y] == Terrain.STAIRS_UP && currentlevel.floor > 1 && Plr.MoveTimer <= 0 && currentlevel.locked == false)
             {
                 PrevLevel();
+            }
+            else if(currentlevel.map[(int)Plr.transform.position.x, (int)Plr.transform.position.y] == Terrain.STAIRS_DOWN && currentlevel.floor == 3 && Plr.MoveTimer <= 0 && currentlevel.locked == false)
+            {
+                UI.uicanvas.log_add("Clear!!!");
             }
             //턴
             if (Plr.isTurn <= 0)
@@ -294,21 +280,12 @@ namespace ArcanaDungeon
                 while (count<currentlevel.maxEnemies)
                 {
                     GameObject mob;
-                    GameObject[] mobs = new GameObject[3];
+                    GameObject[] mobs = new GameObject[4];
 
 
-                    Vector2 pos = new Vector2();
+                    Vector2[] pos = new Vector2[4];
                     switch (currentlevel.biome)
                     {
-                        case Biome.TEST:
-                            mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Ali")];
-                            break;
-                        case Biome.BOSS_MECH:
-                            mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat")];
-                            break;
-                        case Biome.BOSS_ELEMENTAL:
-                            mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat")];
-                            break;
                         case Biome.BOSS_CRAB:
                             mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Crabig")];
                             break;
@@ -319,43 +296,44 @@ namespace ArcanaDungeon
                         case Biome.BOSS_GNOLL:
                             mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Ali")];
                             mobs[1] = Mobs[Array.FindIndex(Mobs, m => m.name == "Zera")];
-
-                            currentlevel.maxEnemies = 2;
-                            
+                            currentlevel.maxEnemies = 2; 
                             break;
                         default:
-                            mob = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat")];
+                            mobs[0] = Mobs[Array.FindIndex(Mobs, m => m.name == "Rat")];
+                            mobs[1] = Mobs[Array.FindIndex(Mobs, m => m.name == "Gnoll")];
+                            mobs[2] = Mobs[Array.FindIndex(Mobs, m => m.name == "Eye")];
+                            mobs[3] = Mobs[Array.FindIndex(Mobs, m => m.name == "Slime")];
                             break;
                     }
 
-                    /*(if (currentlevel.biome == Biome.BOSS_SLIME)
+                    int index = 0;
+                    while (true)
                     {
-                        Vector2 point = currentlevel.SpawnPoint();
-                        pos = new Vector2(point.x - 1, point.y - 3);
-
-                    }
-                    else
-                    {*/
-                        while (true)
+                        int x = random.Next(0, currentlevel.levelr.xMax);
+                        int y = random.Next(0, currentlevel.levelr.yMax);
+                        if (currentlevel.map[x, y] == Terrain.GROUND)
                         {
-                            int x = random.Next(0, currentlevel.levelr.xMax);
-                            int y = random.Next(0, currentlevel.levelr.yMax);
-                            if (currentlevel.map[x, y] == Terrain.GROUND)
-                            {
-                                pos = new Vector2(Mathf.Round(x-1), Mathf.Round(y));
+                            pos[index] = new Vector2(Mathf.Round(x), Mathf.Round(y));
+                            index++;
+                            if (index >= mobs.Length)
                                 break;
-                            }
+                            if(mobs[index] == null)
+                                break;
                         }
-                    //}
+                    }
                     for (int u = 0; u < mobs.Length; u++)
                     {
-                        if (count < currentlevel.maxEnemies && mobs[u]!=null)
+                        if (count < currentlevel.maxEnemies && mobs[u] != null)
                         {
-                            enemylist.Add(Instantiate(mobs[u], pos, Quaternion.identity));
-                            enemylist[enemylist.Count -1].GetComponent<Enemy>().Initiate();
+                            enemylist.Add(Instantiate(mobs[u], pos[u], Quaternion.identity));
+                            enemylist[enemylist.Count - 1].GetComponent<Enemy>().Initiate();
                             count++;
                         }
-                        else break;
+                        else
+                        {
+                            count = currentlevel.maxEnemies;
+                            break;
+                        }
 
                     }
                     

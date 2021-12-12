@@ -15,6 +15,7 @@ namespace ArcanaDungeon
     {
         public override void InitRooms()
         {
+            biome = Biome.NORMAL;
             levelsize = LevelSize.SMALL;
             rooms = new List<Room>();
             rooms.Add(new UpStairsRoom());

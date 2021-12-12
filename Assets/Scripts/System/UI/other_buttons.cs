@@ -7,7 +7,9 @@ public class other_buttons : MonoBehaviour
 {
     public void rest() {
         if (Dungeon.dungeon.Plr.isTurn > 0) {
-            Dungeon.dungeon.Plr.isTurn -= 1;
+            Dungeon.dungeon.Plr.StaminaChange(10);
+            Dungeon.dungeon.Plr.drawCountting();
+            Dungeon.dungeon.Plr.Turnend();//턴넘기기
         }
     }
 
@@ -20,6 +22,9 @@ public class other_buttons : MonoBehaviour
         {
             Dungeon.dungeon.Plr.isTurn -= 1;
             Dungeon.dungeon.Plr.allDeck.ChangDeck();
+            Dungeon.dungeon.Plr.StaminaChange(10);
+            Dungeon.dungeon.Plr.drawCountting();
+            Dungeon.dungeon.Plr.Turnend();//턴넘기기
         }
     }
 

@@ -21,6 +21,8 @@ namespace ArcanaDungeon.Object
         private GameObject st_background;
         private GameObject st_fillarea;
 
+        public bool isboss = false;
+
         public Enemy Copy()
         {
             Enemy e = new Enemy();
@@ -145,6 +147,8 @@ namespace ArcanaDungeon.Object
         public override void die()
         {
             Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1].Remove(this.gameObject);
+            if (isboss)
+                Dungeon.dungeon.currentlevel.locked = false;//보스 잡고 다음층으로 가게 함
             Destroy(this.gameObject);
         }
 
