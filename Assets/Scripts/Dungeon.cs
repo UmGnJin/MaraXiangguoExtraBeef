@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using ArcanaDungeon.Object;
 using Random = System.Random;
 
@@ -48,8 +49,8 @@ namespace ArcanaDungeon
             Mobs = Resources.LoadAll<GameObject>("prefabs/Enemies");
             Players = Resources.LoadAll<GameObject>("prefabs/Player");
 
-            //currentlevel = new AnotherLevel();
-            currentlevel = new BossLevel();
+            currentlevel = new AnotherLevel();
+            //currentlevel = new BossLevel();
             //주석처리 바꿔서 시작레벨 다른거로 테스트 가능.
 
             currentlevel.Create();
@@ -115,8 +116,13 @@ namespace ArcanaDungeon
 
                 l.Create();
                 levels.Add(l);
-                if(l.GetType() == typeof(AnotherLevel))
+                if (l.GetType() == typeof(BossLevel))
+                {
                     l.floor = currentlevel.floor + 1;
+                }
+                else {
+                    l.floor = currentlevel.floor;
+                }
                 currentlevel = l;
             }
             else//마지막층이 아니면, 이미 있는 다음층을 깐다.
@@ -236,7 +242,8 @@ namespace ArcanaDungeon
             }
             else if(currentlevel.map[(int)Plr.transform.position.x, (int)Plr.transform.position.y] == Terrain.STAIRS_DOWN && currentlevel.floor == 3 && Plr.MoveTimer <= 0 && currentlevel.locked == false)
             {
-                UI.uicanvas.log_add("Clear!!!");
+                SceneManager.LoadScene("clear");
+                Destroy(this);
             }
             //턴
             if (Plr.isTurn <= 0)

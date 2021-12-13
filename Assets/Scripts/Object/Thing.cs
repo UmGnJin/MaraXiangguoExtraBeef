@@ -215,7 +215,6 @@ namespace ArcanaDungeon.Object
                 if (this.condition[2] > 0)
                 {
                     StaminaChange(15);
-                    Debug.Log("급류 스테미나 회복 " + 15);
                     this.condition[2] -= 1;
                 }
             }
@@ -223,7 +222,6 @@ namespace ArcanaDungeon.Object
             {    //중독 - 중첩형 상태이상. 중첩 횟수와 같은 양의 피해를 받고, 중첩이 1 감소한다. 이렇게 중첩이 0이 될 경우, 중독이 해제된다.
                 if (this.condition[3] > 0)
                 {
-                    Debug.Log("독 뎀 " + this.condition[3]);
                     be_poisoned(condition[3]);
                     this.condition[3] -= 1;
                 }

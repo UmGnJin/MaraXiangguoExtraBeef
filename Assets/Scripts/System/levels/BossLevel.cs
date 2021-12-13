@@ -16,7 +16,7 @@ namespace ArcanaDungeon
         public static bool[] availableBossList = new bool[]{true, true, true};
         public override void InitRooms()//
         {
-            locked = true;
+            //locked = true;
             levelsize = LevelSize.SMALL;
             rooms = new List<Room>();
             //biome = Biome.NORMAL;
