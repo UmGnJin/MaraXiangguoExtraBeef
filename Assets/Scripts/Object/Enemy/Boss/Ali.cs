@@ -17,6 +17,7 @@ namespace ArcanaDungeon.Object
 
         public void Awake()
         {
+            isboss = true;
             this.maxhp = 200;
             this.maxstamina = 100;
             this.power = 5;

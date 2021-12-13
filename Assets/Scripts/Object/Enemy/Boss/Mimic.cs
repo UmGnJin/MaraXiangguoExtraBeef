@@ -18,13 +18,14 @@ namespace ArcanaDungeon.Object
 
         public class Mimic : Enemy
         {
-        bool Activate = false;
+        bool Activate = true;
         public Bosang bosang;
         public GameObject taljin;
         public static bool[] type = { false, false, false};
             public static Random rand = new Random();
         public void Awake()
         {
+            isboss = true;
             this.maxhp = 115;
             this.maxstamina = 100;
             this.power = 1;
@@ -106,6 +107,13 @@ namespace ArcanaDungeon.Object
         {
                 loot();
             Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1].Remove(this.gameObject);
+            
+            if (Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1].Count == 0)
+            {
+                UI.uicanvas.log_add("Boss Clear!");
+                Dungeon.dungeon.currentlevel.locked = false;//보스 잡고 다음층으로 가게 함
+            }
+               
             Destroy(this.gameObject);
 
 

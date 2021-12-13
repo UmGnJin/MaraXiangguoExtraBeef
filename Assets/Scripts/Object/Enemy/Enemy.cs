@@ -23,6 +23,7 @@ namespace ArcanaDungeon.Object
 
         public bool isboss = false;
 
+
         public Enemy Copy()
         {
             Enemy e = new Enemy();
@@ -148,7 +149,17 @@ namespace ArcanaDungeon.Object
         {
             Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1].Remove(this.gameObject);
             if (isboss)
-                Dungeon.dungeon.currentlevel.locked = false;//보스 잡고 다음층으로 가게 함
+            {
+                if (Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1].Count == 0)
+                {
+                    UI.uicanvas.log_add("Boss Clear!");
+                    Dungeon.dungeon.currentlevel.locked = false;//보스 잡고 다음층으로 가게 함
+                }
+                else
+                    UI.uicanvas.log_add("?");
+            }
+            else
+                UI.uicanvas.log_add("?");
             Destroy(this.gameObject);
         }
 

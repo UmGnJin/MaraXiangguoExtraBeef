@@ -162,13 +162,14 @@ namespace ArcanaDungeon
                 else {
                     //선택한 카드를 대상에게 사용
                     if ((selected > -1) & (selected < deck.max_Hand)) {
+                        Debug.Log("sdfghgsdfgsdfg");
                         //마우스 커서 좌표를 유니티 내부 world 좌표로 변경
                         Vector3 mpos_world = cam.GetComponent<Camera>().ScreenToWorldPoint(mpos);
                         mpos_world = new Vector3(Mathf.Round(mpos_world.x), Mathf.Round(mpos_world.y), 0);
                         //해당 좌표가 사용할 카드의 사거리 이내이며, 전체 맵 내부의 좌표이면 사용
-                        if (mpos_world.x >= Plr.transform.position.x - deck.Hands[selected].getRange() & mpos_world.x <= Plr.transform.position.x + deck.Hands[selected].getRange() &
-                            mpos_world.x >= 0 & mpos_world.x <= Dungeon.dungeon.currentlevel.width & mpos_world.y >= 0 & mpos_world.x <= Dungeon.dungeon.currentlevel.height)
+                        if (mpos_world.x >= Plr.transform.position.x - deck.Hands[selected].getRange() & mpos_world.x <= Plr.transform.position.x + deck.Hands[selected].getRange() )
                         {
+                            Debug.Log("sdg");
                             //패의 몇 번째 인덱스가 사용되었는지, 플레이어 스크립트, enemy 스크립트를 파라미터로 전달하되 만약 적이 없는 곳에 드래그했다면 enemy 스크립트 자리에 null이 전달됨
                             deck.UsingCard(selected, Plr.GetComponent<player>(), Dungeon.dungeon.find_enemy(mpos_world.x, mpos_world.y));
                             Plr.GetComponent<player>().condition_process(); //★플레이어 스크립트에서 처리하게 옮길 것

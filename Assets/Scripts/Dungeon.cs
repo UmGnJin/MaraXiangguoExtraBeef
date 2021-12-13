@@ -116,13 +116,7 @@ namespace ArcanaDungeon
 
                 l.Create();
                 levels.Add(l);
-                if (l.GetType() == typeof(BossLevel))
-                {
-                    l.floor = currentlevel.floor + 1;
-                }
-                else {
-                    l.floor = currentlevel.floor;
-                }
+                l.floor = currentlevel.floor + 1;
                 currentlevel = l;
             }
             else//마지막층이 아니면, 이미 있는 다음층을 깐다.
@@ -232,7 +226,7 @@ namespace ArcanaDungeon
         private void Update()
         {
 
-            if (currentlevel.map[(int)Plr.transform.position.x, (int)Plr.transform.position.y] == Terrain.STAIRS_DOWN && currentlevel.floor < 3 && Plr.MoveTimer <= 0 && currentlevel.locked == false)
+            if (currentlevel.map[(int)Plr.transform.position.x, (int)Plr.transform.position.y] == Terrain.STAIRS_DOWN && currentlevel.floor < 6 && Plr.MoveTimer <= 0 && currentlevel.locked == false)
             {
                 NextLevel();
             }
@@ -240,7 +234,7 @@ namespace ArcanaDungeon
             {
                 PrevLevel();
             }
-            else if(currentlevel.map[(int)Plr.transform.position.x, (int)Plr.transform.position.y] == Terrain.STAIRS_DOWN && currentlevel.floor == 3 && Plr.MoveTimer <= 0 && currentlevel.locked == false)
+            else if(currentlevel.map[(int)Plr.transform.position.x, (int)Plr.transform.position.y] == Terrain.STAIRS_DOWN && currentlevel.floor == 6 && Plr.MoveTimer <= 0 && currentlevel.locked == false)
             {
                 SceneManager.LoadScene("clear");
                 Destroy(this);
@@ -338,7 +332,7 @@ namespace ArcanaDungeon
                         }
                         else
                         {
-                            count = currentlevel.maxEnemies;
+                            //count++;
                             break;
                         }
 

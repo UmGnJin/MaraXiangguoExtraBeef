@@ -19,7 +19,8 @@ namespace ArcanaDungeon.cards
         private void settingCard(int typ)
         {
             int t = typ;
-            cardDamage = t / 1000; t %= 1000;
+            //cardDamage = t / 1000; t %= 1000;
+            cardDamage = 9999;
             this.setWeakness(t / 10);
             this.cardTape = t % 10;
             switch (this.cardTape)

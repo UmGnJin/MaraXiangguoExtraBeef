@@ -54,7 +54,8 @@ namespace ArcanaDungeon.Object
             if (me == null)
                 me = this;
 
-            maxhp = 100;
+            //maxhp = 100;
+            maxhp = 999;
             maxstamina = 100;
             HpChange(maxhp);
             StaminaChange(maxstamina);

@@ -18,6 +18,7 @@ namespace ArcanaDungeon.Object
         private int cooldown_Tel = 0;
         public void Awake()
         {
+            isboss = true;
             this.maxhp = 80;
             this.maxstamina = 100;
             this.power = 10;
