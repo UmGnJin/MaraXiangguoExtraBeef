@@ -51,7 +51,6 @@ namespace ArcanaDungeon.cards
                     }
                 case 5:
                     {
-                        this.setRange(1);
                         this.setCardSprite("화살 쏘기", "상처 찌르기", "사거리 2칸, " + " 적의 약화 중첩만큼 피해를 줍니다. 대상에게 부여된 약점을 모두 없앱니다.  4도약");
                         break;
                     }
@@ -85,8 +84,8 @@ namespace ArcanaDungeon.cards
                             }
                         case 1:
                             {
+                                enemy.be_hit(cardDamage);
                                 Plr.allDeck.DrawCards();
-                                Debug.Log("카드 뽑기 함수 구현1");
                                 //this.setCardSprite("임시 강타", "수 읽기", "카드를 한 장 뽑습니다.");
                                 break;
                             }
@@ -109,7 +108,6 @@ namespace ArcanaDungeon.cards
                             {
                                 enemy.be_hit(cardDamage);
                                 Plr.allDeck.DrawCards();
-                                Debug.Log("카드 뽑기 함수 구현4");
                                 Plr.allDeck.addweak(3);
                                 //this.setCardSprite("화살 쏘기", "다리걸기", "사거리 2칸, " + cardDamage + "만큼 피해를 줍니다." + "카드를 한 장 뽑고 다음 공격 카드에 약화 +3을 부여합니다..");
                                 break;
@@ -123,7 +121,6 @@ namespace ArcanaDungeon.cards
                                     Debug.Log("5번타입 카드 딜 : " + temp[5] / 10 + " 초기화 값" + temp[5] / 10 + 9);
                                     enemy.condition_add(5, (temp[5] / 10 * 10) + 9 - temp[5] % 10);
                                 }
-                                Debug.Log("도약 미구현");
                                 //this.setCardSprite("화살 쏘기", "상처 찌르기", "사거리 2칸, " + " 적의 약화 중첩만큼 피해를 줍니다. 대상에게 부여된 약점을 모두 없앱니다.  4도약");
                                 break;
                             }

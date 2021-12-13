@@ -169,8 +169,8 @@ namespace ArcanaDungeon
                             //패의 몇 번째 인덱스가 사용되었는지, 플레이어 스크립트, enemy 스크립트를 파라미터로 전달하되 만약 적이 없는 곳에 드래그했다면 enemy 스크립트 자리에 null이 전달됨
                             deck.UsingCard(selected, Plr.GetComponent<player>(), Dungeon.dungeon.find_enemy(mpos_world.x, mpos_world.y));
                             Plr.GetComponent<player>().condition_process(); //★플레이어 스크립트에서 처리하게 옮길 것
-                            //사용된 손패 오른쪽의 카드들을 1칸씩 왼쪽으로 이동시키기
-                            for (int i = selected + 1; i < deck.max_Hand; i++)
+                                                                            //사용된 손패 오른쪽의 카드들을 1칸씩 왼쪽으로 이동시키기
+                            /*for (int i = selected + 1; i < deck.max_Hand; i++)
                             {
                                 card_ui[i].transform.GetChild(1).GetComponent<Text>().text = card_ui[i + 1].transform.GetChild(1).GetComponent<Text>().text;
                                 card_ui[i].transform.GetChild(2).GetComponent<Image>().sprite = card_ui[i + 1].transform.GetChild(2).GetComponent<Image>().sprite;
@@ -178,7 +178,8 @@ namespace ArcanaDungeon
                             }
                             card_ui[deck.Hands.Count + 1].transform.GetChild(1).GetComponent<Text>().text = null;
                             card_ui[deck.Hands.Count + 1].transform.GetChild(2).gameObject.SetActive(false);
-                            card_ui[deck.Hands.Count + 1].transform.GetChild(3).GetComponent<Text>().text = null;
+                            card_ui[deck.Hands.Count + 1].transform.GetChild(3).GetComponent<Text>().text = null;*/
+
                         }
                         selected = -1;
                         wii = 0;    //ui 초기화하는 wii값
@@ -478,6 +479,19 @@ namespace ArcanaDungeon
                 child.gameObject.SetActive(false);
             }
             selecting = false;
+        }
+
+        public void updateUseCard()
+        {
+            for (int i = selected + 1; i < deck.max_Hand; i++)
+            {
+                card_ui[i].transform.GetChild(1).GetComponent<Text>().text = card_ui[i + 1].transform.GetChild(1).GetComponent<Text>().text;
+                card_ui[i].transform.GetChild(2).GetComponent<Image>().sprite = card_ui[i + 1].transform.GetChild(2).GetComponent<Image>().sprite;
+                card_ui[i].transform.GetChild(3).GetComponent<Text>().text = card_ui[i + 1].transform.GetChild(3).GetComponent<Text>().text;
+            }
+            card_ui[deck.Hands.Count + 1].transform.GetChild(1).GetComponent<Text>().text = null;
+            card_ui[deck.Hands.Count + 1].transform.GetChild(2).gameObject.SetActive(false);
+            card_ui[deck.Hands.Count + 1].transform.GetChild(3).GetComponent<Text>().text = null;
         }
         public Cards GetSelected2()
         {

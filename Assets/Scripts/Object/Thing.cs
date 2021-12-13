@@ -68,14 +68,11 @@ namespace ArcanaDungeon.Object
         {
             UI.uicanvas.blood(transform.position);
             HpChange(-val);
-            Debug.Log("딜 경로 채크 1");
             if (this.condition.ContainsKey(5))
             {
-                Debug.Log("딜 경로 채크 2");
                 if (this.condition[5] > 0)
                 {
                     this.HpChange(this.condition[5] / 10); // this.condition[5]를 십으로 나눈 몫이 약화 딜값
-                    Debug.Log("약화 딜 들어가는 값 : " + this.condition[5] / 10);
                 }
             }
         }

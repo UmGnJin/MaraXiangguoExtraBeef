@@ -43,21 +43,27 @@ namespace ArcanaDungeon.cards
                 - 20 / 체력 +(연속으로 공격 카드를 사용한 턴 수 *3)10 -따로 
              */
             CardsDeck.Add(new ThiefAttackCard(1420));
-            //CardsDeck.Add(new ThiefAttackCard(601));
-            //CardsDeck.Add(new ThiefAttackCard(902));
+            CardsDeck.Add(new ThiefAttackCard(601));
+            CardsDeck.Add(new ThiefAttackCard(902));
             CardsDeck.Add(new ThiefAttackCard(113));
             CardsDeck.Add(new ThiefAttackCard(204));
             CardsDeck.Add(new ThiefAttackCard(205));
             //CardsDeck.Add(new ThiefAttackCard(006));
             //CardsDeck.Add(new ThiefAttackCard(007));
             CardsDeck.Add(new ThiefAttackCard(009));
-            //CardsDeck.Add(new BasicConsCard(3030025)); // - 30 / 급류 5턴 8
+            CardsDeck.Add(new BasicConsCard(3030025)); // - 30 / 급류 5턴 8
+            for(int i = 0; i < 3; i++)
+            {
+                CardsDeck.Add(new ThiefAttackCard(1420));
+                CardsDeck.Add(new ThiefAttackCard(601));
+                CardsDeck.Add(new ThiefAttackCard(902));
+                CardsDeck.Add(new ThiefAttackCard(113));
+                CardsDeck.Add(new ThiefAttackCard(204));
+                CardsDeck.Add(new ThiefAttackCard(205));
+                CardsDeck.Add(new ThiefAttackCard(009));
+                CardsDeck.Add(new BasicConsCard(3030025));
+            }
 
-            //UsedDeck.Add(new ThiefAttackCard(009));
-            //UsedDeck.Add(new ThiefAttackCard(009));
-            //UsedDeck.Add(new ThiefAttackCard(009));
-            //UsedDeck.Add(new ThiefAttackCard(009));
-            //UsedDeck.Add(new ThiefAttackCard(009));
 
         }
 
@@ -130,6 +136,7 @@ namespace ArcanaDungeon.cards
 
             UsedDeck.Add(Hands[SlotNum]);
             Hands.RemoveAt(SlotNum);
+            UI.uicanvas.updateUseCard();
             if (temp.cardTape == 5 & isnext)
             {
                 if (EMY != null)
