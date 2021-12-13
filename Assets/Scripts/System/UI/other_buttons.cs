@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ArcanaDungeon;
+using UnityEditor;
 
 public class other_buttons : MonoBehaviour
 {
@@ -29,8 +30,8 @@ public class other_buttons : MonoBehaviour
     }
 
     public void exit() {
-        UnityEditor.EditorApplication.isPlaying = false;
-        //Application.Qui();    //유니티 에디터에서의 종료와 빌드된 어플리케이션에서의 종료는 서로 다르다
+        //UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();    //유니티 에디터에서의 종료와 빌드된 어플리케이션에서의 종료는 서로 다르다
     }
 
     public void treasure_yes() {
