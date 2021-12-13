@@ -41,10 +41,10 @@ namespace ArcanaDungeon.Object
 
             else if (isTurn > 0)
             {
-                Debug.Log(canmove);
+                Debug.Log(canmove + " " + combo + " " + cool);
                 if (cool > 0)
                 {
-                    Debug.Log("ㅁㄴㅇ");
+                   
                     cool--;
                     if (cool < 0)
                         cool = 0;
@@ -60,8 +60,17 @@ namespace ArcanaDungeon.Object
                     this.exhausted = false;
 
                 Vision_research();
-                if (this.exhausted == true || count>0)// 스태미나 회복 방식. 일반적으로는 특정 조건 만족 시 탈진에 걸리고, 일정 수치 이상의 스태미나까지 휴식만 한다.
+                if (this.exhausted == true )// 스태미나 회복 방식. 일반적으로는 특정 조건 만족 시 탈진에 걸리고, 일정 수치 이상의 스태미나까지 휴식만 한다.
                                            // 그렇게 일정 수치까지 회복한 이후, 탈진 상태이상이 제거되고, 기존의 행동 우선도대로 행동을 재개한다.
+                {
+                        
+                    
+                    GameObject exhau_image = Instantiate(taljin);//탈진 시 탈진 이펙트 발생
+                    exhau_image.transform.position = this.transform.position;
+                    exhau_image.GetComponent<exhaustController>().live = 300;
+                    this.StaminaChange(20);
+                }
+                else if(count > 0)
                 {
                     if (count > 0)
                     {
@@ -69,7 +78,7 @@ namespace ArcanaDungeon.Object
                         if (count < 0)
                             count = 0;
                     }
-                    if(count == 0)
+                    if (count == 0)
                     {
                         cool = 10;
                         combo = 0;
@@ -80,7 +89,6 @@ namespace ArcanaDungeon.Object
                     GameObject exhau_image = Instantiate(taljin);//탈진 시 탈진 이펙트 발생
                     exhau_image.transform.position = this.transform.position;
                     exhau_image.GetComponent<exhaustController>().live = 300;
-                    this.StaminaChange(20);
                 }
                 else if (combo == 2)
                 {
