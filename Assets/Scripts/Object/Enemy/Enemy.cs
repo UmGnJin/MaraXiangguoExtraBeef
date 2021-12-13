@@ -148,18 +148,17 @@ namespace ArcanaDungeon.Object
         public override void die()
         {
             Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1].Remove(this.gameObject);
+            UI.uicanvas.log_add(this.name + "이(가) 쓰러졌습니다.");
             if (isboss)
             {
                 if (Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1].Count == 0)
                 {
-                    UI.uicanvas.log_add("Boss Clear!");
+                    UI.uicanvas.log_add("괴물의 힘이 당신을 회복시킵니다.");
+                    Dungeon.dungeon.Plr.HpChange(50);
                     Dungeon.dungeon.currentlevel.locked = false;//보스 잡고 다음층으로 가게 함
                 }
-                else
-                    UI.uicanvas.log_add("?");
             }
-            else
-                UI.uicanvas.log_add("?");
+            UI.uicanvas.Treasure(Dungeon.dungeon.Plr.allDeck.getRandomCardcode());
             Destroy(this.gameObject);
         }
 

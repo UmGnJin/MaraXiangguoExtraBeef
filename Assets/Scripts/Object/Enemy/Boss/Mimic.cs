@@ -38,7 +38,7 @@ namespace ArcanaDungeon.Object
             }
             this.bosang = (Bosang)index;
             type[index] = true;
-            this.name = "Mimic";
+            this.name = "นฬนอ";
         }
         public void Update()
         {

@@ -56,7 +56,7 @@ namespace ArcanaDungeon.Object
                 {
                     //Debug.Log(this.name+"이(가) 당신을 공격합니다.");
                     Dungeon.dungeon.Plr.be_hit(this.power);
-                    Dungeon.dungeon.Plr.condition_add(3, 2);    //중독 2 부여
+                    Dungeon.dungeon.Plr.condition_add(3, 3);    //중독 2 부여
                     this.StaminaChange(-20);
                 }
                 else if (route_pos.Count > 0)
@@ -70,27 +70,10 @@ namespace ArcanaDungeon.Object
                     this.StaminaChange(5);
                 }
 
-
-
-
-
                 this.Turnend();
 
 
             }
-        }
-
-        public override void die() // 슬라임 사망 효과 - 독과 관련있게
-                                   // 1. 폭발 - 터지면서 주변에 약한 피해와 독 부여. 근접 계열 카운터형.
-                                   // 2. 바닥 - 죽은 위치에 일정 턴동안 유지되는 / 한 번 밟을 때까지 유지되는 독 장판 생성. 위에 올라가면 독 1 부여. 이미 독이 있다면 중첩이 감소되지 않고 갱신됨.
-        {
-            Dungeon.dungeon.enemies[Dungeon.dungeon.currentlevel.floor - 1].Remove(this.gameObject);
-            GameObject PoisonTile = Instantiate(poisontile);
-            PoisonTile.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -1);
-
-            Destroy(this.gameObject);
-
-
         }
     }
 }

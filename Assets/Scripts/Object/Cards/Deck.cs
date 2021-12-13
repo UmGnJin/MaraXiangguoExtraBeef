@@ -11,7 +11,7 @@ namespace ArcanaDungeon.cards
         private List<Cards> CardsDeck = new List<Cards>(); // 덱 리스트
         private List<Cards> UsedDeck = new List<Cards>(); // 사용한 카드 덱 리스트
         /*  카드 타입,2 |카드 코스트,2 | 카드 사거리,1 | 카드 수치(ex공격력 ,2 |
-         *  1,30,5,10,1,4 13051014*/
+         *  1,30,5,10, 130510*/
         private int nextCdweak = 0;
         private bool ispass = false;
         public bool isnext = false;
@@ -43,30 +43,17 @@ namespace ArcanaDungeon.cards
                 - 40 / 패를 모두 버림 / 패가 가득 찰 때까지 드로우 / 이 카드는 턴을 소모하지 않음 9
                 - 20 / 체력 +(연속으로 공격 카드를 사용한 턴 수 *3)10 -따로 
              */
-            /*CardsDeck.Add(new ThiefAttackCard(2880));
-            CardsDeck.Add(new ThiefAttackCard(1201));
-            CardsDeck.Add(new ThiefAttackCard(1802));
-            CardsDeck.Add(new ThiefAttackCard(443));
-            CardsDeck.Add(new ThiefAttackCard(804));
-            CardsDeck.Add(new ThiefAttackCard(805));
-            CardsDeck.Add(new ThiefAttackCard(009));
-            CardsDeck.Add(new BasicConsCard(3030025)); // - 30 / 급류 5턴 8*/
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
-                CardsDeck.Add(new ThiefAttackCard(48300));
-                CardsDeck.Add(new ThiefAttackCard(33001));
-                CardsDeck.Add(new ThiefAttackCard(20002));
-                CardsDeck.Add(new ThiefAttackCard(25203));
-                CardsDeck.Add(new ThiefAttackCard(20004));
+                CardsDeck.Add(new AttackCard(1020130));
             }
             for (int i = 0; i < 3; i++)
             {
-                CardsDeck.Add(new ThiefAttackCard(48300));
-                CardsDeck.Add(new ThiefAttackCard(20005));
-                CardsDeck.Add(new ThiefAttackCard(0009));
-                CardsDeck.Add(new BasicConsCard(3030025)); // - 30 / 급류 5턴 8*/
+                CardsDeck.Add(new AttackCard(1220520));
+                CardsDeck.Add(new BlockCard(2020030));
             }
+            CardsDeck.Add(new BasicConsCard(3030025));
 
 
         }
@@ -119,7 +106,6 @@ namespace ArcanaDungeon.cards
         }
         public void DrawCards() // 덱에 있는 맨 위부터 카드 정해진 수 만큼 가져오기
         {
-            //UI.uicanvas.log_add("덱을 셔플했습니다.");
             if (CardsDeck.Count == 0)//우선 테스트를 위해 뽑을 카드가 없는 상황에 자동 셔플 기능을 넣었음.
                 ChangDeck();
             if (Hands.Count < max_Hand & CardsDeck.Count > 0)
@@ -170,7 +156,6 @@ namespace ArcanaDungeon.cards
             //Debug.Log(UsedDeck[0].cardTape + "사용된 카드타입");
             if (ispass == false)
             {
-                UI.uicanvas.log_add("카드 사용.");
                 Dungeon.dungeon.Plr.drawCountting();
                 //Dungeon.dungeon.Plr.Turnend();
                 Dungeon.dungeon.Plr.Turnend();

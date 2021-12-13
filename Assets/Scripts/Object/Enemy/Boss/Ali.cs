@@ -24,7 +24,7 @@ namespace ArcanaDungeon.Object
             HpChange(this.maxhp);
             StaminaChange(this.maxstamina);
 
-            this.name = "Ali";
+            this.name = "ณ๎ ภüป็";
         }
         public void Update()
         {

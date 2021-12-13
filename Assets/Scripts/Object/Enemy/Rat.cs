@@ -19,7 +19,7 @@ namespace ArcanaDungeon.Object
             StaminaChange(this.maxstamina);
             
 
-            this.name = "Rat";
+            this.name = "거대한 생쥐";
         }
         public void Update()
         {

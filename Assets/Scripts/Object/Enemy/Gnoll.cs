@@ -14,7 +14,7 @@ namespace ArcanaDungeon.Object
             HpChange(this.maxhp);
             StaminaChange(this.maxstamina);
 
-            this.name = "Gnoll";
+            this.name = "야생 놀";
         }
         public void Update()
         {
@@ -51,7 +51,6 @@ namespace ArcanaDungeon.Object
                 }
                 else
                 {
-                    Debug.Log("Plr_pos : "+Plr_pos[0,0]+ " / "+Plr_pos[0,1]);
                     if (Plr_pos[0, 0] != -1)
                     {
                         Thing temp_target = range_attack(Plr_pos[0, 0], Plr_pos[0, 1], false);  //★공격력 10은 임시값이다, Floor에 따라 5/10/15로 증가하는 공격력을 변수에 집어넣어서 그 변수를 공격력 삼아야 한다

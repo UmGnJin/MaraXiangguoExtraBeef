@@ -226,6 +226,9 @@ namespace ArcanaDungeon
         private void Update()
         {
 
+            if (currentlevel.map[(int)Plr.transform.position.x, (int)Plr.transform.position.y] == Terrain.STAIRS_DOWN && currentlevel.floor < 6 && Plr.MoveTimer <= 0 && currentlevel.locked == true && Plr.isturn_start) {
+                UI.uicanvas.log_add("보스를 쓰러뜨려야 합니다.");
+            }
             if (currentlevel.map[(int)Plr.transform.position.x, (int)Plr.transform.position.y] == Terrain.STAIRS_DOWN && currentlevel.floor < 6 && Plr.MoveTimer <= 0 && currentlevel.locked == false)
             {
                 NextLevel();

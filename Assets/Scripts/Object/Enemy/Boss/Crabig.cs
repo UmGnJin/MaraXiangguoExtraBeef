@@ -24,7 +24,7 @@ namespace ArcanaDungeon.Object
             StaminaChange(this.maxstamina);
             BlockChange(100);
             this.power = 10;
-            this.name = "Crabig";
+            this.name = "°è";
         }
         public void Update()
         {

@@ -20,7 +20,7 @@ namespace ArcanaDungeon.Object
             HpChange(this.maxhp);
             StaminaChange(this.maxstamina);
 
-            this.name = "Eye";
+            this.name = "떠다니는 감시자";
         }
         public void Update()
         {

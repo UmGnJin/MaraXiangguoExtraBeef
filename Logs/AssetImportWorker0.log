@@ -1,76 +1,76 @@
 Using pre-set license
 Built from '2020.3/release' branch; Version is '2020.3.12f1 (b3b2c6512326) revision 11776710'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Pro; OS build 19042.1348; Version 2009; 64bit' Language: 'ko' Physical Memory: 16322 MB
+OS: 'Windows 10 Home; OS build 19042.1348; Version 2009; 64bit' Language: 'ko' Physical Memory: 16310 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\2020.3.12f1\Editor\Unity.exe
+C:\Program Files\Unity\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/serio/MaraXiangguoExtraBeef
+C:/Users/c4607/OneDrive/문서/GitHub/MaraXiangguoExtraBeef
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-7997
-Successfully changed project path to: C:/Users/serio/MaraXiangguoExtraBeef
-C:/Users/serio/MaraXiangguoExtraBeef
+61731
+Successfully changed project path to: C:/Users/c4607/OneDrive/문서/GitHub/MaraXiangguoExtraBeef
+C:/Users/c4607/OneDrive/문서/GitHub/MaraXiangguoExtraBeef
 Using Asset Import Pipeline V2.
 Default GameObject BitMask: UI already registered
 
-Refreshing native plugins compatible for Editor in 38.32 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 31.75 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.12f1 (b3b2c6512326)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/serio/MaraXiangguoExtraBeef/Assets
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/c4607/OneDrive/문서/GitHub/MaraXiangguoExtraBeef/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce GTX 1660 Ti (ID=0x2182)
+    Renderer: NVIDIA GeForce GTX 970 (ID=0x13c2)
     Vendor:   
-    VRAM:     5991 MB
-    Driver:   30.0.14.7247
+    VRAM:     4043 MB
+    Driver:   27.21.14.5671
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56256
+Mono path[0] = 'C:/Program Files/Unity/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56200
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002525 seconds.
+Register platform support module: C:/Program Files/Unity/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002524 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 34.89 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 33.07 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.809 seconds
+- Completed reload, in  0.903 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.005392 seconds.
+Registered in 0.005877 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 35.06 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 33.89 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.008 seconds
+- Completed reload, in  0.910 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Default GameObject BitMask: UI already registered
 
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.38 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2019 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.6 MB.
-System memory in use after: 99.7 MB.
+System memory in use before: 97.0 MB.
+System memory in use after: 97.1 MB.
 
 Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 2467.
-Total: 1.791500 ms (FindLiveObjects: 0.172400 ms CreateObjectMapping: 0.076900 ms MarkObjects: 1.486600 ms  DeleteObjects: 0.055000 ms)
+Total: 2.042500 ms (FindLiveObjects: 0.182800 ms CreateObjectMapping: 0.060200 ms MarkObjects: 1.741300 ms  DeleteObjects: 0.057400 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -83,67 +83,281 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
+Received Import Request.
+  path: Assets/Scripts/Object/Enemy/Enemy.cs
+  artifactKey: Guid(231bd9a0350f0a74c9de80603893f210) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Enemy/Enemy.cs using Guid(231bd9a0350f0a74c9de80603893f210) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49dc87e103d53285de57dffb685a8fb9') in 0.028973 seconds 
+  Import took 0.032013 seconds .
+
+========================================================================
 Received Prepare
 Default GameObject BitMask: UI already registered
 
 Registering precompiled user dll's ...
-Registered in 0.005912 seconds.
+Registered in 0.005434 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.674 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.41 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.4 MB.
+System memory in use after: 96.6 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2469.
+Total: 1.923100 ms (FindLiveObjects: 0.167200 ms CreateObjectMapping: 0.057000 ms MarkObjects: 1.685200 ms  DeleteObjects: 0.012900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 96.391490 seconds.
+  path: Assets/Scripts/Object/player/player.cs
+  artifactKey: Guid(9be2a3f4aa6a8244388d1d3372c8a02f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/player/player.cs using Guid(9be2a3f4aa6a8244388d1d3372c8a02f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '09797fa57ed92e788427fed6c9f09805') in 0.009338 seconds 
+  Import took 0.012267 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.016070 seconds.
+  path: Assets/Scripts/Object/player/player.cs
+  artifactKey: Guid(9be2a3f4aa6a8244388d1d3372c8a02f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/player/player.cs using Guid(9be2a3f4aa6a8244388d1d3372c8a02f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '09797fa57ed92e788427fed6c9f09805') in 0.003123 seconds 
+  Import took 0.005780 seconds .
+
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005830 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.018 seconds
+- Completed reload, in  0.671 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.46 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.0 MB.
-System memory in use after: 99.1 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2469.
-Total: 1.909300 ms (FindLiveObjects: 0.216000 ms CreateObjectMapping: 0.094000 ms MarkObjects: 1.584100 ms  DeleteObjects: 0.014100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  path: Assets/Scripts/System/levels/BossLevel.cs
-  artifactKey: Guid(9982a9632c0f4ff4ea81e0cf87dc4d88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/System/levels/BossLevel.cs using Guid(9982a9632c0f4ff4ea81e0cf87dc4d88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a41339db5e4c4b8c5299db190ee9fda') in 0.035389 seconds 
-  Import took 0.038591 seconds .
-
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005418 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.904 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.1 MB.
-System memory in use after: 99.2 MB.
+System memory in use before: 96.5 MB.
+System memory in use after: 96.6 MB.
 
 Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2471.
-Total: 1.715000 ms (FindLiveObjects: 0.171400 ms CreateObjectMapping: 0.074000 ms MarkObjects: 1.455600 ms  DeleteObjects: 0.013200 ms)
+Total: 1.820300 ms (FindLiveObjects: 0.161800 ms CreateObjectMapping: 0.049700 ms MarkObjects: 1.595500 ms  DeleteObjects: 0.012700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005379 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.673 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.41 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.5 MB.
+System memory in use after: 96.6 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2473.
+Total: 1.834100 ms (FindLiveObjects: 0.165700 ms CreateObjectMapping: 0.055700 ms MarkObjects: 1.599200 ms  DeleteObjects: 0.012700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.009003 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.739 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.5 MB.
+System memory in use after: 96.6 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2475.
+Total: 1.973400 ms (FindLiveObjects: 0.177700 ms CreateObjectMapping: 0.057900 ms MarkObjects: 1.719800 ms  DeleteObjects: 0.017100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005681 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.722 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.5 MB.
+System memory in use after: 96.6 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2477.
+Total: 1.982500 ms (FindLiveObjects: 0.212800 ms CreateObjectMapping: 0.069600 ms MarkObjects: 1.685600 ms  DeleteObjects: 0.013600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005941 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.699 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.5 MB.
+System memory in use after: 96.6 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2479.
+Total: 1.882600 ms (FindLiveObjects: 0.171700 ms CreateObjectMapping: 0.063500 ms MarkObjects: 1.633600 ms  DeleteObjects: 0.013000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005280 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.54 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.695 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.5 MB.
+System memory in use after: 96.6 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2481.
+Total: 2.689800 ms (FindLiveObjects: 0.172400 ms CreateObjectMapping: 0.079500 ms MarkObjects: 2.421200 ms  DeleteObjects: 0.015800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005876 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.698 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.5 MB.
+System memory in use after: 96.7 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2483.
+Total: 1.882800 ms (FindLiveObjects: 0.172800 ms CreateObjectMapping: 0.056300 ms MarkObjects: 1.639400 ms  DeleteObjects: 0.013500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -157,34 +371,215 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 12.887109 seconds.
-  path: Assets/Scripts/System/levels/BossLevel.cs
-  artifactKey: Guid(9982a9632c0f4ff4ea81e0cf87dc4d88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/System/levels/BossLevel.cs using Guid(9982a9632c0f4ff4ea81e0cf87dc4d88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88b36b2e4434b4ecb5cf526dd8af056e') in 0.004535 seconds 
-  Import took 0.007222 seconds .
+  Time since last request: 327.402066 seconds.
+  path: Assets/Scripts/Object/Cards/AttackCard.cs
+  artifactKey: Guid(0a2906e7e52c2894297b4343d9982546) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Cards/AttackCard.cs using Guid(0a2906e7e52c2894297b4343d9982546) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7045b892117d328ef1a23f265eacd53') in 0.010021 seconds 
+  Import took 0.012946 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011976 seconds.
+  path: Assets/Scripts/Object/Cards/AttackCard.cs
+  artifactKey: Guid(0a2906e7e52c2894297b4343d9982546) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Cards/AttackCard.cs using Guid(0a2906e7e52c2894297b4343d9982546) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7045b892117d328ef1a23f265eacd53') in 0.002949 seconds 
+  Import took 0.005582 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.373327 seconds.
+  path: Assets/Scripts/Object/Cards/BasicConsCard.cs
+  artifactKey: Guid(89c892da81304964d94859ff121c9192) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Cards/BasicConsCard.cs using Guid(89c892da81304964d94859ff121c9192) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '335907c7feacec1e0972ccf9cd1088e3') in 0.008352 seconds 
+  Import took 0.011420 seconds .
 
 ========================================================================
 Received Prepare
 Default GameObject BitMask: UI already registered
 
 Registering precompiled user dll's ...
-Registered in 0.005283 seconds.
+Registered in 0.005668 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.44 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.912 seconds
+- Completed reload, in  0.697 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.1 MB.
-System memory in use after: 99.2 MB.
+System memory in use before: 96.5 MB.
+System memory in use after: 96.7 MB.
 
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2473.
-Total: 1.972300 ms (FindLiveObjects: 0.186900 ms CreateObjectMapping: 0.081400 ms MarkObjects: 1.687200 ms  DeleteObjects: 0.015800 ms)
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2485.
+Total: 2.163400 ms (FindLiveObjects: 0.187100 ms CreateObjectMapping: 0.067200 ms MarkObjects: 1.894200 ms  DeleteObjects: 0.014200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005487 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.685 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.5 MB.
+System memory in use after: 96.7 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2487.
+Total: 1.921600 ms (FindLiveObjects: 0.170800 ms CreateObjectMapping: 0.055300 ms MarkObjects: 1.680900 ms  DeleteObjects: 0.013800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005408 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.694 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.6 MB.
+System memory in use after: 96.7 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2489.
+Total: 1.967600 ms (FindLiveObjects: 0.188400 ms CreateObjectMapping: 0.053700 ms MarkObjects: 1.710800 ms  DeleteObjects: 0.014000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005416 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.696 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.44 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.6 MB.
+System memory in use after: 96.7 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2491.
+Total: 2.041100 ms (FindLiveObjects: 0.181900 ms CreateObjectMapping: 0.056600 ms MarkObjects: 1.787300 ms  DeleteObjects: 0.014500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005676 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.709 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.6 MB.
+System memory in use after: 96.7 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2493.
+Total: 1.901000 ms (FindLiveObjects: 0.170900 ms CreateObjectMapping: 0.065800 ms MarkObjects: 1.650000 ms  DeleteObjects: 0.013700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.006414 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.697 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.45 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.6 MB.
+System memory in use after: 96.7 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2495.
+Total: 1.850600 ms (FindLiveObjects: 0.168400 ms CreateObjectMapping: 0.048100 ms MarkObjects: 1.620200 ms  DeleteObjects: 0.013200 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -198,12 +593,422 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 20.997143 seconds.
-  path: Assets/Scripts/Object/Enemy/Boss/Crabig.cs
-  artifactKey: Guid(3e03f3ca845fa3c40831e7f1eb3397be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Object/Enemy/Boss/Crabig.cs using Guid(3e03f3ca845fa3c40831e7f1eb3397be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8be8082a7039e5e6908a20a51c041ef') in 0.008858 seconds 
-  Import took 0.011819 seconds .
+  Time since last request: 725.378519 seconds.
+  path: Assets/Resources/research_enemy.txt
+  artifactKey: Guid(4c7a275f1f780fe49b0059f6fffa909d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/research_enemy.txt using Guid(4c7a275f1f780fe49b0059f6fffa909d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0a3956078cda95b2e2f37e4ae630198') in 0.033810 seconds 
+  Import took 0.037050 seconds .
 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.006441 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.683 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.45 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.6 MB.
+System memory in use after: 96.7 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2497.
+Total: 1.949800 ms (FindLiveObjects: 0.172000 ms CreateObjectMapping: 0.056200 ms MarkObjects: 1.707700 ms  DeleteObjects: 0.013200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 56.884329 seconds.
+  path: Assets/Scripts/Object/Enemy/Enemy.cs
+  artifactKey: Guid(231bd9a0350f0a74c9de80603893f210) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Enemy/Enemy.cs using Guid(231bd9a0350f0a74c9de80603893f210) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4dedbd0014e84bc49845d055ee1f1d0') in 0.005843 seconds 
+  Import took 0.008635 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.016602 seconds.
+  path: Assets/Scripts/Object/Enemy/Enemy.cs
+  artifactKey: Guid(231bd9a0350f0a74c9de80603893f210) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Enemy/Enemy.cs using Guid(231bd9a0350f0a74c9de80603893f210) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4dedbd0014e84bc49845d055ee1f1d0') in 0.003272 seconds 
+  Import took 0.006540 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.844848 seconds.
+  path: Assets/Scripts/Object/Enemy/Boss/Mimic.cs
+  artifactKey: Guid(6f461d224ba49664e91ba29661a84ae8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Object/Enemy/Boss/Mimic.cs using Guid(6f461d224ba49664e91ba29661a84ae8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39c58c5c75b196ec9e6e856ea7cf487a') in 0.006959 seconds 
+  Import took 0.009732 seconds .
+
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005422 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.46 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.693 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.6 MB.
+System memory in use after: 96.7 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2499.
+Total: 1.947500 ms (FindLiveObjects: 0.227900 ms CreateObjectMapping: 0.065800 ms MarkObjects: 1.639000 ms  DeleteObjects: 0.013800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005352 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.715 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.6 MB.
+System memory in use after: 96.7 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2501.
+Total: 2.237800 ms (FindLiveObjects: 0.308600 ms CreateObjectMapping: 0.099000 ms MarkObjects: 1.812700 ms  DeleteObjects: 0.016600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.006046 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.46 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.679 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.6 MB.
+System memory in use after: 96.7 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2503.
+Total: 1.970000 ms (FindLiveObjects: 0.180800 ms CreateObjectMapping: 0.059000 ms MarkObjects: 1.714600 ms  DeleteObjects: 0.014600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 170.427691 seconds.
+  path: Assets/Scripts/Dungeon.cs
+  artifactKey: Guid(481f9a45a6b9b5347a7ebb1dd7577f47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Dungeon.cs using Guid(481f9a45a6b9b5347a7ebb1dd7577f47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3bd8701fdce8058faa8e8b5158fad1c1') in 0.006122 seconds 
+  Import took 0.008886 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.020354 seconds.
+  path: Assets/Scripts/Dungeon.cs
+  artifactKey: Guid(481f9a45a6b9b5347a7ebb1dd7577f47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Dungeon.cs using Guid(481f9a45a6b9b5347a7ebb1dd7577f47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3bd8701fdce8058faa8e8b5158fad1c1') in 0.003234 seconds 
+  Import took 0.005901 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 248.845190 seconds.
+  path: Assets/Resources/2 game.mp3
+  artifactKey: Guid(8797f879230b0cd4dbf7cb548aef3696) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/2 game.mp3 using Guid(8797f879230b0cd4dbf7cb548aef3696) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '958d4eb94f6f7ca79e18838b624bf977') in 0.058509 seconds 
+  Import took 0.061363 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.076770 seconds.
+  path: Assets/Scenes/menu.unity
+  artifactKey: Guid(4e2625206d9e1b944a778676319fba6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/menu.unity using Guid(4e2625206d9e1b944a778676319fba6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd33f0fa6025897aa5808bd85e29a170a') in 0.007691 seconds 
+  Import took 0.010469 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.519482 seconds.
+  path: Assets/Scenes/New Scene.unity
+  artifactKey: Guid(57cc2b9d9d545034c95b59425f1bb756) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/New Scene.unity using Guid(57cc2b9d9d545034c95b59425f1bb756) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3553112ba2f6299bb9b322ff0ce1223') in 0.007761 seconds 
+  Import took 0.010657 seconds .
+
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005656 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.46 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.739 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.6 MB.
+System memory in use after: 99.7 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2514.
+Total: 2.064600 ms (FindLiveObjects: 0.188300 ms CreateObjectMapping: 0.072300 ms MarkObjects: 1.789000 ms  DeleteObjects: 0.014300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005923 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.44 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.696 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.6 MB.
+System memory in use after: 99.7 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2516.
+Total: 1.901400 ms (FindLiveObjects: 0.187100 ms CreateObjectMapping: 0.060200 ms MarkObjects: 1.639300 ms  DeleteObjects: 0.014100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 149.361699 seconds.
+  path: Assets/Scripts/System/levels/BossLevel.cs
+  artifactKey: Guid(9982a9632c0f4ff4ea81e0cf87dc4d88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/System/levels/BossLevel.cs using Guid(9982a9632c0f4ff4ea81e0cf87dc4d88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93bdc19b9899b5c5947e4d4ea84a03dc') in 0.005909 seconds 
+  Import took 0.008558 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.014323 seconds.
+  path: Assets/Scripts/System/levels/BossLevel.cs
+  artifactKey: Guid(9982a9632c0f4ff4ea81e0cf87dc4d88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/System/levels/BossLevel.cs using Guid(9982a9632c0f4ff4ea81e0cf87dc4d88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93bdc19b9899b5c5947e4d4ea84a03dc') in 0.004034 seconds 
+  Import took 0.006738 seconds .
+
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005796 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.685 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.6 MB.
+System memory in use after: 99.8 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2518.
+Total: 1.954300 ms (FindLiveObjects: 0.205300 ms CreateObjectMapping: 0.053100 ms MarkObjects: 1.681100 ms  DeleteObjects: 0.014100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005449 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.686 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.41 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.6 MB.
+System memory in use after: 99.8 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2520.
+Total: 1.887900 ms (FindLiveObjects: 0.170100 ms CreateObjectMapping: 0.056000 ms MarkObjects: 1.646700 ms  DeleteObjects: 0.014200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005286 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.688 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.6 MB.
+System memory in use after: 99.8 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2522.
+Total: 1.837600 ms (FindLiveObjects: 0.167200 ms CreateObjectMapping: 0.056700 ms MarkObjects: 1.600800 ms  DeleteObjects: 0.012400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Default GameObject BitMask: UI already registered
+
+Registering precompiled user dll's ...
+Registered in 0.005152 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.665 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.6 MB.
+System memory in use after: 99.8 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2524.
+Total: 1.860100 ms (FindLiveObjects: 0.169500 ms CreateObjectMapping: 0.056100 ms MarkObjects: 1.619900 ms  DeleteObjects: 0.013800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Prepare
 Default GameObject BitMask: UI already registered
@@ -211,54 +1016,21 @@ Default GameObject BitMask: UI already registered
 Registering precompiled user dll's ...
 Registered in 0.005234 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.899 seconds
+- Completed reload, in  0.682 seconds
 Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.1 MB.
-System memory in use after: 99.2 MB.
+System memory in use before: 99.7 MB.
+System memory in use after: 99.8 MB.
 
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2475.
-Total: 1.811000 ms (FindLiveObjects: 0.184600 ms CreateObjectMapping: 0.078400 ms MarkObjects: 1.533600 ms  DeleteObjects: 0.013400 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005126 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.904 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.1 MB.
-System memory in use after: 99.2 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2477.
-Total: 1.803600 ms (FindLiveObjects: 0.198500 ms CreateObjectMapping: 0.095100 ms MarkObjects: 1.495900 ms  DeleteObjects: 0.013100 ms)
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2526.
+Total: 1.708000 ms (FindLiveObjects: 0.155900 ms CreateObjectMapping: 0.045900 ms MarkObjects: 1.489900 ms  DeleteObjects: 0.015500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -275,261 +1047,23 @@ Received Prepare
 Default GameObject BitMask: UI already registered
 
 Registering precompiled user dll's ...
-Registered in 0.005482 seconds.
+Registered in 0.007121 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.41 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.955 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.1 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2479.
-Total: 1.740100 ms (FindLiveObjects: 0.168800 ms CreateObjectMapping: 0.072500 ms MarkObjects: 1.485100 ms  DeleteObjects: 0.013100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 344.749985 seconds.
-  path: Assets/Scripts/Object/Enemy/Boss/Mimic.cs
-  artifactKey: Guid(6f461d224ba49664e91ba29661a84ae8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Object/Enemy/Boss/Mimic.cs using Guid(6f461d224ba49664e91ba29661a84ae8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49a7a080bc21db172335cf646c5c67b1') in 0.008212 seconds 
-  Import took 0.010889 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000191 seconds.
-  path: Assets/Scripts/Object/Enemy/Boss/Zera.cs
-  artifactKey: Guid(7d83ee98ba068bc40b2a99ce0ea78169) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Object/Enemy/Boss/Zera.cs using Guid(7d83ee98ba068bc40b2a99ce0ea78169) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f89e05f5a7e76289a2a34ea2d090e4d') in 0.005954 seconds 
-  Import took 0.008716 seconds .
-
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005476 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.48 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.966 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.41 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.1 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2481.
-Total: 2.282900 ms (FindLiveObjects: 0.354200 ms CreateObjectMapping: 0.213600 ms MarkObjects: 1.695600 ms  DeleteObjects: 0.017700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 14.961858 seconds.
-  path: Assets/Scripts/Object/Enemy/Boss/Zera.cs
-  artifactKey: Guid(7d83ee98ba068bc40b2a99ce0ea78169) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Object/Enemy/Boss/Zera.cs using Guid(7d83ee98ba068bc40b2a99ce0ea78169) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64e1c335c517c9dc2bfed6f63466fa89') in 0.005346 seconds 
-  Import took 0.008555 seconds .
-
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.006422 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\c4607\OneDrive\문서\GitHub\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.884 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.1 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2483.
-Total: 1.784600 ms (FindLiveObjects: 0.177500 ms CreateObjectMapping: 0.068500 ms MarkObjects: 1.525200 ms  DeleteObjects: 0.012800 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 28.308007 seconds.
-  path: Assets/Scripts/Object/Enemy/Boss/Ali.cs
-  artifactKey: Guid(b254e08037f98e945afdd48bb2a9d28e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Object/Enemy/Boss/Ali.cs using Guid(b254e08037f98e945afdd48bb2a9d28e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '868e9e4312a55a14fdecf736362be48e') in 0.008600 seconds 
-  Import took 0.011510 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.023385 seconds.
-  path: Assets/Scripts/Object/Enemy/Boss/Ali.cs
-  artifactKey: Guid(b254e08037f98e945afdd48bb2a9d28e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Object/Enemy/Boss/Ali.cs using Guid(b254e08037f98e945afdd48bb2a9d28e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '868e9e4312a55a14fdecf736362be48e') in 0.002552 seconds 
-  Import took 0.005528 seconds .
-
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005276 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.906 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2485.
-Total: 1.813800 ms (FindLiveObjects: 0.177700 ms CreateObjectMapping: 0.086200 ms MarkObjects: 1.534600 ms  DeleteObjects: 0.014300 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005149 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.898 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2487.
-Total: 1.809300 ms (FindLiveObjects: 0.179100 ms CreateObjectMapping: 0.074900 ms MarkObjects: 1.540200 ms  DeleteObjects: 0.014400 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005210 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.900 seconds
+- Completed reload, in  0.676 seconds
 Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.3 MB.
+System memory in use before: 99.7 MB.
+System memory in use after: 99.8 MB.
 
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2489.
-Total: 1.900200 ms (FindLiveObjects: 0.228200 ms CreateObjectMapping: 0.120400 ms MarkObjects: 1.536400 ms  DeleteObjects: 0.014500 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005384 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.898 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2491.
-Total: 1.733100 ms (FindLiveObjects: 0.159100 ms CreateObjectMapping: 0.063500 ms MarkObjects: 1.496800 ms  DeleteObjects: 0.012900 ms)
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2528.
+Total: 1.933800 ms (FindLiveObjects: 0.185200 ms CreateObjectMapping: 0.064800 ms MarkObjects: 1.670300 ms  DeleteObjects: 0.012700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -541,669 +1075,4 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005376 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.888 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2493.
-Total: 1.764800 ms (FindLiveObjects: 0.165600 ms CreateObjectMapping: 0.071700 ms MarkObjects: 1.513900 ms  DeleteObjects: 0.012700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005205 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.900 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2495.
-Total: 1.960600 ms (FindLiveObjects: 0.210100 ms CreateObjectMapping: 0.118200 ms MarkObjects: 1.617100 ms  DeleteObjects: 0.014200 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005137 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.888 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2497.
-Total: 1.796400 ms (FindLiveObjects: 0.195800 ms CreateObjectMapping: 0.078800 ms MarkObjects: 1.507600 ms  DeleteObjects: 0.013200 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005203 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.913 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2499.
-Total: 1.816700 ms (FindLiveObjects: 0.170300 ms CreateObjectMapping: 0.071200 ms MarkObjects: 1.560200 ms  DeleteObjects: 0.014100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005133 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.896 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2501.
-Total: 1.918600 ms (FindLiveObjects: 0.198300 ms CreateObjectMapping: 0.094000 ms MarkObjects: 1.610700 ms  DeleteObjects: 0.014800 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005225 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.930 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2503.
-Total: 1.750900 ms (FindLiveObjects: 0.174000 ms CreateObjectMapping: 0.071900 ms MarkObjects: 1.490900 ms  DeleteObjects: 0.013100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005303 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.910 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2505.
-Total: 2.448700 ms (FindLiveObjects: 0.181500 ms CreateObjectMapping: 0.076000 ms MarkObjects: 2.172300 ms  DeleteObjects: 0.017900 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005222 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.915 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2507.
-Total: 1.991800 ms (FindLiveObjects: 0.226700 ms CreateObjectMapping: 0.131000 ms MarkObjects: 1.617600 ms  DeleteObjects: 0.015200 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005273 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.50 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.970 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2509.
-Total: 2.029900 ms (FindLiveObjects: 0.199700 ms CreateObjectMapping: 0.107500 ms MarkObjects: 1.707600 ms  DeleteObjects: 0.014400 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005425 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.875 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.3 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2511.
-Total: 1.722200 ms (FindLiveObjects: 0.171200 ms CreateObjectMapping: 0.071700 ms MarkObjects: 1.465500 ms  DeleteObjects: 0.013000 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005271 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.46 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.996 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.41 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.4 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2513.
-Total: 2.015900 ms (FindLiveObjects: 0.202900 ms CreateObjectMapping: 0.081400 ms MarkObjects: 1.714000 ms  DeleteObjects: 0.016500 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 1048.146639 seconds.
-  path: Assets/Scripts/System/UI/UI.cs
-  artifactKey: Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/System/UI/UI.cs using Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f5fe8737215d7c5fcb20525c8bbfc21') in 0.009134 seconds 
-  Import took 0.012104 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.030858 seconds.
-  path: Assets/Scripts/System/UI/UI.cs
-  artifactKey: Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/System/UI/UI.cs using Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f5fe8737215d7c5fcb20525c8bbfc21') in 0.004434 seconds 
-  Import took 0.013432 seconds .
-
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005269 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.881 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.4 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2515.
-Total: 1.938300 ms (FindLiveObjects: 0.164000 ms CreateObjectMapping: 0.069400 ms MarkObjects: 1.688200 ms  DeleteObjects: 0.015700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 75.502535 seconds.
-  path: Assets/Scripts/System/UI/UI.cs
-  artifactKey: Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/System/UI/UI.cs using Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79cbb7c46e57a8ba4a7a8523951631dd') in 0.004311 seconds 
-  Import took 0.006948 seconds .
-
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005253 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.46 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.967 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.41 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.2 MB.
-System memory in use after: 99.4 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2517.
-Total: 1.916300 ms (FindLiveObjects: 0.198700 ms CreateObjectMapping: 0.082200 ms MarkObjects: 1.617800 ms  DeleteObjects: 0.016500 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005309 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.896 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.3 MB.
-System memory in use after: 99.4 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2519.
-Total: 1.764500 ms (FindLiveObjects: 0.173700 ms CreateObjectMapping: 0.072200 ms MarkObjects: 1.504900 ms  DeleteObjects: 0.012900 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 107.195545 seconds.
-  path: Assets/Scripts/System/UI/UI.cs
-  artifactKey: Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/System/UI/UI.cs using Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a546cc432b9d46f35caa6e6928ff8a08') in 0.004746 seconds 
-  Import took 0.007590 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.001746 seconds.
-  path: Assets/Scripts/System/UI/UI.cs
-  artifactKey: Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/System/UI/UI.cs using Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a546cc432b9d46f35caa6e6928ff8a08') in 0.002279 seconds 
-  Import took 0.005046 seconds .
-
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.006301 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.931 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.42 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.3 MB.
-System memory in use after: 99.4 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2521.
-Total: 1.922200 ms (FindLiveObjects: 0.175600 ms CreateObjectMapping: 0.071700 ms MarkObjects: 1.658500 ms  DeleteObjects: 0.015600 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005312 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.890 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.3 MB.
-System memory in use after: 99.4 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2523.
-Total: 1.826500 ms (FindLiveObjects: 0.180400 ms CreateObjectMapping: 0.076500 ms MarkObjects: 1.553900 ms  DeleteObjects: 0.014700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 56.380085 seconds.
-  path: Assets/Scripts/System/UI/UI.cs
-  artifactKey: Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/System/UI/UI.cs using Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e6af8de8a614ccb205f7a989a5b54d6') in 0.004595 seconds 
-  Import took 0.007473 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000715 seconds.
-  path: Assets/Scripts/System/UI/UI.cs
-  artifactKey: Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/System/UI/UI.cs using Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e6af8de8a614ccb205f7a989a5b54d6') in 0.002158 seconds 
-  Import took 0.004865 seconds .
-
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005371 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.41 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.877 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.3 MB.
-System memory in use after: 99.4 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2525.
-Total: 1.747300 ms (FindLiveObjects: 0.166500 ms CreateObjectMapping: 0.067300 ms MarkObjects: 1.499900 ms  DeleteObjects: 0.012900 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 55.956012 seconds.
-  path: Assets/Scripts/System/UI/UI.cs
-  artifactKey: Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/System/UI/UI.cs using Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62608eb07198900443d69be57e160e5a') in 0.004603 seconds 
-  Import took 0.007520 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000896 seconds.
-  path: Assets/Scripts/System/UI/UI.cs
-  artifactKey: Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/System/UI/UI.cs using Guid(796b0367a3f8ccb4b90ab6d19a3ff3f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62608eb07198900443d69be57e160e5a') in 0.002217 seconds 
-  Import took 0.004942 seconds .
-
-========================================================================
-Received Prepare
-Default GameObject BitMask: UI already registered
-
-Registering precompiled user dll's ...
-Registered in 0.005033 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\serio\MaraXiangguoExtraBeef\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.887 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2009 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.3 MB.
-System memory in use after: 99.4 MB.
-
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2527.
-Total: 1.801200 ms (FindLiveObjects: 0.178400 ms CreateObjectMapping: 0.079700 ms MarkObjects: 1.528900 ms  DeleteObjects: 0.013400 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

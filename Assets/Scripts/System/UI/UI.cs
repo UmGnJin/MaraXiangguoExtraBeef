@@ -162,14 +162,17 @@ namespace ArcanaDungeon
                 else {
                     //선택한 카드를 대상에게 사용
                     if ((selected > -1) & (selected < deck.max_Hand)) {
-                        Debug.Log("sdfghgsdfgsdfg");
                         //마우스 커서 좌표를 유니티 내부 world 좌표로 변경
                         Vector3 mpos_world = cam.GetComponent<Camera>().ScreenToWorldPoint(mpos);
                         mpos_world = new Vector3(Mathf.Round(mpos_world.x), Mathf.Round(mpos_world.y), 0);
+                        //스태미나가 부족하면 카드를 사용할 수 없음
+                        if (Dungeon.dungeon.Plr.GetStamina() < deck.Hands[selected].getCost()) {
+                            log_add("스태미나가 부족합니다.");
+                        }
                         //해당 좌표가 사용할 카드의 사거리 이내이며, 전체 맵 내부의 좌표이면 사용
-                        if (mpos_world.x >= Plr.transform.position.x - deck.Hands[selected].getRange() & mpos_world.x <= Plr.transform.position.x + deck.Hands[selected].getRange() )
+                        else if (mpos_world.x >= Plr.transform.position.x - deck.Hands[selected].getRange() & mpos_world.x <= Plr.transform.position.x + deck.Hands[selected].getRange() &
+                            mpos_world.y >= Plr.transform.position.y - deck.Hands[selected].getRange() & mpos_world.y <= Plr.transform.position.y + deck.Hands[selected].getRange())
                         {
-                            Debug.Log("sdg");
                             //패의 몇 번째 인덱스가 사용되었는지, 플레이어 스크립트, enemy 스크립트를 파라미터로 전달하되 만약 적이 없는 곳에 드래그했다면 enemy 스크립트 자리에 null이 전달됨
                             deck.UsingCard(selected, Plr.GetComponent<player>(), Dungeon.dungeon.find_enemy(mpos_world.x, mpos_world.y));
                             Plr.GetComponent<player>().condition_process(); //★플레이어 스크립트에서 처리하게 옮길 것
@@ -324,8 +327,8 @@ namespace ArcanaDungeon
             {    //이름, 정보는 텍스트 파일로 저장해뒀다가 research_enemy로 옮겨진다, 그거 찾아온다
                 if (s[0] == selected3.name)
                 {
-                    Research_panel.transform.GetChild(1).gameObject.GetComponent<Text>().text = s[1];
-                    Research_panel.transform.GetChild(2).gameObject.GetComponent<Text>().text = s[2]+"\n";
+                    Research_panel.transform.GetChild(1).gameObject.GetComponent<Text>().text = s[0];
+                    Research_panel.transform.GetChild(2).gameObject.GetComponent<Text>().text = s[1]+"\n";
                 }
             }
 
