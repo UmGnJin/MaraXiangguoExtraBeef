@@ -34,7 +34,7 @@ public class other_buttons : MonoBehaviour
     }
 
     public void treasure_yes() {
-        //★여기에서 카드를 덱에 추가해주면 됨
+        Dungeon.dungeon.Plr.allDeck.addDeck(UI.uicanvas.treasure_card);
         UI.uicanvas.treasure_panel.SetActive(false);
     }
 

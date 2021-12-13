@@ -41,6 +41,8 @@ namespace ArcanaDungeon.Object
 
         public bool[,] FOV;
 
+        public bool isturn_start;
+
         // Start is called before the first frame update
         private void Awake()
         {
@@ -56,6 +58,7 @@ namespace ArcanaDungeon.Object
             maxstamina = 100;
             HpChange(maxhp);
             StaminaChange(maxstamina);
+            isturn_start = true;
         }
         
 
@@ -70,8 +73,11 @@ namespace ArcanaDungeon.Object
             }
             if (isTurn > 0)
             {
-                UI.uicanvas.Condition_Update();
-                vision_marker();
+                if (isturn_start) {
+                    isturn_start = false;
+                    UI.uicanvas.Condition_Update();
+                    vision_marker();
+                }
                 if (MoveTimer <= 0)
                 {
                     Get_MouseInput(); //마우스 입력

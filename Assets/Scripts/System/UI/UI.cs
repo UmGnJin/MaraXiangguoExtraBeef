@@ -46,6 +46,7 @@ namespace ArcanaDungeon
         public Cards selected2; //Cardlist_Panel에서 카드를 선택할 때 선택된 카드를 나타냄
         private bool selecting; //Cardlist_Panel에서 카드를 선택할 때 카드를 선택 중인 상태를 나타냄
         private Enemy selected3;    //조사 기능으로 정보를 표시할 몬스터를 나타냄;
+        public Cards treasure_card; //카드 보상 획득 시 받게 되는 카드 임시 저장
         private int wii; //ui에서 어느 부분이 변경되어야 하는지 나타낸다
         //-1=기본값, 변경될 것 없음 / 0 : 모든 ui 요소 초기화 / 1 : 패의 카드 확대 / 2 : 선택한 카드 사거리 표시 (카드가 커서 따라다니는 건 update에 구현) / 3 : 상태이상 툴팁 표시 / 4 : 몬스터 정보 표시
 
@@ -162,7 +163,6 @@ namespace ArcanaDungeon
                     //선택한 카드를 대상에게 사용
                     if ((selected > -1) & (selected < deck.max_Hand)) {
                         //마우스 커서 좌표를 유니티 내부 world 좌표로 변경
-                        //Debug.Log("카드 사용 테스트");
                         Vector3 mpos_world = cam.GetComponent<Camera>().ScreenToWorldPoint(mpos);
                         mpos_world = new Vector3(Mathf.Round(mpos_world.x), Mathf.Round(mpos_world.y), 0);
                         //해당 좌표가 사용할 카드의 사거리 이내이며, 전체 맵 내부의 좌표이면 사용
@@ -399,7 +399,6 @@ namespace ArcanaDungeon
         public void card_draw(Cards c) {
 
             int temp = deck.Hands.Count;
-            Debug.Log("여긴가? : " + temp + c.cardName + c.illust);
             card_ui[temp].transform.GetChild(1).GetComponent<Text>().text = c.cardName;
             card_ui[temp].transform.GetChild(2).gameObject.SetActive(true);
             card_ui[temp].transform.GetChild(2).GetComponent<Image>().sprite = Resources.Load<Sprite>(c.illust);
@@ -445,7 +444,6 @@ namespace ArcanaDungeon
             //temp2를 카드 이름에 따라 정렬, 이거 안 하면 뽑을 카드 더미에서 다음에 뽑을 카드가 뭔지 다 보인다
             temp2 = temp2.OrderBy(x => x.GetComponent<Cardlist_select>().GetCOT().cardName).ToList();
 
-            Debug.Log("temp1 : " + temp1);
             //Cardlist_panel의 height를 temp2의 인덱스 개수에 따라 조절하고 활성화, temp2의 인덱스를 배치하고 활성화해 목록처럼 보이게 만들기
             temp1 = Mathf.Max(420 * (temp1 / 5 + 1) + 20, 1080);    //임시로 아까 쓰던 temp 돌려 씀
             Cardlist_panel.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, temp1); //Scroll View에서 Content의 크기가 Viewport보다 크지 않으면 스크롤이 이뤄지지 않음
@@ -465,9 +463,6 @@ namespace ArcanaDungeon
             }
             //플레이어가 입력할 때까지 실행 보류
             selecting = true;
-
-            //놀랍게도 Time.timeScale=0f가 되면 실행 중이던 함수라도 update와 연관되어 있지 않으면 모조리 멈춘다, 덕분에 아래 부분이 보류될 수 있다
-            Debug.Log("카드셀렉트 종료!");
         }
         public void SetSelected2(Cards c) {
             selected2 = c;
@@ -508,6 +503,7 @@ namespace ArcanaDungeon
         }
 
         public void Treasure(Cards c) {
+            treasure_card = c;
             treasure_panel.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = c.cardName;
             treasure_panel.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(c.illust);
             treasure_panel.transform.GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = c.cardInfo;
@@ -528,7 +524,6 @@ namespace ArcanaDungeon
         }
         public void poison(Vector3 pos)
         {
-            Debug.Log("독 이펙트 생성 위치 : " + pos);
             Vector2 temp_pos = cam.GetComponent<Camera>().WorldToScreenPoint(pos);
             poison_par.transform.localPosition = new Vector2(temp_pos.x - 960, temp_pos.y - 540);
             poison_par.GetComponent<ParticleSystem>().Play();

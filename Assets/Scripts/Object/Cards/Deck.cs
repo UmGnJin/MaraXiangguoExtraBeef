@@ -135,6 +135,10 @@ namespace ArcanaDungeon.cards
             UsedDeck.Add(Hands[index]);
             Hands.RemoveAt(index);
         }
+
+        public void addDeck(Cards c) {
+            CardsDeck.Add(c);
+        }
         
         public void UsingCard(int SlotNum, player PLR, Enemy EMY)
         {

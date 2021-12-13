@@ -26,39 +26,39 @@ namespace ArcanaDungeon.cards
             {
                 case 0:
                     {
-                        this.setCardSprite("임시 공격", "급소 찌르기", "사거리 2칸, " + cardDamage + "의 피해를 주고, 약화 " + this.getWeaknessSt() + "을 부여합니다.");
+                        this.setCardSprite("급소 찌르기", "급소 찌르기", "사거리 2칸, " + cardDamage + "의 피해를 주고, 약화 " + this.getWeaknessSt() + "을 부여합니다.");
                         break;
                     }
                 case 1:
                     {
-                        this.setCardSprite("임시 강타", "수 읽기", cardDamage + "의 피해를 주고, 카드를 한 장 뽑습니다.");
+                        this.setCardSprite("수읽기", "수 읽기", cardDamage + "의 피해를 주고, 카드를 한 장 뽑습니다.");
                         break;
                     }
                 case 2:
                     {
-                        this.setCardSprite("화살 쏘기", "연속 공격", "사거리 2칸, " + cardDamage + "의 피해를 두번 줍니다.");
+                        this.setCardSprite("연속 공격", "연속 공격", "사거리 2칸, " + cardDamage + "의 피해를 두번 줍니다.");
                         break;
                     }
                 case 3:
                     {
-                        this.setCardSprite("화살 쏘기", "은밀한 공격", "사거리 2칸, " + cardDamage + "의 피해를 주고, 약화 " + this.getWeaknessSt() + "을 부여, 턴을 넘기지 않습니다.");
+                        this.setCardSprite("은밀한 공격", "은밀한 공격", "사거리 2칸, " + cardDamage + "의 피해를 주고, 약화 " + this.getWeaknessSt() + "을 부여, 턴을 넘기지 않습니다.");
                         break;
                     }
                 case 4:
                     {
-                        this.setCardSprite("화살 쏘기", "다리걸기", "사거리 2칸, " + cardDamage + "만큼 피해를 줍니다." + "카드를 한 장 뽑고 다음 공격 카드에 약화 +3을 부여합니다..");
+                        this.setCardSprite("다리 걸기", "다리걸기", "사거리 2칸, " + cardDamage + "만큼 피해를 줍니다." + "카드를 한 장 뽑고 다음 공격 카드에 약화 +3을 부여합니다..");
                         break;
                     }
                 case 5:
                     {
-                        this.setCardSprite("화살 쏘기", "상처 찌르기", "사거리 2칸, " + " 적의 약화 중첩만큼 피해를 줍니다. 대상에게 부여된 약점을 모두 없앱니다.");
+                        this.setCardSprite("상처 찌르기", "상처 찌르기", "사거리 2칸, " + " 적의 약화 중첩만큼 피해를 줍니다. 대상에게 부여된 약점을 모두 없앱니다.");
                         break;
                     }
                 case 9:
                     {
                         this.costChange(40);
                         this.setRange(0);
-                        this.setCardSprite("임시 강타", "숨고르기", "사거리 2칸, " + "패를 모두 버리고, 패가 가득 찰 때까지 드로우합니다. 이 카드는 턴을 소모하지 않습니다.");
+                        this.setCardSprite("숨 고르기", "숨고르기", "패를 모두 버리고, 패가 가득 찰 때까지 드로우합니다. 이 카드는 턴을 소모하지 않습니다.");
                         break;
                     }
 
@@ -78,7 +78,6 @@ namespace ArcanaDungeon.cards
                             {
                                 enemy.be_hit(cardDamage);
                                 enemy.condition_add(5, this.getWeaknessSt() * 10 + 2);
-                                Debug.Log("약화 공격");
                                 //this.setCardSprite("임시 공격", "급소 찌르기", "사거리 2칸, " + cardDamage + "만큼 피해를 주고, 약화 " + this.getWeaknessSt() + "을 부여합니다.");
                                 break;
                             }
@@ -118,7 +117,6 @@ namespace ArcanaDungeon.cards
                                 if (temp.ContainsKey(5))
                                 {
                                     enemy.be_hit(temp[5] / 10);
-                                    Debug.Log("5번타입 카드 딜 : " + temp[5] / 10 + " 초기화 값" + temp[5] / 10 + 9);
                                     enemy.condition_add(5, (temp[5] / 10 * 10) + 9 - temp[5] % 10);
                                 }
                                 //this.setCardSprite("화살 쏘기", "상처 찌르기", "사거리 2칸, " + " 적의 약화 중첩만큼 피해를 줍니다. 대상에게 부여된 약점을 모두 없앱니다.  4도약");
@@ -151,7 +149,6 @@ namespace ArcanaDungeon.cards
 
                     }
                     Plr.StaminaChange(-this.getCost());
-                    Debug.Log("적을 찾을 수 없습니다.");
                 }
             }
             else
