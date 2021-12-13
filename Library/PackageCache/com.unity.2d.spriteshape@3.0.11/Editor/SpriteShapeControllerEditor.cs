@@ -494,7 +494,7 @@ namespace UnityEditor.U2D
         [DrawGizmo(GizmoType.InSelectionHierarchy)]
         static void RenderSpline(SpriteShapeController m_SpriteShapeController, GizmoType gizmoType)
         {
-            if (UnityEditor.EditorTools.ToolManager.activeToolType == typeof(SpriteShapeEditorTool))
+            if (EditorTools.EditorTools.activeToolType == typeof(SpriteShapeEditorTool))
                 return;
 
             var m_Spline = m_SpriteShapeController.spline;
