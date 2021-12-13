@@ -114,6 +114,7 @@ namespace ArcanaDungeon.Object
                     this.stamina = 0;
                 }
             }
+            UI.uicanvas.GaugeChange();
         }
 
         //block 관련 함수

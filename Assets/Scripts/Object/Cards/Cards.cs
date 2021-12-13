@@ -28,6 +28,7 @@ namespace ArcanaDungeon.cards
         public virtual void UseCard(player Plr, Enemy enemy) { }
 
         public virtual void settingCard() { }
+
         public void costChange(int newcost)
         {
             this.cardCost = newcost;
@@ -52,6 +53,7 @@ namespace ArcanaDungeon.cards
         {
             this.weakness = weak;
         }
+
         public string getIllust()
         { //함수 이름은 대문자 I, 소문자 l 2개를 사용한다
             return illust;

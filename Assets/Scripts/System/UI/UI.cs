@@ -32,6 +32,7 @@ namespace ArcanaDungeon
         public GameObject Research_panel;   //조사 기능으로 몬스터 정보를 볼 때 나오는 패널
         public GameObject gameover_logo;
         public GameObject gameover_button;
+        public GameObject treasure_panel;   //카드를 획득할지 선택하는 패널
 
         private GameObject Plr; //★플레이어
         private LineRenderer line;
@@ -128,12 +129,12 @@ namespace ArcanaDungeon
                         card_on_cursor.transform.GetChild(0).gameObject.SetActive(true);
                         card_on_cursor.transform.GetChild(0).GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
                         wii = 2;    //카드 사거리를 표시하라는 wii값
-                        for (int i = 1; i < 4; i++)
+                        for (int i = 1; i < 5; i++)
                         {
                             temp_ob = card_on_cursor.transform.GetChild(i).gameObject;
                             temp_ob.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
                             temp_ob.GetComponent<RectTransform>().localPosition = card_ui[1].transform.GetChild(i).GetComponent<RectTransform>().localPosition;
-                            //selected에 따라 deck의 Hands에서 카드 이름, 일러스트, 카드 효과를 가져와 card_on_cursor 자식들한테 저장함
+                            //selected에 따라 deck의 Hands에서 카드 이름, 일러스트, 카드 효과, 코스트를 가져와 card_on_cursor 자식들한테 저장함
                             switch (i)
                             {
                                 case 1:
@@ -143,6 +144,8 @@ namespace ArcanaDungeon
                                     temp_ob.GetComponent<Image>().sprite = Resources.Load<Sprite>(deck.Hands[selected].illust); break;
                                 case 3:
                                     temp_ob.GetComponent<Text>().text = deck.Hands[selected].cardInfo; break;
+                                case 4:
+                                    temp_ob.GetComponent<Text>().text = deck.Hands[selected].getCost().ToString(); break;
                             }
                         }
                     }
@@ -170,16 +173,6 @@ namespace ArcanaDungeon
                             deck.UsingCard(selected, Plr.GetComponent<player>(), Dungeon.dungeon.find_enemy(mpos_world.x, mpos_world.y));
                             Plr.GetComponent<player>().condition_process(); //★플레이어 스크립트에서 처리하게 옮길 것
                                                                             //사용된 손패 오른쪽의 카드들을 1칸씩 왼쪽으로 이동시키기
-                            /*for (int i = selected + 1; i < deck.max_Hand; i++)
-                            {
-                                card_ui[i].transform.GetChild(1).GetComponent<Text>().text = card_ui[i + 1].transform.GetChild(1).GetComponent<Text>().text;
-                                card_ui[i].transform.GetChild(2).GetComponent<Image>().sprite = card_ui[i + 1].transform.GetChild(2).GetComponent<Image>().sprite;
-                                card_ui[i].transform.GetChild(3).GetComponent<Text>().text = card_ui[i + 1].transform.GetChild(3).GetComponent<Text>().text;
-                            }
-                            card_ui[deck.Hands.Count + 1].transform.GetChild(1).GetComponent<Text>().text = null;
-                            card_ui[deck.Hands.Count + 1].transform.GetChild(2).gameObject.SetActive(false);
-                            card_ui[deck.Hands.Count + 1].transform.GetChild(3).GetComponent<Text>().text = null;*/
-
                         }
                         selected = -1;
                         wii = 0;    //ui 초기화하는 wii값
@@ -238,6 +231,7 @@ namespace ArcanaDungeon
             card_on_cursor.transform.GetChild(1).gameObject.GetComponent<Text>().text = null;
             card_on_cursor.transform.GetChild(2).gameObject.SetActive(false);
             card_on_cursor.transform.GetChild(3).gameObject.GetComponent<Text>().text = null;
+            card_on_cursor.transform.GetChild(4).gameObject.GetComponent<Text>().text = null;
             //small_tool_tip 초기화, 상태이상 툴팁에 사용됨
             small_tool_tip.SetActive(false);
             small_tool_tip.transform.GetChild(0).gameObject.GetComponent<Text>().text = null;
@@ -251,15 +245,15 @@ namespace ArcanaDungeon
         }
         private void CardZoom(int th) { //커서를 올린 패의 카드 이미지 확대
             GameObject temp_ob = null;
-            card_on_cursor.GetComponent<RectTransform>().localPosition = new Vector3(-900 + th * 120, -180, 0);
+            card_on_cursor.GetComponent<RectTransform>().localPosition = new Vector3(-900 + th * 120, -160, 0);
             card_on_cursor.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(card_background);
             card_on_cursor.transform.GetChild(0).gameObject.SetActive(true);
-            card_on_cursor.transform.GetChild(0).GetComponent<RectTransform>().localScale = new Vector3(2, 2, 2);
-            for (int i = 1; i < 4; i++)
+            card_on_cursor.transform.GetChild(0).GetComponent<RectTransform>().localScale = new Vector3(2.5f, 2.5f, 2.5f);
+            for (int i = 1; i < 5; i++)
             {
                 temp_ob = card_on_cursor.transform.GetChild(i).gameObject;
-                temp_ob.GetComponent<RectTransform>().localScale = new Vector3(2, 2, 2);
-                temp_ob.GetComponent<RectTransform>().localPosition = card_ui[1].transform.GetChild(i).GetComponent<RectTransform>().localPosition * 2;
+                temp_ob.GetComponent<RectTransform>().localScale = new Vector3(2.5f, 2.5f, 2.5f);
+                temp_ob.GetComponent<RectTransform>().localPosition = card_ui[1].transform.GetChild(i).GetComponent<RectTransform>().localPosition * 2.5f;
                 //th에 따라 deck의 Hands에서 카드 이름, 일러스트, 카드 효과를 가져와 card_on_cursor 자식들한테 저장함
                 switch (i)
                 {
@@ -272,6 +266,8 @@ namespace ArcanaDungeon
                     case 3:
                         //ob.GetComponent<Text>.text = deck.Hands[th-1]. (Card에 들어있는 카드 효과);break;
                         temp_ob.GetComponent<Text>().text = deck.Hands[th - 1].cardInfo; break; // 이름 설명 추가 jgh
+                    case 4:
+                        temp_ob.GetComponent<Text>().text = deck.Hands[th - 1].getCost().ToString(); break;
                 }
             }
         }
@@ -408,6 +404,7 @@ namespace ArcanaDungeon
             card_ui[temp].transform.GetChild(2).gameObject.SetActive(true);
             card_ui[temp].transform.GetChild(2).GetComponent<Image>().sprite = Resources.Load<Sprite>(c.illust);
             card_ui[temp].transform.GetChild(3).GetComponent<Text>().text = c.cardInfo;
+            card_ui[temp].transform.GetChild(4).GetComponent<Text>().text = c.getCost().ToString();
         }
 
         public void Card_Select(int which) {
@@ -424,6 +421,7 @@ namespace ArcanaDungeon
                     temp3.GetChild(0).gameObject.GetComponent<Text>().text = c.cardName;
                     temp3.GetChild(1).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(c.illust);
                     temp3.GetChild(2).gameObject.GetComponent<Text>().text = c.cardInfo;
+                    temp3.GetChild(3).gameObject.GetComponent<Text>().text = c.getCost().ToString();
                     temp3.gameObject.GetComponent<Cardlist_select>().SetCOT(c);
                     temp2.Add(temp3.gameObject);
                     temp1++;
@@ -437,6 +435,7 @@ namespace ArcanaDungeon
                     temp3.GetChild(0).gameObject.GetComponent<Text>().text = c.cardName;
                     temp3.GetChild(1).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(c.illust);
                     temp3.GetChild(2).gameObject.GetComponent<Text>().text = c.cardInfo;
+                    temp3.GetChild(3).gameObject.GetComponent<Text>().text = c.getCost().ToString();
                     temp3.gameObject.GetComponent<Cardlist_select>().SetCOT(c);
                     temp2.Add(temp3.gameObject);
                     temp1++;
@@ -488,10 +487,12 @@ namespace ArcanaDungeon
                 card_ui[i].transform.GetChild(1).GetComponent<Text>().text = card_ui[i + 1].transform.GetChild(1).GetComponent<Text>().text;
                 card_ui[i].transform.GetChild(2).GetComponent<Image>().sprite = card_ui[i + 1].transform.GetChild(2).GetComponent<Image>().sprite;
                 card_ui[i].transform.GetChild(3).GetComponent<Text>().text = card_ui[i + 1].transform.GetChild(3).GetComponent<Text>().text;
+                card_ui[i].transform.GetChild(4).GetComponent<Text>().text = card_ui[i+1].transform.GetChild(4).GetComponent<Text>().text;
             }
             card_ui[deck.Hands.Count + 1].transform.GetChild(1).GetComponent<Text>().text = null;
             card_ui[deck.Hands.Count + 1].transform.GetChild(2).gameObject.SetActive(false);
             card_ui[deck.Hands.Count + 1].transform.GetChild(3).GetComponent<Text>().text = null;
+            card_ui[deck.Hands.Count +1].transform.GetChild(4).GetComponent<Text>().text = null;
         }
         public Cards GetSelected2()
         {
@@ -504,6 +505,14 @@ namespace ArcanaDungeon
             GameObject temp = Instantiate(this.Cardlist_card) as GameObject;
             temp.SetActive(false);
             temp.transform.SetParent(Cardlist_panel.transform, false);
+        }
+
+        public void Treasure(Cards c) {
+            treasure_panel.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = c.cardName;
+            treasure_panel.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(c.illust);
+            treasure_panel.transform.GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text = c.cardInfo;
+            treasure_panel.transform.GetChild(0).GetChild(3).gameObject.GetComponent<Text>().text = c.getCost().ToString();
+            treasure_panel.SetActive(true);
         }
 
         public void blood(Vector3 pos) {

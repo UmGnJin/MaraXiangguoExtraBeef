@@ -32,4 +32,13 @@ public class other_buttons : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         //Application.Qui();    //유니티 에디터에서의 종료와 빌드된 어플리케이션에서의 종료는 서로 다르다
     }
+
+    public void treasure_yes() {
+        //★여기에서 카드를 덱에 추가해주면 됨
+        UI.uicanvas.treasure_panel.SetActive(false);
+    }
+
+    public void treasure_no() {
+        UI.uicanvas.treasure_panel.SetActive(false);
+    }
 }
