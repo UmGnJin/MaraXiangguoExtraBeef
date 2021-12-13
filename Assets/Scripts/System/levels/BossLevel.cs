@@ -28,7 +28,7 @@ namespace ArcanaDungeon
                     break;
                 }
             }
-            //biome = Biome.BOSS_GNOLL;
+            biome = Biome.BOSS_GNOLL;
             availableBossList[(int)biome - 1] = false;
             maxEnemies = 1;
 

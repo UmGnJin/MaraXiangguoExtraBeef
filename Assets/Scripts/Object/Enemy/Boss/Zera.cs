@@ -103,15 +103,18 @@ namespace ArcanaDungeon.Object
                 int y = random.Next(0, Dungeon.dungeon.currentlevel.levelr.yMax);
                 if (Dungeon.dungeon.currentlevel.map[x, y] == Terrain.GROUND && Dungeon.distance_cal_a(this.transform.position.x, this.transform.position.y,x,y) > 2)
                 {
+                    
                     this.transform.position = new Vector2(Mathf.Round(x - 1), Mathf.Round(y));
                     cooldown_Tel = 20;
-                    Vision_research();
+                    route_pos.Clear();
                     break;
                 }
             }
+            UI.uicanvas.log_add("놀 주술사가 텔레포트했습니다!");
         }
         private void Beamcharge()//하고싶은 것 : 플레이어의 위치로 한턴 차지 후에 빔 쏘기
         {
+            
             int count = 0;
             beamtarget = new Vector2(Plr_pos[1, 0], Plr_pos[1, 1]);
             
@@ -122,7 +125,8 @@ namespace ArcanaDungeon.Object
         }
         private void Thundercharge()//하고싶은 것 : 플레이어의 위치로 한턴 차지 후에 빔 쏘기
         {
-            
+            UI.uicanvas.log_add("놀 주술사가 강력한 공격을 준비하고 있습니다!");
+
             beamtarget = new Vector2(Plr_pos[1, 0], Plr_pos[1, 1]);
             
                     charged_T = 1;
@@ -147,6 +151,7 @@ namespace ArcanaDungeon.Object
         }
         private void Thundershot()
         {
+            UI.uicanvas.log_add("놀 주술사가 강력한 번개를 불러왔습니다!");
             int count = 1;
             for (int i = -1; i < 2; i++)
                 for (int j = -1; j < 2; j++)

@@ -48,8 +48,8 @@ namespace ArcanaDungeon
             Mobs = Resources.LoadAll<GameObject>("prefabs/Enemies");
             Players = Resources.LoadAll<GameObject>("prefabs/Player");
 
-            currentlevel = new AnotherLevel();
-            //currentlevel = new BossLevel();
+            //currentlevel = new AnotherLevel();
+            currentlevel = new BossLevel();
             //주석처리 바꿔서 시작레벨 다른거로 테스트 가능.
 
             currentlevel.Create();

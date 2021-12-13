@@ -138,6 +138,7 @@ namespace ArcanaDungeon.Object
         private void Charge_Attack(int dir)
         {
             Debug.Log(dir);
+            UI.uicanvas.log_add("놀 전사가 돌진했습니다!");
             int reach = Dungeon.distance_cal(this.transform, Dungeon.dungeon.Plr.transform)-1;
             
             switch (dir)
