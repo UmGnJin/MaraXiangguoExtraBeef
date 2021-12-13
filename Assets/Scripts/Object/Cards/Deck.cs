@@ -15,11 +15,12 @@ namespace ArcanaDungeon.cards
         private int nextCdweak = 0;
         private bool ispass = false;
         public bool isnext = false;
+        private int[] cardtypes = new int[] { 48300, 33001, 20002, 25203 , 20004 , 20005 , 0009 };
 
         public List<Cards> Hands = new List<Cards>();
 
         public const int MAX_HAND = 6;
-        public int max_Hand = 3;
+        public int max_Hand = 6;
         public Deck()
         {
             SettingFstDeck();
@@ -42,26 +43,29 @@ namespace ArcanaDungeon.cards
                 - 40 / 패를 모두 버림 / 패가 가득 찰 때까지 드로우 / 이 카드는 턴을 소모하지 않음 9
                 - 20 / 체력 +(연속으로 공격 카드를 사용한 턴 수 *3)10 -따로 
              */
-            CardsDeck.Add(new ThiefAttackCard(1420));
-            CardsDeck.Add(new ThiefAttackCard(601));
-            CardsDeck.Add(new ThiefAttackCard(902));
-            CardsDeck.Add(new ThiefAttackCard(113));
-            CardsDeck.Add(new ThiefAttackCard(204));
-            CardsDeck.Add(new ThiefAttackCard(205));
-            //CardsDeck.Add(new ThiefAttackCard(006));
-            //CardsDeck.Add(new ThiefAttackCard(007));
+            /*CardsDeck.Add(new ThiefAttackCard(2880));
+            CardsDeck.Add(new ThiefAttackCard(1201));
+            CardsDeck.Add(new ThiefAttackCard(1802));
+            CardsDeck.Add(new ThiefAttackCard(443));
+            CardsDeck.Add(new ThiefAttackCard(804));
+            CardsDeck.Add(new ThiefAttackCard(805));
             CardsDeck.Add(new ThiefAttackCard(009));
-            CardsDeck.Add(new BasicConsCard(3030025)); // - 30 / 급류 5턴 8
-            for(int i = 0; i < 3; i++)
+            CardsDeck.Add(new BasicConsCard(3030025)); // - 30 / 급류 5턴 8*/
+
+            for (int i = 0; i < 5; i++)
             {
-                CardsDeck.Add(new ThiefAttackCard(1420));
-                CardsDeck.Add(new ThiefAttackCard(601));
-                CardsDeck.Add(new ThiefAttackCard(902));
-                CardsDeck.Add(new ThiefAttackCard(113));
-                CardsDeck.Add(new ThiefAttackCard(204));
-                CardsDeck.Add(new ThiefAttackCard(205));
-                CardsDeck.Add(new ThiefAttackCard(009));
-                CardsDeck.Add(new BasicConsCard(3030025));
+                CardsDeck.Add(new ThiefAttackCard(48300));
+                CardsDeck.Add(new ThiefAttackCard(33001));
+                CardsDeck.Add(new ThiefAttackCard(20002));
+                CardsDeck.Add(new ThiefAttackCard(25203));
+                CardsDeck.Add(new ThiefAttackCard(20004));
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                CardsDeck.Add(new ThiefAttackCard(48300));
+                CardsDeck.Add(new ThiefAttackCard(20005));
+                CardsDeck.Add(new ThiefAttackCard(0009));
+                CardsDeck.Add(new BasicConsCard(3030025)); // - 30 / 급류 5턴 8*/
             }
 
 
@@ -90,6 +94,12 @@ namespace ArcanaDungeon.cards
             }
         }
 
+        public Cards getRandomCardcode()
+        {
+            int index = this.cardtypes[Dungeon.random.Next(0, cardtypes.Length)];
+            return new ThiefAttackCard(index);
+        }
+
         public List<Cards> showDeckList()
         {
             return CardsDeck;
@@ -114,12 +124,8 @@ namespace ArcanaDungeon.cards
                 ChangDeck();
             if (Hands.Count < max_Hand & CardsDeck.Count > 0)
             {
-                
                 Hands.Add(CardsDeck[CardsDeck.Count - 1]);
                 CardsDeck.RemoveAt(CardsDeck.Count - 1);
-                if(Hands[Hands.Count - 1] != null)
-                    Debug.Log("핸드 카드 수 " + Hands.Count + ", 덱 카드 수" + CardsDeck.Count);
-                
                 UI.uicanvas.card_draw(Hands[Hands.Count - 1]);
             }
         }
@@ -166,7 +172,8 @@ namespace ArcanaDungeon.cards
                 Dungeon.dungeon.Plr.Turnend();
                 ispass = false;
                 isnext = true;
-            }
+            }else
+                ispass = false;
         }
         public void passTurn()
         {
